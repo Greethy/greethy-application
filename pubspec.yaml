@@ -33,6 +33,20 @@ dependencies:
     intl: ^0.17.0
     animations: ^2.0.3
 
+    # Chunhthanhde add
+    shared_preferences: ^2.1.2
+    provider: ^6.0.1
+    google_fonts: ^4.0.4
+    url_launcher: ^6.0.12
+    share_plus: ^7.0.1
+    equatable: ^2.0.3
+    google_sign_in: ^6.1.2
+    get_it: ^7.2.0
+    package_info_plus: ^4.0.1
+    oauth2: 2.0.2
+    googleapis: ^10.0.1
+    http: ^0.13.3
+
 dev_dependencies:
     flutter_test:
         sdk: flutter

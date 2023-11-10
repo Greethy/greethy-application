@@ -1,5 +1,8 @@
 import 'package:greethy_application/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../state/authState.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -185,6 +188,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
   void onTapped() {
     print('Doing Something...'); // Print to console.
+    final AuthState state = Provider.of<AuthState>(context, listen: false);
+    // Navigator.pop(context);
+    state.logoutCallback();
   }
 
   Widget inkwell(DrawerList listData) {

@@ -46,16 +46,29 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.Greethy"
-        minSdkVersion flutter.minSdkVersion
+//        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('greethy.jks')
+            storePassword '22042001'
+            keyAlias 'chunhthanhde'
+            keyPassword '22042001'
+        }
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+        debug {
             signingConfig signingConfigs.debug
         }
     }

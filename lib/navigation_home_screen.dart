@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:greethy_application/app_theme.dart';
 import 'package:greethy_application/custom_drawer/drawer_user_controller.dart';
 import 'package:greethy_application/custom_drawer/home_drawer.dart';
@@ -5,7 +6,6 @@ import 'package:greethy_application/feedback_screen.dart';
 import 'package:greethy_application/help_screen.dart';
 import 'package:greethy_application/home_screen.dart';
 import 'package:greethy_application/invite_friend_screen.dart';
-import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   @override
@@ -15,11 +15,13 @@ class NavigationHomeScreen extends StatefulWidget {
 class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   Widget? screenView;
   DrawerIndex? drawerIndex;
+  bool isFirstTime = false;
 
   @override
   void initState() {
+    // loadScreenView();
     drawerIndex = DrawerIndex.HOME;
-    screenView = const MyHomePage();
+    screenView = MyHomePage();
     super.initState();
   }
 
@@ -76,4 +78,11 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       }
     }
   }
+
+// Future<void> loadScreenView() async {
+//   if (await isFirstTimeOpen())
+//     setState(() {
+//       isFirstTime = true;
+//     });
+// }
 }

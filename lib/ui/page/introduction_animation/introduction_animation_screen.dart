@@ -1,11 +1,16 @@
-import 'package:greethy_application/introduction_animation/components/care_view.dart';
-import 'package:greethy_application/introduction_animation/components/center_next_button.dart';
-import 'package:greethy_application/introduction_animation/components/mood_diary_vew.dart';
-import 'package:greethy_application/introduction_animation/components/relax_view.dart';
-import 'package:greethy_application/introduction_animation/components/splash_view.dart';
-import 'package:greethy_application/introduction_animation/components/top_back_skip_view.dart';
-import 'package:greethy_application/introduction_animation/components/welcome_view.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/care_view.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/center_next_button.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/mood_diary_vew.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/relax_view.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/splash_view.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/top_back_skip_view.dart';
+import 'package:greethy_application/ui/page/introduction_animation/components/welcome_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../helper/shared_prefrence_helper.dart';
+import '../../../state/authState.dart';
+import '../common/locator.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {
   const IntroductionAnimationScreen({Key? key}) : super(key: key);
@@ -104,8 +109,13 @@ class _IntroductionAnimationScreenState extends State<IntroductionAnimationScree
     }
   }
 
-  void _signUpClick() {
+  Future<void> _signUpClick() async {
     print("_signUpClick");
-    Navigator.pop(context);
+    await getIt<SharedPreferenceHelper>().endWelcomeFirstTime();
+    Future.delayed(const Duration(seconds: 1)).then((_) {
+      var state = Provider.of<AuthState>(context, listen: false);
+      state.getCurrentUser();
+    });
+    // Navigator.pop(context);
   }
 }

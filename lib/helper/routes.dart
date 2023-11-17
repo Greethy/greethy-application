@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/page/auth/selectAuthMethod.dart';
 import 'package:greethy_application/ui/page/auth/verifyEmail.dart';
 import 'package:greethy_application/ui/page/common/splash.dart';
+
 // import 'package:greethy_application/ui/page/feed/composeTweet/composeTweet.dart';
 // import 'package:greethy_application/ui/page/feed/composeTweet/state/composeTweetState.dart';
 // import 'package:greethy_application/ui/page/homePage.dart';
@@ -29,6 +30,7 @@ import '../helper/customRoute.dart';
 import '../ui/page/auth/forgetPasswordPage.dart';
 import '../ui/page/auth/signin.dart';
 import '../ui/page/auth/signup.dart';
+
 // import '../ui/page/feed/feedPostDetail.dart';
 // import '../ui/page/feed/imageViewPage.dart';
 // import '../ui/page/message/chatScreenPage.dart';
@@ -53,6 +55,7 @@ class Routes {
     if (pathElements[0] != '' || pathElements.length == 1) {
       return null;
     }
+    print("on routes");
     switch (pathElements[1]) {
       // case "ComposeTweetPage":
       //   bool isRetweet = false;
@@ -97,15 +100,13 @@ class Routes {
       //             const ComposeTweetPage(isRetweet: false, isTweet: true),
       //           ));
       case "WelcomePage":
-        return CustomRoute<bool>(
-            builder: (BuildContext context) => const WelcomePage());
+        return CustomRoute<bool>(builder: (BuildContext context) => const WelcomePage());
       case "SignIn":
         return CustomRoute<bool>(builder: (BuildContext context) => SignIn());
       case "SignUp":
         return CustomRoute<bool>(builder: (BuildContext context) => Signup());
       case "ForgetPasswordPage":
-        return CustomRoute<bool>(
-            builder: (BuildContext context) => const ForgetPasswordPage());
+        return CustomRoute<bool>(builder: (BuildContext context) => const ForgetPasswordPage());
       // case "SearchPage":
       //   return CustomRoute<bool>(
       //       builder: (BuildContext context) => SearchPage());

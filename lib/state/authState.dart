@@ -123,21 +123,21 @@ class AuthState extends AppState {
     // Check if user is new or old
     // If user is new then add new user to firebase realtime kDatabase
     // if (diff < const Duration(seconds: 15)) {
-      UserModel model = UserModel(
-        bio: 'Edit profile to update bio',
-        dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
-        location: 'Somewhere in universe',
-        profilePic: user.photoUrl!,
-        displayName: user.displayName!,
-        email: user.email,
-        key: user.id,
-        userId: user.id,
-        // contact: user.!,
-        // isVerified: user.emailVerified,
-      );
+    UserModel model = UserModel(
+      bio: 'Edit profile to update bio',
+      dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
+      location: 'Somewhere in universe',
+      profilePic: user.photoUrl!,
+      displayName: user.displayName!,
+      email: user.email,
+      key: user.id,
+      userId: user.id,
+      // contact: user.!,
+      // isVerified: user.emailVerified,
+    );
 
-      print("chunhthanhde create new user: $model");
-      createUser(model, newUser: true);
+    print("chunhthanhde create new user: $model");
+    createUser(model, newUser: true);
     // } else {
     //   cprint('Last login at: ${user.metadata.lastSignInTime}');
     // }
@@ -168,8 +168,7 @@ class AuthState extends AppState {
     //   isBusy = false;
     //   cprint(error, errorIn: 'signUp');
     //   Utility.customSnackBar(context, error.toString());
-      return null;
-
+    return null;
   }
 
   /// `Create` and `Update` user
@@ -383,4 +382,12 @@ class AuthState extends AppState {
     // });
   }
 
+  handleFacebookSignIn() {}
+
+  void startIntroduction() {
+    isBusy = true;
+    authStatus = AuthStatus.FIRST_TIME;
+    isBusy = false;
+    print('startIntroduction');
+  }
 }

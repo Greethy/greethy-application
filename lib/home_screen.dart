@@ -16,6 +16,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    print("start homeScreen");
     animationController = AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
     super.initState();
   }

@@ -21,16 +21,17 @@ class AppTheme {
   static const String fontName = 'WorkSans';
 
   static const TextTheme textTheme = TextTheme(
-    headline4: display1,
-    headline5: headline,
-    headline6: title,
-    subtitle2: subtitle,
-    bodyText2: body2,
-    bodyText1: body1,
-    caption: caption,
+    headlineMedium: display1,
+    headlineSmall: headline,
+    titleLarge: title,
+    titleSmall: subtitle,
+    bodyMedium: body2,
+    bodyLarge: body1,
+    bodySmall: caption,
   );
 
-  static const TextStyle display1 = TextStyle( // h4 -> display1
+  static const TextStyle display1 = TextStyle(
+    // h4 -> display1
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
     fontSize: 36,
@@ -39,7 +40,8 @@ class AppTheme {
     color: darkerText,
   );
 
-  static const TextStyle headline = TextStyle( // h5 -> headline
+  static const TextStyle headline = TextStyle(
+    // h5 -> headline
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
     fontSize: 24,
@@ -47,7 +49,8 @@ class AppTheme {
     color: darkerText,
   );
 
-  static const TextStyle title = TextStyle( // h6 -> title
+  static const TextStyle title = TextStyle(
+    // h6 -> title
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
     fontSize: 16,
@@ -55,7 +58,8 @@ class AppTheme {
     color: darkerText,
   );
 
-  static const TextStyle subtitle = TextStyle( // subtitle2 -> subtitle
+  static const TextStyle subtitle = TextStyle(
+    // subtitle2 -> subtitle
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
     fontSize: 14,
@@ -63,7 +67,8 @@ class AppTheme {
     color: darkText,
   );
 
-  static const TextStyle body2 = TextStyle( // body1 -> body2
+  static const TextStyle body2 = TextStyle(
+    // body1 -> body2
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
     fontSize: 14,
@@ -71,7 +76,8 @@ class AppTheme {
     color: darkText,
   );
 
-  static const TextStyle body1 = TextStyle( // body2 -> body1
+  static const TextStyle body1 = TextStyle(
+    // body2 -> body1
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
     fontSize: 16,
@@ -79,7 +85,8 @@ class AppTheme {
     color: darkText,
   );
 
-  static const TextStyle caption = TextStyle( // Caption -> caption
+  static const TextStyle caption = TextStyle(
+    // Caption -> caption
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
     fontSize: 12,
@@ -105,14 +112,13 @@ class AppTheme {
       // ignore: deprecated_member_use
     ),
     bottomAppBarTheme: ThemeData.light().bottomAppBarTheme.copyWith(
-      color: Colors.white,
-      elevation: 0,
-    ),
+          color: Colors.white,
+          elevation: 0,
+        ),
     tabBarTheme: TabBarTheme(
       labelStyle: TextStyles.titleStyle.copyWith(color: TwitterColor.dodgeBlue),
       unselectedLabelColor: AppColor.darkGrey,
-      unselectedLabelStyle:
-      TextStyles.titleStyle.copyWith(color: AppColor.darkGrey),
+      unselectedLabelStyle: TextStyles.titleStyle.copyWith(color: AppColor.darkGrey),
       labelColor: TwitterColor.dodgeBlue,
       labelPadding: const EdgeInsets.symmetric(vertical: 12),
     ),
@@ -138,24 +144,24 @@ class AppTheme {
 
   static List<BoxShadow> shadow = <BoxShadow>[
     BoxShadow(
-        blurRadius: 10,
-        offset: const Offset(5, 5),
-        color: AppTheme.appTheme.colorScheme.secondary,
-        spreadRadius: 1)
+      blurRadius: 10,
+      offset: const Offset(5, 5),
+      color: AppTheme.appTheme.colorScheme.secondary,
+      spreadRadius: 1,
+    ),
   ];
-  static BoxDecoration softDecoration =
-  const BoxDecoration(boxShadow: <BoxShadow>[
-    BoxShadow(
-        blurRadius: 8,
-        offset: Offset(5, 5),
-        color: Color(0xffe2e5ed),
-        spreadRadius: 5),
-    BoxShadow(
+  static BoxDecoration softDecoration = const BoxDecoration(
+    boxShadow: <BoxShadow>[
+      BoxShadow(blurRadius: 8, offset: Offset(5, 5), color: Color(0xffe2e5ed), spreadRadius: 5),
+      BoxShadow(
         blurRadius: 8,
         offset: Offset(-5, -5),
         color: Color(0xffffffff),
-        spreadRadius: 5)
-  ], color: Color(0xfff1f3f6));
+        spreadRadius: 5,
+      ),
+    ],
+    color: Color(0xfff1f3f6),
+  );
 }
 
 String get description {

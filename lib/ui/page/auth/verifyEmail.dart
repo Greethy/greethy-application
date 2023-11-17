@@ -10,6 +10,7 @@ class VerifyEmailPage extends StatefulWidget {
   final VoidCallback? loginCallback;
 
   const VerifyEmailPage({Key? key, this.loginCallback}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _VerifyEmailPageState();
 }

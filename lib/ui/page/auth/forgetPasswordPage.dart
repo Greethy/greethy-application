@@ -10,6 +10,7 @@ class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({
     Key? key,
   }) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _ForgetPasswordPageState();
 }
@@ -17,8 +18,10 @@ class ForgetPasswordPage extends StatefulWidget {
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   late FocusNode _focusNode;
   late TextEditingController _emailController;
+
   @override
   void initState() {
+    print("start creen forget password");
     _focusNode = FocusNode();
     _emailController = TextEditingController();
     _emailController.text = '';
@@ -51,27 +54,21 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         ));
   }
 
-  Widget _entryField(String hint,
-      {required TextEditingController controller, bool isPassword = false}) {
+  Widget _entryField(String hint, {required TextEditingController controller, bool isPassword = false}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 15),
-      decoration: BoxDecoration(
-          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(30)),
+      decoration: BoxDecoration(color: Colors.grey.shade200, borderRadius: BorderRadius.circular(30)),
       child: TextField(
         focusNode: _focusNode,
         controller: controller,
         keyboardType: TextInputType.emailAddress,
-        style: const TextStyle(
-            fontStyle: FontStyle.normal, fontWeight: FontWeight.normal),
+        style: const TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal),
         obscureText: isPassword,
         decoration: InputDecoration(
           hintText: hint,
           border: InputBorder.none,
-          focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30.0)),
-              borderSide: BorderSide(color: Colors.blue)),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0)), borderSide: BorderSide(color: Colors.blue)),
+          contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         ),
       ),
     );
@@ -93,18 +90,11 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     return Container(
         child: Column(
       children: <Widget>[
-        customText('Forget Password',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        customText('Forget Password', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         const SizedBox(height: 15),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: customText(
-              'Enter your email address below to receive password reset instruction',
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black54),
-              textAlign: TextAlign.center),
+          child: customText('Enter your email address below to receive password reset instruction', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54), textAlign: TextAlign.center),
         )
       ],
     ));
@@ -132,8 +122,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: customText('Forget Password',
-            context: context, style: const TextStyle(fontSize: 20)),
+        title: customText('Forget Password', context: context, style: const TextStyle(fontSize: 20)),
         centerTitle: true,
       ),
       body: _body(context),

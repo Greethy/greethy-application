@@ -24,6 +24,7 @@ class _IntroductionAnimationScreenState extends State<IntroductionAnimationScree
 
   @override
   void initState() {
+    print("start introduction screen");
     _animationController = AnimationController(vsync: this, duration: Duration(seconds: 8));
     _animationController?.animateTo(0.0);
     super.initState();

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 class WelcomeView extends StatelessWidget {
   final AnimationController animationController;
-  const WelcomeView({Key? key, required this.animationController})
-      : super(key: key);
+
+  const WelcomeView({Key? key, required this.animationController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _firstHalfAnimation =
-        Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0)).animate(
+    final _firstHalfAnimation = Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0)).animate(
       CurvedAnimation(
         parent: animationController,
         curve: Interval(
@@ -18,8 +17,7 @@ class WelcomeView extends StatelessWidget {
         ),
       ),
     );
-    final _secondHalfAnimation =
-        Tween<Offset>(begin: Offset(0, 0), end: Offset(-1, 0)).animate(
+    final _secondHalfAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-1, 0)).animate(
       CurvedAnimation(
         parent: animationController,
         curve: Interval(
@@ -30,9 +28,7 @@ class WelcomeView extends StatelessWidget {
       ),
     );
 
-    final _welcomeFirstHalfAnimation =
-        Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0))
-            .animate(CurvedAnimation(
+    final _welcomeFirstHalfAnimation = Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,
@@ -41,9 +37,7 @@ class WelcomeView extends StatelessWidget {
       ),
     ));
 
-    final _welcomeImageAnimation =
-        Tween<Offset>(begin: Offset(4, 0), end: Offset(0, 0))
-            .animate(CurvedAnimation(
+    final _welcomeImageAnimation = Tween<Offset>(begin: Offset(4, 0), end: Offset(0, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,
@@ -78,8 +72,7 @@ class WelcomeView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
+                padding: EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                 child: Text(
                   "Điều quan trọng là phải luôn tự chăm sóc bản thân, hướng tới những điều tích cực, xây dựng lối sống khỏe, lành mạnh",
                   textAlign: TextAlign.center,

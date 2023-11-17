@@ -6,7 +6,7 @@ import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:greethy_application/widgets/customFlatButton.dart';
 import 'package:greethy_application/widgets/newWidget/title_text.dart';
 import 'package:provider/provider.dart';
-import '../../../navigation_home_screen.dart';
+import '../../navigation/navigation_home_screen.dart';
 import 'signin.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -76,14 +76,12 @@ class _WelcomePageState extends State<WelcomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            SignIn(loginCallback: state.getCurrentUser),
+                        builder: (context) => SignIn(loginCallback: state.getCurrentUser),
                       ),
                     );
                   },
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
                     child: TitleText(
                       ' Log in',
                       fontSize: 14,
@@ -105,12 +103,9 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     var state = Provider.of<AuthState>(context, listen: false);
     return Scaffold(
-      body: state.authStatus == AuthStatus.NOT_LOGGED_IN ||
-              state.authStatus == AuthStatus.NOT_DETERMINED
-          ? _body()
-          : NavigationHomeScreen(),
-          // TODO: học hỏi kế thừa homepage từ fwitter
-          // : const HomePage(),
+      body: state.authStatus == AuthStatus.NOT_LOGGED_IN || state.authStatus == AuthStatus.NOT_DETERMINED ? _body() : NavigationHomeScreen(),
+      // TODO: học hỏi kế thừa homepage từ fwitter
+      // : const HomePage(),
     );
   }
 }

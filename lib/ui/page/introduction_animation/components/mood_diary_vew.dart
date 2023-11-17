@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 class MoodDiaryVew extends StatelessWidget {
   final AnimationController animationController;
 
-  const MoodDiaryVew({Key? key, required this.animationController})
-      : super(key: key);
+  const MoodDiaryVew({Key? key, required this.animationController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _firstHalfAnimation =
-        Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
-            .animate(CurvedAnimation(
+    final _firstHalfAnimation = Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.4,
@@ -18,9 +15,7 @@ class MoodDiaryVew extends StatelessWidget {
         curve: Curves.fastOutSlowIn,
       ),
     ));
-    final _secondHalfAnimation =
-        Tween<Offset>(begin: Offset(0, 0), end: Offset(-1, 0))
-            .animate(CurvedAnimation(
+    final _secondHalfAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-1, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,
@@ -29,9 +24,7 @@ class MoodDiaryVew extends StatelessWidget {
       ),
     ));
 
-    final _moodFirstHalfAnimation =
-        Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0))
-            .animate(CurvedAnimation(
+    final _moodFirstHalfAnimation = Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.4,
@@ -39,9 +32,7 @@ class MoodDiaryVew extends StatelessWidget {
         curve: Curves.fastOutSlowIn,
       ),
     ));
-    final _moodSecondHalfAnimation =
-        Tween<Offset>(begin: Offset(0, 0), end: Offset(-2, 0))
-            .animate(CurvedAnimation(
+    final _moodSecondHalfAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-2, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,
@@ -49,9 +40,7 @@ class MoodDiaryVew extends StatelessWidget {
         curve: Curves.fastOutSlowIn,
       ),
     ));
-    final _imageFirstHalfAnimation =
-        Tween<Offset>(begin: Offset(4, 0), end: Offset(0, 0))
-            .animate(CurvedAnimation(
+    final _imageFirstHalfAnimation = Tween<Offset>(begin: Offset(4, 0), end: Offset(0, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.4,
@@ -59,9 +48,7 @@ class MoodDiaryVew extends StatelessWidget {
         curve: Curves.fastOutSlowIn,
       ),
     ));
-    final _imageSecondHalfAnimation =
-        Tween<Offset>(begin: Offset(0, 0), end: Offset(-4, 0))
-            .animate(CurvedAnimation(
+    final _imageSecondHalfAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-4, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,
@@ -88,8 +75,7 @@ class MoodDiaryVew extends StatelessWidget {
                 child: SlideTransition(
                   position: _moodSecondHalfAnimation,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 64, right: 64, top: 16, bottom: 16),
+                    padding: EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                     child: Text(
                       "Điều quan trọng là phải luôn tự chăm sóc bản thân, hướng tới những điều tích cực, xây dựng lối sống khỏe, lành mạnh",
                       textAlign: TextAlign.center,

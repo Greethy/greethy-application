@@ -22,17 +22,14 @@ class TextStyles {
   }
 
   static TextStyle get subtitleStyle {
-    return const TextStyle(
-        color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
+    return const TextStyle(color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
   }
 
   static TextStyle get userNameStyle {
-    return const TextStyle(
-        color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
+    return const TextStyle(color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
   }
 
   static TextStyle get textStyle14 {
-    return const TextStyle(
-        color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
+    return const TextStyle(color: AppColor.darkGrey, fontSize: 14, fontWeight: FontWeight.bold);
   }
 }

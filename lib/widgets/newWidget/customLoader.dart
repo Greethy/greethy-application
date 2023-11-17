@@ -23,9 +23,10 @@ class CustomLoader {
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: buildLoader(context));
+          height: double.infinity,
+          width: double.infinity,
+          child: buildLoader(context),
+        );
       },
     );
   }
@@ -60,12 +61,13 @@ class CustomScreenLoader extends StatelessWidget {
   final Color backgroundColor;
   final double height;
   final double width;
-  const CustomScreenLoader(
-      {Key? key,
-      this.backgroundColor = const Color(0xfff8f8f8),
-      this.height = 30,
-      this.width = 30})
-      : super(key: key);
+
+  const CustomScreenLoader({
+    Key? key,
+    this.backgroundColor = const Color(0xfff8f8f8),
+    this.height = 30,
+    this.width = 30,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +80,9 @@ class CustomScreenLoader extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(50),
           decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
           child: Stack(
             alignment: Alignment.center,
             children: <Widget>[

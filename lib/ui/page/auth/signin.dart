@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/state/authState.dart';
+import 'package:greethy_application/ui/page/auth/widget/facebookLoginButton.dart';
 import 'package:greethy_application/ui/page/auth/widget/googleLoginButton.dart';
 import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:greethy_application/widgets/customFlatButton.dart';
@@ -25,6 +26,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   void initState() {
+    print("start init screen");
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     loader = CustomLoader();
@@ -56,13 +58,24 @@ class _SignInState extends State<SignIn> {
             }),
             const Divider(
               height: 30,
+              color: Colors.grey, // Mã màu hex code hoặc Colors.grey.shade300
             ),
             const SizedBox(
               height: 30,
             ),
-            GoogleLoginButton(
-              loginCallback: widget.loginCallback!,
-              loader: loader,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GoogleLoginButton(
+                  loginCallback: widget.loginCallback!,
+                  loader: loader,
+                ),
+                FacebookLoginButton(
+                  loginCallback: widget.loginCallback!,
+                  loader: loader,
+                ),
+              ],
             ),
             const SizedBox(height: 100),
           ],

@@ -54,8 +54,7 @@ Widget customText(
     );
   } else {
     if (context != null && style != null) {
-      var fontSize =
-          style.fontSize ?? Theme.of(context).textTheme.bodyMedium!.fontSize;
+      var fontSize = style.fontSize ?? Theme.of(context).textTheme.bodyMedium!.fontSize;
       style = style.copyWith(
         fontSize: fontSize! - (context.width <= 375 ? 2 : 0),
       );

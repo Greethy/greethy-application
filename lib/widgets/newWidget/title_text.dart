@@ -8,6 +8,7 @@ class TitleText extends StatelessWidget {
   final FontWeight fontWeight;
   final TextAlign textAlign;
   final TextOverflow overflow;
+
   const TitleText(
     this.text, {
     Key? key,
@@ -17,6 +18,7 @@ class TitleText extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.overflow = TextOverflow.visible,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Text(

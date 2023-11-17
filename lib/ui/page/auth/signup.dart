@@ -6,6 +6,7 @@ import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/model/user.dart';
 import 'package:greethy_application/state/authState.dart';
+import 'package:greethy_application/ui/page/auth/widget/facebookLoginButton.dart';
 import 'package:greethy_application/ui/page/auth/widget/googleLoginButton.dart';
 import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:greethy_application/widgets/customFlatButton.dart';
@@ -32,6 +33,7 @@ class _SignupState extends State<Signup> {
 
   @override
   void initState() {
+    print("start sign up screen");
     loader = CustomLoader();
     _nameController = TextEditingController();
     _emailController = TextEditingController();
@@ -64,11 +66,24 @@ class _SignupState extends State<Signup> {
             _entryField('Enter password', controller: _passwordController, isPassword: true),
             _entryField('Confirm password', controller: _confirmController, isPassword: true),
             _submitButton(context),
-            const Divider(height: 30),
+            const Divider(
+              height: 30,
+              color: Colors.grey, // Mã màu hex code hoặc Colors.grey.shade300
+            ),
             const SizedBox(height: 30),
-            GoogleLoginButton(
-              loginCallback: widget.loginCallback,
-              loader: loader,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GoogleLoginButton(
+                  loginCallback: widget.loginCallback!,
+                  loader: loader,
+                ),
+                FacebookLoginButton(
+                  loginCallback: widget.loginCallback!,
+                  loader: loader,
+                ),
+              ],
             ),
             const SizedBox(height: 30),
           ],
@@ -137,17 +152,17 @@ class _SignupState extends State<Signup> {
 
     loader.showLoader(context);
     var state = Provider.of<AuthState>(context, listen: false);
-    Random random = Random();
-    int randomNumber = random.nextInt(5);
+    // Random random = Random();
+    // int randomNumber = random.nextInt(5);
 
     UserModel user = UserModel(
-      email: _emailController.text.toLowerCase(),
-      bio: 'Edit profile to update bio',
+      email: _emailController.text,
+      // bio: 'Edit profile to update bio',
       // contact:  _mobileController.text,
       displayName: _nameController.text,
-      dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
-      location: 'Somewhere in universe',
-      profilePic: Constants.dummyProfilePicList[randomNumber],
+      // dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
+      // location: 'Somewhere in universe',
+      // profilePic: Constants.dummyProfilePicList[randomNumber],
       isVerified: false,
     );
     state.signUp(user, password: _passwordController.text, context: context).then((status) {

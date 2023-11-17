@@ -1,6 +1,6 @@
-import 'package:greethy_application/design_course/home_design_course.dart';
-import 'package:greethy_application/fitness_app/fitness_app_home_screen.dart';
-import 'package:greethy_application/hotel_booking/hotel_home_screen.dart';
+import 'package:greethy_application/ui/page/design_course/home_design_course.dart';
+import 'package:greethy_application/ui/page/fitness_app/fitness_app_home_screen.dart';
+import 'package:greethy_application/ui/page/hotel_booking/hotel_home_screen.dart';
 import 'package:greethy_application/ui/page/introduction_animation/introduction_animation_screen.dart';
 import 'package:flutter/widgets.dart';
 

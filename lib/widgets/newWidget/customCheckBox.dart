@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class CustomCheckBox extends StatefulWidget {
   final bool? isChecked;
   final bool? visibleSwitch;
-  const CustomCheckBox({Key? key, this.isChecked, this.visibleSwitch})
-      : super(key: key);
+
+  const CustomCheckBox({Key? key, this.isChecked, this.visibleSwitch}) : super(key: key);
 
   @override
   _CustomCheckBoxState createState() => _CustomCheckBoxState();
@@ -13,6 +13,7 @@ class CustomCheckBox extends StatefulWidget {
 class _CustomCheckBoxState extends State<CustomCheckBox> {
   ValueNotifier<bool> isChecked = ValueNotifier(false);
   ValueNotifier<bool> visibleSwitch = ValueNotifier(false);
+
   @override
   void initState() {
     isChecked.value = widget.isChecked ?? false;

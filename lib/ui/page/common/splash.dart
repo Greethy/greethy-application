@@ -17,7 +17,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helper/shared_prefrence_helper.dart';
-import '../../../navigation_home_screen.dart';
+import '../../navigation/navigation_home_screen.dart';
 import '../introduction_animation/introduction_animation_screen.dart';
 import 'locator.dart';
 
@@ -43,9 +43,16 @@ class _SplashPageState extends State<SplashPage> {
     // final isAppUpdated = await _checkAppVersion();
     // if (isAppUpdated) {
     cprint("App is updated");
-    Future.delayed(const Duration(seconds: 1)).then((_) {
+    Future.delayed(const Duration(seconds: 1)).then((_) async {
       var state = Provider.of<AuthState>(context, listen: false);
-      state.getCurrentUser();
+      print("start check");
+      if (await getIt<SharedPreferenceHelper>().isFirstTimeApp()) {
+        print(" start Introduction");
+        state.startIntroduction();
+      } else {
+        print("start getCurrentUser");
+        state.getCurrentUser();
+      }
     });
     // }
   }

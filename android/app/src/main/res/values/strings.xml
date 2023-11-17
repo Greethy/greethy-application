@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Greethy</string>
+    <string name="facebook_client_token">43f54e8e87210a3d48a5b2445c84a362</string>
+    <string name="facebook_app_id">1042309066913473</string>
+    <string name="fb_login_protocol_scheme">fb1042309066913473</string>
+</resources>
+

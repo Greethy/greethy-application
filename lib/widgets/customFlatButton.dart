@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomFlatButton extends StatelessWidget {
-  const CustomFlatButton(
-      {Key? key,
-      required this.onPressed,
-      required this.label,
-      this.isLoading,
-      this.color,
-      this.labelStyle,
-      this.isWrapped = false,
-      this.borderRadius = 6.0,
-      this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 10)})
-      : super(key: key);
+  const CustomFlatButton({
+    Key? key,
+    required this.onPressed,
+    required this.label,
+    this.isLoading,
+    this.color,
+    this.labelStyle,
+    this.isWrapped = false,
+    this.borderRadius = 6.0,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+  }) : super(key: key);
   final VoidCallback? onPressed;
   final String label;
   final TextStyle? labelStyle;
@@ -21,6 +21,7 @@ class CustomFlatButton extends StatelessWidget {
   final Color? color;
   final EdgeInsetsGeometry padding;
   final double borderRadius;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -32,16 +33,12 @@ class CustomFlatButton extends StatelessWidget {
             style: ButtonStyle(
               padding: MaterialStateProperty.all(padding),
               backgroundColor: MaterialStateProperty.all(
-                loading
-                    ? Theme.of(context).disabledColor
-                    : color ?? Theme.of(context).primaryColor,
+                loading ? Theme.of(context).disabledColor : color ?? Theme.of(context).primaryColor,
               ),
               shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadius)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
               ),
-              overlayColor: MaterialStateProperty.all(
-                  color ?? Theme.of(context).primaryColorDark),
+              overlayColor: MaterialStateProperty.all(color ?? Theme.of(context).primaryColorDark),
               foregroundColor: MaterialStateProperty.all(
                 Theme.of(context).colorScheme.onPrimary,
               ),
@@ -53,8 +50,7 @@ class CustomFlatButton extends StatelessWidget {
                     width: 22,
                     child: FittedBox(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(
-                            color ?? Theme.of(context).colorScheme.onPrimary),
+                        valueColor: AlwaysStoppedAnimation(color ?? Theme.of(context).colorScheme.onPrimary),
                       ),
                     ),
                   )

@@ -14,9 +14,7 @@ class TopBackSkipView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _animation =
-        Tween<Offset>(begin: Offset(0, -1), end: Offset(0.0, 0.0))
-            .animate(CurvedAnimation(
+    final _animation = Tween<Offset>(begin: Offset(0, -1), end: Offset(0.0, 0.0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.0,
@@ -35,8 +33,7 @@ class TopBackSkipView extends StatelessWidget {
     //     curve: Curves.fastOutSlowIn,
     //   ),
     // ));
-    final _skipAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(2, 0))
-        .animate(CurvedAnimation(
+    final _skipAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(2, 0)).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
         0.6,

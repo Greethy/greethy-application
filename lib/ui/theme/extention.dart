@@ -2,6 +2,7 @@ part of 'theme.dart';
 
 extension SizeHelper on BuildContext {
   double get width => MediaQuery.of(this).size.width;
+
   double get height => MediaQuery.of(this).size.height;
 
   double getDimension(context, double unit) {
@@ -14,10 +15,7 @@ extension SizeHelper on BuildContext {
 }
 
 extension OnPressed on Widget {
-  Widget ripple(Function? onPressed,
-          {BorderRadiusGeometry borderRadius =
-              const BorderRadius.all(Radius.circular(5))}) =>
-      Stack(
+  Widget ripple(Function? onPressed, {BorderRadiusGeometry borderRadius = const BorderRadius.all(Radius.circular(5))}) => Stack(
         children: <Widget>[
           this,
           Positioned(
@@ -37,7 +35,7 @@ extension OnPressed on Widget {
                   }
                 },
                 child: Container()),
-          )
+          ),
         ],
       );
 }

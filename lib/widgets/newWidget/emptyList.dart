@@ -23,9 +23,9 @@ class EmptyList extends StatelessWidget {
 class NotifyText extends StatelessWidget {
   final String? subTitle;
   final String? title;
+
   const NotifyText({Key? key, this.subTitle, this.title})
-      : assert(title != null || subTitle != null,
-            'title and subTitle must not be null'),
+      : assert(title != null || subTitle != null, 'title and subTitle must not be null'),
         super(key: key);
 
   @override
@@ -34,8 +34,7 @@ class NotifyText extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        if (title != null)
-          TitleText(title!, fontSize: 20, textAlign: TextAlign.center),
+        if (title != null) TitleText(title!, fontSize: 20, textAlign: TextAlign.center),
         if (subTitle != null) ...[
           const SizedBox(height: 20),
           TitleText(

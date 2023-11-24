@@ -23,29 +23,27 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     return Container(
       height: context.height,
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      // child: Column(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   children: state.user!.
-      //       ? <Widget>[
-      //           NotifyText(
-      //             title: 'Your email address is verified',
-      //             subTitle:
-      //                 'You have got your blue tick on your name. Cheers !!',
-      //           ),
-      //         ]
-      //       : <Widget>[
-      //           NotifyText(
-      //             title: 'Verify your email address',
-      //             subTitle:
-      //                 'Send email verification email link to ${state.user!.email} to verify address',
-      //           ),
-      //           const SizedBox(
-      //             height: 30,
-      //           ),
-      //           _submitButton(context),
-      //         ],
-      // ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: state.userModel?.isVerified ?? false
+            ? <Widget>[
+                NotifyText(
+                  title: 'Your email address is verified',
+                  subTitle: 'You have got your blue tick on your name. Cheers !!',
+                ),
+              ]
+            : <Widget>[
+                NotifyText(
+                  title: 'Verify your email address',
+                  subTitle: 'Send email verification email link to ${state.userModel!.email} to verify address',
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                _submitButton(context),
+              ],
+      ),
     );
   }
 
@@ -82,7 +80,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: TwitterColor.mystic,
+      backgroundColor: GreethyColor.mystic,
       appBar: AppBar(
         title: customText(
           'Email Verification',

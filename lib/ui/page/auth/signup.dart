@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:greethy_application/helper/constant.dart';
 import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/model/user.dart';
@@ -15,9 +12,11 @@ import 'package:greethy_application/widgets/newWidget/customLoader.dart';
 import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
-  final VoidCallback? loginCallback;
+  final VoidCallback? googleLoginCallback;
 
-  const Signup({Key? key, this.loginCallback}) : super(key: key);
+  final VoidCallback? facebookLoginCallback;
+
+  const Signup({Key? key, this.googleLoginCallback, this.facebookLoginCallback}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SignupState();
@@ -76,11 +75,11 @@ class _SignupState extends State<Signup> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GoogleLoginButton(
-                  loginCallback: widget.loginCallback!,
+                  loginCallback: widget.googleLoginCallback!,
                   loader: loader,
                 ),
                 FacebookLoginButton(
-                  loginCallback: widget.loginCallback!,
+                  loginCallback: widget.facebookLoginCallback!,
                   loader: loader,
                 ),
               ],
@@ -152,26 +151,23 @@ class _SignupState extends State<Signup> {
 
     loader.showLoader(context);
     var state = Provider.of<AuthState>(context, listen: false);
-    // Random random = Random();
-    // int randomNumber = random.nextInt(5);
 
     UserModel user = UserModel(
       email: _emailController.text,
-      // bio: 'Edit profile to update bio',
-      // contact:  _mobileController.text,
-      displayName: _nameController.text,
-      // dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
-      // location: 'Somewhere in universe',
-      // profilePic: Constants.dummyProfilePicList[randomNumber],
       isVerified: false,
     );
+
     state.signUp(user, password: _passwordController.text, context: context).then((status) {
       print(status);
+      if (status != null && !status){
+        Navigator.pushNamed(context, '/VerifyEmailPage');
+      }
     }).whenComplete(() {
       loader.hideLoader();
       if (state.authStatus == AuthStatus.LOGGED_IN) {
         Navigator.pop(context);
-        if (widget.loginCallback != null) widget.loginCallback!();
+        if (widget.googleLoginCallback != null) widget.googleLoginCallback!();
+        if (widget.facebookLoginCallback != null) widget.facebookLoginCallback!();
       }
     });
   }
@@ -179,15 +175,38 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: customText(
-          'Sign Up',
-          context: context,
-          style: const TextStyle(fontSize: 20),
-        ),
-        centerTitle: true,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background_test.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                AppBar(
+                  title: customText(
+                    'Sign up',
+                    context: context,
+                    style: const TextStyle(fontSize: 25, color: GreethyColor.white),
+                  ),
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  iconTheme: IconThemeData(
+                    color: GreethyColor.white, // Màu của nút back
+                  ),
+                ),
+                _body(context),
+              ],
+            ),
+          ),
+        ],
       ),
-      body: SingleChildScrollView(child: _body(context)),
     );
   }
 }

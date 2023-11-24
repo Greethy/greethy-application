@@ -1,8 +1,10 @@
+import 'package:flutter/widgets.dart';
 import 'package:greethy_application/ui/page/design_course/home_design_course.dart';
-import 'package:greethy_application/ui/page/fitness_app/fitness_app_home_screen.dart';
 import 'package:greethy_application/ui/page/hotel_booking/hotel_home_screen.dart';
 import 'package:greethy_application/ui/page/introduction_animation/introduction_animation_screen.dart';
-import 'package:flutter/widgets.dart';
+
+import '../ui/page/home_app/home_screen.dart';
+
 
 class HomeList {
   HomeList({
@@ -24,7 +26,7 @@ class HomeList {
     ),
     HomeList(
       imagePath: 'assets/fitness_app/fitness_app.png',
-      navigateScreen: FitnessAppHomeScreen(),
+      navigateScreen: HomeScreen(),
     ),
     HomeList(
       imagePath: 'assets/design_course/design_course.png',

@@ -1,23 +1,17 @@
-import 'dart:convert';
 import 'dart:io';
 
-// import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/ui/page/auth/selectAuthMethod.dart';
-
-// import 'package:greethy_application/ui/page/common/updateApp.dart';
-// import 'package:greethy_application/ui/page/homePage.dart';
 import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helper/shared_prefrence_helper.dart';
-import '../../navigation/navigation_home_screen.dart';
+import '../home_app/home_screen.dart';
 import '../introduction_animation/introduction_animation_screen.dart';
 import 'locator.dart';
 
@@ -31,30 +25,37 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
+    print("SplashPage");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       timer();
     });
     super.initState();
   }
 
+  @override
+  void dispose() {
+    print("splash dispose");
+    super.dispose();
+  }
+
   /// Check if current app is updated app or not
   /// If app is not updated then redirect user to update app screen
   void timer() async {
-    // final isAppUpdated = await _checkAppVersion();
-    // if (isAppUpdated) {
-    cprint("App is updated");
-    Future.delayed(const Duration(seconds: 1)).then((_) async {
-      var state = Provider.of<AuthState>(context, listen: false);
-      print("start check");
-      if (await getIt<SharedPreferenceHelper>().isFirstTimeApp()) {
-        print(" start Introduction");
-        state.startIntroduction();
-      } else {
-        print("start getCurrentUser");
-        state.getCurrentUser();
-      }
-    });
-    // }
+    final isAppUpdated = await _checkAppVersion();
+    if (isAppUpdated) {
+      cprint("App is updated");
+      Future.delayed(const Duration(seconds: 1)).then((_) async {
+        var state = Provider.of<AuthState>(context, listen: false);
+        print("start check");
+        if (await getIt<SharedPreferenceHelper>().isFirstTimeApp()) {
+          print(" start Introduction");
+          state.startIntroduction();
+        } else {
+          print("start getCurrentUser");
+          state.getCurrentUser();
+        }
+      });
+    }
   }
 
   /// Return installed app version
@@ -63,38 +64,37 @@ class _SplashPageState extends State<SplashPage> {
   /// User will not be able to see home screen
   /// User will redirected to update app screen.
   /// Once user update app with latest version and back to app then user automatically redirected to welcome / Home page
-  // Future<bool> _checkAppVersion() async {
-  //   PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  //   final currentAppVersion = packageInfo.version;
-  //   final buildNo = packageInfo.buildNumber;
-  //   final config = await _getAppVersionFromFirebaseConfig();
-  //
-  //   if (config != null &&
-  //       config['name'] == currentAppVersion &&
-  //       config['versions'].contains(int.tryParse(buildNo))) {
-  //     return true;
-  //   } else {
-  //     if (kDebugMode) {
-  //       cprint("Latest version of app is not installed on your system");
-  //       cprint(
-  //           "This is for testing purpose only. In debug mode update screen will not be open up");
-  //       cprint(
-  //           "If you are planning to publish app on store then please update app version in firebase config");
-  //       return true;
-  //     }
-  //     Navigator.pushReplacement(context, UpdateApp.getRoute());
-  //     return false;
-  //   }
-  // }
+  Future<bool> _checkAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final currentAppVersion = packageInfo.version;
+    final buildNo = packageInfo.buildNumber;
+    // final config = await _getAppVersion();
+    //
+    // if (config != null &&
+    //     config['name'] == currentAppVersion &&
+    //     config['versions'].contains(int.tryParse(buildNo))) {
+    //   return true;
+    // } else {
+    //   if (kDebugMode) {
+    //     cprint("Latest version of app is not installed on your system");
+    //     cprint(
+    //         "This is for testing purpose only. In debug mode update screen will not be open up");
+    //     cprint(
+    //         "If you are planning to publish app on store then please update app version in firebase config");
+    //     return true;
+    //   }
+    //   Navigator.pushReplacement(context, UpdateApp.getRoute());
+    //   return false;
+    // }
 
-  /// Returns app version from firebase config
-  /// Fetch Latest app version from firebase Remote config
-  /// To check current installed app version check [version] in pubspec.yaml
-  /// you have to add latest app version in firebase remote config
-  /// To fetch this key go to project setting in firebase
-  /// Open `Remote Config` section in Firebase
-  /// Add [supportedBuild]  as parameter key and below json in Default value
-  ///  ```
+    //
+    //  todo: kiểm tra cập nhật ứng dụng
+    //
+
+    return true;
+  }
+
+  /// Returns app version from api server
   ///  {
   ///    "supportedBuild":
   ///    {
@@ -102,22 +102,26 @@ class _SplashPageState extends State<SplashPage> {
   ///       "versions": [ <Current Build Version> ]
   ///     }
   ///  } ```
-  /// After adding app version key click on Publish Change button
-  /// For package detail check:-  https://pub.dev/packages/firebase_remote_config#-readme-tab-
-  // Future<Map?> _getAppVersionFromFirebaseConfig() async {
-  //   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-  //   await remoteConfig.fetchAndActivate();
-  //   // await remoteConfig.activateFetched();
-  //   var data = remoteConfig.getString('supportedBuild');
-  //   if (data.isNotEmpty) {
-  //     return jsonDecode(data) as Map;
-  //   } else {
-  //     cprint(
-  //         "Please add your app's current version into Remote config in firebase",
-  //         errorIn: "_getAppVersionFromFirebaseConfig");
-  //     return null;
-  //   }
-  // }
+  Future<int?> _getAppVersion() async {
+    // final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    // await remoteConfig.fetchAndActivate();
+    // // await remoteConfig.activateFetched();
+    // var data = remoteConfig.getString('supportedBuild');
+    // if (data.isNotEmpty) {
+    //   return jsonDecode(data) as Map;
+    // } else {
+    //   cprint(
+    //       "Please add your app's current version into Remote config in firebase",
+    //       errorIn: "_getAppVersionFromFirebaseConfig");
+    //   return null;
+    // }
+
+    //
+    // todo: thêm api kiểm tra version ứng dụng
+    //
+
+    return 0;
+  }
 
   Widget _body() {
     var height = 150.0;
@@ -139,18 +143,26 @@ class _SplashPageState extends State<SplashPage> {
           child: Stack(
             alignment: Alignment.center,
             children: <Widget>[
-              Platform.isIOS
-                  ? const CupertinoActivityIndicator(
-                      radius: 35,
-                    )
-                  : const CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
               Image.asset(
-                'assets/images/icon-480.png',
-                height: 30,
-                width: 30,
-              )
+                'assets/images/icon-512.png',
+                height: 45,
+                width: 45,
+              ),
+              Positioned(
+                child: Platform.isIOS
+                    ? const CupertinoActivityIndicator(
+                        radius: 35,
+                        color: GreethyColor.kawa_green,
+                      )
+                    : const CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: GreethyColor.kawa_green,
+                      ),
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+              ),
             ],
           ),
         ),
@@ -164,14 +176,15 @@ class _SplashPageState extends State<SplashPage> {
     print("Auth Status: ${state.authStatus}");
 
     return Scaffold(
-      backgroundColor: TwitterColor.white,
+      backgroundColor: GreethyColor.white,
       body: state.authStatus == AuthStatus.NOT_DETERMINED
           ? _body()
           : state.authStatus == AuthStatus.FIRST_TIME
-              ? IntroductionAnimationScreen()
+              ? const IntroductionAnimationScreen()
               : state.authStatus == AuthStatus.NOT_LOGGED_IN
                   ? const WelcomePage()
-                  : NavigationHomeScreen(),
+                  : HomeScreen(),
+      // : NavigationHomeScreen(),
     );
   }
 }

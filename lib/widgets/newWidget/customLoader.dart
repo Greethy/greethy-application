@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../ui/theme/theme.dart';
+
 class CustomLoader {
   static CustomLoader? _customLoader;
 
@@ -86,18 +88,26 @@ class CustomScreenLoader extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: <Widget>[
-              Platform.isIOS
-                  ? const CupertinoActivityIndicator(
-                      radius: 35,
-                    )
-                  : const CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
               Image.asset(
-                'assets/images/icon-480.png',
-                height: 30,
-                width: 30,
-              )
+                'assets/images/icon-512.png',
+                height: 45,
+                width: 45,
+              ),
+              Positioned(
+                child: Platform.isIOS
+                    ? const CupertinoActivityIndicator(
+                  radius: 35,
+                  color: GreethyColor.kawa_green,
+                )
+                    : const CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: GreethyColor.kawa_green,
+                ),
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+              ),
             ],
           ),
         ),

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:greethy_application/app_theme.dart';
+import 'package:greethy_application/ui/theme/app_theme.dart';
 import 'package:greethy_application/state/appState.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/ui/page/common/locator.dart';

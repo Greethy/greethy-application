@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 
 class CustomFlatButton extends StatelessWidget {
   const CustomFlatButton({
@@ -8,6 +9,7 @@ class CustomFlatButton extends StatelessWidget {
     required this.label,
     this.isLoading,
     this.color,
+    this.textColor,
     this.labelStyle,
     this.isWrapped = false,
     this.borderRadius = 6.0,
@@ -19,6 +21,7 @@ class CustomFlatButton extends StatelessWidget {
   final ValueNotifier<bool>? isLoading;
   final bool isWrapped;
   final Color? color;
+  final Color? textColor;
   final EdgeInsetsGeometry padding;
   final double borderRadius;
 
@@ -33,7 +36,8 @@ class CustomFlatButton extends StatelessWidget {
             style: ButtonStyle(
               padding: MaterialStateProperty.all(padding),
               backgroundColor: MaterialStateProperty.all(
-                loading ? Theme.of(context).disabledColor : color ?? Theme.of(context).primaryColor,
+                // loading ? Theme.of(context).disabledColor : color ?? Theme.of(context).primaryColor,
+                loading ? Theme.of(context).disabledColor : color ?? GreethyColor.kawa_green,
               ),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
@@ -63,7 +67,7 @@ class CustomFlatButton extends StatelessWidget {
               GoogleFonts.mulish(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: textColor ?? Theme.of(context).colorScheme.onPrimary,
               ),
         ),
       ),

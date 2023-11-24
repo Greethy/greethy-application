@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/widgets/newWidget/customLoader.dart';
 import 'package:greethy_application/widgets/newWidget/rippleButton.dart';
-import 'package:greethy_application/widgets/newWidget/title_text.dart';
+import 'package:provider/provider.dart';
 
 class FacebookLoginButton extends StatelessWidget {
   const FacebookLoginButton({
@@ -22,7 +19,7 @@ class FacebookLoginButton extends StatelessWidget {
     loader.showLoader(context);
     state.handleFacebookSignIn().then((status) {
       // print(status)
-      if (state.user != null) {
+      if (state.facebookUser != null) {
         loader.hideLoader();
         Navigator.pop(context);
         if (loginCallback != null) loginCallback!();

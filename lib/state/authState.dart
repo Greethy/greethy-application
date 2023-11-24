@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/shared_prefrence_helper.dart';
 import 'package:greethy_application/helper/utility.dart';
@@ -10,37 +11,79 @@ import 'package:greethy_application/model/user.dart';
 import 'package:greethy_application/ui/page/common/locator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:path/path.dart' as path;
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../api/auth/api_auth_service.dart';
 import 'appState.dart';
 
 class AuthState extends AppState {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
-  bool isSignInWithGoogle = false;
-  GoogleSignInAccount? user;
+  GoogleSignInAccount? googleUser;
+  Map<String, dynamic>? facebookUser;
+
   late String userId;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FacebookAuth _facebookAuth = FacebookAuth.instance;
 
-  // List<UserModel> _profileUserModelList;
   UserModel? _userModel;
 
   UserModel? get userModel => _userModel;
 
-  UserModel? get profileUserModel => _userModel;
+  String _howToLogin = "";
+
+  String get howToLogin => _howToLogin;
+
+  bool _isSignedIn = false;
+
+  bool get isSignedIn => _isSignedIn;
+
+  Future checkSignInUser() async {
+    final SharedPreferences s = await SharedPreferences.getInstance();
+    _isSignedIn = s.getBool("signed_in") ?? false;
+    // notifyListeners();
+  }
+
+  Future setSignIn(bool signIn) async {
+    final SharedPreferences s = await SharedPreferences.getInstance();
+    s.setBool("signed_in", signIn);
+    _isSignedIn = signIn;
+    // notifyListeners();
+  }
+
+  Future checkHowToLogin() async {
+    final SharedPreferences s = await SharedPreferences.getInstance();
+    _howToLogin = s.getString("how_to_login") ?? "";
+    notifyListeners();
+  }
+
+  Future setHowToLogin(String type) async {
+    final SharedPreferences s = await SharedPreferences.getInstance();
+    s.setString("how_to_login", type);
+    _howToLogin = type;
+    notifyListeners();
+  }
 
   /// Logout from device
   void logoutCallback() async {
     authStatus = AuthStatus.NOT_LOGGED_IN;
     userId = '';
     _userModel = null;
-    user = null;
+    //
     // todo: delete info from share_pref
-    // _profileQuery!.onValue.drain();
-    // _profileQuery = null;
-    if (isSignInWithGoogle) {
+    //
+    if (_howToLogin == "google") {
+      googleUser = null;
       _googleSignIn.signOut();
       Utility.logEvent('google_logout', parameter: {});
-      isSignInWithGoogle = false;
+      await setSignIn(false);
     }
+    if (_howToLogin == "facebook") {
+      facebookUser = null;
+      _facebookAuth.logOut();
+      Utility.logEvent('Facebook_logout', parameter: {});
+      await setSignIn(false);
+    }
+    await setHowToLogin("");
     notifyListeners();
     await getIt<SharedPreferenceHelper>().clearPreferenceValues();
   }
@@ -70,6 +113,7 @@ class AuthState extends AppState {
     try {
       isBusy = true;
       // todo: api signin
+      _userModel = await ApiService().getUsers();
       return null;
     } catch (error) {
       Utility.customSnackBar(context, error.toString());
@@ -86,30 +130,38 @@ class AuthState extends AppState {
   Future<GoogleSignInAccount?> handleGoogleSignIn() async {
     try {
       print("google login");
-      user = await _googleSignIn.signIn();
-      if (user == null) {
+      googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
         throw Exception('Google login cancelled by user');
       }
       // final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       // googleAuth.accessToken;
+
+      //
+      // todo gửi api lên server để xác nhận tài khoản đã tồn tại hay chưa nếu chưa thì tạo tài khoản mới
+      //
+
+      _userModel = await ApiService().getUsers();
+
       authStatus = AuthStatus.LOGGED_IN;
-      userId = user!.id;
-      isSignInWithGoogle = true;
-      createUserFromGoogleSignIn(user!);
+      userId = googleUser!.id;
+      await setSignIn(true);
+      await setHowToLogin("google");
+      createUserFromGoogleSignIn(googleUser!);
       notifyListeners();
-      return user;
+      return googleUser;
     } on PlatformException catch (error) {
-      user = null;
+      googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
       cprint(error, errorIn: 'handleGoogleSignIn');
       return null;
     } on Exception catch (error) {
-      user = null;
+      googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
       cprint(error, errorIn: 'handleGoogleSignIn');
       return null;
     } catch (error) {
-      user = null;
+      googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
       cprint(error, errorIn: 'handleGoogleSignIn');
       return null;
@@ -118,57 +170,101 @@ class AuthState extends AppState {
 
   /// Create user profile from google login
   void createUserFromGoogleSignIn(GoogleSignInAccount user) {
-    // todo: add api to check if user is new or old
-    // var diff = DateTime.now().difference(user.metadata!.creationTime!);
-    // Check if user is new or old
-    // If user is new then add new user to firebase realtime kDatabase
-    // if (diff < const Duration(seconds: 15)) {
-    UserModel model = UserModel(
-      bio: 'Edit profile to update bio',
-      dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3).toString(),
-      location: 'Somewhere in universe',
-      profilePic: user.photoUrl!,
-      displayName: user.displayName!,
-      email: user.email,
-      key: user.id,
-      userId: user.id,
-      // contact: user.!,
-      // isVerified: user.emailVerified,
+    PersonalInfo personalModel = PersonalInfo(
+      name: user.displayName,
     );
 
-    print("chunhthanhde create new user: $model");
-    createUser(model, newUser: true);
-    // } else {
-    //   cprint('Last login at: ${user.metadata.lastSignInTime}');
-    // }
+    UserModel userModel = UserModel(
+      email: user.email,
+      personalInfo: personalModel,
+      avatar: user.photoUrl,
+      isVerified: true,
+    );
+
+    //
+    // todo: add api to check if there is already an account with this gmail account
+    //
+    print("chunhthanhde create new user: $userModel");
+    createUser(userModel, newUser: true);
+  }
+
+  /// Create user from `Facebook login`
+  /// If user is new then it creates a new user
+  /// If user is old then it just `authenticates` the user and returns Facebook user data
+  Future<void> handleFacebookSignIn() async {
+    try {
+      print("start handleFacebookSignIn");
+      final facebookUser = await _facebookAuth.login(
+        permissions: ['public_profile', 'email'],
+      );
+
+      if (facebookUser.status == LoginStatus.success) {
+        final AccessToken accessToken = facebookUser.accessToken!;
+
+        final userData = await _facebookAuth.getUserData();
+
+        authStatus = AuthStatus.LOGGED_IN;
+        await setSignIn(true);
+        await setHowToLogin("facebook");
+        createUserFromFacebookSignIn(userData);
+        notifyListeners();
+      } else if (facebookUser.status == LoginStatus.cancelled) {
+        print('Facebook login cancelled by user');
+      } else {
+        print('Facebook login failed. Status: ${facebookUser.status}');
+      }
+    } catch (e) {
+      print('Error logging in with Facebook: $e');
+    }
+  }
+
+  /// Create or authenticate user based on Facebook sign-in data
+  void createUserFromFacebookSignIn(Map<String, dynamic> userData) {
+    final String? email = userData['email'];
+    final String? name = userData['name'];
+    final String? avatar = userData['picture']['data']['url'];
+
+    PersonalInfo personalModel = PersonalInfo(
+      name: name,
+    );
+
+    UserModel userModel = UserModel(
+      email: email,
+      personalInfo: personalModel,
+      avatar: avatar,
+      isVerified: true,
+    );
+
+    //
+    // todo: add api to check if there is already an account with this gmail account
+    //
+    print("chunhthanhde create new user: $userModel");
+    createUser(userModel, newUser: true);
   }
 
   /// Create new user's profile in db
-  Future<String?> signUp(UserModel userModel, {required BuildContext context, required String password}) async {
-    // try {
-    //   isBusy = true;
-    //   // var result = await _firebaseAuth.createUserWithEmailAndPassword(
-    //   //   email: userModel.email!,
-    //   //   password: password,
-    //   // );
-    //   user = result.user;
-    //   authStatus = AuthStatus.LOGGED_IN;
-    //
-    //   result.user!.updateDisplayName(
-    //     userModel.displayName,
-    //   );
-    //   result.user!.updatePhotoURL(userModel.profilePic);
-    //
-    //   _userModel = userModel;
-    //   _userModel!.key = user!.id;
-    //   _userModel!.userId = user!.id;
-    //   createUser(_userModel!, newUser: true);
-    //   return user!.id;
-    // } catch (error) {
-    //   isBusy = false;
-    //   cprint(error, errorIn: 'signUp');
-    //   Utility.customSnackBar(context, error.toString());
-    return null;
+  Future<bool?> signUp(UserModel userModel, {required BuildContext context, required String password}) async {
+    try {
+      isBusy = true;
+      //
+      // todo: add api to check if email is registered
+      // If you have already created an account, the email notification has been registered
+      //
+      //
+
+      // authStatus = AuthStatus.LOGGED_IN;
+      _userModel = userModel;
+
+      // nếu cưa thì sẽ đăng nhập
+      createUser(_userModel!, newUser: true);
+
+      return userModel.isVerified;
+    } catch (error) {
+      isBusy = false;
+      cprint(error, errorIn: 'signUp');
+      Utility.customSnackBar(context, error.toString());
+      return null;
+    }
   }
 
   /// `Create` and `Update` user
@@ -176,35 +272,45 @@ class AuthState extends AppState {
   /// Else existing user will update with new values
   void createUser(UserModel user, {bool newUser = false}) {
     if (newUser) {
-      // Create username by the combination of name and id
-      user.userName = Utility.getUserName(id: user.userId!, name: user.displayName!);
+      /// Create new user
       print(' create_newUser');
-
-      // Time at which user is created
-      user.createdAt = DateTime.now().toUtc().toString();
     }
-
-    // kDatabase.child('profile').child(user.userId!).set(user.toJson());
-    // _userModel = user;
-    // isBusy = false;
+    isBusy = false;
   }
 
   /// Fetch current user profile
-  Future<GoogleSignInAccount?> getCurrentUser() async {
+  Future<UserModel?> getCurrentUser() async {
     try {
       isBusy = true;
       Utility.logEvent('get_currentUSer', parameter: {});
-      // todo add api get CurrenUser from server
-      user = _googleSignIn.currentUser;
-      if (user != null) {
-        await getProfileUser();
-        authStatus = AuthStatus.LOGGED_IN;
-        userId = user!.id;
+      print("0");
+      await checkSignInUser();
+      await checkHowToLogin();
+      if (_isSignedIn) {
+        // if (_howToLogin == "google") {
+        //   googleUser = _googleSignIn.currentUser;
+        // } else if (_howToLogin == "facebook") {
+        //   facebookUser = await _facebookAuth.getUserData();
+        // }
+
+        // TODO: Thêm API để lấy thông tin người dùng vào hàm dưới đây
+        print("1");
+        if (await getProfileUser()) {
+          print("2");
+          authStatus = AuthStatus.LOGGED_IN;
+        } else {
+          print("3");
+          authStatus = AuthStatus.NOT_LOGGED_IN;
+        }
+        print("4");
+        isBusy = false;
       } else {
+        print("5");
         authStatus = AuthStatus.NOT_LOGGED_IN;
+        isBusy = false;
       }
-      isBusy = false;
-      return user;
+      print("6");
+      return null;
     } catch (error) {
       isBusy = false;
       cprint(error, errorIn: 'getCurrentUser');
@@ -229,7 +335,10 @@ class AuthState extends AppState {
 
   /// Send email verification link to email2
   Future<void> sendEmailVerification(BuildContext context) async {
-    // User user = _firebaseAuth.currentUser!;
+    //
+    // todo: Add api to check mail and authenticate email via otp code
+    //
+
     // user.sendEmailVerification().then((_) {
     //   Utility.logEvent('email_verification_sent', parameter: {userModel!.displayName!: user.email});
     //   Utility.customSnackBar(
@@ -277,9 +386,9 @@ class AuthState extends AppState {
         /// upload profile image if not null
         if (image != null) {
           /// get image storage path from server
-          userModel!.profilePic = await _uploadFileToStorage(image, 'user/profile/${userModel.userName}/${path.basename(image.path)}');
+          // userModel!.avatar = await _uploadFileToStorage(image, 'user/profile/${userModel.userName}/${path.basename(image.path)}');
           // print(fileURL);
-          var name = userModel.displayName ?? user!.displayName;
+          // var name = userModel.personalInfo?.name ?? googleUser!.displayName;
           // _firebaseAuth.currentUser!.updateDisplayName(name);
           // _firebaseAuth.currentUser!.updatePhotoURL(userModel.profilePic);
           Utility.logEvent('user_profile_image');
@@ -288,8 +397,8 @@ class AuthState extends AppState {
         /// upload banner image if not null
         if (bannerImage != null) {
           /// get banner storage path from server
-          userModel!.bannerImage = await _uploadFileToStorage(bannerImage, 'user/profile/${userModel.userName}/${path.basename(bannerImage.path)}');
-          Utility.logEvent('user_banner_image');
+          // userModel!.bannerImage = await _uploadFileToStorage(bannerImage, 'user/profile/${userModel.userName}/${path.basename(bannerImage.path)}');
+          // Utility.logEvent('user_banner_image');
         }
 
         if (userModel != null) {
@@ -334,37 +443,17 @@ class AuthState extends AppState {
 
   /// Fetch user profile
   /// If `userProfileId` is null then logged in user's profile will fetched
-  FutureOr<void> getProfileUser({String? userProfileId}) {
+  FutureOr<bool> getProfileUser({String? userProfileId}) {
     try {
-      // userProfileId = userProfileId ?? user!.uid;
-      // kDatabase.child("profile").child(userProfileId).once().then((DatabaseEvent event) async {
-      //   final snapshot = event.snapshot;
-      //   if (snapshot.value != null) {
-      //     var map = snapshot.value as Map<dynamic, dynamic>?;
-      //     if (map != null) {
-      //       if (userProfileId == user!.uid) {
-      //         _userModel = UserModel.fromJson(map);
-      //         _userModel!.isVerified = user!.emailVerified;
-      //         if (!user!.emailVerified) {
-      //           // Check if logged in user verified his email address or not
-      //           // reloadUser();
-      //         }
-      //         if (_userModel!.fcmToken == null) {
-      //           updateFCMToken();
-      //         }
       //
-      //         getIt<SharedPreferenceHelper>().saveUserProfile(_userModel!);
-      //       }
+      // todo: thêm api get thông tin người dùng
       //
-      //       Utility.logEvent('get_profile', parameter: {});
-      //     }
-      //   }
-      //   isBusy = false;
-      // });
     } catch (error) {
       isBusy = false;
       cprint(error, errorIn: 'getProfileUser');
     }
+
+    return true;
   }
 
   /// if firebase token not available in profile
@@ -381,8 +470,6 @@ class AuthState extends AppState {
     //   createUser(_userModel!);
     // });
   }
-
-  handleFacebookSignIn() {}
 
   void startIntroduction() {
     isBusy = true;

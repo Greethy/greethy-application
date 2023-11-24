@@ -102,7 +102,10 @@ class _SignInState extends State<SignIn> {
         decoration: InputDecoration(
           hintText: hint,
           border: InputBorder.none,
-          focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0)), borderSide: BorderSide(color: Colors.blue)),
+          focusedBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+            borderSide: BorderSide(color: Colors.blue),
+          ),
           contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         ),
       ),
@@ -118,7 +121,7 @@ class _SignInState extends State<SignIn> {
       },
       child: Text(
         title,
-        style: TextStyle(color: TwitterColor.dodgeBlue, fontWeight: FontWeight.bold),
+        style: TextStyle(color: GreethyColor.white, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -143,7 +146,7 @@ class _SignInState extends State<SignIn> {
     var isValid = Utility.validateCredentials(context, _emailController.text, _passwordController.text);
     if (isValid) {
       state.signIn(_emailController.text, _passwordController.text, context: context).then((status) {
-        if (state.user != null) {
+        if (state.userModel != null) {
           loader.hideLoader();
           Navigator.pop(context);
           widget.loginCallback!();
@@ -160,12 +163,38 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: customText('Sign in', context: context, style: const TextStyle(fontSize: 20)),
-        centerTitle: true,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background_test.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                AppBar(
+                  title: customText(
+                    'Sign in',
+                    context: context,
+                    style: const TextStyle(fontSize: 25, color: GreethyColor.white),
+                  ),
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  iconTheme: IconThemeData(
+                    color: GreethyColor.white, // Màu của nút back
+                  ),
+                ),
+                _body(context),
+              ],
+            ),
+          ),
+        ],
       ),
-      body: _body(context),
     );
   }
 }

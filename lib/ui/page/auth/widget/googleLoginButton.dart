@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-
 import 'package:greethy_application/helper/utility.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/widgets/newWidget/customLoader.dart';
 import 'package:greethy_application/widgets/newWidget/rippleButton.dart';
-import 'package:greethy_application/widgets/newWidget/title_text.dart';
+import 'package:provider/provider.dart';
 
 class GoogleLoginButton extends StatelessWidget {
   const GoogleLoginButton({
@@ -21,8 +18,7 @@ class GoogleLoginButton extends StatelessWidget {
     var state = Provider.of<AuthState>(context, listen: false);
     loader.showLoader(context);
     state.handleGoogleSignIn().then((status) {
-      // print(status)
-      if (state.user != null) {
+      if (state.googleUser != null) {
         loader.hideLoader();
         Navigator.pop(context);
         if (loginCallback != null) loginCallback!();
@@ -62,11 +58,6 @@ class GoogleLoginButton extends StatelessWidget {
                 height: 20,
                 width: 20,
               ),
-              //   const SizedBox(width: 10),
-              //   const TitleText(
-              //     'Continue with Google',
-              //     color: Colors.black54,
-              //   ),
             ],
           ),
         ),

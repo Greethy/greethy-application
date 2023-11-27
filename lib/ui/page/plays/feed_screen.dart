@@ -4,11 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:greethy_application/ui/page/plays/profile_screen.dart';
 import 'package:greethy_application/ui/page/plays/search_screen.dart';
+import 'package:greethy_application/ui/page/plays/widget/ScrollButtonDemo.dart';
+import 'package:greethy_application/ui/page/plays/widget/header_toolbar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
 import '../../../data/video.dart';
-import '../../../widgets/actions_toolbar.dart';
-import '../../../widgets/bottom_bar.dart';
+import 'widget/actions_toolbar.dart';
+import 'bottom_bar_plays/bottom_bar.dart';
 import '../../../widgets/video_description.dart';
 import 'feed_viewmodel.dart';
 import 'messages_screen.dart';
@@ -22,10 +24,11 @@ class FeedScreen extends StatefulWidget {
 
 class _FeedScreenState extends State<FeedScreen> {
   final locator = GetIt.instance;
-  final feedViewModel = GetIt.instance<FeedViewModel>();
+  final FeedViewModel feedViewModel = GetIt.instance<FeedViewModel>();
 
   @override
   void initState() {
+    print("init video");
     feedViewModel.loadVideo(0);
     feedViewModel.loadVideo(1);
 
@@ -34,28 +37,37 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<FeedViewModel>.reactive(disposeViewModel: false, builder: (context, model, child) => videoScreen(), viewModelBuilder: () => feedViewModel);
+    return ViewModelBuilder<FeedViewModel>.reactive(
+      disposeViewModel: false,
+      builder: (context, model, child) => videoScreen(),
+      viewModelBuilder: () => feedViewModel,
+    );
   }
 
   Widget videoScreen() {
     return Scaffold(
-      backgroundColor: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.black : Colors.white,
+      // backgroundColor: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.black : Colors.white,
+      backgroundColor: feedViewModel.actualScreen == 0 ? Colors.black : Colors.white,
       body: Stack(
         children: [
           PageView.builder(
             itemCount: 2,
             onPageChanged: (value) {
-              print(value);
+              print("on page change: " + value.toString());
               if (value == 1)
                 SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
               else
                 SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
             },
             itemBuilder: (context, index) {
-              if (index == 0)
+              print("check itemBuilder: $index");
+              if (index == 0) {
+                print("scrollFeed");
                 return scrollFeed();
-              else
+              } else {
+                print("profileView");
                 return profileView();
+              }
             },
           )
         ],
@@ -67,316 +79,320 @@ class _FeedScreenState extends State<FeedScreen> {
     return Container(
       color: Colors.white,
       child: SafeArea(
-          child: Container(
-              color: Colors.white,
-              child: Column(children: [
-                Container(
-                  decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.arrow_back_ios),
-                      Text(
-                        "Charlotte Stone",
-                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      Icon(Icons.more_horiz)
-                    ],
-                  ),
-                ),
-                Column(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ClipOval(
-                          child: CachedNetworkImage(
-                            imageUrl: "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
-                            height: 100.0,
-                            width: 100.0,
-                            placeholder: (context, url) => CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => Icon(Icons.error),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    Icon(Icons.arrow_back_ios),
                     Text(
-                      "@Charlotte21",
+                      "Charlotte Stone",
                       style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              "232",
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Following",
-                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
-                            ),
-                          ],
+                    Icon(Icons.more_horiz)
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipOval(
+                        child: CachedNetworkImage(
+                          imageUrl: "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
+                          height: 100.0,
+                          width: 100.0,
+                          placeholder: (context, url) => CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
-                        Container(
-                          color: Colors.black54,
-                          width: 1,
-                          height: 15,
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "1.3k",
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Followers",
-                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.black54,
-                          width: 1,
-                          height: 15,
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "12k",
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Likes",
-                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 140,
-                          height: 47,
-                          decoration: BoxDecoration(
-                            color: Colors.pink[500],
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Follow",
-                              style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 45,
-                          height: 47,
-                          decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
-                          child: Center(child: Icon(Icons.camera_alt)),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 35,
-                          height: 47,
-                          decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
-                          child: Center(child: Icon(Icons.arrow_drop_down)),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Container(
-                      height: 45,
-                      decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "@Charlotte21",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Icon(Icons.menu),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Container(
-                                color: Colors.black,
-                                height: 2,
-                                width: 55,
-                              )
-                            ],
+                          Text(
+                            "232",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.favorite_border,
-                                color: Colors.black26,
-                              ),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Container(
-                                color: Colors.transparent,
-                                height: 2,
-                                width: 55,
-                              )
-                            ],
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Following",
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
                           ),
                         ],
                       ),
-                    ),
-                    Row(
+                      Container(
+                        color: Colors.black54,
+                        width: 1,
+                        height: 15,
+                        margin: EdgeInsets.symmetric(horizontal: 15),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "1.3k",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Followers",
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        color: Colors.black54,
+                        width: 1,
+                        height: 15,
+                        margin: EdgeInsets.symmetric(horizontal: 15),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "12k",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Likes",
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 140,
+                        height: 47,
+                        decoration: BoxDecoration(
+                          color: Colors.pink[500],
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Follow",
+                            style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 45,
+                        height: 47,
+                        decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+                        child: Center(child: Icon(Icons.camera_alt)),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 35,
+                        height: 47,
+                        decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+                        child: Center(child: Icon(Icons.arrow_drop_down)),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    height: 45,
+                    decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/tOueglJrk5rS8/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
-                              fit: BoxFit.fill,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(Icons.menu),
+                            SizedBox(
+                              height: 7,
                             ),
-                          ),
+                            Container(
+                              color: Colors.black,
+                              height: 2,
+                              width: 55,
+                            )
+                          ],
                         ),
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/665IPY24jyWFa/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
-                              fit: BoxFit.fill,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              Icons.favorite_border,
+                              color: Colors.black26,
                             ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/chjX2ypYJKkr6/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
-                              fit: BoxFit.fill,
+                            SizedBox(
+                              height: 7,
                             ),
-                          ),
+                            Container(
+                              color: Colors.transparent,
+                              height: 2,
+                              width: 55,
+                            )
+                          ],
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/sC60eX0OVIH7O/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
                               fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/tOueglJrk5rS8/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             ),
+                            fit: BoxFit.fill,
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/NsXhybxnMKsh2/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
                               fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/665IPY24jyWFa/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             ),
+                            fit: BoxFit.fill,
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            height: 160,
-                            decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
-                            child: FittedBox(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: "https://media.giphy.com/media/HE6hyf47yAX1S/giphy.gif",
-                                placeholder: (context, url) => Padding(
-                                  padding: const EdgeInsets.all(35.0),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
                               fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/chjX2ypYJKkr6/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             ),
+                            fit: BoxFit.fill,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              ]))),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/sC60eX0OVIH7O/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
+                            ),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/NsXhybxnMKsh2/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
+                            ),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 160,
+                          decoration: BoxDecoration(color: Colors.black26, border: Border.all(color: Colors.white70, width: .5)),
+                          child: FittedBox(
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: "https://media.giphy.com/media/HE6hyf47yAX1S/giphy.gif",
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(35.0),
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
+                            ),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -391,7 +407,7 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Widget feedVideos() {
-    print("feedViewModel.videoSource!.listVideos: " + feedViewModel.videoSource!.listVideos.length.toString());
+    print("length listVideos: " + feedViewModel.videoSource!.listVideos.length.toString());
     return Stack(
       children: [
         PageView.builder(
@@ -407,27 +423,47 @@ class _FeedScreenState extends State<FeedScreen> {
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             index = index % (feedViewModel.videoSource!.listVideos.length);
-            return videoCard(feedViewModel.videoSource!.listVideos[index] as VideoTiktok);
+            return videoCard(feedViewModel.videoSource!.listVideos[index]);
           },
         ),
         SafeArea(
           child: Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
-              Text('Following', style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.normal, color: Colors.white70)),
-              SizedBox(
-                width: 7,
-              ),
-              Container(
-                color: Colors.white70,
-                height: 10,
-                width: 1.0,
-              ),
-              SizedBox(
-                width: 7,
-              ),
-              Text('For You', style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.white))
-            ]),
+            padding: EdgeInsets.only(top: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                CustomHeader(),
+              ],
+            ),
+          ),
+        ),
+        SafeArea(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                HeaderToolbar("https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg"),
+                Text(
+                  '@,64545564456' ,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 7,
+                ),
+                Text(
+                  "asfagagag",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -435,6 +471,7 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Widget currentScreen() {
+    print("currentScreen: " + feedViewModel.actualScreen.toString());
     switch (feedViewModel.actualScreen) {
       case 0:
         return feedVideos();

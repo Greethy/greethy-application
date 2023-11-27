@@ -43,11 +43,11 @@ class FeedViewModel extends BaseViewModel {
 
   void setActualScreen(index) {
     actualScreen = index;
-    if (index == 0) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    } else {
+    // if (index == 0) {
+    //   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    // } else {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    }
+    // }
     notifyListeners();
   }
 }

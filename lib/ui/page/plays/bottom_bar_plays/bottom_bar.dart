@@ -3,14 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../ui/page/plays/feed_viewmodel.dart';
-import '../utils/tik_tok_icons_icons.dart';
+import '../feed_viewmodel.dart';
+import '../../../../utils/tik_tok_icons_icons.dart';
 
 class BottomBar extends StatelessWidget {
   static const double NavigationIconSize = 20.0;
   static const double CreateButtonWidth = 38.0;
 
-  const BottomBar({Key? key}) : super(key: key);
+  BottomBar({Key? key}) : super(key: key);
+
+  FeedViewModel _feedViewModel = GetIt.instance<FeedViewModel>();
 
   Widget get customCreateIcon => Container(
         width: 45.0,
@@ -38,12 +40,15 @@ class BottomBar extends StatelessWidget {
                 height: double.infinity,
                 width: CreateButtonWidth,
                 decoration: BoxDecoration(
-                  color: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.white : Colors.black,
+                  // color: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.white : Colors.black,
+                  color: _feedViewModel.actualScreen == 0 ? Colors.white : Colors.black,
                   borderRadius: BorderRadius.circular(7.0),
                 ),
                 child: Icon(
                   Icons.add,
-                  color: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.black : Colors.white,
+                  // color: GetIt.instance<FeedViewModel>().actualScreen == 0 ? Colors.black : Colors.white,
+
+                  color: _feedViewModel.actualScreen == 0 ? Colors.black : Colors.white,
                   size: 20.0,
                 ),
               ),
@@ -59,12 +64,12 @@ class BottomBar extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: 5,
+            height: 8,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              menuButton('Home', TikTokIcons.home, 0),
+              menuButton('Plays', TikTokIcons.home, 0),
               menuButton('Search', TikTokIcons.search, 1),
               SizedBox(
                 width: 15,
@@ -73,7 +78,7 @@ class BottomBar extends StatelessWidget {
               SizedBox(
                 width: 15,
               ),
-              menuButton('Messages', TikTokIcons.messages, 2),
+              menuButton('Clubs', Icons.abc, 2),
               menuButton('Profile', TikTokIcons.profile, 3)
             ],
           ),
@@ -87,42 +92,50 @@ class BottomBar extends StatelessWidget {
 
   Widget menuButton(String text, IconData icon, int index) {
     return GestureDetector(
-        onTap: () {
-          GetIt.instance<FeedViewModel>().setActualScreen(index);
-        },
-        child: Container(
-          height: 45,
-          width: 70,
+      onTap: () {
+        _feedViewModel.setActualScreen(index);
+      },
+      child: Container(
+        height: 45,
+        width: 70,
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(icon,
-                  color: GetIt.instance<FeedViewModel>().actualScreen == 0
-                      ? GetIt.instance<FeedViewModel>().actualScreen == index
-                          ? Colors.white
-                          : Colors.white70
-                      : GetIt.instance<FeedViewModel>().actualScreen == index
-                          ? Colors.black
-                          : Colors.black54,
-                  size: NavigationIconSize),
+              Icon(
+                icon,
+                color: _feedViewModel.actualScreen == 0
+                    ? _feedViewModel.actualScreen == index
+                    ? Colors.white
+                    : Colors.white70
+                    : _feedViewModel.actualScreen == index
+                    ? Colors.black
+                    : Colors.black54,
+                size: NavigationIconSize,
+              ),
               SizedBox(
                 height: 7,
               ),
               Text(
                 text,
                 style: TextStyle(
-                    fontWeight: GetIt.instance<FeedViewModel>().actualScreen == index ? FontWeight.bold : FontWeight.normal,
-                    color: GetIt.instance<FeedViewModel>().actualScreen == 0
-                        ? GetIt.instance<FeedViewModel>().actualScreen == index
-                            ? Colors.white
-                            : Colors.white70
-                        : GetIt.instance<FeedViewModel>().actualScreen == index
-                            ? Colors.black
-                            : Colors.black54,
-                    fontSize: 11.0),
-              )
+                  fontWeight: _feedViewModel.actualScreen == index
+                      ? FontWeight.bold
+                      : FontWeight.normal,
+                  color: _feedViewModel.actualScreen == 0
+                      ? _feedViewModel.actualScreen == index
+                      ? Colors.white
+                      : Colors.white70
+                      : _feedViewModel.actualScreen == index
+                      ? Colors.black
+                      : Colors.black54,
+                  fontSize: 12.0,
+                ),
+              ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

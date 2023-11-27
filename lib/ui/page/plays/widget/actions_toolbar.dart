@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/tik_tok_icons_icons.dart';
-import 'circle_image_animation.dart';
+import '../../../../utils/tik_tok_icons_icons.dart';
+import '../../../../widgets/circle_image_animation.dart';
 
 class ActionsToolbar extends StatelessWidget {
   // Full dimensions of an action

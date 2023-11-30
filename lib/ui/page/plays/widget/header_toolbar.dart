@@ -3,7 +3,17 @@ import 'package:flutter/material.dart';
 
 import 'expandabl_text.dart';
 
-class HeaderToolbar extends StatelessWidget {
+class HeaderToolbar extends StatefulWidget {
+  final String userPic;
+  final String like;
+
+  HeaderToolbar({required this.userPic, required this.like}) : super();
+
+  @override
+  _HeaderToolbar createState() => _HeaderToolbar();
+}
+
+class _HeaderToolbar extends State<HeaderToolbar> {
   // Full dimensions of an action
   static const double ActionWidgetSize = 60.0;
 
@@ -12,20 +22,17 @@ class HeaderToolbar extends StatelessWidget {
 
 // The size of the plus icon under the profile image in follow action
   static const double PlusIconSize = 20.0;
-  final String userPic;
-
-  HeaderToolbar(this.userPic);
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 100.0,
-      // height: 100.0,
+      padding: EdgeInsets.only(left: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _getFollowAction(pictureUrl: userPic),
+          _getFollowAction(pictureUrl: widget.userPic),
           Text(
             'ChunhThanhDe',
             style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
@@ -33,28 +40,46 @@ class HeaderToolbar extends StatelessWidget {
           SizedBox(
             height: 5,
           ),
-          Container(
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.black.withOpacity(0.7),
-            ),
-            child: FittedBox(
-              child: Container(
-                width: 250, // Đảm bảo nội dung tự động xuống dòng khi vượt quá giới hạn
-                child: Text(
-                  "Trong đoạn mã trên, FittedBox được sử dụng để tự nh dạng viềnt theo ý muốn trong đoạn mã trên.",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+            child: isExpanded
+                ? Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.black.withOpacity(0.7),
+                    ),
+                    child: FittedBox(
+                      child: Container(
+                        width: 250, // Đảm bảo nội dung tự động xuống dòng khi vượt quá giới hạn
+                        child: Text(
+                          "Trong đoạn mã trên, FittedBox được sử dụng để tự nh dạng viềnt theo ý muốn trong đoạn mã trên.",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : FittedBox(
+                    child: Container(
+                      width: isExpanded ? double.infinity : 250,
+                      child: Text(
+                        "Trong đoạn mã trên, FittedBox được sử dụng để tự nh dạng viềnt theo ý muốn trong đoạn mã trên.",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ),
-          ExpandableText(
-            text: "Trong đoạn mã trên, FittedBox được sử dụng để tự nh dạng viềnt theo ý muốn trong đoạn mã trên.",
-            maxLines: 2,
           ),
         ],
       ),
@@ -75,7 +100,7 @@ class HeaderToolbar extends StatelessWidget {
 
   Widget _getProfilePicture(userPic) {
     return Positioned(
-        left: (ActionWidgetSize / 2) - (ProfileImageSize / 2),
+        left: (ActionWidgetSize / 3) - (ProfileImageSize / 3),
         child: Container(
             padding: EdgeInsets.all(1.0),
             // Add 1.0 point padding to create border

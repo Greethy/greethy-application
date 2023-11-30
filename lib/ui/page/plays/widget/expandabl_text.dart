@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ExpandableText extends StatefulWidget {
   final String text;
   final int maxLines;
 
-  ExpandableText({required this.text, this.maxLines = 2});
+  ExpandableText({required this.text, this.maxLines = 3});
 
   @override
   _ExpandableTextState createState() => _ExpandableTextState();
@@ -17,31 +16,47 @@ class _ExpandableTextState extends State<ExpandableText> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Colors.black.withOpacity(0.7),
-      ),
+      padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
       child: GestureDetector(
         onTap: () {
           setState(() {
             isExpanded = !isExpanded;
           });
         },
-        child: FittedBox(
-          child: Container(
-            width: isExpanded ? double.infinity : 250,
-            child: Text(
-              widget.text,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
+        child: isExpanded
+            ? Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.black.withOpacity(0.7),
+                ),
+                child: FittedBox(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width - 10, // Đảm bảo nội dung tự động xuống dòng khi vượt quá giới hạn
+                    child: Text(
+                      widget.text,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : FittedBox(
+                child: Container(
+                  width: isExpanded ? double.infinity : MediaQuery.of(context).size.width - 10,
+                  child: Text(
+                    widget.text,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
+                    maxLines: widget.maxLines,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
-              maxLines: isExpanded ? null : widget.maxLines,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ),
       ),
     );
   }

@@ -24,8 +24,7 @@ class FeedViewModel extends BaseViewModel {
     videoSource!.listVideos[index].controller!.play();
     //videoSource.listVideos[prevVideo].controller.removeListener(() {});
 
-    if (videoSource!.listVideos[prevVideo].controller != null)
-      videoSource!.listVideos[prevVideo].controller!.pause();
+    if (videoSource!.listVideos[prevVideo].controller != null) videoSource!.listVideos[prevVideo].controller!.pause();
 
     prevVideo = index;
     notifyListeners();
@@ -43,11 +42,12 @@ class FeedViewModel extends BaseViewModel {
 
   void setActualScreen(index) {
     actualScreen = index;
-    // if (index == 0) {
-    //   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    // } else {
+    print("setActualScreen index: $index");
+    if (index == 0) {
+      // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    } else {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    // }
+    }
     notifyListeners();
   }
 }

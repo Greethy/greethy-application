@@ -47,6 +47,8 @@ dependencies:
     googleapis: ^11.4.0
     http: ^1.0.0
     flutter_facebook_auth: ^6.0.2
+    image_picker: ^1.0.0
+    dartz: ^0.10.0
 
     # tiktok
     cached_network_image: ^3.3.0
@@ -111,6 +113,27 @@ flutter:
         - family: TikTokIcons
           fonts:
               - asset: assets/fonts/TikTokIcons.ttf
+
+        - family: TwitterIcon
+          fonts:
+              - asset: assets/fonts/icons.ttf
+        - family: HelveticaNeue
+          fonts:
+              - asset: assets/fonts/HelveticaNeue.ttf
+              - asset: assets/fonts/HelveticaNeue400.ttf
+                weight: 400
+              - asset: assets/fonts/HelveticaNeue500.ttf
+                weight: 500
+              - asset: assets/fonts/HelveticaNeue600.ttf
+                weight: 600
+              - asset: assets/fonts/HelveticaNeue700.ttf
+                weight: 700
+              - asset: assets/fonts/HelveticaNeue800.ttf
+                weight: 800
+              - asset: assets/fonts/HelveticaNeue900.ttf
+                weight: 900
+              - asset: assets/fonts/HelveticaNeueIt.ttf
+                style: italic
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages

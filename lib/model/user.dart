@@ -12,10 +12,10 @@ class UserModel extends Equatable {
   final int? id;
   final String? email;
   final String? password;
-  final String? nickName;
+  late final String? nickName;
   final String? avatar;
   final String? bannerImage;
-  final String? bio;
+  late final String? bio;
   final PersonalInfo? personalInfo;
   final PremiumUser? premiumUser;
   final bool? isVerified;

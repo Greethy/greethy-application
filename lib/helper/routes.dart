@@ -35,6 +35,7 @@ import '../ui/page/auth/signup.dart';
 // import '../ui/page/feed/imageViewPage.dart';
 // import '../ui/page/message/chatScreenPage.dart';
 // import '../ui/page/profile/profilePage.dart';
+import '../ui/page/profile/profile_page.dart';
 import '../widgets/customWidgets.dart';
 
 class Routes {
@@ -80,16 +81,16 @@ class Routes {
       //         postId: postId,
       //       ),
       //       settings: const RouteSettings(name: 'FeedPostDetail'));
-      // case "ProfilePage":
-      //   String profileId;
-      //   if (pathElements.length > 2) {
-      //     profileId = pathElements[2];
-      //     return CustomRoute<bool>(
-      //         builder: (BuildContext context) => ProfilePage(
-      //           profileId: profileId,
-      //         ));
-      //   }
-      //   return CustomRoute(builder: (BuildContext context) => const HomePage());
+      case "ProfilePage":
+        String profileId;
+        if (pathElements.length > 2) {
+          profileId = pathElements[2];
+          return CustomRoute<bool>(
+              builder: (BuildContext context) => ProfilePage(
+                profileId: profileId,
+              ));
+        }
+        return CustomRoute(builder: (BuildContext context) => const SplashPage());
 
       // case "CreateFeedPage":
       //   return CustomRoute<bool>(

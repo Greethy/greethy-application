@@ -156,6 +156,7 @@ class AuthState extends AppState {
       cprint(error, errorIn: 'handleGoogleSignIn');
       return null;
     } on Exception catch (error) {
+
       googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
       cprint(error, errorIn: 'handleGoogleSignIn');
@@ -186,6 +187,7 @@ class AuthState extends AppState {
     //
     print("chunhthanhde create new user: $userModel");
     createUser(userModel, newUser: true);
+    isBusy = false;
   }
 
   /// Create user from `Facebook login`

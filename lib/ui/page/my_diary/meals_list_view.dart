@@ -1,5 +1,5 @@
 
-import 'package:greethy_application/model/meals_list_data.dart';
+import 'package:greethy_application/data/meals_list_data.dart';
 import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
 

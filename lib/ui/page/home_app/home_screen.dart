@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/model/tabIcon_data.dart';
+import 'package:greethy_application/data/tabIcon_data.dart';
 import 'package:greethy_application/ui/page/character/navigation/navigation_app.dart';
 import 'package:greethy_application/ui/page/training/training_screen.dart';
 import 'package:greethy_application/ui/page/my_diary/my_diary_screen.dart';

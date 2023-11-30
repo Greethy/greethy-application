@@ -18,9 +18,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  print("start greethy ");
+  print("start register dependencies here after start");
   setupDependencies();
-  print("setupDependencies success ");
+  print("start plash screen");
   runApp(MyApp());
 }
 
@@ -35,18 +35,9 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
-    // return MaterialApp(
-    //   title: 'Flutter UI',
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.blue,
-    //     textTheme: AppTheme.textTheme,
-    //     platform: TargetPlatform.iOS,
-    //   ),
-    //   home: NavigationHomeScreen(),
-    // );
 
     return MultiProvider(
+      /// Register provider for app
       providers: [
         ChangeNotifierProvider<AppState>(create: (_) => AppState()),
         ChangeNotifierProvider<AuthState>(create: (_) => AuthState()),

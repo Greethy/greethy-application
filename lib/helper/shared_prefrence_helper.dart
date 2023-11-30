@@ -1,8 +1,9 @@
-// import 'package:greethy_application/model/link_media_info.dart';
 import 'dart:convert';
 
 import 'package:greethy_application/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:greethy_application/data/link_media_info.dart';
 
 class SharedPreferenceHelper {
   SharedPreferenceHelper._internal();
@@ -27,19 +28,17 @@ class SharedPreferenceHelper {
     return UserModel.fromJson(json.decode(jsonString));
   }
 
-// Future<bool> saveLinkMediaInfo(String key, LinkMediaInfo model) async {
-//   return (await SharedPreferences.getInstance())
-//       .setString(key, json.encode(model.toJson()));
-// }
-//
-// Future<LinkMediaInfo?> getLinkMediaInfo(String key) async {
-//   final String? jsonString =
-//       (await SharedPreferences.getInstance()).getString(key);
-//   if (jsonString == null) {
-//     return null;
-//   }
-//   return LinkMediaInfo.fromJson(json.decode(jsonString));
-// }
+  Future<bool> saveLinkMediaInfo(String key, LinkMediaInfo model) async {
+    return (await SharedPreferences.getInstance()).setString(key, json.encode(model.toJson()));
+  }
+
+  Future<LinkMediaInfo?> getLinkMediaInfo(String key) async {
+    final String? jsonString = (await SharedPreferences.getInstance()).getString(key);
+    if (jsonString == null) {
+      return null;
+    }
+    return LinkMediaInfo.fromJson(json.decode(jsonString));
+  }
 
   Future<bool> isFirstTimeApp() async {
     return (await SharedPreferences.getInstance()).getBool(UserPreferenceKey.IsFirstTimeApp.toString()) ?? true;

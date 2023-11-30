@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../helper/shared_prefrence_helper.dart';
+import '../../profile/profilePage.dart';
 import '../feed_viewmodel.dart';
 import '../../../../utils/tik_tok_icons_icons.dart';
 
@@ -10,9 +12,12 @@ class BottomBar extends StatelessWidget {
   static const double NavigationIconSize = 20.0;
   static const double CreateButtonWidth = 38.0;
 
-  BottomBar({Key? key}) : super(key: key);
+  // BottomBar({Key? key}) : super(key: key);
 
   FeedViewModel _feedViewModel = GetIt.instance<FeedViewModel>();
+  final BuildContext context; // Thêm thuộc tính context
+
+  BottomBar({Key? key, required this.context}) : super(key: key);
 
   Widget get customCreateIcon => Container(
         width: 45.0,
@@ -93,6 +98,9 @@ class BottomBar extends StatelessWidget {
   Widget menuButton(String text, IconData icon, int index) {
     return GestureDetector(
       onTap: () {
+        if (index == 3) {
+          Navigator.push(context, ProfilePage.getRoute(profileId: "1"));
+        }
         _feedViewModel.setActualScreen(index);
       },
       child: Container(
@@ -106,11 +114,11 @@ class BottomBar extends StatelessWidget {
                 icon,
                 color: _feedViewModel.actualScreen == 0
                     ? _feedViewModel.actualScreen == index
-                    ? Colors.white
-                    : Colors.white70
+                        ? Colors.white
+                        : Colors.white70
                     : _feedViewModel.actualScreen == index
-                    ? Colors.black
-                    : Colors.black54,
+                        ? Colors.black
+                        : Colors.black54,
                 size: NavigationIconSize,
               ),
               SizedBox(
@@ -119,16 +127,14 @@ class BottomBar extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                  fontWeight: _feedViewModel.actualScreen == index
-                      ? FontWeight.bold
-                      : FontWeight.normal,
+                  fontWeight: _feedViewModel.actualScreen == index ? FontWeight.bold : FontWeight.normal,
                   color: _feedViewModel.actualScreen == 0
                       ? _feedViewModel.actualScreen == index
-                      ? Colors.white
-                      : Colors.white70
+                          ? Colors.white
+                          : Colors.white70
                       : _feedViewModel.actualScreen == index
-                      ? Colors.black
-                      : Colors.black54,
+                          ? Colors.black
+                          : Colors.black54,
                   fontSize: 12.0,
                 ),
               ),

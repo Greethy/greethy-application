@@ -1,21 +1,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_twitter_clone/helper/customRoute.dart';
-import 'package:flutter_twitter_clone/helper/utility.dart';
-import 'package:flutter_twitter_clone/state/authState.dart';
-import 'package:flutter_twitter_clone/ui/page/profile/widgets/circular_image.dart';
-import 'package:flutter_twitter_clone/widgets/cache_image.dart';
-import 'package:flutter_twitter_clone/widgets/customFlatButton.dart';
-import 'package:flutter_twitter_clone/widgets/customWidgets.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../helper/customRoute.dart';
+import '../../../../helper/utility.dart';
+import '../../../../state/authState.dart';
+import '../../../../widgets/cache_image.dart';
+import '../../../../widgets/customFlatButton.dart';
+import '../../../../widgets/customWidgets.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../local_widgets/circular_image.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
+
   static MaterialPageRoute<T> getRoute<T>() {
-    return CustomRoute<T>(
-        builder: (BuildContext context) => const EditProfilePage());
+    return CustomRoute<T>(builder: (BuildContext context) => const EditProfilePage());
   }
 
   @override
@@ -31,6 +33,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   late TextEditingController _dob;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String? dob;
+
   @override
   void initState() {
     _name = TextEditingController();
@@ -38,10 +41,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
     _location = TextEditingController();
     _dob = TextEditingController();
     AuthState state = Provider.of<AuthState>(context, listen: false);
-    _name.text = state.userModel?.displayName ?? '';
+    _name.text = state.userModel?.nickName ?? '';
     _bio.text = state.userModel?.bio ?? '';
-    _location.text = state.userModel?.location ?? '';
-    _dob.text = Utility.getDob(state.userModel?.dob);
+    _location.text = state.userModel?.personalInfo?.location ?? '';
+    _dob.text = Utility.getDob(state.userModel?.personalInfo?.dob?.date);
     super.initState();
   }
 
@@ -90,16 +93,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white, width: 5),
         shape: BoxShape.circle,
-        image: DecorationImage(
-            image: customAdvanceNetworkImage(authState.userModel!.profilePic),
-            fit: BoxFit.cover),
+        image: DecorationImage(image: customAdvanceNetworkImage(authState.userModel!.avatar), fit: BoxFit.cover),
       ),
       child: CircleAvatar(
         radius: 40,
-        backgroundImage: (_image != null
-                ? FileImage(_image!)
-                : customAdvanceNetworkImage(authState.userModel!.profilePic))
-            as ImageProvider,
+        backgroundImage: (_image != null ? FileImage(_image!) : customAdvanceNetworkImage(authState.userModel!.avatar)) as ImageProvider,
         child: Container(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
@@ -120,12 +118,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Container(
       height: 180,
       decoration: BoxDecoration(
-        image: authState.userModel!.bannerImage == null
-            ? null
-            : DecorationImage(
-                image:
-                    customAdvanceNetworkImage(authState.userModel!.bannerImage),
-                fit: BoxFit.cover),
+        image: authState.userModel!.bannerImage == null ? null : DecorationImage(image: customAdvanceNetworkImage(authState.userModel!.bannerImage), fit: BoxFit.cover),
       ),
       child: Container(
         decoration: const BoxDecoration(
@@ -134,17 +127,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
         child: Stack(
           children: [
             _banner != null
-                ? Image.file(_banner!,
-                    fit: BoxFit.fill, width: MediaQuery.of(context).size.width)
-                : CacheImage(
-                    path: authState.userModel!.bannerImage ??
-                        'https://pbs.twimg.com/profile_banners/457684585/1510495215/1500x500',
-                    fit: BoxFit.fill),
+                ? Image.file(_banner!, fit: BoxFit.fill, width: MediaQuery.of(context).size.width)
+                : CacheImage(path: authState.userModel!.bannerImage ?? 'https://pbs.twimg.com/profile_banners/457684585/1510495215/1500x500', fit: BoxFit.fill),
             Center(
               child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.black38),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black38),
                 child: IconButton(
                   onPressed: uploadBanner,
                   icon: const Icon(Icons.camera_alt, color: Colors.white),
@@ -157,10 +144,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  Widget _entry(String title,
-      {required TextEditingController controller,
-      int maxLine = 1,
-      bool enabled = true}) {
+  Widget _entry(String title, {required TextEditingController controller, int maxLine = 1, bool enabled = true}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       child: Column(
@@ -202,29 +186,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
     }
     var state = Provider.of<AuthState>(context, listen: false);
     var model = state.userModel!.copyWith(
-      key: state.userModel!.userId,
-      displayName: state.userModel!.displayName,
+      id: state.userModel!.id,
+      nickName: state.userModel!.nickName,
       bio: state.userModel!.bio,
-      contact: state.userModel!.contact,
-      dob: state.userModel!.dob,
+      personalInfo: state.userModel!.personalInfo,
+      // dob: state.userModel!.dob,
       email: state.userModel!.email,
-      location: state.userModel!.location,
-      profilePic: state.userModel!.profilePic,
-      userId: state.userModel!.userId,
+      // location: state.userModel!.location,
+      avatar: state.userModel!.avatar,
       bannerImage: state.userModel!.bannerImage,
     );
     if (_name.text.isNotEmpty) {
-      model.displayName = _name.text;
+      model.nickName = _name.text;
     }
     if (_bio.text.isNotEmpty) {
       model.bio = _bio.text;
     }
-    if (_location.text.isNotEmpty) {
-      model.location = _location.text;
-    }
-    if (dob != null) {
-      model.dob = dob!;
-    }
+    // if (_location.text.isNotEmpty) {
+    //   model.location = _location.text;
+    // }
+    // if (dob != null) {
+    //   model.dob = dob!;
+    // }
 
     state.updateUserProfile(model, image: _image, bannerImage: _banner);
     Navigator.of(context).pop();
@@ -292,8 +275,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  getImage(BuildContext context, ImageSource source,
-      Function(File) onImageSelected) {
+  getImage(BuildContext context, ImageSource source, Function(File) onImageSelected) {
     ImagePicker().pickImage(source: source, imageQuality: 50).then((
       XFile? file,
     ) {

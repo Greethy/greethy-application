@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:greethy_application/main.dart';
-import 'package:greethy_application/model/tabIcon_data.dart';
+import 'package:greethy_application/data/tabIcon_data.dart';
 
 import '../../../theme/app_theme.dart';
 

@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:greethy_application/ui/page/plays/profile_screen.dart';
 import 'package:greethy_application/ui/page/plays/search_screen.dart';
 import 'package:greethy_application/ui/page/plays/widget/ScrollButtonDemo.dart';
+import 'package:greethy_application/ui/page/plays/widget/expandabl_text.dart';
 import 'package:greethy_application/ui/page/plays/widget/header_toolbar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
@@ -36,6 +37,12 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   @override
+  void dispose() {
+    feedViewModel.controller?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FeedViewModel>.reactive(
       disposeViewModel: false,
@@ -56,8 +63,8 @@ class _FeedScreenState extends State<FeedScreen> {
               print("on page change: " + value.toString());
               if (value == 1)
                 SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-              else
-                SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+              // else
+              //   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
             },
             itemBuilder: (context, index) {
               print("check itemBuilder: $index");
@@ -401,7 +408,7 @@ class _FeedScreenState extends State<FeedScreen> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Expanded(child: currentScreen()),
-        BottomBar(),
+        BottomBar(context: context),
       ],
     );
   }
@@ -437,35 +444,6 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
           ),
         ),
-        SafeArea(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                HeaderToolbar("https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg"),
-                Text(
-                  '@,64545564456' ,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 7,
-                ),
-                Text(
-                  "asfagagag",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -489,6 +467,7 @@ class _FeedScreenState extends State<FeedScreen> {
   Widget videoCard(VideoTiktok video) {
     return Stack(
       children: [
+        ///video controller
         video.controller != null
             ? GestureDetector(
                 onTap: () {
@@ -515,27 +494,45 @@ class _FeedScreenState extends State<FeedScreen> {
                   child: Text("Loading"),
                 ),
               ),
+
+        /// message - Kudos bar
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                VideoDescription(video.user, video.videoTitle, video.songName),
-                ActionsToolbar(video.likes, video.comments, "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg"),
-              ],
+            ExpandableText(
+                text:
+                    "Detector và một Container để đảm nhận mọi trạng thái của nội dung (mở rộng và thu gọn). Sử dụng FittedBox và thuộc tính width của Container, chúng ta có thể điều chỉnh kích thước Text để nội dung tự động xuống dòng khi cần thiếtĐồng thời, chúng ta sử dụng thuộc tính maxLines và overflow của Text để xử lý việc hiển thị nội dung bị cắt ngắn khi đượ"),
+            ActionsToolbar(
+              video.likes,
+              video.comments,
+              "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
             ),
-            SizedBox(height: 20)
+            VideoDescription(
+              video.songName,
+              "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
+            ),
+            SizedBox(height: 12)
           ],
+        ),
+
+        ///header
+        SafeArea(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: <Widget>[
+            child: HeaderToolbar(
+              userPic: "https://www.andersonsobelcosmetic.com/wp-content/uploads/2018/09/chin-implant-vs-fillers-best-for-improving-profile-bellevue-washington-chin-surgery.jpg",
+              like: video.likes,
+            ),
+            // ],
+            // ),
+          ),
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    feedViewModel.controller?.dispose();
-    super.dispose();
   }
 }

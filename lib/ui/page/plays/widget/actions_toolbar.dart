@@ -28,35 +28,85 @@ class ActionsToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100.0,
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        _getFollowAction(pictureUrl: userPic),
-        SizedBox(height: 5),
-        _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
-        SizedBox(height: 5),
-        _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
-        SizedBox(height: 5),
-        _getSocialAction(icon: TikTokIcons.reply, title: 'Share', isShare: true),
-        CircleImageAnimation(
-          child: _getMusicPlayerAction(userPic),
-        )
-      ]),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(10, 12, 10, 0),
+      child: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.red.withOpacity(0.7),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(2),
+              child: Container(
+                height: 35,
+                width: MediaQuery.of(context).size.width / 2,
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.grey.withOpacity(0.7),
+                ),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Gửi tin nhắn...',
+                    hintStyle: TextStyle(color: Colors.white),
+                    contentPadding: EdgeInsets.symmetric(vertical: 8),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width / 2 - 40,
+              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.grey.withOpacity(0.7),
+              ),
+              child: Center(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
+                    _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
+                    _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
+                    _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
+                    _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
+                    _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
+                    _getSocialAction(icon: TikTokIcons.heart, title: numLikes),
+                    _getSocialAction(icon: TikTokIcons.chat_bubble, title: numComments),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
   Widget _getSocialAction({required String title, required IconData icon, bool isShare = false}) {
     return Container(
-        margin: EdgeInsets.only(top: 15.0),
-        width: 70.0,
-        height: 70.0,
-        child: Column(children: [
-          Icon(icon, size: isShare ? 25.0 : 35.0, color: Colors.grey[300]),
-          Padding(
-            padding: EdgeInsets.only(top: isShare ? 8.0 : 8.0),
-            child: Text(title, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: isShare ? 14.0 : 14.0)),
-          )
-        ]));
+      margin: EdgeInsets.fromLTRB(5.0, 1.0, 5.0, 1.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: isShare ? 20.0 : 25.0,
+            color: Colors.grey[300],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _getFollowAction({required String pictureUrl}) {
@@ -104,22 +154,27 @@ class ActionsToolbar extends StatelessWidget {
 
   Widget _getMusicPlayerAction(userPic) {
     return Container(
-        margin: EdgeInsets.only(top: 10.0),
-        width: ActionWidgetSize,
-        height: ActionWidgetSize,
-        child: Column(children: [
+      margin: EdgeInsets.only(top: 10.0),
+      width: ActionWidgetSize,
+      height: ActionWidgetSize,
+      child: Column(
+        children: [
           Container(
-              padding: EdgeInsets.all(11.0),
-              height: ProfileImageSize,
-              width: ProfileImageSize,
-              decoration: BoxDecoration(gradient: musicGradient, borderRadius: BorderRadius.circular(ProfileImageSize / 2)),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10000.0),
-                  child: CachedNetworkImage(
-                    imageUrl: userPic,
-                    placeholder: (context, url) => new CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => new Icon(Icons.error),
-                  ))),
-        ]));
+            padding: EdgeInsets.all(11.0),
+            height: ProfileImageSize,
+            width: ProfileImageSize,
+            decoration: BoxDecoration(gradient: musicGradient, borderRadius: BorderRadius.circular(ProfileImageSize / 2)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10000.0),
+              child: CachedNetworkImage(
+                imageUrl: userPic,
+                placeholder: (context, url) => new CircularProgressIndicator(),
+                errorWidget: (context, url, error) => new Icon(Icons.error),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

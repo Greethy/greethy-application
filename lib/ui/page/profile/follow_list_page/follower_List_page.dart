@@ -1,10 +1,12 @@
-import 'package:flutter_twitter_clone/ui/theme/theme.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_twitter_clone/model/user.dart';
-import 'package:flutter_twitter_clone/ui/page/common/usersListPage.dart';
-import 'package:flutter_twitter_clone/ui/page/profile/follow/followListState.dart';
-import 'package:flutter_twitter_clone/widgets/newWidget/customLoader.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../model/user.dart';
+import '../../../../widgets/newWidget/customLoader.dart';
+import '../../common/usersListPage.dart';
+import 'follow_List_state.dart';
 
 class FollowerListPage extends StatelessWidget {
   const FollowerListPage({Key? key, this.userList, this.profile})
@@ -39,7 +41,7 @@ class FollowerListPage extends StatelessWidget {
     return UsersListPage(
       pageTitle: 'Followers',
       userIdsList: userList,
-      emptyScreenText: '${profile?.userName} doesn\'t have any followers',
+      emptyScreenText: '${profile?.nickName} doesn\'t have any followers',
       emptyScreenSubTileText:
           'When someone follow them, they\'ll be listed here.',
       isFollowing: (user) {

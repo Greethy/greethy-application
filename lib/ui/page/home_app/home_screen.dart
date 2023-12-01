@@ -4,7 +4,7 @@ import 'package:greethy_application/ui/page/character/navigation/navigation_app.
 import 'package:greethy_application/ui/page/training/training_screen.dart';
 import 'package:greethy_application/ui/page/my_diary/my_diary_screen.dart';
 import '../../theme/app_theme.dart';
-import '../plays/feed_screen.dart';
+import '../plays/plays_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 
 

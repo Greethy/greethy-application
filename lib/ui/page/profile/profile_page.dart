@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/ui/page/profile/local_widgets/profile_image_view.dart';
-import 'package:greethy_application/ui/page/profile/profile_page_user_profile_view.dart';
+import 'package:greethy_application/ui/page/profile/profile_image_view.dart';
+import 'package:greethy_application/ui/page/profile/profile_page_top_club_scroll_view.dart';
+import 'package:greethy_application/ui/page/profile/profile_page_trophy_scroll_view.dart';
+import 'package:greethy_application/ui/page/profile/profile_page_user_detail_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../../state/profileState.dart';
@@ -9,6 +11,7 @@ import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/rippleButton.dart';
 import '../../theme/theme.dart';
 import 'local_widgets/circular_image.dart';
+import 'local_widgets/title_with_all_btn.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, required this.profileId}) : super(key: key);
@@ -63,7 +66,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
       elevation: 0,
       stretch: true,
       iconTheme: const IconThemeData(color: Colors.white),
-      backgroundColor: Colors.transparent,
+      backgroundColor: GreethyColor.mystic,
       actions: <Widget>[
         profileState.isbusy
             ? const SizedBox.shrink()
@@ -106,47 +109,83 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                     child: Container(
                       // padding: const EdgeInsets.only(top: 50),
                       height: 30,
-                      color: Colors.white,
+                      color: Colors.transparent,
                     ),
                   ),
 
-                  /// baner img
+                  /// banner img
                   Container(
                     height: 230,
-                    // padding: const EdgeInsets.only(top: 28),
-                    child: CacheImage(
-                      path: profileState.profileUserModel.bannerImage ?? 'https://pbs.twimg.com/profile_banners/457684585/1510495215/1500x500',
-                      fit: BoxFit.fill,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.transparent,
+                        width: 5,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: profileState.profileUserModel.bannerImage != null
+                            ? CacheImage(
+                                path: profileState.profileUserModel.bannerImage,
+                                fit: BoxFit.cover,
+                              )
+                            : Image.asset(
+                                "assets/images/banner_default.jpg",
+                                fit: BoxFit.cover,
+                              ),
+                      ),
                     ),
                   ),
 
                   /// avatar
                   Container(
                     alignment: Alignment.bottomCenter,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 500),
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 5),
-                            shape: BoxShape.circle,
-                          ),
-                          child: RippleButton(
-                            child: CircularImage(
-                              path: profileState.profileUserModel.avatar,
-                              height: 120,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 500),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white, width: 5),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: GreethyColor.kawa_green,
+                                    width: 4.0,
+                                  ), // Inner green border
+                                  shape: BoxShape.circle,
+                                ),
+                                child: RippleButton(
+                                  child: CircularImage(
+                                    path: profileState.profileUserModel.avatar,
+                                    height: 150,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      ProfileImageView.getRoute(profileState.profileUserModel.avatar!),
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(50),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                ProfileImageView.getRoute(profileState.profileUserModel.avatar!),
-                              );
-                            },
-                          ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                       ],
                     ),
@@ -235,7 +274,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
                 ? _emptyBox()
                 : SliverToBoxAdapter(
                     child: Container(
-                      color: Colors.white,
+                      // color: Colors.white,
                       child: profileState.isbusy
                           ? const SizedBox.shrink()
                           : UserNameRowWidget(
@@ -252,20 +291,33 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
             //     [
             //       Container(
             //         color: GreethyColor.white,
-            //         child: TabBar(
-            //           indicator: TabIndicator(),
-            //           controller: _tabController,
-            //           tabs: const <Widget>[Text("Tweets"), Text("Tweets & replies"), Text("Media")],
-            //         ),
+            //         child: RecomendsPlants(),
             //       ),
             //     ],
             //   ),
             // )
           ];
         },
-        body: Container(
-          height: 10,
-          color: Colors.black26,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+              TitleWithAllBtn(
+                title: "Trophy Challenger",
+                press: () {},
+              ),
+              TrophyChallenger(),
+              TitleWithAllBtn(
+                title: "Clubs",
+                press: () {},
+              ),
+              FeaturedTopClubs(),
+              SizedBox(height: 20),
+            ],
+          ),
         ),
 
         // TabBarView(

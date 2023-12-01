@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:greethy_application/helper/shared_prefrence_helper.dart';
 
-import '../plays/feed_viewmodel.dart';
+import '../plays/state/feed_viewmodel.dart';
 
 /// Dependency injection (DI) - injection.dart - Register dependencies here
 final getIt = GetIt.instance;

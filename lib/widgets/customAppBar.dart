@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../state/authState.dart';
-import '../ui/page/profile/widgets/circular_image.dart';
+import '../ui/page/profile/local_widgets/circular_image.dart';
 import '../ui/theme/theme.dart';
 import 'customWidgets.dart';
 

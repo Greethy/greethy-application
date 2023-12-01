@@ -1,12 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../../../helper/shared_prefrence_helper.dart';
-import '../../profile/profilePage.dart';
-import '../feed_viewmodel.dart';
-import '../../../../utils/tik_tok_icons_icons.dart';
+import '../profile/profile_page.dart';
+import 'state/feed_viewmodel.dart';
+import '../../../utils/tik_tok_icons_icons.dart';
 
 class BottomBar extends StatelessWidget {
   static const double NavigationIconSize = 20.0;
@@ -15,7 +12,7 @@ class BottomBar extends StatelessWidget {
   // BottomBar({Key? key}) : super(key: key);
 
   FeedViewModel _feedViewModel = GetIt.instance<FeedViewModel>();
-  final BuildContext context; // Thêm thuộc tính context
+  final BuildContext context;
 
   BottomBar({Key? key, required this.context}) : super(key: key);
 

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import 'circle_image_animation.dart';
+import '../../../../widgets/circle_image_animation.dart';
 
 class VideoDescription extends StatelessWidget {
   final String songInfo;

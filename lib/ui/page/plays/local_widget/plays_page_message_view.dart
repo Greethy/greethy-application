@@ -32,7 +32,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                 ),
                 child: FittedBox(
                   child: Container(
-                    width: MediaQuery.of(context).size.width - 10, // Đảm bảo nội dung tự động xuống dòng khi vượt quá giới hạn
+                    width: MediaQuery.of(context).size.width - 10,
                     child: Text(
                       widget.text,
                       style: TextStyle(

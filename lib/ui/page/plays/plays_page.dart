@@ -2,18 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:greethy_application/ui/page/plays/plays_page_bottom_bar_view.dart';
 import 'package:greethy_application/ui/page/plays/profile_screen.dart';
 import 'package:greethy_application/ui/page/plays/search_screen.dart';
-import 'package:greethy_application/ui/page/plays/widget/ScrollButtonDemo.dart';
-import 'package:greethy_application/ui/page/plays/widget/expandabl_text.dart';
-import 'package:greethy_application/ui/page/plays/widget/header_toolbar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
 import '../../../data/video.dart';
-import 'widget/actions_toolbar.dart';
-import 'bottom_bar_plays/bottom_bar.dart';
-import '../../../widgets/video_description.dart';
-import 'feed_viewmodel.dart';
+import 'local_widget/plays_page_kudos_send_mess_view.dart';
+import 'local_widget/plays_page_left_header_view.dart';
+import 'local_widget/plays_page_message_view.dart';
+import 'local_widget/plays_page_right_header_view.dart';
+import 'local_widget/song.dart';
+import 'state/feed_viewmodel.dart';
 import 'messages_screen.dart';
 
 class FeedScreen extends StatefulWidget {

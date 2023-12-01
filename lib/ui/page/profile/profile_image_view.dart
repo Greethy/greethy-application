@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/page/profile/profile_page.dart';
 import 'package:greethy_application/ui/theme/theme.dart';
 
-import '../../../../helper/customRoute.dart';
-import '../../../../helper/utility.dart';
-import 'circular_image.dart';
+import '../../../helper/customRoute.dart';
+import '../../../helper/utility.dart';
+import 'local_widgets/circular_image.dart';
 
 class ProfileImageView extends StatelessWidget {
   const ProfileImageView({Key? key, required this.avatar}) : super(key: key);

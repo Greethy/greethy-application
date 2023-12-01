@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../data/videos_firebase.dart';
+import '../../../../data/videos_firebase.dart';
 
 class FeedViewModel extends BaseViewModel {
   VideoPlayerController? controller;

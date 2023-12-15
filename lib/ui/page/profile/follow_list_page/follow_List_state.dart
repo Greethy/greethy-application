@@ -2,7 +2,7 @@
 
 import '../../../../helper/shared_prefrence_helper.dart';
 import '../../../../helper/utility.dart';
-import '../../../../model/user.dart';
+import '../../../../model/user_model/user.dart';
 import '../../../../state/appState.dart';
 import '../../common/locator.dart';
 

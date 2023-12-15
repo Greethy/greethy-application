@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/main.dart';
 import 'package:greethy_application/data/tabIcon_data.dart';
 
-import '../../../theme/app_theme.dart';
+import '../../../theme/theme.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView({

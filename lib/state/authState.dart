@@ -4,13 +4,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/shared_prefrence_helper.dart';
 import 'package:greethy_application/helper/utility.dart';
-import 'package:greethy_application/model/user.dart';
+import 'package:greethy_application/model/user_model/user.dart';
 import 'package:greethy_application/ui/page/common/locator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:path/path.dart' as path;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/auth/api_auth_service.dart';
@@ -156,7 +155,6 @@ class AuthState extends AppState {
       cprint(error, errorIn: 'handleGoogleSignIn');
       return null;
     } on Exception catch (error) {
-
       googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
       cprint(error, errorIn: 'handleGoogleSignIn');
@@ -478,5 +476,16 @@ class AuthState extends AppState {
     authStatus = AuthStatus.FIRST_TIME;
     isBusy = false;
     print('startIntroduction');
+  }
+
+  String getFinanceManagement(){
+    isBusy = true;
+    if (_userModel?.financialManagementId == null){
+      //
+      // todo: gửi api tạo mới financialManagement và trả về lại user_model mới
+      //
+    }
+
+    return "1";
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/page/character/character_screen.dart';
-import 'package:greethy_application/ui/theme/app_theme.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 
 import '../custom_drawer/drawer_user_controller.dart';
 import '../custom_drawer/home_drawer.dart';

@@ -9,7 +9,7 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str).m
 String userModelToJson(List<UserModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class UserModel extends Equatable {
-  final int? id;
+  final String? id;
   final String? email;
   final String? password;
   late final String? nickName;
@@ -19,11 +19,11 @@ class UserModel extends Equatable {
   final PersonalInfo? personalInfo;
   final PremiumUser? premiumUser;
   final bool? isVerified;
-  final int? financialManagementId;
-  final int? nutritionalManagementId;
-  final int? fitnessManagementId;
-  final int? networkingId;
-  final int? playsUserManagementId;
+  final String? financialManagementId;
+  final String? nutritionalManagementId;
+  final String? fitnessManagementId;
+  final String? networkingId;
+  final String? playsUserManagementId;
   final String? createdDate;
 
   UserModel({
@@ -88,7 +88,7 @@ class UserModel extends Equatable {
   }
 
   UserModel copyWith({
-    int? id,
+    String? id,
     String? email,
     String? password,
     String? nickName,
@@ -98,11 +98,11 @@ class UserModel extends Equatable {
     PersonalInfo? personalInfo,
     PremiumUser? premiumUser,
     bool? isVerified,
-    int? financialManagementId,
-    int? nutritionalManagementId,
-    int? fitnessManagementId,
-    int? networkingId,
-    int? playsUserManagementId,
+    String? financialManagementId,
+    String? nutritionalManagementId,
+    String? fitnessManagementId,
+    String? networkingId,
+    String? playsUserManagementId,
     String? createdDate,
   }) {
     return UserModel(
@@ -178,6 +178,11 @@ class PersonalInfo {
       dob: Dob.fromJson(json['dob']),
       gender: json['gender'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'PersonalInfo{name: $name, location: $location, webSite: $webSite, dob: $dob, gender: $gender}';
   }
 }
 

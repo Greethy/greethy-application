@@ -1,4 +1,4 @@
-import 'package:greethy_application/ui/page/hotel_booking/hotel_app_theme.dart';
+import 'package:greethy_application/ui/page/hotel_booking/hotel_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

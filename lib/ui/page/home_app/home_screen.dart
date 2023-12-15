@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/data/tabIcon_data.dart';
 import 'package:greethy_application/ui/page/character/navigation/navigation_app.dart';
-import 'package:greethy_application/ui/page/training/training_screen.dart';
 import 'package:greethy_application/ui/page/my_diary/my_diary_screen.dart';
-import '../../theme/app_theme.dart';
+import 'package:greethy_application/ui/page/training/training_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../../../state/authState.dart';
+import '../../theme/theme.dart';
+import '../finance/finance_management_page.dart';
 import '../plays/plays_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -24,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    // tabIconsList.forEach((TabIconData tab) {
-    //   tab.isSelected = false;
-    // });
-    // tabIconsList[3].isSelected = true;
+    tabIconsList.forEach((TabIconData tab) {
+      tab.isSelected = false;
+    });
+    tabIconsList[3].isSelected = true;
 
     animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
     tabBody = NavigationApp();
@@ -71,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Widget bottomBar() {
+    var state = Provider.of<AuthState>(context, listen: false);
     return Column(
       children: <Widget>[
         const Expanded(
@@ -79,8 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         BottomBarView(
           tabIconsList: tabIconsList,
           addClick: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => FeedScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedScreen()));
           },
           changeIndex: (int index) {
             if (index == 0) {
@@ -88,13 +91,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 if (!mounted) {
                   return;
                 }
-                setState(() {
-                  tabBody = Container(
-                    child: Center(
-                      child: Text("trang quản lý tài chính"),
-                    ),
-                  );
-                });
+                String getFinanceManagement = state.getFinanceManagement();
+                Navigator.push(context, FinanceManagementPage.getRoute(financeManagementId: getFinanceManagement));
               });
             } else if (index == 2) {
               animationController?.reverse().then<dynamic>((data) {

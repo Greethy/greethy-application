@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/helper/enum.dart';
 import 'package:greethy_application/helper/utility.dart';
-import 'package:greethy_application/model/user.dart';
+import 'package:greethy_application/model/user_model/user.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/ui/page/auth/widget/facebookLoginButton.dart';
 import 'package:greethy_application/ui/page/auth/widget/googleLoginButton.dart';

@@ -36,11 +36,12 @@ class CustomFlatButton extends StatelessWidget {
             style: ButtonStyle(
               padding: MaterialStateProperty.all(padding),
               backgroundColor: MaterialStateProperty.all(
-                // loading ? Theme.of(context).disabledColor : color ?? Theme.of(context).primaryColor,
                 loading ? Theme.of(context).disabledColor : color ?? GreethyColor.kawa_green,
               ),
               shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
               ),
               overlayColor: MaterialStateProperty.all(color ?? Theme.of(context).primaryColorDark),
               foregroundColor: MaterialStateProperty.all(
@@ -50,14 +51,14 @@ class CustomFlatButton extends StatelessWidget {
             onPressed: loading ? null : onPressed,
             child: loading
                 ? SizedBox(
-                    height: 22,
-                    width: 22,
-                    child: FittedBox(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(color ?? Theme.of(context).colorScheme.onPrimary),
-                      ),
-                    ),
-                  )
+              height: 22,
+              width: 22,
+              child: FittedBox(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(color ?? Theme.of(context).colorScheme.onPrimary),
+                ),
+              ),
+            )
                 : child!,
           );
         },

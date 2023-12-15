@@ -1,13 +1,12 @@
-import 'package:greethy_application/ui/page/my_diary/body_measurement.dart';
+import 'package:greethy_application/ui/page/my_diary/body_specs_view.dart';
 import 'package:greethy_application/ui/page/my_diary/glass_view.dart';
-import 'package:greethy_application/ui/page/my_diary/mediterranean_diet_view.dart';
+import 'package:greethy_application/ui/page/my_diary/nutritional_specs_view.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:greethy_application/widgets/title_view.dart';
 
-import 'package:greethy_application/ui/page/my_diary/meals_list_view.dart';
+import 'package:greethy_application/ui/page/my_diary/meals_list_today_view.dart';
 import 'package:greethy_application/ui/page/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../theme/app_theme.dart';
 
 class MyDiaryScreen extends StatefulWidget {
   const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
@@ -59,7 +58,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
 
   void addAllListData() {
     const int count = 9;
-
     listViews.add(
       TitleView(
         titleTxt: 'Mediterranean diet',
@@ -72,7 +70,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
       ),
     );
     listViews.add(
-      MediterranesnDietView(
+      NutritionalSpecsView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           parent: widget.animationController!,
           curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
@@ -93,7 +91,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
     );
 
     listViews.add(
-      MealsListView(
+      MealsListTodayView(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           parent: widget.animationController!,
           curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
@@ -115,7 +113,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
     );
 
     listViews.add(
-      BodyMeasurementView(
+      BodySpecsView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           parent: widget.animationController!,
           curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),

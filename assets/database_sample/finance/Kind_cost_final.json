@@ -1,0 +1,26 @@
+{
+  "id": "123456",
+  "spendingPlanMonthly_id": "1",
+  "kind_name": "House",
+  "cost": [
+    {
+      "cost_name": "Internet",
+      "projected_cost": 150000,
+      "actual_cost": 200000,
+      "difference": 50000,
+      "shopping_id": ["1","2"]
+    },
+    {
+      "cost_name": "Phone",
+      "projected_cost": 100000,
+      "actual_cost": 200000,
+      "difference": 50000,
+      "shopping_id": ["3"]
+    }
+  ],
+  "subtotal": {
+    "projected_kind_cost": 250000,
+    "actual_kind_cost": 400000,
+    "difference": 150000
+  }
+}

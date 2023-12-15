@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 
-import '../../theme/app_theme.dart';
-
-class BodyMeasurementView extends StatelessWidget {
+class BodySpecsView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const BodyMeasurementView({
+  const BodySpecsView({
     Key? key,
     this.animationController,
     this.animation,

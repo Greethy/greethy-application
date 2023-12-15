@@ -3,7 +3,7 @@ import 'package:greethy_application/ui/page/design_course/course_info_screen.dar
 import 'package:greethy_application/ui/page/design_course/popular_course_list_view.dart';
 import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
-import 'design_course_app_theme.dart';
+import 'design_course_theme.dart';
 
 class DesignCourseHomeScreen extends StatefulWidget {
   @override

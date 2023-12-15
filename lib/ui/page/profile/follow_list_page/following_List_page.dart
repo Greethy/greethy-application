@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../model/user.dart';
+import '../../../../model/user_model/user.dart';
 import '../../../../widgets/newWidget/customLoader.dart';
 import '../../common/usersListPage.dart';
 import 'follow_List_state.dart';

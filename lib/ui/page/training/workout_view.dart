@@ -1,7 +1,7 @@
 import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/app_theme.dart';
+import '../../theme/theme.dart';
 
 class WorkoutView extends StatelessWidget {
   final AnimationController? animationController;

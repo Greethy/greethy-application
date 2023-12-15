@@ -2,8 +2,7 @@
 import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/page/my_diary/wave_view.dart';
-
-import '../../theme/app_theme.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 
 class WaterView extends StatefulWidget {
   const WaterView({
@@ -64,6 +63,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                       Expanded(
                         child: Column(
                           children: <Widget>[
+                            /// amount of water drunk
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,6 +117,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                 ),
                               ],
                             ),
+                            /// dividing line
                             Padding(
                               padding: const EdgeInsets.only(left: 4, right: 4, top: 8, bottom: 16),
                               child: Container(
@@ -127,6 +128,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
+                            /// history drink
                             Padding(
                               padding: const EdgeInsets.only(top: 16),
                               child: Column(
@@ -194,6 +196,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
+                      /// button + -
                       SizedBox(
                         width: 34,
                         child: Column(
@@ -248,6 +251,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
+                      /// widget water level
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 8, top: 16),
                         child: Container(

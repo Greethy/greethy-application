@@ -4,12 +4,16 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:greethy_application/ui/theme/app_theme.dart';
 import 'package:greethy_application/state/appState.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/ui/page/common/locator.dart';
+import 'package:greethy_application/ui/page/common/log_debug.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
+import 'data/add_date.dart';
 import 'helper/routes.dart';
 
 void main() async {
@@ -18,9 +22,14 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  print("start register dependencies here after start");
+  Greethy_LogDebug("main", "start register dependencies here after start");
   setupDependencies();
-  print("start plash screen");
+  Greethy_LogDebug("main", "start plash screen");
+  await initializeDateFormatting('vi_VN');
+  await Hive.initFlutter();
+  Hive.registerAdapter(AdddataAdapter());
+  await Hive.openBox<Add_data>('data');
+
   runApp(MyApp());
 }
 
@@ -41,11 +50,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AppState>(create: (_) => AppState()),
         ChangeNotifierProvider<AuthState>(create: (_) => AuthState()),
-        // ChangeNotifierProvider<FeedState>(create: (_) => FeedState()),
-        // ChangeNotifierProvider<ChatState>(create: (_) => ChatState()),
-        // ChangeNotifierProvider<SearchState>(create: (_) => SearchState()),
-        // ChangeNotifierProvider<NotificationState>(create: (_) => NotificationState()),
-        // ChangeNotifierProvider<SuggestionsState>(create: (_) => SuggestionsState()),
       ],
       child: MaterialApp(
         title: 'Welcome Greethy',

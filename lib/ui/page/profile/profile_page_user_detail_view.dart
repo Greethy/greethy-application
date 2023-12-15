@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helper/utility.dart';
-import '../../../model/networking.dart';
-import '../../../model/user.dart';
+import '../../../model/user_model/networking.dart';
+import '../../../model/user_model/user.dart';
 import '../../../state/profileState.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/rippleButton.dart';

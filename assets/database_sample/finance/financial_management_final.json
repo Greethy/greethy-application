@@ -1,0 +1,37 @@
+{
+  "id": "1",
+  "userId": "1",
+  "currency": "VietNam Dong",
+  "manage_personal_finance": {
+    "incomes": {
+      "active_incomeMonthly_id": "3",
+      "groupIncome_id": "3"
+    },
+    "spendingPlans":{
+      "active_spendingPlanMonthly_id": "3",
+      "groupSpendingPlan_id": "3"
+    },
+    "shopping": {
+      "active_shoppingMonthly_id": "3",
+      "groupShopping_id": "3"
+    }
+  },
+  "manage_collective_finance":{
+    "active": [
+      {
+        "collective_id": "1",
+        "collective_name": "gia đình củ cải"
+      },
+      {
+        "collective_id": "2",
+        "collective_name": "love is the one"
+      }
+    ],
+    "closed":[
+      {
+        "collective_id": "3",
+        "collective_name": "nhà trọ sô 24"
+      }
+    ]
+  }
+}

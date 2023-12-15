@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "Kimchi",
+  "money": 40.000,
+  "time": "19:00 20/8/2020",
+  "type": "siêu thị",
+  "kind": "Food",
+  "payment_type": "Tiền mặt",
+  "note": "Mua hộ",
+  "image":{
+    "image_bill": "http://www.facebook.com/X999/posts/Y999",
+    "image_items": "http://www.facebook.com/X999/posts/Y999"
+  },
+  "user":{
+    "nickname": "chunhthanhde",
+    "user_id": 1
+  }
+}

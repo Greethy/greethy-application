@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/ui/theme/app_theme.dart';
+import 'package:greethy_application/ui/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../state/authState.dart';

@@ -1,0 +1,18 @@
+{
+  "id": "1",
+  "collectiveName": "gia đình củ cải",
+  "owner_id": "1",
+  "participants": ["1", "3", "4"],
+  "income":{
+    "active_incomeMonthly_id": "2",
+    "groupIncome_id": "2"
+  },
+  "spendingPlans":{
+    "active_spendingPlanMonthly_id": "1",
+    "groupSpendingPlan_id": "1"
+  },
+  "shopping": {
+    "active_shoppingMonthly_id": "1",
+    "groupShopping_id": "1"
+  }
+}

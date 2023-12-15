@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'filters_screen.dart';
-import 'hotel_app_theme.dart';
+import 'hotel_theme.dart';
 
 class HotelHomeScreen extends StatefulWidget {
   @override

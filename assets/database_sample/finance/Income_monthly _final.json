@@ -1,0 +1,47 @@
+{
+  "id": "123456",
+  "groupIncome":{
+    "id": "1",
+    "type": "collective"
+  },
+  "date": "8/2020",
+  "spending_plan_monthly_id": "1",
+  "income": [
+    {
+      "income_name": "dev_job",
+      "user": { 
+        "nickname": "chunhthanhde",
+        "user_id": "1"
+      },
+      "projected_monthly_income": 1500,
+      "Actual_monthly_income": 1000,
+      "Difference": -500
+    },
+    {
+      "income_name": "tutor_job",
+      "user": {
+        "nickname": "chunhthanhde",
+        "user_id": "1"
+      },
+      "projected_monthly_income": 1500,
+      "actual_monthly_income": 1000,
+      "difference": -500
+    },
+    {
+      "income_name": "donate",
+      "projected_monthly_income": 0,
+      "actual_monthly_income": 1000,
+      "user": {
+        "nickname": "chunhthanhde",
+        "user_id": "1"
+      },
+      "difference": 1000,
+      "note": "Bố mẹ gửi cho"
+    }
+  ],
+  "total": {
+    "total_projected_monthly_income": 3000,
+    "total_actual_monthly_income": 3000,
+    "difference": 0
+  }
+}

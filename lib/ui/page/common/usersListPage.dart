@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/user.dart';
+import '../../../model/user_model/user.dart';
 import '../../../widgets/customAppBar.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/emptyList.dart';

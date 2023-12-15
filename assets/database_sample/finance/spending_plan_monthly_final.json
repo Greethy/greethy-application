@@ -1,0 +1,43 @@
+{
+  "id": "123456",
+  "groupSpendingPlan":{
+    "id": "1",
+    "type": "collective"
+  },
+  "time": "8/2020",
+  "shopping_monthly_id": "1",
+  "income_monthly_id": "1231254",
+  "kind_cost_of_plan":[
+    {
+      "kind_id": "1",
+      "kind_name": "Housing",
+      "type_of_kind":["internet", "phone", "tiền điện", "tiền nhà"],
+      "too_much": true,
+      "total_actual_cost": 2000
+    },
+    {
+      "kind_id": "2",
+      "kind_name": "Food",
+      "type_of_kind":["siêu thị", "chợ", "ăn vặt", "ăn quà vặt"],
+      "too_much": false,
+      "total_actual_cost": 2000
+    },
+    {
+      "kind_id": "3",
+      "kind_name": "Entertainment",
+      "type_of_kind":["đi net", "cafe"],
+      "too_much": true,
+      "total_actual_cost": 2000
+    }
+  ],
+  "total_cost": {
+    "total_projected_cost": 3000,
+    "total_actual_cost": 5000,
+    "difference": 2000
+  },
+  "total_balance": {
+    "projected_balance": 3000,
+    "actual_balance": 3000
+  },
+  "old_money":"100000"
+}

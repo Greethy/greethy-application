@@ -4,37 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/ui/page/auth/selectAuthMethod.dart';
 import 'package:greethy_application/ui/page/auth/verifyEmail.dart';
 import 'package:greethy_application/ui/page/common/splash.dart';
-
-// import 'package:greethy_application/ui/page/feed/composeTweet/composeTweet.dart';
-// import 'package:greethy_application/ui/page/feed/composeTweet/state/composeTweetState.dart';
-// import 'package:greethy_application/ui/page/homePage.dart';
-// import 'package:greethy_application/ui/page/message/conversationInformation/conversationInformation.dart';
-// import 'package:greethy_application/ui/page/message/newMessagePage.dart';
-// import 'package:greethy_application/ui/page/profile/follow/followerListPage.dart';
-// import 'package:greethy_application/ui/page/search/SearchPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/about/aboutTwitter.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/accessibility/accessibility.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/accountSettingsPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/contentPrefrences/contentPreference.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/contentPrefrences/trends/trendsPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/dataUsage/dataUsagePage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/displaySettings/displayAndSoundPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/notifications/notificationPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/privacyAndSafety/directMessage/directMessage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/privacyAndSafety/privacyAndSafetyPage.dart';
-// import 'package:greethy_application/ui/page/settings/accountSettings/proxy/proxyPage.dart';
-// import 'package:greethy_application/ui/page/settings/settingsAndPrivacyPage.dart';
-import 'package:provider/provider.dart';
+import 'package:greethy_application/ui/page/finance/finance_management_page.dart';
 
 import '../helper/customRoute.dart';
 import '../ui/page/auth/forgetPasswordPage.dart';
 import '../ui/page/auth/signin.dart';
 import '../ui/page/auth/signup.dart';
-
-// import '../ui/page/feed/feedPostDetail.dart';
-// import '../ui/page/feed/imageViewPage.dart';
-// import '../ui/page/message/chatScreenPage.dart';
-// import '../ui/page/profile/profilePage.dart';
 import '../ui/page/profile/profile_page.dart';
 import '../widgets/customWidgets.dart';
 
@@ -56,7 +31,8 @@ class Routes {
     if (pathElements[0] != '' || pathElements.length == 1) {
       return null;
     }
-    print("on routes");
+    String a = pathElements[1];
+    print("on routes $settings pathElements[1]: $a");
     switch (pathElements[1]) {
       // case "ComposeTweetPage":
       //   bool isRetweet = false;
@@ -87,7 +63,19 @@ class Routes {
           profileId = pathElements[2];
           return CustomRoute<bool>(
               builder: (BuildContext context) => ProfilePage(
-                profileId: profileId,
+                    profileId: profileId,
+                  ));
+        }
+        return CustomRoute(builder: (BuildContext context) => const SplashPage());
+
+      case "FinanceManagementPage":
+        print("pathElements $pathElements");
+        String financeManagementId;
+        if (pathElements.length > 2) {
+          financeManagementId = pathElements[2];
+          return CustomRoute<bool>(
+              builder: (BuildContext context) => FinanceManagementPage(
+                 financeManagementId: financeManagementId,
               ));
         }
         return CustomRoute(builder: (BuildContext context) => const SplashPage());

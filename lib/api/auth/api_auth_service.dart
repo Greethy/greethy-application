@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-import '../../model/user.dart';
+import '../../model/user_model/user.dart';
 import '../api_constants.dart';
 
 class ApiService {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:greethy_application/model/user.dart';
+import 'package:greethy_application/model/user_model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:greethy_application/data/link_media_info.dart';

@@ -8,8 +8,11 @@ import 'package:greethy_application/ui/theme/app_theme.dart';
 import 'package:greethy_application/state/appState.dart';
 import 'package:greethy_application/state/authState.dart';
 import 'package:greethy_application/ui/page/common/locator.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
+import 'data/add_date.dart';
 import 'helper/routes.dart';
 
 void main() async {
@@ -21,6 +24,11 @@ void main() async {
   print("start register dependencies here after start");
   setupDependencies();
   print("start plash screen");
+  await initializeDateFormatting('vi_VN');
+  await Hive.initFlutter();
+  Hive.registerAdapter(AdddataAdapter());
+  await Hive.openBox<Add_data>('data');
+
   runApp(MyApp());
 }
 

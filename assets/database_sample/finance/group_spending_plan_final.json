@@ -1,0 +1,16 @@
+{
+  "id": "123456",
+  "type": "personal",
+  "spending_plan_monthly": [
+    {
+      "date": "8/2020",
+      "spending_plan_monthly_id": "2",
+      "total_actual_monthly_spending_plan": 1000
+    },
+    {
+      "date": "7/2020",
+      "spending_plan_monthly_id": "3",
+      "total_actual_monthly_spending_plan": 1000
+    }
+  ]
+}

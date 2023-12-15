@@ -1,0 +1,86 @@
+{
+  "id": "1",
+  "time": "8-2020",
+  "groupShopping": {
+    "id": "1",
+    "type": "collective"
+  },
+  "spending_plan_monthly": {
+    "spending_plan_monthly_id": "1",
+    "kind_cost_of_plan": [
+      {
+        "kind_id": "1",
+        "kind_name": "Housing",
+        "type_of_kind": ["internet", "phone", "tiền điện", "tiền nhà"]
+      },
+      {
+        "kind_id": "2",
+        "kind_name": "Food",
+        "type_of_kind": ["siêu thị", "chợ", "ăn vặt", "ăn quà vặt"]
+      },
+      {
+        "kind_id": "3",
+        "kind_name": "Entertainment",
+        "type_of_kind": ["đi net", "cafe"]
+      }
+    ]
+  },
+  "shopping": [
+    {
+      "time": "2023-12-11",
+      "shoppingList": [
+        {
+          "shoppingId": "1",
+          "name": "kimchi",
+          "kind_name": "Housing"
+        },
+        {
+          "shoppingId": "2",
+          "name": "dưa",
+          "kind_name": "Housing"
+        },
+        {
+          "shoppingId": "3",
+          "name": "cá",
+          "kind_name": "Housing"
+        }
+      ],
+      "total_shopping_day": 100
+    },
+    {
+      "time": "2023-12-10",
+      "shoppingList": [
+        {
+          "shoppingId": "1",
+          "name": "kimchi",
+          "kind_name": "Housing"
+        },
+        {
+          "shoppingId": "2",
+          "name": "dưa",
+          "kind_name": "Housing"
+        },
+        {
+          "shoppingId": "3",
+          "name": "cá",
+          "kind_name": "Housing"
+        }
+      ],
+      "total_shopping_day": 100
+    }
+  ],
+  "total_shopping_month": 10000,
+  "payment": {
+    "payment_type_list": ["Zalo pay", "Tiền mặt", "Viettinbank"],
+    "payment_detail": [
+      {
+        "payment_type": "Zalo pay",
+        "money": 500
+      },
+      {
+        "payment_type": "Tiền mặt",
+        "money": 500
+      }
+    ]
+  }
+}

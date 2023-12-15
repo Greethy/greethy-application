@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
 import '../helper/utility.dart';
-import '../model/networking.dart';
-import '../model/user.dart';
+import '../model/user_model/networking.dart';
+import '../model/user_model/user.dart';
 
 class ProfileState extends ChangeNotifier {
   ProfileState(this.profileId) {
@@ -98,38 +98,34 @@ class ProfileState extends ChangeNotifier {
     //   cprint(error, errorIn: 'getProfileUser');
     //   }
     loading = true;
-    _profileUserModel = UserModel.fromJson(
-        {
-          "id": 1,
-          "email" : "chung@gmail.com",
-          "password" : "123456",
-          "nickName": "ChunhThanhDe",
-          "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKqhrG9LEclwdnAPAUWi_To05F6N9Xq_h2OZ8VwmuyoiQ",
-          "bio": "chunglaca Dear anh chị em Trung tâm Công nghệ Điện tử, Công đoàn HEC đã gửi số lượng CĐV của HEC tham gia cuộc thi Chung tay vì an toàn giao thông năm 2023 đến Công đoàn cấp trên",
-          "personal_info" : {
-            "name": "Nguyễn Thành Chung",
-            "location": "Ha Noi",
-            "webSite":"facebook.com.vn",
-            "dob":{
-              "date": "20/3",
-              "year": "2020"
-            },
-            "gender": 1
-          },
-          "premiumUser":{ // thông tin về tham gia gói premium
-            "isPremium": true,
-            "startTime": "10:22 12/10/2023",
-            "endTime": "10:22 12/11/2023"
-          },
-          "isVerified": true, // đã xác thực email chưa
-          "financial_management_id": 1,
-          "nutritional_management_id": 1,
-          "fitness_management_id": 1,
-          "networking_id": 1 ,
-          "plays_user_management_id": 1, // thông tin về mạng xã hội plays của người dùng
-          "created_date" : "20230212",
-        }
-    );
+    _profileUserModel = UserModel.fromJson({
+      "id": "1",
+      "email": "chung@gmail.com",
+      "password": "123456",
+      "nickName": "ChunhThanhDe",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKqhrG9LEclwdnAPAUWi_To05F6N9Xq_h2OZ8VwmuyoiQ",
+      "bio": "chunglaca Dear anh chị em Trung tâm Công nghệ Điện tử, Công đoàn HEC đã gửi số lượng CĐV của HEC tham gia cuộc thi Chung tay vì an toàn giao thông năm 2023 đến Công đoàn cấp trên",
+      "personal_info": {
+        "name": "Nguyễn Thành Chung",
+        "location": "Ha Noi",
+        "webSite": "facebook.com.vn",
+        "dob": {"date": "20/3", "year": "2020"},
+        "gender": 1
+      },
+      "premiumUser": {
+        // thông tin về tham gia gói premium
+        "isPremium": true,
+        "startTime": "10:22 12/10/2023",
+        "endTime": "10:22 12/11/2023"
+      },
+      "isVerified": true, // đã xác thực email chưa
+      "financial_management_id": "1",
+      "nutritional_management_id": "1",
+      "fitness_management_id": "1",
+      "networking_id": "1",
+      "plays_user_management_id": "1", // thông tin về mạng xã hội plays của người dùng
+      "created_date": "20230212",
+    });
 
     _profileNetworkingModel = NetworkingModel.fromJson({
       "id": 1,

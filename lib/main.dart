@@ -4,17 +4,17 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:greethy_application/state/appState.dart';
-import 'package:greethy_application/state/authState.dart';
-import 'package:greethy_application/ui/page/common/locator.dart';
-import 'package:greethy_application/ui/page/common/log_debug.dart';
-import 'package:greethy_application/ui/theme/theme.dart';
+import 'package:greethy_application/presentation/state/appState.dart';
+import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/ui/page/common/locator.dart';
+import 'package:greethy_application/presentation/ui/page/common/log_debug.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-import 'data/add_date.dart';
-import 'helper/routes.dart';
+import 'zdataDev/add_date.dart';
+import 'presentation/ui/page/common/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ void main() async {
   await initializeDateFormatting('vi_VN');
   await Hive.initFlutter();
   Hive.registerAdapter(AdddataAdapter());
-  await Hive.openBox<Add_data>('data');
+  await Hive.openBox<Add_data>('dataDev');
 
   runApp(MyApp());
 }

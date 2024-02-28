@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../ui/theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 class ProfileCard extends StatelessWidget {
   @override
@@ -137,8 +136,8 @@ class ProfileCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF4069E2),
-                      onPrimary: Color(0xFFE6EBEE),
+                      foregroundColor: Color(0xFFE6EBEE),
+                      backgroundColor: Color(0xFF4069E2),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
@@ -150,8 +149,8 @@ class ProfileCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFE6EBEE),
-                      onPrimary: Color(0xFF393B45),
+                      foregroundColor: Color(0xFF393B45),
+                      backgroundColor: Color(0xFFE6EBEE),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),

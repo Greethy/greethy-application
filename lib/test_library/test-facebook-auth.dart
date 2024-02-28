@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                     height: 200,
                     width: 200,
                     fit: BoxFit.cover,
-                    imageUrl: _userObj["picture"]["data"]["url"],
+                    imageUrl: _userObj["picture"]["dataDev"]["url"],
                     errorWidget: (context, url, error) => Icon(Icons.error_outline),
                   ),
                   // Image.network(_userObj["picture"]["data"]["url"]),

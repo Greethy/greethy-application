@@ -9,7 +9,7 @@ import '../../../state/profileState.dart';
 import '../../../widgets/cache_image.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/rippleButton.dart';
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'local_widgets/circular_image.dart';
 import 'local_widgets/title_with_all_btn.dart';
 

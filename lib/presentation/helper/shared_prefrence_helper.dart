@@ -1,9 +1,11 @@
 import 'dart:convert';
 
-import 'package:greethy_application/presentation/model/user_model/user.dart';
+import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:greethy_application/zdataDev/link_media_info.dart';
+
+import '../../domain/entities/user_entities/user.dart';
 
 class SharedPreferenceHelper {
   SharedPreferenceHelper._internal();
@@ -18,14 +20,14 @@ class SharedPreferenceHelper {
     return (await SharedPreferences.getInstance()).getString(UserPreferenceKey.UserName.toString());
   }
 
-  Future<bool> saveUserProfile(UserModel user) async {
-    return (await SharedPreferences.getInstance()).setString(UserPreferenceKey.UserProfile.toString(), json.encode(user.toJson()));
+  Future<bool> saveUserProfile(User user) async {
+    return (await SharedPreferences.getInstance()).setString(UserPreferenceKey.UserProfile.toString(), json.encode(user.toString()));
   }
 
-  Future<UserModel?> getUserProfile() async {
+  Future<User?> getUserProfile() async {
     final String? jsonString = (await SharedPreferences.getInstance()).getString(UserPreferenceKey.UserProfile.toString());
     if (jsonString == null) return null;
-    return UserModel.fromJson(json.decode(jsonString));
+    return UserDto.fromMap(json.decode(jsonString));
   }
 
   Future<bool> saveLinkMediaInfo(String key, LinkMediaInfo model) async {

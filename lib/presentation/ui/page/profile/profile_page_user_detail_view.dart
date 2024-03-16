@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../domain/entities/user_entities/networking.dart';
+import '../../../../domain/entities/user_entities/user.dart';
 import '../../../helper/utility.dart';
-import '../../../model/user_model/networking.dart';
-import '../../../model/user_model/user.dart';
 import '../../../state/profileState.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/rippleButton.dart';
 import '../../../widgets/url_text/customUrlText.dart';
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'edit_profile_page/edit_profile_page.dart';
 
 class UserNameRowWidget extends StatelessWidget {
@@ -19,8 +19,8 @@ class UserNameRowWidget extends StatelessWidget {
   }) : super();
 
   final bool isMyProfile;
-  final UserModel user;
-  final NetworkingModel networking;
+  final User user;
+  final Networking networking;
 
   String getBio(String bio) {
     if (isMyProfile) {

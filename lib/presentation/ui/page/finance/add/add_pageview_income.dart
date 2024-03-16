@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../widgets/customFlatButton.dart';
-import '../../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 class AddIncomeScreen extends StatefulWidget {
   const AddIncomeScreen({super.key});

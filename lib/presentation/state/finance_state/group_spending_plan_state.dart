@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../../model/finance_model/group_spending_plan.dart';
+import '../../../zdataDev/model/finance_model/group_spending_plan.dart';
 import '../appState.dart';
 
 class GroupSpendingPlanState extends AppState {

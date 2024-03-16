@@ -6,7 +6,7 @@ import 'package:greethy_application/presentation/ui/page/training/training_scree
 import 'package:provider/provider.dart';
 
 import '../../../state/authState.dart';
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import '../finance/finance_management_page.dart';
 import '../plays/plays_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';

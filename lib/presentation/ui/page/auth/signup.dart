@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
-import 'package:greethy_application/presentation/model/user_model/user.dart';
 import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/auth/widget/facebookLoginButton.dart';
 import 'package:greethy_application/presentation/ui/page/auth/widget/googleLoginButton.dart';
-import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/widgets/customFlatButton.dart';
 import 'package:greethy_application/presentation/widgets/customWidgets.dart';
 import 'package:greethy_application/presentation/widgets/newWidget/customLoader.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../domain/entities/user_entities/user.dart';
 
 class Signup extends StatefulWidget {
   final VoidCallback? googleLoginCallback;
@@ -152,14 +153,14 @@ class _SignupState extends State<Signup> {
     loader.showLoader(context);
     var state = Provider.of<AuthState>(context, listen: false);
 
-    UserModel user = UserModel(
+    User user = User(
       email: _emailController.text,
       isVerified: false,
     );
 
     state.signUp(user, password: _passwordController.text, context: context).then((status) {
       print(status);
-      if (status != null && !status){
+      if (status != null && !status) {
         Navigator.pushNamed(context, '/VerifyEmailPage');
       }
     }).whenComplete(() {

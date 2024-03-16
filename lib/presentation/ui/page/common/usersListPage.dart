@@ -4,7 +4,7 @@ import '../../../model/user_model/user.dart';
 import '../../../widgets/customAppBar.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/emptyList.dart';
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 class UsersListPage extends StatelessWidget {
   const UsersListPage({

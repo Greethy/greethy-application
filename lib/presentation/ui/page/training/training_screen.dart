@@ -4,7 +4,7 @@ import 'package:greethy_application/presentation/widgets/title_view.dart';
 import 'package:greethy_application/presentation/ui/page/training/workout_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 
 class TrainingScreen extends StatefulWidget {

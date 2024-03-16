@@ -3,7 +3,7 @@ import 'package:greethy_application/presentation/ui/page/finance/test.dart';
 import 'package:greethy_application/zdataDev/add_date.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import '../../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import '../local_widget/GreetingWidget.dart';
 
 class IncomeManagementPage extends StatefulWidget {

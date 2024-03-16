@@ -1,8 +1,10 @@
+import 'package:greethy_application/data/dto/user_dto/networking_dto.dart';
+import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
+import 'package:greethy_application/domain/entities/user_entities/networking.dart';
+import 'package:greethy_application/presentation/helper/utility.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 
-import '../helper/utility.dart';
-import '../model/user_model/networking.dart';
-import '../model/user_model/user.dart';
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 
 class ProfileState extends AppState {
   ProfileState(this.profileId) {
@@ -17,24 +19,24 @@ class ProfileState extends AppState {
   /// This is the id of user who is logged into the app.
   /// Profile and Networking dataDev of logged in user.
   late String userId;
-  late UserModel _userModel;
-  late NetworkingModel _networkingModel;
+  late User _userModel;
+  late Networking _networkingModel;
 
-  UserModel get userModel => _userModel;
+  User get userModel => _userModel;
 
-  NetworkingModel get networkingModel => _networkingModel;
+  Networking get networkingModel => _networkingModel;
 
   /// user whose profile is open
   ///
   /// This is the id of user whose profile is open.
   /// Profile and Networking dataDev of user whose profile is open.
   final String profileId;
-  late UserModel _profileUserModel;
-  late NetworkingModel _profileNetworkingModel;
+  late User _profileUserModel;
+  late Networking _profileNetworkingModel;
 
-  UserModel get profileUserModel => _profileUserModel;
+  User get profileUserModel => _profileUserModel;
 
-  NetworkingModel get profileNetworking => _profileNetworkingModel;
+  Networking get profileNetworking => _profileNetworkingModel;
 
   databaseInit() {
     //
@@ -88,7 +90,7 @@ class ProfileState extends AppState {
     //   cprint(error, errorIn: 'getProfileUser');
     //   }
     isBusy = true;
-    _profileUserModel = UserModel.fromJson({
+    _profileUserModel = UserDto.fromMap({
       "id": "1",
       "email": "chung@gmail.com",
       "password": "123456",
@@ -117,7 +119,7 @@ class ProfileState extends AppState {
       "created_date": "20230212",
     });
 
-    _profileNetworkingModel = NetworkingModel.fromJson({
+    _profileNetworkingModel = NetworkingDto.fromMap({
       "id": 1,
       "userId": 1,
       "following": [1, 2, 3],

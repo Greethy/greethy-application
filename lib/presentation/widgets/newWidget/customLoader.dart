@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../ui/theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 class CustomLoader {
   static CustomLoader? _customLoader;

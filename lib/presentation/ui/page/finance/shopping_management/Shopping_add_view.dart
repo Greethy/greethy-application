@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../data/add_date.dart';
 import '../../../../widgets/cache_image.dart';
 import '../../../../widgets/customFlatButton.dart';
-import '../../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import '../../profile/local_widgets/circular_image.dart';
 
 class Add_Screen extends StatefulWidget {

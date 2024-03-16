@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/helper/shared_prefrence_helper.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
-import 'package:greethy_application/presentation/model/user_model/user.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 import 'package:greethy_application/presentation/ui/page/common/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,9 +22,9 @@ class AuthState extends AppState {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FacebookAuth _facebookAuth = FacebookAuth.instance;
 
-  UserModel? _userModel;
+  User? _userModel;
 
-  UserModel? get userModel => _userModel;
+  User? get userModel => _userModel;
 
   String _howToLogin = "";
 
@@ -127,9 +127,22 @@ class AuthState extends AppState {
     try {
       print("google login");
       googleUser = await _googleSignIn.signIn();
+
+
       if (googleUser == null) {
         throw Exception('Google login cancelled by user');
       }
+
+      googleUser?.authentication.then((googleKey){
+        print("googleKey.accessToken: ");
+        print(googleKey.accessToken);
+        print("googleKey.idToken: ");
+        print(googleKey.idToken);
+      }).catchError((err){
+        print('inner error');
+      });
+
+
       // final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       // googleAuth.accessToken;
 
@@ -141,6 +154,7 @@ class AuthState extends AppState {
       userId = googleUser!.id;
       await setSignIn(true);
       await setHowToLogin("google");
+      print("googleUser: " + googleUser.toString());
       createUserFromGoogleSignIn(googleUser!);
       notifyListeners();
       return googleUser;
@@ -168,7 +182,7 @@ class AuthState extends AppState {
       name: user.displayName,
     );
 
-    UserModel userModel = UserModel(
+    User userModel = User(
       email: user.email,
       personalInfo: personalModel,
       avatar: user.photoUrl,
@@ -223,7 +237,7 @@ class AuthState extends AppState {
       name: name,
     );
 
-    UserModel userModel = UserModel(
+    User userModel = User(
       email: email,
       personalInfo: personalModel,
       avatar: avatar,
@@ -238,7 +252,7 @@ class AuthState extends AppState {
   }
 
   /// Create new user's profile in db
-  Future<bool?> signUp(UserModel userModel, {required BuildContext context, required String password}) async {
+  Future<bool?> signUp(User userModel, {required BuildContext context, required String password}) async {
     try {
       isBusy = true;
       //
@@ -265,7 +279,7 @@ class AuthState extends AppState {
   /// `Create` and `Update` user
   /// IF `newUser` is true new user is created
   /// Else existing user will update with new values
-  void createUser(UserModel user, {bool newUser = false}) {
+  void createUser(User user, {bool newUser = false}) {
     if (newUser) {
       /// Create new user
       print(' create_newUser');
@@ -274,7 +288,7 @@ class AuthState extends AppState {
   }
 
   /// Fetch current user profile
-  Future<UserModel?> getCurrentUser() async {
+  Future<User?> getCurrentUser() async {
     try {
       isBusy = true;
       Utility.logEvent('get_currentUSer', parameter: {});
@@ -323,7 +337,7 @@ class AuthState extends AppState {
     //   // If user verified his email
     //   // Update user in firebase realtime kDatabase
     //   createUser(userModel!);
-    //   cprint('UserModel email verification complete');
+    //   cprint('User email verification complete');
     //   Utility.logEvent('email_verification_complete', parameter: {userModel!.userName!: user!.email});
     // }
   }
@@ -373,7 +387,7 @@ class AuthState extends AppState {
   }
 
   /// `Update user` profile
-  Future<void> updateUserProfile(UserModel? userModel, {File? image, File? bannerImage}) async {
+  Future<void> updateUserProfile(User? userModel, {File? image, File? bannerImage}) async {
     try {
       if (image == null && bannerImage == null) {
         createUser(userModel!);
@@ -420,15 +434,15 @@ class AuthState extends AppState {
   }
 
   /// `Fetch` user `detail` whose userId is passed
-  Future<UserModel?> getUserDetail(String userId) async {
-    UserModel user;
+  Future<User?> getUserDetail(String userId) async {
+    User user;
 
     // todo: add api get userDetail
     // var event = await kDatabase.child('profile').child(userId).once();
 
     // final map = event.snapshot.value as Map?;
     // if (map != null) {
-    //   user = UserModel.fromJson(map);
+    //   user = User.fromJson(map);
     //   user.key = event.snapshot.key!;
     //   return user;
     // } else {

@@ -12,7 +12,7 @@ import '../../../state/finance_state/finance_management_state.dart';
 import '../../../state/finance_state/shopping_monthly_state.dart';
 import '../../../state/finance_state/shopping_state.dart';
 import '../../../state/finance_state/spending_plan_monthly_state.dart';
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import '../common/error_indicator.dart';
 import 'add/add_page.dart';
 import 'income _management/income_page.dart';

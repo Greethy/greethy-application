@@ -55,6 +55,44 @@ class User extends Equatable {
         playsUserManagementId,
         createdDate,
       ];
+
+  User copyWith({
+    String? id,
+    String? email,
+    String? password,
+    String? nickName,
+    String? avatar,
+    String? bannerImage,
+    String? bio,
+    PersonalInfo? personalInfo,
+    PremiumUser? premiumUser,
+    bool? isVerified,
+    String? financialManagementId,
+    String? nutritionalManagementId,
+    String? fitnessManagementId,
+    String? networkingId,
+    String? playsUserManagementId,
+    String? createdDate,
+  }) {
+    return User(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      nickName: nickName ?? this.nickName,
+      avatar: avatar ?? this.avatar,
+      bannerImage: bannerImage ?? this.bannerImage,
+      bio: bio ?? this.bio,
+      personalInfo: personalInfo ?? this.personalInfo,
+      premiumUser: premiumUser ?? this.premiumUser,
+      isVerified: isVerified ?? this.isVerified,
+      financialManagementId: financialManagementId ?? this.financialManagementId,
+      nutritionalManagementId: nutritionalManagementId ?? this.nutritionalManagementId,
+      fitnessManagementId: fitnessManagementId ?? this.fitnessManagementId,
+      networkingId: networkingId ?? this.networkingId,
+      playsUserManagementId: playsUserManagementId ?? this.playsUserManagementId,
+      createdDate: createdDate ?? this.createdDate,
+    );
+  }
 }
 
 class PersonalInfo extends Equatable {

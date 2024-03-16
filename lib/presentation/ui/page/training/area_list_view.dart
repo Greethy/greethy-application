@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 
 
 class AreaListView extends StatefulWidget {

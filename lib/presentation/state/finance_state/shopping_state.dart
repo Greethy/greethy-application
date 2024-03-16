@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:greethy_application/presentation/model/finance_model/shopping.dart';
+import 'package:greethy_application/zdataDev/model/finance_model/shopping.dart';
+
 
 import '../appState.dart';
 

@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../../model/finance_model/collective_finance.dart';
-import '../../model/finance_model/group_income.dart';
-import '../../model/finance_model/group_shopping.dart';
-import '../../model/finance_model/group_spending_plan.dart';
+import '../../../zdataDev/model/finance_model/collective_finance.dart';
+import '../../../zdataDev/model/finance_model/group_income.dart';
+import '../../../zdataDev/model/finance_model/group_shopping.dart';
+import '../../../zdataDev/model/finance_model/group_spending_plan.dart';
 import '../appState.dart';
 
 class CollectiveState extends AppState {

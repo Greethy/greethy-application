@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../state/authState.dart';
 import '../ui/page/profile/local_widgets/circular_image.dart';
-import '../ui/theme/theme.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'customWidgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

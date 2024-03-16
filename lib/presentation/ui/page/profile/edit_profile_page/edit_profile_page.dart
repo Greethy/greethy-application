@@ -187,8 +187,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     var state = Provider.of<AuthState>(context, listen: false);
     var model = state.userModel!.copyWith(
       id: state.userModel!.id,
-      nickName: state.userModel!.nickName,
-      bio: state.userModel!.bio,
+      nickName: _name.text.isNotEmpty ? _name.text : state.userModel!.nickName,
+      bio: _bio.text.isNotEmpty ? _bio.text : state.userModel!.bio,
       personalInfo: state.userModel!.personalInfo,
       // dob: state.userModel!.dob,
       email: state.userModel!.email,
@@ -196,12 +196,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       avatar: state.userModel!.avatar,
       bannerImage: state.userModel!.bannerImage,
     );
-    if (_name.text.isNotEmpty) {
-      model.nickName = _name.text;
-    }
-    if (_bio.text.isNotEmpty) {
-      model.bio = _bio.text;
-    }
     // if (_location.text.isNotEmpty) {
     //   model.location = _location.text;
     // }

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../../model/finance_model/group_income.dart';
+import '../../../zdataDev/model/finance_model/group_income.dart';
 import '../appState.dart';
 
 class GroupIncomeState extends AppState {

@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:greethy_application/data/impl/auth_repository_impl.dart';
-import 'package:greethy_application/data/source/local/local_storage_user.dart';
-import 'package:greethy_application/data/source/network/auth_api.dart';
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
+import 'package:greethy_application/domain/usecase/auth_usercase/get_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
+import 'package:greethy_application/domain/usecase/auth_usercase/signup.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/helper/shared_prefrence_helper.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
@@ -18,11 +17,27 @@ import 'package:greethy_application/presentation/ui/page/common/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthState extends AppState {
+  AuthState({
+    required SignIn signIn,
+    required GetStatusLogin getStatusLogin,
+    required SignUp signUp,
+  })  : _signIn = signIn,
+        _getStatusLogin = getStatusLogin,
+        _signUp = signUp;
+
+  // ---------------------------------------------------------------------------
+  // Use cases
+  // ---------------------------------------------------------------------------
+  final SignIn _signIn;
+  final GetStatusLogin _getStatusLogin;
+  final SignUp _signUp;
+
+  // ---------------------------------------------------------------------------
+  // Properties
+  // ---------------------------------------------------------------------------
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   GoogleSignInAccount? googleUser;
   Map<String, dynamic>? facebookUser;
-  late SignIn _signIn;
-  late SharedPreferences sharedPref;
 
   late String userId;
   final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -45,6 +60,9 @@ class AuthState extends AppState {
 
   bool get isSignedIn => _isSignedIn;
 
+  // ---------------------------------------------------------------------------
+  // Actions
+  // ---------------------------------------------------------------------------
   Future checkSignInUser() async {
     final SharedPreferences s = await SharedPreferences.getInstance();
     _isSignedIn = s.getBool("signed_in") ?? false;
@@ -96,13 +114,6 @@ class AuthState extends AppState {
     await getIt<SharedPreferenceHelper>().clearPreferenceValues();
   }
 
-  /// Alter select auth method, login and sign up page
-  void openSignUpPage() {
-    authStatus = AuthStatus.NOT_LOGGED_IN;
-    userId = '';
-    notifyListeners();
-  }
-
   void databaseInit() {
     try {
       // todo init if open app
@@ -139,22 +150,12 @@ class AuthState extends AppState {
       print("google login");
       googleUser = await _googleSignIn.signIn();
 
-
       if (googleUser == null) {
         throw Exception('Google login cancelled by user');
       }
 
-
       var googleKey = await googleUser?.authentication;
       print("googleKey :" + googleKey!.accessToken.toString());
-      sharedPref = await SharedPreferences.getInstance();
-
-      final api = AuthApiImpl();
-      final localStorage = LocalStorageUserImpl(sharedPreferences: sharedPref);
-      final repo = AuthRepositoryImpl(api: api, localStorage: localStorage);
-      _signIn = SignIn(repository: repo);
-
-
       //
       // todo gửi api lên server để xác nhận tài khoản đã tồn tại hay chưa nếu chưa thì tạo tài khoản mới
       //
@@ -337,21 +338,7 @@ class AuthState extends AppState {
     }
   }
 
-  /// Reload user to get refresh user dataDev
-  void reloadUser() async {
-    // await user!.reload();
-    // user = _firebaseAuth.currentUser;
-    // if (user!.emailVerified) {
-    //   userModel!.isVerified = true;
-    //   // If user verified his email
-    //   // Update user in firebase realtime kDatabase
-    //   createUser(userModel!);
-    //   cprint('User email verification complete');
-    //   Utility.logEvent('email_verification_complete', parameter: {userModel!.userName!: user!.email});
-    // }
-  }
-
-  /// Send email verification link to email2
+  /// Send email verification link to email
   Future<void> sendEmailVerification(BuildContext context) async {
     //
     // todo: Add api to check mail and authenticate email via otp code
@@ -371,13 +358,6 @@ class AuthState extends AppState {
     //     error.message,
     //   );
     // });
-  }
-
-  /// Check if user's email is verified
-  Future<bool> emailVerified() async {
-    // User user = _firebaseAuth.currentUser!;
-    // return user.emailVerified;
-    return true;
   }
 
   /// Send password reset link to email
@@ -442,23 +422,6 @@ class AuthState extends AppState {
     return "";
   }
 
-  /// `Fetch` user `detail` whose userId is passed
-  Future<User?> getUserDetail(String userId) async {
-    User user;
-
-    // todo: add api get userDetail
-    // var event = await kDatabase.child('profile').child(userId).once();
-
-    // final map = event.snapshot.value as Map?;
-    // if (map != null) {
-    //   user = User.fromJson(map);
-    //   user.key = event.snapshot.key!;
-    //   return user;
-    // } else {
-    //   return null;
-    // }
-  }
-
   /// Fetch user profile
   /// If `userProfileId` is null then logged in user's profile will fetched
   FutureOr<bool> getProfileUser({String? userProfileId}) {
@@ -472,21 +435,6 @@ class AuthState extends AppState {
     }
 
     return true;
-  }
-
-  /// if firebase token not available in profile
-  /// Then get token from firebase and save it to profile
-  /// When someone sends you a message FCM token is used
-  void updateFCMToken() {
-    if (_userModel == null) {
-      return;
-    }
-    getProfileUser();
-    // _firebaseMessaging.getToken().then((String? token) {
-    //   assert(token != null);
-    //   _userModel!.fcmToken = token;
-    //   createUser(_userModel!);
-    // });
   }
 
   void startIntroduction() {

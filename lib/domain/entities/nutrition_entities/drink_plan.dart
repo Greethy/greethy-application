@@ -6,7 +6,7 @@ class DrinkPlan extends Equatable {
   final int? totalDay;
   final String? lastDrink;
   final List<DrinkSchedule>? drinkScheduleDay;
-  final List<int>? drinkScheduleDayGroup;
+  final List<String>? drinkScheduleDayGroup;
 
   DrinkPlan({
     required this.id,

@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class EatingPlan extends Equatable {
-  final String id;
+  final String? id;
   final String? eatingPlanName;
   final String? bio;
   final String? ownerId;
   final List<String>? participants;
   final int? bmrPerDay;
   final List<EatingScheduleWeek>? eatingScheduleWeek;
-  final List<int>? eatingScheduleGroup;
+  final List<String>? eatingScheduleGroup;
   final String? createDate;
 
   EatingPlan({
-    required this.id,
+    this.id,
     this.eatingPlanName,
     this.bio,
     this.ownerId,
@@ -47,5 +47,8 @@ class EatingScheduleWeek extends Equatable {
   });
 
   @override
-  List<Object?> get props => [date, menuId];
+  List<Object?> get props => [
+        date,
+        menuId,
+      ];
 }

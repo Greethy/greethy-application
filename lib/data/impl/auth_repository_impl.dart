@@ -1,3 +1,4 @@
+import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 import 'package:greethy_application/data/source/local/local_storage_user.dart';
 import 'package:greethy_application/data/source/network/auth_api.dart';
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
@@ -25,14 +26,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<User?> signIn({required String gmail, required String password, required String type}) {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<User?> signIn({required String gmail, required String password, required String type}) async {
+    final UserDto? fetched = await _api.signIn(gmail, password, type );
+    if (fetched?.id != null){
+      await _localStorage.saveUser(id: fetched!.id!, user: fetched);
+    }
+    return fetched == null ? null : fetched.toUser();
   }
 
   @override
-  Future<User?> signUp({required String gmail, required String password, required String type}) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  Future<User?> signUp({required String gmail, required String password, required String type}) async {
+    final UserDto? fetched = await _api.signUp(gmail, password, type );
+    if (fetched?.id != null){
+      await _localStorage.saveUser(id: fetched!.id!, user: fetched);
+    }
+    return fetched == null ? null : fetched.toUser();
   }
 }

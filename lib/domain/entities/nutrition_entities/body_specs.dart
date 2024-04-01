@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class BodySpecs extends Equatable {
-  final String id;
+  final String? id;
   final int? age;
   final int? height;
   final int? weight;
@@ -11,7 +11,7 @@ class BodySpecs extends Equatable {
   final String? createdAt;
 
   BodySpecs({
-    required this.id,
+    this.id,
     this.age,
     this.height,
     this.weight,

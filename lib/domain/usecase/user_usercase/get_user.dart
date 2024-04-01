@@ -8,7 +8,7 @@ class GetUser {
 
   final UserRepository _repository;
 
-  Future<User?> call({int id = 0}) async {
+  Future<User?> call({String id = "0"}) async {
     final list = await _repository.getUsers(id: id);
     return list;
   }

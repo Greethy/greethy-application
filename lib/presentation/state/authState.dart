@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:greethy_application/data/impl/auth_repository_impl.dart';
+import 'package:greethy_application/data/source/local/local_storage_user.dart';
+import 'package:greethy_application/data/source/network/auth_api.dart';
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
+import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/helper/shared_prefrence_helper.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
@@ -17,9 +21,16 @@ class AuthState extends AppState {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   GoogleSignInAccount? googleUser;
   Map<String, dynamic>? facebookUser;
+  late SignIn _signIn;
+  late SharedPreferences sharedPref;
 
   late String userId;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: <String>[
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
   final FacebookAuth _facebookAuth = FacebookAuth.instance;
 
   User? _userModel;
@@ -133,18 +144,16 @@ class AuthState extends AppState {
         throw Exception('Google login cancelled by user');
       }
 
-      googleUser?.authentication.then((googleKey){
-        print("googleKey.accessToken: ");
-        print(googleKey.accessToken);
-        print("googleKey.idToken: ");
-        print(googleKey.idToken);
-      }).catchError((err){
-        print('inner error');
-      });
 
+      var googleKey = await googleUser?.authentication;
+      print("googleKey :" + googleKey!.accessToken.toString());
+      sharedPref = await SharedPreferences.getInstance();
 
-      // final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      // googleAuth.accessToken;
+      final api = AuthApiImpl();
+      final localStorage = LocalStorageUserImpl(sharedPreferences: sharedPref);
+      final repo = AuthRepositoryImpl(api: api, localStorage: localStorage);
+      _signIn = SignIn(repository: repo);
+
 
       //
       // todo gửi api lên server để xác nhận tài khoản đã tồn tại hay chưa nếu chưa thì tạo tài khoản mới
@@ -296,11 +305,11 @@ class AuthState extends AppState {
       await checkSignInUser();
       await checkHowToLogin();
       if (_isSignedIn) {
-        // if (_howToLogin == "google") {
-        //   googleUser = _googleSignIn.currentUser;
-        // } else if (_howToLogin == "facebook") {
-        //   facebookUser = await _facebookAuth.getUserData();
-        // }
+        if (_howToLogin == "google") {
+          googleUser = _googleSignIn.currentUser;
+        } else if (_howToLogin == "facebook") {
+          facebookUser = await _facebookAuth.getUserData();
+        }
 
         // TODO: Thêm API để lấy thông tin người dùng vào hàm dưới đây
         print("1");

@@ -1,33 +1,33 @@
 import 'package:equatable/equatable.dart';
 
 class Ingredient extends Equatable {
-  final String id;
-  final String name;
-  final List<Nutrition> nutritionPer100g;
+  final String? id;
+  final String? name;
+  final List<Nutrition>? listNutritionPer100g;
 
   Ingredient({
-    required this.id,
-    required this.name,
-    required this.nutritionPer100g,
+     this.id,
+     this.name,
+     this.listNutritionPer100g,
   });
 
   @override
   List<Object?> get props => [
         id,
         name,
-        nutritionPer100g,
+        listNutritionPer100g,
       ];
 }
 
 class Nutrition extends Equatable {
-  final String name;
-  final double value;
-  final String unit;
+  final String? name;
+  final double? value;
+  final String? unit;
 
   Nutrition({
-    required this.name,
-    required this.value,
-    required this.unit,
+     this.name,
+     this.value,
+     this.unit,
   });
 
   @override

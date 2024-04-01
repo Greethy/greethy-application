@@ -7,12 +7,12 @@ const cachedSignInKey = 'SIGN_IN_STATUS';
 
 abstract class LocalStorageUser {
   Future<bool> saveUser({
-    required int id,
+    required String id,
     required UserDto user,
   });
 
   UserDto loadUser({
-    required int id,
+    required String id,
   });
 
   Future<String> getLoginStatus();
@@ -30,7 +30,7 @@ class LocalStorageUserImpl implements LocalStorageUser {
   }) : _sharedPref = sharedPreferences;
 
   @override
-  UserDto loadUser({required int id}) {
+  UserDto loadUser({required String id}) {
     final String key = getKeyToUser(id);
     final String? json = _sharedPref.getString(key);
 
@@ -39,7 +39,7 @@ class LocalStorageUserImpl implements LocalStorageUser {
 
   @override
   Future<bool> saveUser({
-    required int id,
+    required String id,
     required UserDto user,
   }) {
     final json = user.toRawJson();
@@ -48,7 +48,7 @@ class LocalStorageUserImpl implements LocalStorageUser {
   }
 
   @visibleForTesting
-  static String getKeyToUser(int id) {
+  static String getKeyToUser(String id) {
     return '${cachedUserKey}_$id';
   }
 

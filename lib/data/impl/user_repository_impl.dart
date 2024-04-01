@@ -15,7 +15,7 @@ class UserRepositoryImpl implements UserRepository {
         _localStorage = localStorage;
 
   @override
-  Future<User> getUsers({int id = 0}) async {
+  Future<User> getUsers({String id = "321321"}) async {
     final UserDto cached = _localStorage.loadUser(id: id);
     if (cached.id == 0) {
       return cached;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/main.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/widget/information_circle_card.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/widget/information_horizontal_card.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/widget/information_vertical_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_circle_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_horizontal_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_vertical_card.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class NutritionalSpecsView extends StatelessWidget {

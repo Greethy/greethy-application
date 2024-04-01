@@ -1,76 +1,138 @@
-import 'package:equatable/equatable.dart';
+import 'dart:convert';
 
-class FoodMenu extends Equatable {
-  final String id;
-  final String createdDate;
-  final List<String>? menuType;
-  final int? menuCalories;
-  final Meals meals;
+import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 
-  FoodMenu({
-    required this.id,
-    required this.createdDate,
-    this.menuType,
-    this.menuCalories,
-    required this.meals,
+class FoodMenuDto extends FoodMenu {
+  FoodMenuDto({
+    super.id,
+    super.createdDate,
+    super.menuType,
+    super.menuCalories,
+    super.meals,
   });
 
-  @override
-  List<Object?> get props => [
-        id,
-        createdDate,
-        menuType,
-        menuCalories,
-        meals,
-      ];
+  // ---------------------------------------------------------------------------
+  // JSON
+  // ---------------------------------------------------------------------------
+  factory FoodMenuDto.fromRawJson(String str) => FoodMenuDto.fromMap(json.decode(str));
+
+  String toRawJson() => json.encode(toMap());
+
+  // ---------------------------------------------------------------------------
+  // Maps
+  // ---------------------------------------------------------------------------
+  factory FoodMenuDto.fromMap(Map<String, dynamic> json) => FoodMenuDto(
+        id: json['id'],
+        createdDate: json['created_date'],
+        menuType: json['menu_type'] == null ? [] : List<String>.from(json['menu_type']),
+        menuCalories: json['menu_calories'],
+        meals: json['meals'] == null ? null : List<MealDto>.from(json['meals'].map((x) => MealDto.fromMap(x))),
+      );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'created_date': createdDate,
+      'menu_type': menuType == null ? [] : menuType,
+      'menu_calories': menuCalories,
+      'meals': meals == null ? null : MealDto.fromMealList(meals!).map((x) => x.toMap()).toList(),
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static FoodMenuDto fromFoodMenu(FoodMenu foodMenu) {
+    return FoodMenuDto(
+      id: foodMenu.id,
+      createdDate: foodMenu.createdDate,
+      menuType: foodMenu.menuType,
+      menuCalories: foodMenu.menuCalories,
+      meals: foodMenu.meals,
+    );
+  }
+
+  FoodMenu toFoodMenu() {
+    return FoodMenu(
+      id: id,
+      createdDate: createdDate,
+      menuType: menuType,
+      menuCalories: menuCalories,
+      meals: meals,
+    );
+  }
 }
 
-class Meals extends Equatable {
-  final Meal? breakfast;
-  final Meal? morningSnack;
-  final Meal? lunch;
-  final Meal? afternoonSnack;
-  final Meal? dinner;
-
-  Meals({
-    this.breakfast,
-    this.morningSnack,
-    this.lunch,
-    this.afternoonSnack,
-    this.dinner,
+class MealDto extends Meal {
+  MealDto({
+    super.meal,
+    super.protein,
+    super.lipid,
+    super.glucid,
+    super.calories,
+    super.foodsReplace,
   });
 
-  @override
-  List<Object?> get props => [
-        breakfast,
-        morningSnack,
-        lunch,
-        afternoonSnack,
-        dinner,
-      ];
-}
+  // ---------------------------------------------------------------------------
+  // JSON
+  // ---------------------------------------------------------------------------
+  factory MealDto.fromRawJson(String str) => MealDto.fromMap(json.decode(str));
 
-class Meal extends Equatable {
-  final String? protein;
-  final String? lipid;
-  final String? glucid;
-  final int? calories;
-  final List<int>? foods;
+  String toRawJson() => json.encode(toMap());
 
-  Meal({
-    this.protein,
-    this.lipid,
-    this.glucid,
-    this.calories,
-    this.foods,
-  });
+  // ---------------------------------------------------------------------------
+  // Maps
+  // ---------------------------------------------------------------------------
+  factory MealDto.fromMap(Map<String, dynamic> json) => MealDto(
+        meal: json['meal'],
+        protein: json['protein'],
+        lipid: json['lipid'],
+        glucid: json['glucid'],
+        calories: json['calories'],
+        foodsReplace: json['foods'] == null ? [] : List<String>.from(json['foods']),
+      );
 
-  @override
-  List<Object?> get props => [
-        protein,
-        lipid,
-        glucid,
-        calories,
-        foods,
-      ];
+  Map<String, dynamic> toMap() {
+    return {'meal': meal, 'protein': protein, 'lipid': lipid, 'glucid': glucid, 'calories': calories, 'foods': foodsReplace == null ? [] : foodsReplace};
+  }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static MealDto fromMeal(Meal meal) {
+    return MealDto(
+      meal: meal.meal,
+      protein: meal.protein,
+      lipid: meal.lipid,
+      glucid: meal.glucid,
+      calories: meal.calories,
+      foodsReplace: meal.foodsReplace,
+    );
+  }
+
+  Meal toMeal() {
+    return Meal(
+      meal: meal,
+      protein: protein,
+      lipid: lipid,
+      glucid: glucid,
+      calories: calories,
+      foodsReplace: foodsReplace,
+    );
+  }
+
+  static List<MealDto> fromMealList(List<Meal> mealList) {
+    return mealList
+        .map(
+          (entity) => MealDto(
+            meal: entity.meal,
+            protein: entity.protein,
+            lipid: entity.lipid,
+            glucid: entity.glucid,
+            calories: entity.calories,
+            foodsReplace: entity.foodsReplace,
+          ),
+        )
+        .toList();
+  }
 }

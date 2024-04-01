@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class FoodMenu extends Equatable {
-  final String id;
-  final String createdDate;
+  final String? id;
+  final String? createdDate;
   final List<String>? menuType;
   final int? menuCalories;
-  final Meals meals;
+  final List<Meal>? meals;
 
   FoodMenu({
-    required this.id,
-    required this.createdDate,
+    this.id,
+    this.createdDate,
     this.menuType,
     this.menuCalories,
-    required this.meals,
+    this.meals,
   });
 
   @override
@@ -25,52 +25,30 @@ class FoodMenu extends Equatable {
       ];
 }
 
-class Meals extends Equatable {
-  final Meal? breakfast;
-  final Meal? morningSnack;
-  final Meal? lunch;
-  final Meal? afternoonSnack;
-  final Meal? dinner;
-
-  Meals({
-    this.breakfast,
-    this.morningSnack,
-    this.lunch,
-    this.afternoonSnack,
-    this.dinner,
-  });
-
-  @override
-  List<Object?> get props => [
-        breakfast,
-        morningSnack,
-        lunch,
-        afternoonSnack,
-        dinner,
-      ];
-}
-
 class Meal extends Equatable {
+  final String? meal;
   final String? protein;
   final String? lipid;
   final String? glucid;
-  final int? calories;
-  final List<int>? foods;
+  final String? calories;
+  final List<String>? foodsReplace;
 
   Meal({
+    this.meal,
     this.protein,
     this.lipid,
     this.glucid,
     this.calories,
-    this.foods,
+    this.foodsReplace,
   });
 
   @override
   List<Object?> get props => [
+        meal,
         protein,
         lipid,
         glucid,
         calories,
-        foods,
+        foodsReplace,
       ];
 }

@@ -1,11 +1,11 @@
-import 'package:greethy_application/presentation/ui/page/my_diary/body_specs_view.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/glass_view.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/nutritional_specs_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/glass_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutritional_specs_view.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
 
-import 'package:greethy_application/presentation/ui/page/my_diary/meals_list_today_view.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/water_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/meals_list_today_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/water_view.dart';
 import 'package:flutter/material.dart';
 
 class MyDiaryScreen extends StatefulWidget {

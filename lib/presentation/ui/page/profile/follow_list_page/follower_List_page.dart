@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../model/user_model/user.dart';
 import '../../../../widgets/newWidget/customLoader.dart';
 import '../../common/usersListPage.dart';
 import 'follow_List_state.dart';
@@ -12,10 +12,10 @@ class FollowerListPage extends StatelessWidget {
   const FollowerListPage({Key? key, this.userList, this.profile})
       : super(key: key);
   final List<String>? userList;
-  final UserModel? profile;
+  final User? profile;
 
   static MaterialPageRoute getRoute(
-      {required List<String> userList, required UserModel profile}) {
+      {required List<String> userList, required User profile}) {
     return MaterialPageRoute(
       builder: (BuildContext context) {
         return ChangeNotifierProvider(

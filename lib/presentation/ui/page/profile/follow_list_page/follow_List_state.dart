@@ -1,8 +1,7 @@
-
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 
 import '../../../../helper/shared_prefrence_helper.dart';
 import '../../../../helper/utility.dart';
-import '../../../../model/user_model/user.dart';
 import '../../../../state/appState.dart';
 import '../../common/locator.dart';
 
@@ -20,11 +19,11 @@ class FollowListState extends AppState {
     stateType = type;
   }
 
-  UserModel? _currentUser;
+  User? _currentUser;
   late StateType stateType;
 
   /// Follow / Unfollow user
-  Future<void> followUser(UserModel secondUser) async {
+  Future<void> followUser(User secondUser) async {
     bool isfollwing = isFollowing(secondUser);
 
     /// `_currentUser` is user who is logged-in  app.
@@ -82,7 +81,7 @@ class FollowListState extends AppState {
 
   /// Check if user followerlist contain your or not
   /// If your id exist in follower list it mean you are following him
-  bool isFollowing(UserModel user) {
+  bool isFollowing(User user) {
     // if (_currentUser!.followingList != null &&
     //     _currentUser!.followingList!.any((x) => x == user.userId)) {
     //   return true;
@@ -92,7 +91,7 @@ class FollowListState extends AppState {
 
   void addFollowNotification(String profileId) {
     // Sends notification to user who created tweet
-    // UserModel owner can see notification on notification page
+    // User owner can see notification on notification page
   //   kDatabase
   //       .child('notification')
   //       .child(profileId)
@@ -100,7 +99,7 @@ class FollowListState extends AppState {
   //       .set({
   //     'type': NotificationType.Follow.toString(),
   //     'createdAt': DateTime.now().toUtc().toString(),
-  //     'dataDev': UserModel(
+  //     'dataDev': User(
   //             displayName: _currentUser!.displayName,
   //             profilePic: _currentUser!.profilePic,
   //             isVerified: _currentUser!.isVerified,

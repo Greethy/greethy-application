@@ -98,6 +98,27 @@ class UserDto extends User {
       createdDate: user.createdDate,
     );
   }
+
+  User toUser() {
+    return User(
+      id: id,
+      email: email,
+      password: password,
+      nickName: nickName,
+      avatar: avatar,
+      bannerImage: bannerImage,
+      bio: bio,
+      personalInfo: personalInfo,
+      premiumUser: premiumUser,
+      isVerified: isVerified,
+      financialManagementId: financialManagementId,
+      nutritionalManagementId: nutritionalManagementId,
+      fitnessManagementId: fitnessManagementId,
+      networkingId: fitnessManagementId,
+      playsUserManagementId: fitnessManagementId,
+      createdDate: createdDate,
+    );
+  }
 }
 
 class PersonalInfoDto extends PersonalInfo {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 
-import '../../../model/user_model/user.dart';
 import '../../../widgets/customAppBar.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/emptyList.dart';
@@ -20,13 +20,13 @@ class UsersListPage extends StatelessWidget {
   final String pageTitle;
   final String emptyScreenText;
   final String emptyScreenSubTileText;
-  final bool Function(UserModel user)? isFollowing;
+  final bool Function(User user)? isFollowing;
   final List<String>? userIdsList;
-  final Function(UserModel user)? onFollowPressed;
+  final Function(User user)? onFollowPressed;
 
   @override
   Widget build(BuildContext context) {
-    List<UserModel>? userList;
+    List<User>? userList;
     return Scaffold(
       backgroundColor: GreethyColor.mystic,
       appBar: CustomAppBar(

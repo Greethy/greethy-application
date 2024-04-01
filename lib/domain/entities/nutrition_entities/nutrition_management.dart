@@ -4,45 +4,45 @@ class NutritionManagement extends Equatable {
   final String id;
   final String ownId;
   final List<String>? bodySpecs;
-  final String? drinkPlan;
-  final String? eatingPlanPersonal;
+  final String? drinkPlanId;
+  final String? eatingPlanPersonalId;
   final EatingPlanCollective? eatingPlanCollective;
 
   NutritionManagement({
     required this.id,
     required this.ownId,
     this.bodySpecs,
-    this.drinkPlan,
-    this.eatingPlanPersonal,
+    this.drinkPlanId,
+    this.eatingPlanPersonalId,
     this.eatingPlanCollective,
   });
 
   @override
   List<Object?> get props => [
         id,
-        me,
+        ownId,
         bodySpecs,
-        drinkPlan,
-        eatingPlanPersonal,
-        eatingPlanCollective,
+        drinkPlanId,
+        eatingPlanPersonalId,
+    eatingPlanCollective,
       ];
 }
 
 class EatingPlanCollective extends Equatable {
   final String? eatingPlanCollectiveStartAt;
-  final String? eatingPlanCollectiveNow;
-  final List<String>? eatingPlanCollectiveOld;
+  final String? eatingPlanCollectiveIdNow;
+  final List<String>? listEatingPlanCollectiveIdOld;
 
   EatingPlanCollective({
     this.eatingPlanCollectiveStartAt,
-    this.eatingPlanCollectiveNow,
-    this.eatingPlanCollectiveOld,
+    this.eatingPlanCollectiveIdNow,
+    this.listEatingPlanCollectiveIdOld,
   });
 
   @override
   List<Object?> get props => [
         eatingPlanCollectiveStartAt,
-        eatingPlanCollectiveNow,
-        eatingPlanCollectiveOld,
+        eatingPlanCollectiveIdNow,
+        listEatingPlanCollectiveIdOld,
       ];
 }

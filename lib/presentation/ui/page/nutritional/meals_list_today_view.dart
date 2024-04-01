@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/widget/meals_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/meals_card.dart';
 
 class MealsListTodayView extends StatefulWidget {
   const MealsListTodayView({

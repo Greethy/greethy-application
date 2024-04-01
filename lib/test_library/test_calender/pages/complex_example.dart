@@ -8,7 +8,6 @@ import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../widgets/customWidgets.dart';
 import '../utils.dart';
 
 class TableComplexExample extends StatefulWidget {

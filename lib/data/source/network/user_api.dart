@@ -2,14 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 
 abstract class UserApi {
-  Future<UserDto> loadUser({int id = 0});
+  Future<UserDto> loadUser({String id = "0"});
 }
 
 class UserApiImpl implements UserApi {
   final dio = Dio();
 
   @override
-  Future<UserDto> loadUser({int id = 0}) async {
+  Future<UserDto> loadUser({String id = "asd"}) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');

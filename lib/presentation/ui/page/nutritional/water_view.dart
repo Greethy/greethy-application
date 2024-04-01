@@ -1,7 +1,7 @@
 
 import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/ui/page/my_diary/wave_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/wave_view.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class WaterView extends StatefulWidget {

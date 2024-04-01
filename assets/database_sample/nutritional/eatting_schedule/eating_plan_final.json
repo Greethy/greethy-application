@@ -1,0 +1,44 @@
+{
+  "id": 1,
+  "eating_plan_name": "Bữa ăn cho gia đình",
+  "bio": "Gia đình cùng nhau giữ gìn sức khỏe",
+  "owner_id": 2,
+  "participants": [2, 3, 4],
+  "bmrPerDay": 10000, // bằng bmr PerDay của các thành viên cộng lại 
+  "eating_schedule_week": [ // lịch menu các ngày gần nhất/ tôi đa 7
+    {
+      "date" : "10/10/2023",
+      "menu_id": 1
+    },
+    {
+      "date" : "09/10/2023",
+      "menu_id": 4
+    },
+    {
+      "date" : "08/10/2023",
+      "menu_id": 10
+    },
+    {
+      "date" : "07/10/2023",
+      "menu_id": 5
+    },
+    {
+      "date" : "06/10/2023",
+      "menu_id": 21
+    },
+    {
+      "date" : "05/10/2023",
+      "menu_id": 11
+    },
+    {
+      "date" : "04/10/2023",
+      "menu_id": 38
+    },
+    {
+      "date" : "3/10/2023",
+      "menu_id": 38
+    }
+  ],
+  "eating_schedule_group": [1], // để chia theo từng tháng
+  "cteate_date": "03/10/2023",
+}

@@ -1,0 +1,81 @@
+{
+  "id"": 1,
+  "name": "Gạo nếp cái",
+   "nutrition_per_100g": [
+    {
+      "name": "Water",
+      "value": 14.0,
+      "unit": "g"
+    },
+    {
+      "name": "Energy",
+      "value": 345.0,
+      "unit": "Kcal"
+    },
+    {
+      "name": "Protein",
+      "value": 7.9,
+      "unit": "g"
+    },
+    {
+      "name": "Lipid",
+      "value": 1.0,
+      "unit": "g"
+    },
+    {
+      "name": "Carbohydrate",
+      "value": 76.2,
+      "unit": "g"
+    },
+    {
+      "name": "Fiber",
+      "value": 0.4,
+      "unit": "g"
+    },
+    {
+      "name": "Sugar",
+      "value": 0.6,
+      "unit": "g"
+    },
+    {
+      "name": "Calcium",
+      "value": 32,
+      "unit": "mg"
+    },
+    {
+      "name": "Iron",
+      "value": 1.2,
+      "unit": "g"
+    },
+    {
+      "name": "Magnesium",
+      "value": 1.5,
+      "unit": "mg"
+    },
+    {
+      "name": "Phosphorus",
+      "value": 98,
+      "unit": "mg"
+    },
+    {
+      "name": "Potassium",
+      "value": 282,
+      "unit": "mg"
+    },
+    {
+      "name": "Sodium",
+      "value": 3.0,
+      "unit": "mg"
+    },
+    {
+      "name": "Zinc",
+      "value": 2.2,
+      "unit": "g"
+    },
+    {
+      "name": "Cholesterol",
+      "value": 0,
+      "unit": "mg"
+    }
+  ]
+}

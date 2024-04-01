@@ -1,0 +1,51 @@
+[
+  {
+    "category" : "Underweight III",
+    "range" : {
+      "greater" : 0,
+      "smaller" : 16
+    }
+  },
+  {
+    "category" : "Underweight II",
+    "range" : {
+      "greater" : 16,
+      "smaller" : 16.9
+    }
+  },
+  {
+    "category" : "Underweight I",
+    "range" : {
+      "greater" : 17,
+      "smaller" : 18.4
+    }
+  },
+  {
+    "category" : "Normal",
+    "range" : {
+      "greater" : 18.5,
+      "smaller" : 22.9
+    }
+  },
+  {
+    "category" : "Pre-obese",
+    "range" : {
+      "greater": 23,
+      "smaller": 24.9
+    }
+  },
+  {
+    "category" : "Obesity I",
+    "range" : {
+      "greater": 25,
+      "smaller": 29.9
+    }
+  },
+  {
+    "category" : "Obesity II",
+    "range" : {
+      "greater": 30,
+      "smaller": 60
+    }
+  }
+]

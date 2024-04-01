@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "age": 21, //tuổi tính từ ngày sinh người dùng nhập
+  "height": 180, // người dùng nhập gửi lên, mặc định cm
+  "weight": 70, // người dùng nhập gửi lên, mặc định kg
+  "bmi": {
+    "index": 22.9, // tính bằng chiều cao và cân nặng
+    "status": "Bình thường" // dùng bảng phân loại IDI & WPRO BMI vì phù hợp với người Châu Á hơn 
+  },
+  "pal" : { //Physical Activity Level - mức độ hoạt động thể chất - Hệ số hoạt động thể lực so với mức năng lượng chuyển hóa cơ bản
+    "typeOfActivity" : "trung bình",  // có 3 loại hoạt động thể lực trung bình, hoạt động thể lực nhẹ, hoạt động thể lực nặng
+    "value" : 1.75 // hê số hoạt động thể lực tính theo tuổi và mức hoạt động thể lực bên trên
+  },
+  "bmr" :{
+    "bmrPerKg": 20, // CHCB (Kcal/kg/ngày) theo độ tuổi 
+    "bmrPerDay": 1470 // nhu cầu Năng lượng chuyển hóa cơ bản trong một ngày - công thức tính: CHCB (Kcal/kg/ngày) * cân nặng kg * Hệ số hoạt động thể lực
+  },
+  "create_at": "12/12/2022"
+}

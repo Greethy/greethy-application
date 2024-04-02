@@ -91,6 +91,8 @@ flutter:
         - assets/icons/
         - assets/
         - assets/database_sample/finance/
+        - assets/database_sample/user/
+        - assets/database_sample/nutritional/
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

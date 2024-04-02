@@ -18,7 +18,6 @@ class GoogleLoginButton extends StatelessWidget {
     var state = Provider.of<AuthState>(context, listen: false);
     loader.showLoader(context);
     state.handleGoogleSignIn().then((status) {
-
       print (state.googleUser);
       if (state.googleUser != null) {
         loader.hideLoader();

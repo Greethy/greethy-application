@@ -28,7 +28,7 @@ class FollowingListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.watch<FollowListState>().isbusy) {
+    if (context.watch<FollowListState>().isBusy) {
       return SizedBox(
         height: context.height,
         child: const CustomScreenLoader(

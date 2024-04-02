@@ -19,6 +19,7 @@ import 'data/impl/auth_repository_impl.dart';
 import 'data/source/local/local_storage_user.dart';
 import 'data/source/network/auth_api.dart';
 import 'domain/usecase/auth_usercase/get_status_login.dart';
+import 'domain/usecase/auth_usercase/save_status_login.dart';
 import 'domain/usecase/auth_usercase/signin.dart';
 import 'zdataDev/add_date.dart';
 import 'presentation/ui/page/common/routes.dart';
@@ -54,6 +55,7 @@ class _AppRootState extends State<AppRoot> {
   late SignIn _signIn;
   late GetStatusLogin _getStatusLogin;
   late SignUp _signUp;
+  late SaveStatusLogin _saveStatusLogin;
 
   @override
   void initState() {
@@ -73,6 +75,7 @@ class _AppRootState extends State<AppRoot> {
     _signIn = SignIn(repository: repo);
     _getStatusLogin = GetStatusLogin(repository: repo);
     _signUp = SignUp(repository: repo);
+    _saveStatusLogin = SaveStatusLogin(repository: repo);
   }
 
   @override
@@ -92,8 +95,9 @@ class _AppRootState extends State<AppRoot> {
         Provider.value(value: _signIn),
         Provider.value(value: _getStatusLogin),
         Provider.value(value: _signUp),
+        Provider.value(value: _saveStatusLogin),
         ChangeNotifierProvider<AppState>(create: (_) => AppState()),
-        ChangeNotifierProvider<AuthState>(create: (_) => AuthState(signIn: _signIn, getStatusLogin: _getStatusLogin, signUp: _signUp)),
+        ChangeNotifierProvider<AuthState>(create: (_) => AuthState(signIn: _signIn, getStatusLogin: _getStatusLogin, signUp: _signUp, saveStatusLogin: _saveStatusLogin)),
       ],
       child: MaterialApp(
         title: 'Welcome Greethy',

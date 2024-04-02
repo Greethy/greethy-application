@@ -7,6 +7,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/get_status_login.dart';
+import 'package:greethy_application/domain/usecase/auth_usercase/save_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signup.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
@@ -14,16 +15,17 @@ import 'package:greethy_application/presentation/helper/shared_prefrence_helper.
 import 'package:greethy_application/presentation/helper/utility.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 import 'package:greethy_application/presentation/ui/page/common/locator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthState extends AppState {
   AuthState({
     required SignIn signIn,
     required GetStatusLogin getStatusLogin,
     required SignUp signUp,
+    required SaveStatusLogin saveStatusLogin,
   })  : _signIn = signIn,
         _getStatusLogin = getStatusLogin,
-        _signUp = signUp;
+        _signUp = signUp,
+        _saveStatusLogin = saveStatusLogin;
 
   // ---------------------------------------------------------------------------
   // Use cases
@@ -31,6 +33,7 @@ class AuthState extends AppState {
   final SignIn _signIn;
   final GetStatusLogin _getStatusLogin;
   final SignUp _signUp;
+  final SaveStatusLogin _saveStatusLogin;
 
   // ---------------------------------------------------------------------------
   // Properties
@@ -39,7 +42,6 @@ class AuthState extends AppState {
   GoogleSignInAccount? googleUser;
   Map<String, dynamic>? facebookUser;
 
-  late String userId;
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: <String>[
       'email',
@@ -63,75 +65,36 @@ class AuthState extends AppState {
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
-  Future checkSignInUser() async {
-    final SharedPreferences s = await SharedPreferences.getInstance();
-    _isSignedIn = s.getBool("signed_in") ?? false;
-    // notifyListeners();
-  }
-
-  Future setSignIn(bool signIn) async {
-    final SharedPreferences s = await SharedPreferences.getInstance();
-    s.setBool("signed_in", signIn);
-    _isSignedIn = signIn;
-    // notifyListeners();
-  }
-
-  Future checkHowToLogin() async {
-    final SharedPreferences s = await SharedPreferences.getInstance();
-    _howToLogin = s.getString("how_to_login") ?? "";
-    notifyListeners();
-  }
-
-  Future setHowToLogin(String type) async {
-    final SharedPreferences s = await SharedPreferences.getInstance();
-    s.setString("how_to_login", type);
-    _howToLogin = type;
-    notifyListeners();
-  }
 
   /// Logout from device
   void logoutCallback() async {
+    isBusy = true;
     authStatus = AuthStatus.NOT_LOGGED_IN;
-    userId = '';
     _userModel = null;
-    //
-    // todo: delete info from share_pref
-    //
-    if (_howToLogin == "google") {
+
+    if (_howToLogin.contains("google")) {
       googleUser = null;
       _googleSignIn.signOut();
       Utility.logEvent('google_logout', parameter: {});
-      await setSignIn(false);
     }
-    if (_howToLogin == "facebook") {
+    if (_howToLogin.contains("facebook")) {
       facebookUser = null;
       _facebookAuth.logOut();
       Utility.logEvent('Facebook_logout', parameter: {});
-      await setSignIn(false);
     }
-    await setHowToLogin("");
-    notifyListeners();
+    _saveStatusLogin.call("");
+    isBusy = false;
     await getIt<SharedPreferenceHelper>().clearPreferenceValues();
-  }
-
-  void databaseInit() {
-    try {
-      // todo init if open app
-      // if (_profileQuery == null) {
-      //   _profileQuery = kDatabase.child("profile").child(user!.uid);
-      //   _profileQuery!.onValue.listen(_onProfileChanged);
-      //   _profileQuery!.onChildChanged.listen(_onProfileUpdated);
-      // }
-    } catch (error) {
-      cprint(error, errorIn: 'databaseInit');
-    }
   }
 
   /// Verify user's credentials for login
   Future<String?> signIn(String email, String password, {required BuildContext context}) async {
     try {
       isBusy = true;
-      // todo: api signin
+      _userModel = await _signIn.call(gmail: email, password: password, type: "normal");
+      if (_userModel?.id != null){
+        authStatus = AuthStatus.LOGGED_IN;
+      }
       return null;
     } catch (error) {
       Utility.customSnackBar(context, error.toString());
@@ -146,64 +109,43 @@ class AuthState extends AppState {
   /// If user is new then it create a new user
   /// If user is old then it just `authenticate` user and return google user dataDev
   Future<GoogleSignInAccount?> handleGoogleSignIn() async {
+    isBusy = true;
     try {
-      print("google login");
       googleUser = await _googleSignIn.signIn();
-
       if (googleUser == null) {
         throw Exception('Google login cancelled by user');
       }
-
-      var googleKey = await googleUser?.authentication;
-      print("googleKey :" + googleKey!.accessToken.toString());
-      //
-      // todo gửi api lên server để xác nhận tài khoản đã tồn tại hay chưa nếu chưa thì tạo tài khoản mới
-      //
-
-      authStatus = AuthStatus.LOGGED_IN;
-      userId = googleUser!.id;
-      await setSignIn(true);
-      await setHowToLogin("google");
-      print("googleUser: " + googleUser.toString());
-      createUserFromGoogleSignIn(googleUser!);
-      notifyListeners();
+      await createUserFromGoogleSignIn(googleUser!);
       return googleUser;
     } on PlatformException catch (error) {
       googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
-      cprint(error, errorIn: 'handleGoogleSignIn');
+      cprint(error, errorIn: 'handleGoogleSignIn PlatformException');
       return null;
     } on Exception catch (error) {
       googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
-      cprint(error, errorIn: 'handleGoogleSignIn');
+      cprint(error, errorIn: 'handleGoogleSignIn Exception');
       return null;
     } catch (error) {
       googleUser = null;
       authStatus = AuthStatus.NOT_LOGGED_IN;
-      cprint(error, errorIn: 'handleGoogleSignIn');
+      cprint(error, errorIn: 'handleGoogleSignIn error');
       return null;
     }
   }
 
   /// Create user profile from google login
-  void createUserFromGoogleSignIn(GoogleSignInAccount user) {
-    PersonalInfo personalModel = PersonalInfo(
-      name: user.displayName,
-    );
+  Future<void> createUserFromGoogleSignIn(GoogleSignInAccount user) async {
+    var googleKey = await user.authentication;
+    print("googleKey :" + googleKey.accessToken.toString());
+    _userModel = await _signIn.call(gmail: user.email, password: googleKey.accessToken.toString(), type: "google");
 
-    User userModel = User(
-      email: user.email,
-      personalInfo: personalModel,
-      avatar: user.photoUrl,
-      isVerified: true,
-    );
-
-    //
-    // todo: add api to check if there is already an account with this gmail account
-    //
-    print("chunhthanhde create new user: $userModel");
-    createUser(userModel, newUser: true);
+    if (_userModel?.id != null) {
+      authStatus = AuthStatus.LOGGED_IN;
+      String token = "";
+      await _saveStatusLogin("google " + token);
+    }
     isBusy = false;
   }
 
@@ -211,6 +153,7 @@ class AuthState extends AppState {
   /// If user is new then it creates a new user
   /// If user is old then it just `authenticates` the user and returns Facebook user dataDev
   Future<void> handleFacebookSignIn() async {
+    isBusy = true;
     try {
       print("start handleFacebookSignIn");
       final facebookUser = await _facebookAuth.login(
@@ -219,14 +162,8 @@ class AuthState extends AppState {
 
       if (facebookUser.status == LoginStatus.success) {
         final AccessToken accessToken = facebookUser.accessToken!;
-
         final userData = await _facebookAuth.getUserData();
-
-        authStatus = AuthStatus.LOGGED_IN;
-        await setSignIn(true);
-        await setHowToLogin("facebook");
-        createUserFromFacebookSignIn(userData);
-        notifyListeners();
+        await createUserFromFacebookSignIn(userData, accessToken);
       } else if (facebookUser.status == LoginStatus.cancelled) {
         print('Facebook login cancelled by user');
       } else {
@@ -238,27 +175,20 @@ class AuthState extends AppState {
   }
 
   /// Create or authenticate user based on Facebook sign-in dataDev
-  void createUserFromFacebookSignIn(Map<String, dynamic> userData) {
-    final String? email = userData['email'];
-    final String? name = userData['name'];
-    final String? avatar = userData['picture']['dataDev']['url'];
+  Future<void> createUserFromFacebookSignIn(Map<String, dynamic> userData, AccessToken accessToken) async {
+    final String email = userData['email'];
+    final String name = userData['name'];
+    final String avatar = userData['picture']['dataDev']['url'];
 
-    PersonalInfo personalModel = PersonalInfo(
-      name: name,
-    );
+    _userModel = await _signIn.call(gmail: email, password: accessToken.toString(), type: "facebook");
 
-    User userModel = User(
-      email: email,
-      personalInfo: personalModel,
-      avatar: avatar,
-      isVerified: true,
-    );
+    if(_userModel?.id != null){
+      authStatus = AuthStatus.LOGGED_IN;
+      String token = "";
+      await _saveStatusLogin("facebook " + token);
+    }
 
-    //
-    // todo: add api to check if there is already an account with this gmail account
-    //
-    print("chunhthanhde create new user: $userModel");
-    createUser(userModel, newUser: true);
+    isBusy = false;
   }
 
   /// Create new user's profile in db
@@ -273,10 +203,7 @@ class AuthState extends AppState {
 
       // authStatus = AuthStatus.LOGGED_IN;
       _userModel = userModel;
-
-      // nếu cưa thì sẽ đăng nhập
-      createUser(_userModel!, newUser: true);
-
+      isBusy = false;
       return userModel.isVerified;
     } catch (error) {
       isBusy = false;
@@ -286,49 +213,21 @@ class AuthState extends AppState {
     }
   }
 
-  /// `Create` and `Update` user
-  /// IF `newUser` is true new user is created
-  /// Else existing user will update with new values
-  void createUser(User user, {bool newUser = false}) {
-    if (newUser) {
-      /// Create new user
-      print(' create_newUser');
-    }
-    isBusy = false;
-  }
-
   /// Fetch current user profile
   Future<User?> getCurrentUser() async {
     try {
       isBusy = true;
-      Utility.logEvent('get_currentUSer', parameter: {});
-      print("0");
-      await checkSignInUser();
-      await checkHowToLogin();
-      if (_isSignedIn) {
-        if (_howToLogin == "google") {
-          googleUser = _googleSignIn.currentUser;
-        } else if (_howToLogin == "facebook") {
-          facebookUser = await _facebookAuth.getUserData();
-        }
-
-        // TODO: Thêm API để lấy thông tin người dùng vào hàm dưới đây
-        print("1");
-        if (await getProfileUser()) {
-          print("2");
+      Utility.logEvent('get_currentUser', parameter: {});
+      _howToLogin = await _getStatusLogin.call();
+      if (_howToLogin != "") {
+        if (_howToLogin.contains("google ") || _howToLogin.contains("facebook ") || _howToLogin.contains("normal ")) {
           authStatus = AuthStatus.LOGGED_IN;
-        } else {
-          print("3");
-          authStatus = AuthStatus.NOT_LOGGED_IN;
         }
-        print("4");
         isBusy = false;
       } else {
-        print("5");
         authStatus = AuthStatus.NOT_LOGGED_IN;
         isBusy = false;
       }
-      print("6");
       return null;
     } catch (error) {
       isBusy = false;
@@ -379,7 +278,6 @@ class AuthState extends AppState {
   Future<void> updateUserProfile(User? userModel, {File? image, File? bannerImage}) async {
     try {
       if (image == null && bannerImage == null) {
-        createUser(userModel!);
       } else {
         /// upload profile image if not null
         if (image != null) {
@@ -397,12 +295,6 @@ class AuthState extends AppState {
           /// get banner storage path from server
           // userModel!.bannerImage = await _uploadFileToStorage(bannerImage, 'user/profile/${userModel.userName}/${path.basename(bannerImage.path)}');
           // Utility.logEvent('user_banner_image');
-        }
-
-        if (userModel != null) {
-          createUser(userModel);
-        } else {
-          createUser(_userModel!);
         }
       }
 

@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
 
   void _emailLogin() {
     var state = Provider.of<AuthState>(context, listen: false);
-    if (state.isbusy) {
+    if (state.isBusy) {
       return;
     }
     loader.showLoader(context);

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 
 abstract class AuthApi {
@@ -25,8 +26,14 @@ class AuthApiImpl implements AuthApi {
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=1');
 
       final l = response.data['results'].map((e) => UserDto.fromMap(e));
+      print(response.data);
 
-      return l;
+      // return l;
+      // todo: add to test
+
+      UserDto userDto = await UserDto.fromRawJson(await rootBundle.loadString('assets/database_sample/user/user_final.json'));
+
+      return userDto;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.

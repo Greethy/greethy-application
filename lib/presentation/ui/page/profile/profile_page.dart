@@ -68,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
       iconTheme: const IconThemeData(color: Colors.white),
       backgroundColor: GreethyColor.mystic,
       actions: <Widget>[
-        profileState.isbusy
+        profileState.isBusy
             ? const SizedBox.shrink()
 
             /// pop up menu choice
@@ -100,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
           StretchMode.zoomBackground,
           StretchMode.blurBackground,
         ],
-        background: profileState.isbusy
+        background: profileState.isBusy
             ? const SizedBox.shrink()
             : Stack(
                 alignment: Alignment.topCenter,
@@ -270,12 +270,12 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
             getAppbar(),
 
             /// profile User - name follower
-            profileState.isbusy
+            profileState.isBusy
                 ? _emptyBox()
                 : SliverToBoxAdapter(
                     child: Container(
                       // color: Colors.white,
-                      child: profileState.isbusy
+                      child: profileState.isBusy
                           ? const SizedBox.shrink()
                           : UserNameRowWidget(
                               user: profileState.profileUserModel,
@@ -358,8 +358,8 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
 //     list = tweetsList.where((x) => x.parentkey != null && x.childRetwetkey == null).toList();
 //   }
 //
-//   /// if [profileState.isbusy] is true then an loading indicator will be displayed on screen.
-//   return profileState.isbusy
+//   /// if [profileState.isBusy] is true then an loading indicator will be displayed on screen.
+//   return profileState.isBusy
 //       ? SizedBox(
 //           height: context.height - 180,
 //           child: const CustomScreenLoader(

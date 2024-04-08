@@ -25,15 +25,15 @@ class BodySpecsDto extends BodySpecs {
   // Maps
   // ---------------------------------------------------------------------------
   factory BodySpecsDto.fromMap(Map<String, dynamic> json) => BodySpecsDto(
-    id: json['id'],
-    age: json['age'],
-    height: json['height'],
-    weight: json['weight'],
-    bmi: json['bmi'] == null ? null : BmiDto.fromMap(json['bmi']),
-    pal: json['pal'] == null ? null : PalDto.fromMap(json['pal']),
-    bmr: json['bmr'] == null ? null : BmrDto.fromMap(json['bmr']),
-    createdAt: json['create_at'],
-  );
+        id: json['id'],
+        age: json['age'],
+        height: json['height'],
+        weight: json['weight'],
+        bmi: json['bmi'] == null ? null : BmiDto.fromMap(json['bmi']),
+        pal: json['pal'] == null ? null : PalDto.fromMap(json['pal']),
+        bmr: json['bmr'] == null ? null : BmrDto.fromMap(json['bmr']),
+        createdAt: json['create_at'],
+      );
 
   Map<String, dynamic> toMap() {
     return {
@@ -95,9 +95,9 @@ class BmiDto extends Bmi {
   // Maps
   // ---------------------------------------------------------------------------
   factory BmiDto.fromMap(Map<String, dynamic> json) => BmiDto(
-    index: json['index'],
-    status: json['status'],
-  );
+        index: json['index'],
+        status: json['status'],
+      );
 
   Map<String, dynamic> toMap() {
     return {
@@ -141,9 +141,9 @@ class PalDto extends Pal {
   // Maps
   // ---------------------------------------------------------------------------
   factory PalDto.fromMap(Map<String, dynamic> json) => PalDto(
-    typeOfActivity: json['typeOfActivity'],
-    value: json['value'],
-  );
+        typeOfActivity: json['typeOfActivity'],
+        value: json['value'],
+      );
 
   Map<String, dynamic> toMap() {
     return {
@@ -187,9 +187,9 @@ class BmrDto extends Bmr {
   // Maps
   // ---------------------------------------------------------------------------
   factory BmrDto.fromMap(Map<String, dynamic> json) => BmrDto(
-    bmrPerKg: json['bmrPerKg'],
-    bmrPerDay: json['bmrPerDay'],
-  );
+        bmrPerKg: json['bmrPerKg'],
+        bmrPerDay: json['bmrPerDay'],
+      );
 
   Map<String, dynamic> toMap() {
     return {

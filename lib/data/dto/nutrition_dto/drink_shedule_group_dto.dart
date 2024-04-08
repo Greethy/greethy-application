@@ -37,6 +37,27 @@ class DrinkScheduleGroupDto extends DrinkScheduleGroup {
       'drink_schedule_2_month': drinkSchedule2Month == null ? null : DrinkSchedule2MonthDto.fromDrinkSchedule2MonthList(drinkSchedule2Month!).map((x) => x.toMap()).toList(),
     };
   }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static DrinkScheduleGroupDto fromDrinkScheduleGroup(DrinkScheduleGroup drinkScheduleGroup) {
+    return DrinkScheduleGroupDto(
+      id: drinkScheduleGroup.id,
+      drinkPlanId: drinkScheduleGroup.drinkPlanId,
+      createdAt: drinkScheduleGroup.createdAt,
+      drinkSchedule2Month: drinkScheduleGroup.drinkSchedule2Month,
+    );
+  }
+
+  DrinkScheduleGroup toDrinkScheduleGroup() {
+    return DrinkScheduleGroup(
+      id: id,
+      drinkPlanId: drinkPlanId,
+      createdAt: createdAt,
+      drinkSchedule2Month: drinkSchedule2Month,
+    );
+  }
 }
 
 class DrinkSchedule2MonthDto extends DrinkSchedule2Month {

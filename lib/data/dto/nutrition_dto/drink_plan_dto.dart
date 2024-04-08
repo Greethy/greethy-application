@@ -43,6 +43,31 @@ class DrinkPlanDto extends DrinkPlan {
       'drink_schedule_day_group': drinkScheduleDayGroup == null ? [] : drinkScheduleDayGroup,
     };
   }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static DrinkPlanDto fromDrinkPlan(DrinkPlan drinkPlan) {
+    return DrinkPlanDto(
+      id: drinkPlan.id,
+      dailyGoal: drinkPlan.dailyGoal,
+      totalDay: drinkPlan.totalDay,
+      lastDrink: drinkPlan.lastDrink,
+      drinkScheduleDay: drinkPlan.drinkScheduleDay,
+      drinkScheduleDayGroup: drinkPlan.drinkScheduleDayGroup,
+    );
+  }
+
+  DrinkPlan toDrinkPlan() {
+    return DrinkPlan(
+      id: id,
+      dailyGoal: dailyGoal,
+      totalDay: totalDay,
+      lastDrink: lastDrink,
+      drinkScheduleDay: drinkScheduleDay,
+      drinkScheduleDayGroup: drinkScheduleDayGroup,
+    );
+  }
 }
 
 class DrinkScheduleDto extends DrinkSchedule {

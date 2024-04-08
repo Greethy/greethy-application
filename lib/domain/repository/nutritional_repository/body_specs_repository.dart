@@ -2,20 +2,15 @@ import 'package:greethy_application/domain/entities/nutrition_entities/body_spec
 
 abstract class BodySpecsRepository {
   Future<BodySpecs?> getBodySpecs({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
   });
 
   Future<BodySpecs?> postBodySpecs({
-    required String gmail,
-    required String password,
-    required String type,
+    required String bodySpecs,
   });
 
   Future<BodySpecs?> putBodySpecs({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
+    required BodySpecs bodySpecs,
   });
 }

@@ -2,20 +2,15 @@ import 'package:greethy_application/domain/entities/nutrition_entities/nutrition
 
 abstract class NutritionManagementRepository {
   Future<NutritionManagement?> getNutritionManagement({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
   });
 
   Future<NutritionManagement?> postNutritionManagement({
-    required String gmail,
-    required String password,
-    required String type,
+    required String nutritionManagement,
   });
 
   Future<NutritionManagement?> putNutritionManagement({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
+    required NutritionManagement nutritionManagement,
   });
 }

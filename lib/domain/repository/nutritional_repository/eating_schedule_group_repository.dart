@@ -2,20 +2,15 @@ import 'package:greethy_application/domain/entities/nutrition_entities/eating_sh
 
 abstract class EatingScheduleGroupRepository {
   Future<EatingScheduleGroup?> getEatingScheduleGroup({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
   });
 
   Future<EatingScheduleGroup?> postEatingScheduleGroup({
-    required String gmail,
-    required String password,
-    required String type,
+    required String eatingScheduleGroup,
   });
 
   Future<EatingScheduleGroup?> putEatingScheduleGroup({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
+    required EatingScheduleGroup eatingScheduleGroup,
   });
 }

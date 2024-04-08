@@ -2,20 +2,15 @@ import 'package:greethy_application/domain/entities/nutrition_entities/Ingredien
 
 abstract class IngredientRepository {
   Future<Ingredient?> getIngredient({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
   });
 
   Future<Ingredient?> postIngredient({
-    required String gmail,
-    required String password,
-    required String type,
+    required String ingredient,
   });
 
   Future<Ingredient?> putIngredient({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
+    required Ingredient ingredient,
   });
 }

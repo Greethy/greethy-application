@@ -2,20 +2,15 @@ import 'package:greethy_application/domain/entities/nutrition_entities/food_menu
 
 abstract class FoodMenuRepository {
   Future<FoodMenu?> getFoodMenu({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
   });
 
   Future<FoodMenu?> postFoodMenu({
-    required String gmail,
-    required String password,
-    required String type,
+    required String foodMenu,
   });
 
   Future<FoodMenu?> putFoodMenu({
-    required String gmail,
-    required String password,
-    required String type,
+    required String id,
+    required FoodMenu foodMenu,
   });
 }

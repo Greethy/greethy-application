@@ -6,7 +6,7 @@ abstract class EatingScheduleGroupRepository {
   });
 
   Future<EatingScheduleGroup?> postEatingScheduleGroup({
-    required String eatingScheduleGroup,
+    required EatingScheduleGroup eatingScheduleGroup,
   });
 
   Future<EatingScheduleGroup?> putEatingScheduleGroup({

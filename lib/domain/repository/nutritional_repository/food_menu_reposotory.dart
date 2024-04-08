@@ -6,7 +6,7 @@ abstract class FoodMenuRepository {
   });
 
   Future<FoodMenu?> postFoodMenu({
-    required String foodMenu,
+    required FoodMenu foodMenu,
   });
 
   Future<FoodMenu?> putFoodMenu({

@@ -6,7 +6,7 @@ abstract class IngredientRepository {
   });
 
   Future<Ingredient?> postIngredient({
-    required String ingredient,
+    required Ingredient ingredient,
   });
 
   Future<Ingredient?> putIngredient({

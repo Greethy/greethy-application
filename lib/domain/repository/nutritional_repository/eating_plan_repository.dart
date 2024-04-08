@@ -6,7 +6,7 @@ abstract class EatingPlanRepository {
   });
 
   Future<EatingPlan?> postEatingPlan({
-    required String eatingPlan,
+    required EatingPlan eatingPlan,
   });
 
   Future<EatingPlan?> putEatingPlan({

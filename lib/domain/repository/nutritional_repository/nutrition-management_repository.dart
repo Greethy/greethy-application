@@ -6,7 +6,7 @@ abstract class NutritionManagementRepository {
   });
 
   Future<NutritionManagement?> postNutritionManagement({
-    required String nutritionManagement,
+    required NutritionManagement nutritionManagement,
   });
 
   Future<NutritionManagement?> putNutritionManagement({

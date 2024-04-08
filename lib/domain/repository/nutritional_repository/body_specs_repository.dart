@@ -6,7 +6,7 @@ abstract class BodySpecsRepository {
   });
 
   Future<BodySpecs?> postBodySpecs({
-    required String bodySpecs,
+    required BodySpecs bodySpecs,
   });
 
   Future<BodySpecs?> putBodySpecs({

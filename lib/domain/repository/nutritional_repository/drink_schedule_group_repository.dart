@@ -6,7 +6,7 @@ abstract class DrinkScheduleGroupRepository {
   });
 
   Future<DrinkScheduleGroup?> postDrinkScheduleGroup({
-    required String drinkScheduleGroup,
+    required DrinkScheduleGroup drinkScheduleGroup,
   });
 
   Future<DrinkScheduleGroup?> putDrinkScheduleGroup({

@@ -6,7 +6,7 @@ abstract class FoodRepository {
   });
 
   Future<Food?> postFood({
-    required String food,
+    required Food food,
   });
 
   Future<Food?> putFood({

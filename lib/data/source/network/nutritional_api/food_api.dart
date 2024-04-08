@@ -9,13 +9,12 @@ abstract class FoodApi {
   );
 
   Future<FoodDto?> post(
-    String id,
-    Food password,
+    Food food,
   );
 
   Future<FoodDto?> put(
     String id,
-    Food password,
+    Food food,
   );
 }
 
@@ -59,7 +58,7 @@ class FoodApiImpl implements FoodApi {
   }
 
   @override
-  Future<FoodDto?> post(String id, Food drinkSheduleGroup) async {
+  Future<FoodDto?> post( Food drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

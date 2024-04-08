@@ -9,13 +9,12 @@ abstract class EatingPlanApi {
   );
 
   Future<EatingPlanDto?> post(
-    String id,
-    EatingPlan password,
+    EatingPlan eatingPlan,
   );
 
   Future<EatingPlanDto?> put(
     String id,
-    EatingPlan password,
+    EatingPlan eatingPlan,
   );
 }
 
@@ -59,7 +58,7 @@ class EatingPlanApiImpl implements EatingPlanApi {
   }
 
   @override
-  Future<EatingPlanDto?> post(String id, EatingPlan drinkSheduleGroup) async {
+  Future<EatingPlanDto?> post(EatingPlan drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

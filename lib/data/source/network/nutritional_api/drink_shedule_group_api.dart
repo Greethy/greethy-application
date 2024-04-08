@@ -9,13 +9,12 @@ abstract class DrinkScheduleGroupApi {
   );
 
   Future<DrinkScheduleGroupDto?> post(
-    String id,
-    DrinkScheduleGroup password,
+    DrinkScheduleGroup drinkScheduleGroup,
   );
 
   Future<DrinkScheduleGroupDto?> put(
     String id,
-    DrinkScheduleGroup password,
+    DrinkScheduleGroup drinkScheduleGroup,
   );
 }
 
@@ -59,7 +58,7 @@ class DrinkScheduleGroupApiImpl implements DrinkScheduleGroupApi {
   }
 
   @override
-  Future<DrinkScheduleGroupDto?> post(String id, DrinkScheduleGroup drinkSheduleGroup) async {
+  Future<DrinkScheduleGroupDto?> post(DrinkScheduleGroup drinkScheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

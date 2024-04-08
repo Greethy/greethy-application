@@ -9,13 +9,12 @@ abstract class NutritionManagementApi {
   );
 
   Future<NutritionManagementDto?> post(
-    String id,
-    NutritionManagement password,
+    NutritionManagement nutritionManagement,
   );
 
   Future<NutritionManagementDto?> put(
     String id,
-    NutritionManagement password,
+    NutritionManagement nutritionManagement,
   );
 }
 
@@ -59,7 +58,7 @@ class NutritionManagementApiImpl implements NutritionManagementApi {
   }
 
   @override
-  Future<NutritionManagementDto?> post(String id, NutritionManagement drinkSheduleGroup) async {
+  Future<NutritionManagementDto?> post( NutritionManagement drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

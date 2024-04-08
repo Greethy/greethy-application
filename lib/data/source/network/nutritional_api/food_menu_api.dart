@@ -1,43 +1,42 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:greethy_application/data/dto/nutrition_dto/eating_shedule_group_dto.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/eating_shedule_group.dart';
+import 'package:greethy_application/data/dto/nutrition_dto/food_menu_dto.dart';
+import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 
-abstract class EatingScheduleGroupApi {
-  Future<EatingScheduleGroupDto?> get(
+abstract class FoodMenuApi {
+  Future<FoodMenuDto?> get(
     String id,
   );
 
-  Future<EatingScheduleGroupDto?> post(
-    String id,
-    EatingScheduleGroup password,
+  Future<FoodMenuDto?> post(
+    FoodMenu foodMenu,
   );
 
-  Future<EatingScheduleGroupDto?> put(
+  Future<FoodMenuDto?> put(
     String id,
-    EatingScheduleGroup password,
+    FoodMenu foodMenu,
   );
 }
 
-class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
+class FoodMenuApiImpl implements FoodMenuApi {
   final dio = Dio();
 
   @override
-  Future<EatingScheduleGroupDto?> get(String id) async {
+  Future<FoodMenuDto?> get(String id) async {
     try {
       id = "1";
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');
 
-      final l = response.data['results'].map((e) => EatingScheduleGroupDto.fromMap(e));
+      final l = response.data['results'].map((e) => FoodMenuDto.fromMap(e));
       print(response.data);
 
       // return l;
       // todo: add to test
 
-      EatingScheduleGroupDto eatingScheduleGroupDto = await EatingScheduleGroupDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/eatting_schedule/eating_schedule_group_final.json'));
+      FoodMenuDto foodMenu = await FoodMenuDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_Menu_final.json'));
 
-      return eatingScheduleGroupDto;
+      return foodMenu;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.
@@ -47,7 +46,7 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return EatingScheduleGroupDto();
+        if (e.response?.statusCode == 404) return FoodMenuDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -55,16 +54,16 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
       }
     }
 
-    return EatingScheduleGroupDto();
+    return FoodMenuDto();
   }
 
   @override
-  Future<EatingScheduleGroupDto?> post(String id, EatingScheduleGroup drinkSheduleGroup) async {
+  Future<FoodMenuDto?> post(FoodMenu drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');
 
-      final l = response.data['results'].map((e) => EatingScheduleGroupDto.fromMap(e));
+      final l = response.data['results'].map((e) => FoodMenuDto.fromMap(e));
 
       return l;
     } on DioException catch (e) {
@@ -76,7 +75,7 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return EatingScheduleGroupDto();
+        if (e.response?.statusCode == 404) return FoodMenuDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -84,16 +83,16 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
       }
     }
 
-    return EatingScheduleGroupDto();
+    return FoodMenuDto();
   }
 
   @override
-  Future<EatingScheduleGroupDto?> put(String id, EatingScheduleGroup drinkSheduleGroup) async {
+  Future<FoodMenuDto?> put(String id, FoodMenu drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');
 
-      final l = response.data['results'].map((e) => EatingScheduleGroupDto.fromMap(e));
+      final l = response.data['results'].map((e) => FoodMenuDto.fromMap(e));
 
       return l;
     } on DioException catch (e) {
@@ -105,7 +104,7 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return EatingScheduleGroupDto();
+        if (e.response?.statusCode == 404) return FoodMenuDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -113,6 +112,6 @@ class EatingScheduleGroupApiImpl implements EatingScheduleGroupApi {
       }
     }
 
-    return EatingScheduleGroupDto();
+    return FoodMenuDto();
   }
 }

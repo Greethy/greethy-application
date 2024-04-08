@@ -9,13 +9,12 @@ abstract class BodySpecsApi {
   );
 
   Future<BodySpecsDto?> post(
-    String id,
-    BodySpecs password,
+    BodySpecs bodySpecs,
   );
 
   Future<BodySpecsDto?> put(
     String id,
-    BodySpecs password,
+    BodySpecs bodySpecs,
   );
 }
 
@@ -59,7 +58,7 @@ class BodySpecsApiImpl implements BodySpecsApi {
   }
 
   @override
-  Future<BodySpecsDto?> post(String id, BodySpecs bodySpecs) async {
+  Future<BodySpecsDto?> post( BodySpecs bodySpecs) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

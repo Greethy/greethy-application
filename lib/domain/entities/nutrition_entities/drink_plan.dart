@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class DrinkPlan extends Equatable {
-  final String id;
+  final String? id;
   final int? dailyGoal;
   final int? totalDay;
   final String? lastDrink;
@@ -9,7 +9,7 @@ class DrinkPlan extends Equatable {
   final List<String>? drinkScheduleDayGroup;
 
   DrinkPlan({
-    required this.id,
+    this.id,
     this.dailyGoal,
     this.totalDay,
     this.lastDrink,

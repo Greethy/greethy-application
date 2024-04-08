@@ -1,16 +1,16 @@
 import 'package:equatable/equatable.dart';
 
 class NutritionManagement extends Equatable {
-  final String id;
-  final String ownId;
+  final String? id;
+  final String? ownId;
   final List<String>? bodySpecs;
   final String? drinkPlanId;
   final String? eatingPlanPersonalId;
   final EatingPlanCollective? eatingPlanCollective;
 
   NutritionManagement({
-    required this.id,
-    required this.ownId,
+    this.id,
+    this.ownId,
     this.bodySpecs,
     this.drinkPlanId,
     this.eatingPlanPersonalId,
@@ -24,7 +24,7 @@ class NutritionManagement extends Equatable {
         bodySpecs,
         drinkPlanId,
         eatingPlanPersonalId,
-    eatingPlanCollective,
+        eatingPlanCollective,
       ];
 }
 

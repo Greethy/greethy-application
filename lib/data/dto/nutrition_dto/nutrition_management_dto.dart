@@ -4,8 +4,8 @@ import 'package:greethy_application/domain/entities/nutrition_entities/nutrition
 
 class NutritionManagementDto extends NutritionManagement {
   NutritionManagementDto({
-    required super.id,
-    required super.ownId,
+    super.id,
+    super.ownId,
     super.bodySpecs,
     super.drinkPlanId,
     super.eatingPlanPersonalId,

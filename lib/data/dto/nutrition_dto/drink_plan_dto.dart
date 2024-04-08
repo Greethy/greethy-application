@@ -4,7 +4,7 @@ import 'package:greethy_application/domain/entities/nutrition_entities/drink_pla
 
 class DrinkPlanDto extends DrinkPlan {
   DrinkPlanDto({
-    required super.id,
+    super.id,
     super.dailyGoal,
     super.totalDay,
     super.lastDrink,

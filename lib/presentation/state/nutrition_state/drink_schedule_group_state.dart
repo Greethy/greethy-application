@@ -28,7 +28,7 @@ class DrinkScheduleGroupState extends AppState {
 
   late DrinkScheduleGroup? _drinkScheduleGroup;
 
-  DrinkScheduleGroup? get collectiveModel => _drinkScheduleGroup;
+  DrinkScheduleGroup? get drinkScheduleGroup => _drinkScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Actions

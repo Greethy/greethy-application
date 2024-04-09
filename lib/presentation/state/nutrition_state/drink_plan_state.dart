@@ -28,7 +28,7 @@ class DrinkPlanState extends AppState {
 
   late DrinkPlan? _drinkPlan;
 
-  DrinkPlan? get collectiveModel => _drinkPlan;
+  DrinkPlan? get drinkPlan => _drinkPlan;
 
   // ---------------------------------------------------------------------------
   // Actions

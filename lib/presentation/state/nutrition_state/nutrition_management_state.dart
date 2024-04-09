@@ -36,10 +36,7 @@ class NutritionManagementState extends AppState {
 
   /// get body specs
   Future<void> getNutritionManagementMySelf() async {
-    // isBusy = true;
-    print("start getNutritionManagementMySelf");
     _nutritionManagement = await _getNutritionManagement.call();
-    print("getNutritionManagementMySelf done");
     isBusy = false;
   }
 

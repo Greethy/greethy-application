@@ -28,7 +28,7 @@ class IngredientState extends AppState {
 
   late Ingredient? _ingredient;
 
-  Ingredient? get collectiveModel => _ingredient;
+  Ingredient? get ingredient => _ingredient;
 
   // ---------------------------------------------------------------------------
   // Actions

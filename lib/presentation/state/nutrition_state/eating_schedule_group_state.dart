@@ -1,57 +1,57 @@
-import 'package:greethy_application/domain/entities/nutrition_entities/drink_shedule_group.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/get_drink_schedule_group.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/post_drink_schedule_group.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/put_drink_schedule_group.dart';
+import 'package:greethy_application/domain/entities/nutrition_entities/eating_shedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/get_eating_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/post_eating_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/put_eating_schedule_group.dart';
 
 import '../appState.dart';
 
-class DrinkScheduleGroupState extends AppState {
-  DrinkScheduleGroupState({
-    required GetDrinkScheduleGroup getDrinkScheduleGroup,
-    required PostDrinkScheduleGroup postDrinkScheduleGroup,
-    required PutDrinkScheduleGroup putDrinkScheduleGroup,
-  })  : _getDrinkScheduleGroup = getDrinkScheduleGroup,
-        _postDrinkScheduleGroup = postDrinkScheduleGroup,
-        _putDrinkScheduleGroup = putDrinkScheduleGroup;
+class EatingScheduleGroupState extends AppState {
+  EatingScheduleGroupState({
+    required GetEatingScheduleGroup getEatingScheduleGroup,
+    required PostEatingScheduleGroup postEatingScheduleGroup,
+    required PutEatingScheduleGroup putEatingScheduleGroup,
+  })  : _getEatingScheduleGroup = getEatingScheduleGroup,
+        _postEatingScheduleGroup = postEatingScheduleGroup,
+        _putEatingScheduleGroup = putEatingScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetDrinkScheduleGroup _getDrinkScheduleGroup;
-  final PostDrinkScheduleGroup _postDrinkScheduleGroup;
-  final PutDrinkScheduleGroup _putDrinkScheduleGroup;
+  final GetEatingScheduleGroup _getEatingScheduleGroup;
+  final PostEatingScheduleGroup _postEatingScheduleGroup;
+  final PutEatingScheduleGroup _putEatingScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Properties
   // ---------------------------------------------------------------------------
 
-  late DrinkScheduleGroup? _drinkScheduleGroup;
+  late EatingScheduleGroup? _eatingScheduleGroup;
 
-  DrinkScheduleGroup? get collectiveModel => _drinkScheduleGroup;
+  EatingScheduleGroup? get eatingScheduleGroup => _eatingScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getDrinkScheduleGroupMySelf(String id) async {
+  Future<void> getEatingScheduleGroupMySelf(String id) async {
     isBusy = true;
-    _drinkScheduleGroup = await _getDrinkScheduleGroup.call(id: id);
+    _eatingScheduleGroup = await _getEatingScheduleGroup.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postDrinkScheduleGroupMySelf(DrinkScheduleGroup drinkScheduleGroup) async {
+  Future<void> postEatingScheduleGroupMySelf(EatingScheduleGroup eatingScheduleGroup) async {
     isBusy = true;
-    _drinkScheduleGroup = await _postDrinkScheduleGroup.call(drinkScheduleGroup: drinkScheduleGroup);
+    _eatingScheduleGroup = await _postEatingScheduleGroup.call(eatingScheduleGroup: eatingScheduleGroup);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putDrinkScheduleGroupMySelf(String id, DrinkScheduleGroup drinkScheduleGroup) async {
+  Future<void> putEatingScheduleGroupMySelf(String id, EatingScheduleGroup eatingScheduleGroup) async {
     isBusy = true;
-    _drinkScheduleGroup = await _putDrinkScheduleGroup.call(id: id, drinkScheduleGroup: drinkScheduleGroup);
+    _eatingScheduleGroup = await _putEatingScheduleGroup.call(id: id, eatingScheduleGroup: eatingScheduleGroup);
     isBusy = false;
   }
 }

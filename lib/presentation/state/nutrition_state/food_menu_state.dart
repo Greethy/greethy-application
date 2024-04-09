@@ -28,7 +28,7 @@ class FoodMenuState extends AppState {
 
   late FoodMenu? _foodMenu;
 
-  FoodMenu? get collectiveModel => _foodMenu;
+  FoodMenu? get foodMenu => _foodMenu;
 
   // ---------------------------------------------------------------------------
   // Actions

@@ -28,7 +28,7 @@ class BodySpecsState extends AppState {
 
   late BodySpecs? _bodySpecs;
 
-  BodySpecs? get collectiveModel => _bodySpecs;
+  BodySpecs? get bodySpecs => _bodySpecs;
 
   // ---------------------------------------------------------------------------
   // Actions

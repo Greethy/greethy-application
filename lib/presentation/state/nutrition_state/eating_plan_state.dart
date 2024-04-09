@@ -28,16 +28,16 @@ class EatingPlanState extends AppState {
 
   late EatingPlan? _eatingPlan;
 
-  EatingPlan? get collectiveModel => _eatingPlan;
+  EatingPlan? get eatingPlan => _eatingPlan;
 
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getEatingPlanMySelf(String id) async {
+  Future<void> getEatingPlanMySelf(String? id) async {
     isBusy = true;
-    _eatingPlan = await _getEatingPlan.call(id: id);
+    if (id != null) _eatingPlan = await _getEatingPlan.call(id: id);
     isBusy = false;
   }
 

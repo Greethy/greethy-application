@@ -1,39 +1,39 @@
 {
   "id": 1,
   "eating_plan_id": 1,
-  "create_at": "12/2022", // đây là toàn bộ lịch ăn uống trong tháng này
+  "create_at": "12/2022",
   "eating_schedule": [
     {
-      "date" : "10/10/2023",
+      "date": "10/10/2023",
       "menu_id": 1
     },
     {
-      "date" : "09/10/2023",
+      "date": "09/10/2023",
       "menu_id": 4
     },
     {
-      "date" : "08/10/2023",
+      "date": "08/10/2023",
       "menu_id": 10
     },
     {
-      "date" : "07/10/2023",
+      "date": "07/10/2023",
       "menu_id": 5
     },
     {
-      "date" : "06/10/2023",
+      "date": "06/10/2023",
       "menu_id": 21
     },
     {
-      "date" : "05/10/2023",
+      "date": "05/10/2023",
       "menu_id": 11
     },
     {
-      "date" : "04/10/2023",
+      "date": "04/10/2023",
       "menu_id": 38
     },
     {
-      "date" : "3/10/2023",
+      "date": "3/10/2023",
       "menu_id": 38
     }
-  ],
+  ]
 }

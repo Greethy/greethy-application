@@ -1,12 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/body_specs_impl.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/body_specs_api.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/post_body_specs.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/put_body_specs.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/get_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/put_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/get_drink_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/post_drink_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/put_drink_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_plan_usecase/get_eating_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_plan_usecase/post_eating%20plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_plan_usecase/put_eating_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/get_eating_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/post_eating_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/put_eating_schedule_group.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_menu_usecase/get_food_menu.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_menu_usecase/post_food_menu.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_menu_usecase/put_food_menu.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_usecase/get_food.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_usecase/post_food.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/food_usecase/put_food.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/ingredient_usecase/get_ingredient.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/ingredient_usecase/post_ingredient.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/ingredient_usecase/put_ingredient.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/get_nutrition_management.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/post_nutrition_management.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/put_nutrition_management.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/body_specs_state.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/glass_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutritional_specs_view.dart';
-import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/widgets/title_view.dart';
-
 import 'package:greethy_application/presentation/ui/page/nutritional/meals_list_today_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutritional_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/water_view.dart';
-import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/widgets/title_view.dart';
+import 'package:provider/provider.dart';
 
 class MyDiaryScreen extends StatefulWidget {
   const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
@@ -23,6 +53,35 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+
+  // init use case
+  late GetBodySpecs _GetBodySpecs;
+  late PostBodySpecs _PostBodySpecs;
+  late PutBodySpecs _PutBodySpecs;
+  late GetDrinkPlan _GetDrinkPlan;
+  late PostDrinkPlan _PostDrinkPlan;
+  late PutDrinkPlan _PutDrinkPlan;
+  late GetDrinkScheduleGroup _GetDrinkScheduleGroup;
+  late PostDrinkScheduleGroup _PostDrinkScheduleGroup;
+  late PutDrinkScheduleGroup _PutDrinkScheduleGroup;
+  late GetEatingPlan _GetEatingPlan;
+  late PostEatingPlan _PostEatingPla;
+  late PutEatingPlan _PutEatingPlan;
+  late GetEatingScheduleGroup _GetEatingScheduleGroup;
+  late PostEatingScheduleGroup _PostEatingScheduleGroup;
+  late PutEatingScheduleGroup _PutEatingScheduleGroup;
+  late GetFoodMenu _GetFoodMenu;
+  late PostFoodMenu _PostFoodMenu;
+  late PutFoodMenu _PutFoodMenu;
+  late GetFood _GetFood;
+  late PostFood _PostFood;
+  late PutFood _PutFood;
+  late GetIngredient _GetIngredient;
+  late PostIngredient _PostIngredient;
+  late PutIngredient _PutIngredient;
+  late GetNutritionManagement _GetNutritionManagement;
+  late PostNutritionManagement _PostNutritionManagement;
+  late PutNutritionManagement _PutNutritionManagement;
 
   @override
   void initState() {
@@ -54,13 +113,19 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
       }
     });
     super.initState();
+
+    final BodySpecsApiImpl bodySpecsApi = BodySpecsApiImpl();
+    final BodySpecsRepositoryImpl bodySpecsRepo = BodySpecsRepositoryImpl(api: bodySpecsApi);
+    _GetBodySpecs = GetBodySpecs(repository: bodySpecsRepo);
+    _PostBodySpecs = PostBodySpecs(repository: bodySpecsRepo);
+    _PutBodySpecs = PutBodySpecs(repository: bodySpecsRepo);
   }
 
   void addAllListData() {
     const int count = 9;
     listViews.add(
       TitleView(
-        titleTxt: 'Mediterranean diet',
+        titleTxt: 'Nutritional Specs',
         subTxt: 'Details',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           parent: widget.animationController!,
@@ -78,6 +143,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
       TitleView(
         titleTxt: 'Meals today',
@@ -102,7 +168,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
 
     listViews.add(
       TitleView(
-        titleTxt: 'Body measurement',
+        titleTxt: 'Body Specs',
         subTxt: 'Today',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           parent: widget.animationController!,
@@ -121,6 +187,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
       TitleView(
         titleTxt: 'Water',
@@ -159,18 +226,56 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppTheme.background,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            getMainListViewUI(),
-            getAppBarUI(),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-            )
-          ],
+    return MultiProvider(
+      /// Register provider for app
+      providers: [
+        Provider.value(value: _GetBodySpecs),
+        Provider.value(value: _PostBodySpecs),
+        Provider.value(value: _PutBodySpecs),
+        // Provider.value(value: _GetDrinkPlan),
+        // Provider.value(value: _PostDrinkPlan),
+        // Provider.value(value: _PutDrinkPlan),
+        // Provider.value(value: _GetDrinkScheduleGroup),
+        // Provider.value(value: _PostDrinkScheduleGroup),
+        // Provider.value(value: _PutDrinkScheduleGroup),
+        // Provider.value(value: _GetEatingPlan),
+        // Provider.value(value: _PostEatingPla),
+        // Provider.value(value: _PutEatingPlan),
+        // Provider.value(value: _GetEatingScheduleGroup),
+        // Provider.value(value: _PostEatingScheduleGroup),
+        // Provider.value(value: _PutEatingScheduleGroup),
+        // Provider.value(value: _GetFoodMenu),
+        // Provider.value(value: _PostFoodMenu),
+        // Provider.value(value: _PutFoodMenu),
+        // Provider.value(value: _GetFood),
+        // Provider.value(value: _PostFood),
+        // Provider.value(value: _PutFood),
+        // Provider.value(value: _GetIngredient),
+        // Provider.value(value: _PostIngredient),
+        // Provider.value(value: _PutIngredient),
+        // Provider.value(value: _GetNutritionManagement),
+        // Provider.value(value: _PostNutritionManagement),
+        // Provider.value(value: _PutNutritionManagement),
+        ChangeNotifierProvider<BodySpecsState>(
+            create: (_) => BodySpecsState(
+                  getBodySpecs: _GetBodySpecs,
+                  postBodySpecs: _PostBodySpecs,
+                  putBodySpecs: _PutBodySpecs,
+                )),
+      ],
+      child: Container(
+        color: AppTheme.background,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            children: <Widget>[
+              getMainListViewUI(),
+              getAppBarUI(),
+              SizedBox(
+                height: MediaQuery.of(context).padding.bottom,
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -244,7 +349,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'My Diary',
+                                  'Dinh dưỡng',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -262,7 +367,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
                               child: InkWell(
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(Radius.circular(32.0)),
-                                onTap: () {},
+                                onTap: () {
+                                  print("lam lich hoat dong");
+                                },
                                 child: Center(
                                   child: Icon(
                                     Icons.keyboard_arrow_left,
@@ -317,7 +424,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

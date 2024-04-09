@@ -1,7 +1,7 @@
 import 'package:greethy_application/data/dto/nutrition_dto/nutrition_management_dto.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/nutritional_management_api.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
-import 'package:greethy_application/domain/repository/nutritional_repository/nutrition-management_repository.dart';
+import 'package:greethy_application/domain/repository/nutritional_repository/nutrition_management_repository.dart';
 
 class NutritionManagementRepositoryImpl implements NutritionManagementRepository {
   final NutritionManagementApi _api;

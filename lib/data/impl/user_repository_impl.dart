@@ -15,14 +15,14 @@ class UserRepositoryImpl implements UserRepository {
         _localStorage = localStorage;
 
   @override
-  Future<User> getUsers({String id = "321321"}) async {
-    final UserDto cached = _localStorage.loadUser(id: id);
-    if (cached.id == 0) {
+  Future<User> getUsers({String? id = null}) async {
+    if (id == "" || id == null) {
+      final UserDto cached = _localStorage.loadUser();
       return cached;
+    } else {
+      final fetched = await _api.loadUser(id: id);
+      await _localStorage.saveUser(id: id, user: fetched);
+      return fetched;
     }
-
-    final fetched = await _api.loadUser(id: id);
-    await _localStorage.saveUser(id: id, user: fetched);
-    return fetched;
   }
 }

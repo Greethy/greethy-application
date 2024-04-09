@@ -1,9 +1,7 @@
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
 
 abstract class NutritionManagementRepository {
-  Future<NutritionManagement?> getNutritionManagement({
-    required String id,
-  });
+  Future<NutritionManagement?> getNutritionManagement();
 
   Future<NutritionManagement?> postNutritionManagement({
     required NutritionManagement nutritionManagement,

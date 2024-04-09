@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/zdataDev/tabIcon_data.dart';
 import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/my_diary_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutritional_home_screen.dart';
 import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
 import 'package:provider/provider.dart';
 

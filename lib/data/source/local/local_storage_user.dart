@@ -11,9 +11,7 @@ abstract class LocalStorageUser {
     required UserDto user,
   });
 
-  UserDto loadUser({
-    required String id,
-  });
+  UserDto loadUser();
 
   Future<String> getLoginStatus();
 
@@ -30,10 +28,8 @@ class LocalStorageUserImpl implements LocalStorageUser {
   }) : _sharedPref = sharedPreferences;
 
   @override
-  UserDto loadUser({required String id}) {
-    final String key = getKeyToUser(id);
-    final String? json = _sharedPref.getString(key);
-
+  UserDto loadUser() {
+    final String? json = _sharedPref.getString(cachedUserKey);
     return json != null ? UserDto.fromRawJson(json) : UserDto();
   }
 
@@ -57,7 +53,6 @@ class LocalStorageUserImpl implements LocalStorageUser {
     final String status = _sharedPref.getString(cachedSignInKey) ?? '';
     return status;
   }
-
 
   @override
   Future<bool> saveLoginStatus({required String status}) async {

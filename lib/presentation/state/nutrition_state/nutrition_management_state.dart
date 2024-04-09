@@ -28,16 +28,18 @@ class NutritionManagementState extends AppState {
 
   late NutritionManagement? _nutritionManagement;
 
-  NutritionManagement? get collectiveModel => _nutritionManagement;
+  NutritionManagement? get nutritionManagement => _nutritionManagement;
 
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getNutritionManagementMySelf(String id) async {
-    isBusy = true;
-    _nutritionManagement = await _getNutritionManagement.call(id: id);
+  Future<void> getNutritionManagementMySelf() async {
+    // isBusy = true;
+    print("start getNutritionManagementMySelf");
+    _nutritionManagement = await _getNutritionManagement.call();
+    print("getNutritionManagementMySelf done");
     isBusy = false;
   }
 

@@ -39,7 +39,7 @@ class EatingPlan extends Equatable {
 
 class EatingScheduleWeek extends Equatable {
   final String? date;
-  final int? menuId;
+  final String? menuId;
 
   EatingScheduleWeek({
     this.date,

@@ -5,8 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/body_specs_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/drink_plan_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/drink_schedule_group_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/eating_plan_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/eating_schedule_group_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/food_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/food_menu_impl.dart';
+import 'package:greethy_application/data/impl/nutritional_impl/ingredient_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/nutrition_management_impl.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/body_specs_api.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/eating_plan_api.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/eating_schedule_group_api.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/food_api.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/food_menu_api.dart';
+import 'package:greethy_application/data/source/network/nutritional_api/ingredient_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/nutritional_management_api.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signup.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
@@ -39,6 +51,13 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_
 import 'package:greethy_application/presentation/state/appState.dart';
 import 'package:greethy_application/presentation/state/authState.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/body_specs_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/drink_plan_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/drink_schedule_group_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/eating_plan_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/eating_schedule_group_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/food_menu_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/food_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/ingredient_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/nutrition_management_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/common/locator.dart';
@@ -51,6 +70,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'data/impl/auth_repository_impl.dart';
 import 'data/source/local/local_storage_user.dart';
 import 'data/source/network/auth_api.dart';
+import 'data/source/network/nutritional_api/drink_plan_api.dart';
+import 'data/source/network/nutritional_api/drink_schedule_group_api.dart';
 import 'domain/usecase/auth_usercase/get_status_login.dart';
 import 'domain/usecase/auth_usercase/save_status_login.dart';
 import 'domain/usecase/auth_usercase/signin.dart';
@@ -85,12 +106,13 @@ class AppRoot extends StatefulWidget {
 }
 
 class _AppRootState extends State<AppRoot> {
+  // use case auth
   late SignIn _signIn;
   late GetStatusLogin _getStatusLogin;
   late SignUp _signUp;
   late SaveStatusLogin _saveStatusLogin;
 
-  // init use case
+  // use case nutrition
   late GetBodySpecs _GetBodySpecs;
   late PostBodySpecs _PostBodySpecs;
   late PutBodySpecs _PutBodySpecs;
@@ -101,7 +123,7 @@ class _AppRootState extends State<AppRoot> {
   late PostDrinkScheduleGroup _PostDrinkScheduleGroup;
   late PutDrinkScheduleGroup _PutDrinkScheduleGroup;
   late GetEatingPlan _GetEatingPlan;
-  late PostEatingPlan _PostEatingPla;
+  late PostEatingPlan _PostEatingPlan;
   late PutEatingPlan _PutEatingPlan;
   late GetEatingScheduleGroup _GetEatingScheduleGroup;
   late PostEatingScheduleGroup _PostEatingScheduleGroup;
@@ -131,6 +153,8 @@ class _AppRootState extends State<AppRoot> {
     // specific D.I. widget to make the instance accessible to the rest of the
     // widget tree.
     //
+
+    /// init Auth @{
     final api = AuthApiImpl();
     final localStorage = LocalStorageUserImpl(sharedPreferences: sharedPref);
     final repo = AuthRepositoryImpl(api: api, localStorage: localStorage);
@@ -139,6 +163,9 @@ class _AppRootState extends State<AppRoot> {
     _signUp = SignUp(repository: repo);
     _saveStatusLogin = SaveStatusLogin(repository: repo);
 
+    /// }@
+
+    /// init Nutrition @{
     final BodySpecsApiImpl bodySpecsApi = BodySpecsApiImpl();
     final BodySpecsRepositoryImpl bodySpecsRepo = BodySpecsRepositoryImpl(api: bodySpecsApi);
     _GetBodySpecs = GetBodySpecs(repository: bodySpecsRepo);
@@ -150,6 +177,50 @@ class _AppRootState extends State<AppRoot> {
     _GetNutritionManagement = GetNutritionManagement(repository: nutritionManagementRepo);
     _PostNutritionManagement = PostNutritionManagement(repository: nutritionManagementRepo);
     _PutNutritionManagement = PutNutritionManagement(repository: nutritionManagementRepo);
+
+    final DrinkPlanApiImpl dinkPlanApi = DrinkPlanApiImpl();
+    final DrinkPlanRepositoryImpl drinkPlanRepo = DrinkPlanRepositoryImpl(api: dinkPlanApi);
+    _GetDrinkPlan = GetDrinkPlan(repository: drinkPlanRepo);
+    _PostDrinkPlan = PostDrinkPlan(repository: drinkPlanRepo);
+    _PutDrinkPlan = PutDrinkPlan(repository: drinkPlanRepo);
+
+    final DrinkScheduleGroupApiImpl drinkScheduleGroupApi = DrinkScheduleGroupApiImpl();
+    final DrinkScheduleGroupRepositoryImpl drinkScheduleGroupRepo = DrinkScheduleGroupRepositoryImpl(api: drinkScheduleGroupApi);
+    _GetDrinkScheduleGroup = GetDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+    _PostDrinkScheduleGroup = PostDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+    _PutDrinkScheduleGroup = PutDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+
+    final EatingPlanApiImpl eatingPlanApi = EatingPlanApiImpl();
+    final EatingPlanRepositoryImpl eatingPlanRepo = EatingPlanRepositoryImpl(api: eatingPlanApi);
+    _GetEatingPlan = GetEatingPlan(repository: eatingPlanRepo);
+    _PostEatingPlan = PostEatingPlan(repository: eatingPlanRepo);
+    _PutEatingPlan = PutEatingPlan(repository: eatingPlanRepo);
+
+    final EatingScheduleGroupApiImpl eatingScheduleGroupApi = EatingScheduleGroupApiImpl();
+    final EatingScheduleGroupRepositoryImpl eatingScheduleGroupRepo = EatingScheduleGroupRepositoryImpl(api: eatingScheduleGroupApi);
+    _GetEatingScheduleGroup = GetEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+    _PostEatingScheduleGroup = PostEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+    _PutEatingScheduleGroup = PutEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+
+    final FoodMenuApiImpl foodMenuApi = FoodMenuApiImpl();
+    final FoodMenuRepositoryImpl foodMenuRepo = FoodMenuRepositoryImpl(api: foodMenuApi);
+    _GetFoodMenu = GetFoodMenu(repository: foodMenuRepo);
+    _PostFoodMenu = PostFoodMenu(repository: foodMenuRepo);
+    _PutFoodMenu = PutFoodMenu(repository: foodMenuRepo);
+
+    final FoodApiImpl foodApi = FoodApiImpl();
+    final FoodRepositoryImpl foodRepo = FoodRepositoryImpl(api: foodApi);
+    _GetFood = GetFood(repository: foodRepo);
+    _PostFood = PostFood(repository: foodRepo);
+    _PutFood = PutFood(repository: foodRepo);
+
+    final IngredientApiImpl ingredientApi = IngredientApiImpl();
+    final IngredientRepositoryImpl ingredientRepo = IngredientRepositoryImpl(api: ingredientApi);
+    _GetIngredient = GetIngredient(repository: ingredientRepo);
+    _PostIngredient = PostIngredient(repository: ingredientRepo);
+    _PutIngredient = PutIngredient(repository: ingredientRepo);
+
+    /// }@
   }
 
   @override
@@ -166,36 +237,45 @@ class _AppRootState extends State<AppRoot> {
     return MultiProvider(
       /// Register provider for app
       providers: [
+        /// provider of auth
         Provider.value(value: _signIn),
         Provider.value(value: _getStatusLogin),
         Provider.value(value: _signUp),
         Provider.value(value: _saveStatusLogin),
         ChangeNotifierProvider<AppState>(create: (_) => AppState()),
-        ChangeNotifierProvider<AuthState>(create: (_) => AuthState(signIn: _signIn, getStatusLogin: _getStatusLogin, signUp: _signUp, saveStatusLogin: _saveStatusLogin)),
+        ChangeNotifierProvider<AuthState>(
+            create: (_) => AuthState(
+                  signIn: _signIn,
+                  getStatusLogin: _getStatusLogin,
+                  signUp: _signUp,
+                  saveStatusLogin: _saveStatusLogin,
+                )),
+
+        /// provider of nutrition
         Provider.value(value: _GetBodySpecs),
         Provider.value(value: _PostBodySpecs),
         Provider.value(value: _PutBodySpecs),
-        // Provider.value(value: _GetDrinkPlan),
-        // Provider.value(value: _PostDrinkPlan),
-        // Provider.value(value: _PutDrinkPlan),
-        // Provider.value(value: _GetDrinkScheduleGroup),
-        // Provider.value(value: _PostDrinkScheduleGroup),
-        // Provider.value(value: _PutDrinkScheduleGroup),
-        // Provider.value(value: _GetEatingPlan),
-        // Provider.value(value: _PostEatingPla),
-        // Provider.value(value: _PutEatingPlan),
-        // Provider.value(value: _GetEatingScheduleGroup),
-        // Provider.value(value: _PostEatingScheduleGroup),
-        // Provider.value(value: _PutEatingScheduleGroup),
-        // Provider.value(value: _GetFoodMenu),
-        // Provider.value(value: _PostFoodMenu),
-        // Provider.value(value: _PutFoodMenu),
-        // Provider.value(value: _GetFood),
-        // Provider.value(value: _PostFood),
-        // Provider.value(value: _PutFood),
-        // Provider.value(value: _GetIngredient),
-        // Provider.value(value: _PostIngredient),
-        // Provider.value(value: _PutIngredient),
+        Provider.value(value: _GetDrinkPlan),
+        Provider.value(value: _PostDrinkPlan),
+        Provider.value(value: _PutDrinkPlan),
+        Provider.value(value: _GetDrinkScheduleGroup),
+        Provider.value(value: _PostDrinkScheduleGroup),
+        Provider.value(value: _PutDrinkScheduleGroup),
+        Provider.value(value: _GetEatingPlan),
+        Provider.value(value: _PostEatingPlan),
+        Provider.value(value: _PutEatingPlan),
+        Provider.value(value: _GetEatingScheduleGroup),
+        Provider.value(value: _PostEatingScheduleGroup),
+        Provider.value(value: _PutEatingScheduleGroup),
+        Provider.value(value: _GetFoodMenu),
+        Provider.value(value: _PostFoodMenu),
+        Provider.value(value: _PutFoodMenu),
+        Provider.value(value: _GetFood),
+        Provider.value(value: _PostFood),
+        Provider.value(value: _PutFood),
+        Provider.value(value: _GetIngredient),
+        Provider.value(value: _PostIngredient),
+        Provider.value(value: _PutIngredient),
         Provider.value(value: _GetNutritionManagement),
         Provider.value(value: _PostNutritionManagement),
         Provider.value(value: _PutNutritionManagement),
@@ -210,6 +290,48 @@ class _AppRootState extends State<AppRoot> {
                   getNutritionManagement: _GetNutritionManagement,
                   postNutritionManagement: _PostNutritionManagement,
                   putNutritionManagement: _PutNutritionManagement,
+                )),
+        ChangeNotifierProvider<DrinkPlanState>(
+            create: (_) => DrinkPlanState(
+                  getDrinkPlan: _GetDrinkPlan,
+                  postDrinkPlan: _PostDrinkPlan,
+                  putDrinkPlan: _PutDrinkPlan,
+                )),
+        ChangeNotifierProvider<DrinkScheduleGroupState>(
+            create: (_) => DrinkScheduleGroupState(
+                  getDrinkScheduleGroup: _GetDrinkScheduleGroup,
+                  postDrinkScheduleGroup: _PostDrinkScheduleGroup,
+                  putDrinkScheduleGroup: _PutDrinkScheduleGroup,
+                )),
+        ChangeNotifierProvider<EatingPlanState>(
+            create: (_) => EatingPlanState(
+                  getEatingPlan: _GetEatingPlan,
+                  postEatingPlan: _PostEatingPlan,
+                  putEatingPlan: _PutEatingPlan,
+                )),
+        ChangeNotifierProvider<EatingScheduleGroupState>(
+            create: (_) => EatingScheduleGroupState(
+                  getEatingScheduleGroup: _GetEatingScheduleGroup,
+                  postEatingScheduleGroup: _PostEatingScheduleGroup,
+                  putEatingScheduleGroup: _PutEatingScheduleGroup,
+                )),
+        ChangeNotifierProvider<FoodMenuState>(
+            create: (_) => FoodMenuState(
+                  getFoodMenu: _GetFoodMenu,
+                  postFoodMenu: _PostFoodMenu,
+                  putFoodMenu: _PutFoodMenu,
+                )),
+        ChangeNotifierProvider<FoodState>(
+            create: (_) => FoodState(
+                  getFood: _GetFood,
+                  postFood: _PostFood,
+                  putFood: _PutFood,
+                )),
+        ChangeNotifierProvider<IngredientState>(
+            create: (_) => IngredientState(
+                  getIngredient: _GetIngredient,
+                  postIngredient: _PostIngredient,
+                  putIngredient: _PutIngredient,
                 )),
       ],
       child: MaterialApp(

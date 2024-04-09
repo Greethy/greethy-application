@@ -317,6 +317,7 @@ class AuthState extends AppState {
   /// Fetch user profile
   /// If `userProfileId` is null then logged in user's profile will fetched
   FutureOr<bool> getProfileUser({String? userProfileId}) {
+    isBusy = true;
     try {
       //
       // todo: thêm api get thông tin người dùng
@@ -343,7 +344,7 @@ class AuthState extends AppState {
       // todo: gửi api tạo mới financialManagement và trả về lại user_model mới
       //
     }
-
+    isBusy = false;
     return "1";
   }
 }

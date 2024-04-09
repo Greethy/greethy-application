@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/nutrition_state/eating_plan_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/nutrition_management_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
@@ -24,6 +25,8 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+
+  late NutritionManagementState nutritionManagementState;
 
   @override
   void initState() {
@@ -57,7 +60,38 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
     super.initState();
   }
 
+  Future<bool> getData() async {
+    nutritionManagementState = Provider.of<NutritionManagementState>(context, listen: false);
+    await nutritionManagementState.getNutritionManagementMySelf();
+    print(nutritionManagementState.nutritionManagement.toString());
+    var eatingPlanState = Provider.of<EatingPlanState>(context, listen: false);
+    await eatingPlanState.getEatingPlanMySelf(nutritionManagementState.nutritionManagement?.eatingPlanPersonalId);
+    print(eatingPlanState.eatingPlan.toString());
+    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
+    return true;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppTheme.background,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: <Widget>[
+            getMainListViewUI(),
+            getAppBarUI(),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   void addAllListData() {
+
     const int count = 9;
     listViews.add(
       TitleView(
@@ -152,33 +186,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
             curve: Interval((1 / count) * 8, 1.0, curve: Curves.fastOutSlowIn),
           )),
           animationController: widget.animationController!),
-    );
-  }
-
-  Future<bool> getData() async {
-    var state = Provider.of<NutritionManagementState>(context, listen: false);
-    await state.getNutritionManagementMySelf();
-    print(state.nutritionManagement.toString());
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
-    return true;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppTheme.background,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            getMainListViewUI(),
-            getAppBarUI(),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-            )
-          ],
-        ),
-      ),
     );
   }
 

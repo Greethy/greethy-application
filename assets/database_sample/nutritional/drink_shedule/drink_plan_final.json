@@ -1,6 +1,6 @@
 {
-  "id": 1,
-  "daily_goal": 3500, // đơn vị ml
+  "id": "1",
+  "daily_goal": 3500,
   "total_day": 2100,
   "last_drink": "12:00 12/12/2022",
   "drink_schedule_day": [ 
@@ -21,5 +21,5 @@
       "drink_ml": 200
     }
   ],
-  "drink_schedule_day_group": [1] // mỗi tháng sẽ tạo 1 cái mới
+  "drink_schedule_day_group": [1]
 }

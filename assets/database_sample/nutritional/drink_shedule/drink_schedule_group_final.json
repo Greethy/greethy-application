@@ -2,7 +2,7 @@
   "id": 1,
   "drink_plan_id": 1,
   "create_at": "12/2022",
-  "drink_schedule_day": [ // lưu tối đã 2 tháng
+  "drink_schedule_day": [
     {
       "date" : "12/12/2022",
       "total_day": 2100

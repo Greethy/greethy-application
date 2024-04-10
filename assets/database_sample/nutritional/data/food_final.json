@@ -1,31 +1,31 @@
 {
-  "id": 1,
+  "id": "1",
   "food_name": "Cơm trắng",
   "food_type": ["Lương thực", "bla bla"],
   "food_image_url" : "food_image/salmon/6382.png",
-  "food_video_cooking: food_image/salmon/6382.mp4"
-  "total_calories": 1567,
+  "food_video_cooking": "food_image/salmon/6382.mp4",
+  "total_calories": 1567.0,
   "recipe": "mô tả công thức, cách nấu ăn....",
   "tips": "một số các mẹo vặt...",
   "ingredients" : [
     {
-      "ingredient_id"": 1,
+      "ingredient_id": "1",
       "ingredient_name" : "Cơm trắng",
-      "ingredient_replace": [2, 3, 4], // vị dụ các loại gạo khác, khi thay đổi cần đảm bảo kcal vẫn trong khoảng ban đầu bằng cách thay đổi value của nguyên liệu (cần làm tròn)
+      "ingredient_replace": ["2", "3", "4"],
       "value" : 200.0,
       "unit" : "G",
       "prepare" : "",
-      "kcal" : 123
+      "kcal" : 123.0
     },
     {
       "ingredient_name" : "nước",
-      "ingredient_replace": [2, 3, 4], // nước dừa
+      "ingredient_replace": ["2", "3", "4"],
       "value" : 1,
       "unit" : "l",
-      "kcal" : 0
+      "kcal" : 100.0
     }
   ],
-  "nutrients" : [ // tổng hợp các chất dinh dưỡng của các nguyên liệu bên trên
+  "nutrients" : [
     {
       "nutrition_name" : "vitamin A",
       "value" : 5.0,

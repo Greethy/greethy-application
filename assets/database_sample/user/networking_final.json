@@ -1,24 +1,37 @@
 {
   "id": "1",
   "userId": "1",
-  "following": ["1", "2", "3"],
-  "followers": ["4", "5"],
-  "resFollowing": ["6", "7"],
-  "resFollower": ["8", "9"],
-  "relatives":{ 
-    "resHomieSend":[
-      {    
-        "position":"Con trai",
+  "following": [
+    "1",
+    "2",
+    "3"
+  ],
+  "followers": [
+    "4",
+    "5"
+  ],
+  "resFollowing": [
+    "6",
+    "7"
+  ],
+  "resFollower": [
+    "8",
+    "9"
+  ],
+  "relatives": {
+    "resHomieSend": [
+      {
+        "position": "Con trai",
         "userId": "3"
       },
-      {    
+      {
         "position": "Con gái",
         "userId": "7"
       }
     ],
-    "resHomieGet":[
-      {    
-        "position":"Bồ",
+    "resHomieGet": [
+      {
+        "position": "Bồ",
         "userId": "5"
       }
     ],
@@ -29,56 +42,62 @@
       }
     ]
   },
-  "clubGroup":{
+  "clubGroup": {
     "topClub": [
       {
-        "club_name":"Club ăn chơi nhảy múa",
-        "club_profile_pic":"bababab.com.vn",
-        "club_star":1000,
-        "club_plays_personal_id":"1",
-        "club_id":"2"
+        "club_name": "Club ăn chơi nhảy múa",
+        "club_profile_pic": "bababab.com.vn",
+        "club_star": 1000,
+        "club_plays_personal_id": "1",
+        "club_id": "2"
       },
       {
-        "club_name":"lối sống healthy",
-        "club_profile_pic":"bababab.com.vn",
-        "club_star":1000,
-        "club_plays_personal_id":"1",
-        "club_id":"2"
+        "club_name": "lối sống healthy",
+        "club_profile_pic": "bababab.com.vn",
+        "club_star": 1000,
+        "club_plays_personal_id": "1",
+        "club_id": "2"
       }
     ],
-    "clubList":[
+    "clubList": [
       {
         "club_id": "1",
-        "club_plays_personal_id":"1"
+        "club_plays_personal_id": "1"
       },
       {
         "club_id": 2,
-        "club_plays_personal_id":2
+        "club_plays_personal_id": 2
       },
       {
         "club_id": 3,
-        "club_plays_personal_id":3
+        "club_plays_personal_id": 3
       }
     ]
   },
-  "challengesTrophy":{
-    "presentChallenge":[
+  "challengesTrophy": {
+    "presentChallenge": [
       {
-        "challenges_name":"chạy bộ trên đường trường sơn",
+        "challenges_name": "chạy bộ trên đường trường sơn",
         "challenges_image": "chung.com.vn",
         "challenges_time_start": "12:00 12/12/2002",
         "challenges_time_close": "12:00 13/12/2002",
         "challenge_id": 2
       }
     ],
-    "trophyChallenge":[
+    "trophyChallenge": [
       {
-        "challenges_name":"Đạp xe trên đường quốc lộ",
+        "challenges_name": "Đạp xe trên đường quốc lộ",
         "challenges_image": "chung.com.vn",
         "challenge_trophy": "vàng",
         "challenge_id": 1
       }
     ],
-    "challengesJoinList":["1", "2", "3", "4", "5"]
+    "challengesJoinList": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ]
   }
 }

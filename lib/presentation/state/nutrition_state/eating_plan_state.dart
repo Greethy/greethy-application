@@ -35,21 +35,21 @@ class EatingPlanState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getEatingPlanMySelf(String? id) async {
+  Future<void> getEatingPlan(String? id) async {
     isBusy = true;
     if (id != null) _eatingPlan = await _getEatingPlan.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postEatingPlanMySelf(EatingPlan eatingPlan) async {
+  Future<void> postEatingPlan(EatingPlan eatingPlan) async {
     isBusy = true;
     _eatingPlan = await _postEatingPlan.call(eatingPlan: eatingPlan);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putEatingPlanMySelf(String id, EatingPlan eatingPlan) async {
+  Future<void> putEatingPlan(String id, EatingPlan eatingPlan) async {
     isBusy = true;
     _eatingPlan = await _putEatingPlan.call(id: id, eatingPlan: eatingPlan);
     isBusy = false;

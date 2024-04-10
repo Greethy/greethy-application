@@ -35,21 +35,21 @@ class DrinkScheduleGroupState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getDrinkScheduleGroupMySelf(String id) async {
+  Future<void> getDrinkScheduleGroup(String id) async {
     isBusy = true;
     _drinkScheduleGroup = await _getDrinkScheduleGroup.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postDrinkScheduleGroupMySelf(DrinkScheduleGroup drinkScheduleGroup) async {
+  Future<void> postDrinkScheduleGroup(DrinkScheduleGroup drinkScheduleGroup) async {
     isBusy = true;
     _drinkScheduleGroup = await _postDrinkScheduleGroup.call(drinkScheduleGroup: drinkScheduleGroup);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putDrinkScheduleGroupMySelf(String id, DrinkScheduleGroup drinkScheduleGroup) async {
+  Future<void> putDrinkScheduleGroup(String id, DrinkScheduleGroup drinkScheduleGroup) async {
     isBusy = true;
     _drinkScheduleGroup = await _putDrinkScheduleGroup.call(id: id, drinkScheduleGroup: drinkScheduleGroup);
     isBusy = false;

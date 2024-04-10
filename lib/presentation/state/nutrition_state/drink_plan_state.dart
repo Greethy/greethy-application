@@ -35,21 +35,21 @@ class DrinkPlanState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getDrinkPlanMySelf(String id) async {
+  Future<void> getDrinkPlan(String id) async {
     isBusy = true;
     _drinkPlan = await _getDrinkPlan.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postDrinkPlanMySelf(DrinkPlan drinkPlan) async {
+  Future<void> postDrinkPlan(DrinkPlan drinkPlan) async {
     isBusy = true;
     _drinkPlan = await _postDrinkPlan.call(drinkPlan: drinkPlan);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putDrinkPlanMySelf(String id, DrinkPlan drinkPlan) async {
+  Future<void> putDrinkPlan(String id, DrinkPlan drinkPlan) async {
     isBusy = true;
     _drinkPlan = await _putDrinkPlan.call(id: id, drinkPlan: drinkPlan);
     isBusy = false;

@@ -35,21 +35,21 @@ class IngredientState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getIngredientMySelf(String id) async {
+  Future<void> getIngredient(String id) async {
     isBusy = true;
     _ingredient = await _getIngredient.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postIngredientMySelf(Ingredient ingredient) async {
+  Future<void> postIngredient(Ingredient ingredient) async {
     isBusy = true;
     _ingredient = await _postIngredient.call(ingredient: ingredient);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putIngredientMySelf(String id, Ingredient ingredient) async {
+  Future<void> putIngredient(String id, Ingredient ingredient) async {
     isBusy = true;
     _ingredient = await _putIngredient.call(id: id, ingredient: ingredient);
     isBusy = false;

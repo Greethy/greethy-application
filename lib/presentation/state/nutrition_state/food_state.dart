@@ -35,21 +35,21 @@ class FoodState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getFoodMySelf(String id) async {
+  Future<void> getFood(String id) async {
     isBusy = true;
     _food = await _getFood.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postFoodMySelf(Food food) async {
+  Future<void> postFood(Food food) async {
     isBusy = true;
     _food = await _postFood.call(food: food);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putFoodMySelf(String id, Food food) async {
+  Future<void> putFood(String id, Food food) async {
     isBusy = true;
     _food = await _putFood.call(id: id, food: food);
     isBusy = false;

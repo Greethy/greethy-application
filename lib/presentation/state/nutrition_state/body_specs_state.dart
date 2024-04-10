@@ -35,21 +35,21 @@ class BodySpecsState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// get body specs
-  Future<void> getBodySpecsMySelf(String id) async {
+  Future<void> getBodySpecs(String id) async {
     isBusy = true;
     _bodySpecs = await _getBodySpecs.call(id: id);
     isBusy = false;
   }
 
   /// post body specs
-  Future<void> postBodySpecsMySelf(BodySpecs bodySpecs) async {
+  Future<void> postBodySpecs(BodySpecs bodySpecs) async {
     isBusy = true;
     _bodySpecs = await _postBodySpecs.call(bodySpecs: bodySpecs);
     isBusy = false;
   }
 
   /// put body specs
-  Future<void> putBodySpecsMySelf(String id, BodySpecs bodySpecs) async {
+  Future<void> putBodySpecs(String id, BodySpecs bodySpecs) async {
     isBusy = true;
     _bodySpecs = await _putBodySpecs.call(id: id, bodySpecs: bodySpecs);
     isBusy = false;

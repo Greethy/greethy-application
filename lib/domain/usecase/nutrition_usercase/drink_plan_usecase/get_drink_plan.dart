@@ -11,7 +11,7 @@ class GetDrinkPlan {
   Future<DrinkPlan?> call({
     required String id,
   }) async {
-    final DrinkPlan? user = await _repository.getDrinkPlan(id: id);
-    return user;
+    final DrinkPlan? drinkPlan = await _repository.getDrinkPlan(id: id);
+    return drinkPlan;
   }
 }

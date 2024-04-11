@@ -11,7 +11,7 @@ class GetFoodMenu {
   Future<FoodMenu?> call({
     required String id,
   }) async {
-    final FoodMenu? user = await _repository.getFoodMenu(id: id);
-    return user;
+    final FoodMenu? foodMenu = await _repository.getFoodMenu(id: id);
+    return foodMenu;
   }
 }

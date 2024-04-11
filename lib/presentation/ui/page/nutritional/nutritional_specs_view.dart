@@ -1,15 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/main.dart';
+import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_circle_card.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_horizontal_card.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_vertical_card.dart';
-import 'package:greethy_application/presentation/theme/theme.dart';
 
 class NutritionalSpecsView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final int eaten;
+  final int burned;
+  final double? carbs;
+  final double? fat;
+  final double? protein;
+  final double progressValueCarbs;
+  final double progressValueFat;
+  final double progressValueProtein;
 
-  const NutritionalSpecsView({Key? key, this.animationController, this.animation}) : super(key: key);
+  const NutritionalSpecsView({
+    Key? key,
+    this.animationController,
+    this.animation,
+    required this.eaten,
+    required this.burned,
+    required this.progressValueCarbs,
+    required this.progressValueFat,
+    required this.progressValueProtein,
+    this.carbs,
+    this.fat,
+    this.protein,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +75,7 @@ class NutritionalSpecsView extends StatelessWidget {
                                     image: Image.asset("assets/fitness_app/eaten.png"),
                                     title: 'Eaten',
                                     unit_type: 'Kcal',
-                                    value: '100',
+                                    value: eaten.toString(),
                                   ),
                                   SizedBox(
                                     height: 8,
@@ -64,7 +84,7 @@ class NutritionalSpecsView extends StatelessWidget {
                                     image: Image.asset("assets/fitness_app/burned.png"),
                                     title: 'Burned',
                                     unit_type: 'Kcal',
-                                    value: '200',
+                                    value: burned.toString(),
                                     color: HexColor('#F56E98'),
                                   ),
                                 ],
@@ -77,8 +97,8 @@ class NutritionalSpecsView extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 16),
                             child: InformationCircle(
                               text: 'Kcal left',
-                              value: '100',
-                              percent: 60,
+                              value: burned > eaten || eaten == 0 ? "0" : (eaten - burned).toString(),
+                              percent: burned > eaten || eaten == 0 ? 0 : (eaten - burned) ~/ eaten,
                             ),
                           )
                         ],
@@ -105,23 +125,23 @@ class NutritionalSpecsView extends StatelessWidget {
                           Expanded(
                             child: VerticalInfoBar(
                               title: 'Carbs',
-                              progressValue: 50,
-                              left: '12g left',
+                              progressValue: progressValueCarbs,
+                              left: carbs.toString() + 'g left',
                             ),
                           ),
                           Expanded(
                             child: VerticalInfoBar(
                               title: 'Fat',
-                              progressValue: 50,
-                              left: '10g left',
+                              progressValue: progressValueFat,
+                              left: fat.toString() + 'g left',
                               color: HexColor('#F1B440'),
                             ),
                           ),
                           Expanded(
                             child: VerticalInfoBar(
                               title: 'Protein',
-                              progressValue: 50,
-                              left: '30g left',
+                              progressValue: progressValueProtein,
+                              left: protein.toString() + 'g left',
                               color: HexColor('#F56E98'),
                             ),
                           ),

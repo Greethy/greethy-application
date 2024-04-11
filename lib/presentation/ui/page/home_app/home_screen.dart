@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  tabBody = MyDiaryScreen(animationController: animationController);
+                  tabBody = MyNutritionDiaryScreen(animationController: animationController);
                 });
               });
             } else if (index == 1) {

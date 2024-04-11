@@ -50,6 +50,7 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/put_nutrition_management.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/body_specs_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/drink_plan_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_state/drink_schedule_group_state.dart';
@@ -332,6 +333,19 @@ class _AppRootState extends State<AppRoot> {
                   getIngredient: _GetIngredient,
                   postIngredient: _PostIngredient,
                   putIngredient: _PutIngredient,
+                )),
+        ChangeNotifierProvider<NutritionHomeScreenState>(
+            create: (_) => NutritionHomeScreenState(
+                  getNutritionManagement: _GetNutritionManagement,
+                  postNutritionManagement: _PostNutritionManagement,
+                  putNutritionManagement: _PutNutritionManagement,
+                  getBodySpecs: _GetBodySpecs,
+                  getDrinkPlan: _GetDrinkPlan,
+                  getEatingPlan: _GetEatingPlan,
+                  getEatingScheduleGroup: _GetEatingScheduleGroup,
+                  getDrinkScheduleGroup: _GetDrinkScheduleGroup,
+                  getFoodMenu: _GetFoodMenu,
+                  getFood: _GetFood,
                 )),
       ],
       child: MaterialApp(

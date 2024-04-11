@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/nutrition_state/eating_plan_state.dart';
-import 'package:greethy_application/presentation/state/nutrition_state/nutrition_management_state.dart';
+import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/glass_view.dart';
@@ -10,23 +9,21 @@ import 'package:greethy_application/presentation/ui/page/nutritional/water_view.
 import 'package:greethy_application/presentation/widgets/title_view.dart';
 import 'package:provider/provider.dart';
 
-class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
+class MyNutritionDiaryScreen extends StatefulWidget {
+  const MyNutritionDiaryScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
 
   @override
-  _MyDiaryScreenState createState() => _MyDiaryScreenState();
+  _MyNutritionDiaryScreenState createState() => _MyNutritionDiaryScreenState();
 }
 
-class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateMixin {
+class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
-
-  late NutritionManagementState nutritionManagementState;
 
   @override
   void initState() {
@@ -34,7 +31,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
       parent: widget.animationController!,
       curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn),
     ));
-    addAllListData();
 
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
@@ -61,25 +57,22 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
   }
 
   Future<bool> getData() async {
-    nutritionManagementState = Provider.of<NutritionManagementState>(context, listen: false);
-    await nutritionManagementState.getNutritionManagementMySelf();
-    print(nutritionManagementState.nutritionManagement.toString());
-    var eatingPlanState = Provider.of<EatingPlanState>(context, listen: false);
-    await eatingPlanState.getEatingPlanMySelf(nutritionManagementState.nutritionManagement?.eatingPlanPersonalId);
-    print(eatingPlanState.eatingPlan.toString());
+    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
+    await state.initDatabase();
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
     return true;
   }
 
   @override
   Widget build(BuildContext context) {
+    var state = Provider.of<NutritionHomeScreenState>(context, listen: true);
     return Container(
       color: AppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
           children: <Widget>[
-            getMainListViewUI(),
+            getMainListViewUI(state),
             getAppBarUI(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
@@ -90,8 +83,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
     );
   }
 
-  void addAllListData() {
-
+  void addAllListData(NutritionHomeScreenState state) {
     const int count = 9;
     listViews.add(
       TitleView(
@@ -111,6 +103,14 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
           curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
         )),
         animationController: widget.animationController!,
+        eaten: state.eaten,
+        burned: state.burn,
+        progressValueCarbs: state.progressValueCarbs,
+        progressValueFat: state.progressValueFat,
+        progressValueProtein: state.progressValueProtein,
+        carbs: state.carbs,
+        fat: state.fat,
+        protein: state.protein,
       ),
     );
 
@@ -189,13 +189,14 @@ class _MyDiaryScreenState extends State<MyDiaryScreen> with TickerProviderStateM
     );
   }
 
-  Widget getMainListViewUI() {
+  Widget getMainListViewUI(NutritionHomeScreenState state) {
     return FutureBuilder<bool>(
-      future: getData(),
+      future: state.initDatabase(),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (!snapshot.hasData) {
           return const SizedBox();
         } else {
+          addAllListData(state);
           return ListView.builder(
             controller: scrollController,
             padding: EdgeInsets.only(

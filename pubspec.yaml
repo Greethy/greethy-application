@@ -94,6 +94,8 @@ flutter:
         - assets/database_sample/user/
         - assets/database_sample/nutritional/
         - assets/database_sample/nutritional/eatting_schedule/
+        - assets/database_sample/nutritional/data/
+        - assets/database_sample/nutritional/drink_shedule/
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

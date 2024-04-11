@@ -6,10 +6,10 @@
     "More energy"
   ],
   "menu_calories": {
-    "protein": 21.0,
-    "lipid": 16.6,
-    "glucid": 62.4,
-    "calories": 1102
+    "protein": 210.0,
+    "lipid": 160.6,
+    "glucid": 620.4,
+    "calories": 11020.0
   },
   "meals": [
     {
@@ -17,11 +17,11 @@
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
-      "calories": 1102,
+      "calories": 1102.0,
       "foods": [
-        1,
-        2,
-        4
+        "1sadf",
+        "2asdfasdf",
+        "4asdfá"
       ],
       "status": true
     },
@@ -32,18 +32,18 @@
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        1,
-        2,
-        4
+        "1",
+        "2",
+        "4"
       ],
-      "status": 1
+      "status": true
     },
     {
       "meal": "lunch",
       "protein": 21.0,
       "lipid": 6.6,
       "glucid": 62.4,
-      "calories": 1102,
+      "calories": 1102.0,
       "foods": [
         "1",
         "2",
@@ -56,7 +56,7 @@
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
-      "calories": 1102,
+      "calories": 1102.0,
       "foods": [
         "1",
         "2",
@@ -69,7 +69,7 @@
       "protein": 21.0,
       "lipid": 6.6,
       "glucid": 62.4,
-      "calories": 1102,
+      "calories": 1102.0,
       "foods": [
         "1",
         "2",

@@ -8,14 +8,19 @@
       "projected_cost": 150000,
       "actual_cost": 200000,
       "difference": 50000,
-      "shopping_id": ["1","2"]
+      "shopping_id": [
+        "1",
+        "2"
+      ]
     },
     {
       "cost_name": "Phone",
       "projected_cost": 100000,
       "actual_cost": 200000,
       "difference": 50000,
-      "shopping_id": ["3"]
+      "shopping_id": [
+        "3"
+      ]
     }
   ],
   "subtotal": {

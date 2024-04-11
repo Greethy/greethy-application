@@ -25,7 +25,7 @@ class FoodMenuDto extends FoodMenu {
         id: json['id'],
         createdDate: json['created_date'],
         menuType: json['menu_type'] == null ? [] : List<String>.from(json['menu_type']),
-        menuCalories: json['menu_calories'],
+        menuCalories: json['menu_calories'] == null ? null : MenuCaloriesDto.fromMap(json['menu_calories']),
         meals: json['meals'] == null ? null : List<MealDto>.from(json['meals'].map((x) => MealDto.fromMap(x))),
       );
 
@@ -34,7 +34,7 @@ class FoodMenuDto extends FoodMenu {
       'id': id,
       'created_date': createdDate,
       'menu_type': menuType == null ? [] : menuType,
-      'menu_calories': menuCalories,
+      'menu_calories': menuCalories == null ? null : MenuCaloriesDto.fromMenuCalories(menuCalories!).toMap(),
       'meals': meals == null ? null : MealDto.fromMealList(meals!).map((x) => x.toMap()).toList(),
     };
   }
@@ -63,6 +63,62 @@ class FoodMenuDto extends FoodMenu {
   }
 }
 
+class MenuCaloriesDto extends MenuCalories {
+  MenuCaloriesDto({
+    super.protein,
+    super.lipid,
+    super.glucid,
+    super.calories,
+  });
+
+  // ---------------------------------------------------------------------------
+  // JSON
+  // ---------------------------------------------------------------------------
+  factory MenuCaloriesDto.fromRawJson(String str) => MenuCaloriesDto.fromMap(json.decode(str));
+
+  String toRawJson() => json.encode(toMap());
+
+  // ---------------------------------------------------------------------------
+  // Maps
+  // ---------------------------------------------------------------------------
+  factory MenuCaloriesDto.fromMap(Map<String, dynamic> json) => MenuCaloriesDto(
+        protein: json['protein'],
+        lipid: json['lipid'],
+        glucid: json['glucid'],
+        calories: json['calories'],
+      );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'protein': protein,
+      'lipid': lipid,
+      'glucid': glucid,
+      'calories': calories,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  MenuCalories toMenuCalories() {
+    return MenuCalories(
+      protein: protein,
+      lipid: lipid,
+      glucid: glucid,
+      calories: calories,
+    );
+  }
+
+  static MenuCaloriesDto fromMenuCalories(MenuCalories menuCalories) {
+    return MenuCaloriesDto(
+      protein: menuCalories.protein,
+      lipid: menuCalories.lipid,
+      glucid: menuCalories.glucid,
+      calories: menuCalories.calories,
+    );
+  }
+}
+
 class MealDto extends Meal {
   MealDto({
     super.meal,
@@ -71,6 +127,7 @@ class MealDto extends Meal {
     super.glucid,
     super.calories,
     super.foodsReplace,
+    super.status,
   });
 
   // ---------------------------------------------------------------------------
@@ -90,10 +147,19 @@ class MealDto extends Meal {
         glucid: json['glucid'],
         calories: json['calories'],
         foodsReplace: json['foods'] == null ? [] : List<String>.from(json['foods']),
+        status: json['status'],
       );
 
   Map<String, dynamic> toMap() {
-    return {'meal': meal, 'protein': protein, 'lipid': lipid, 'glucid': glucid, 'calories': calories, 'foods': foodsReplace == null ? [] : foodsReplace};
+    return {
+      'meal': meal,
+      'protein': protein,
+      'lipid': lipid,
+      'glucid': glucid,
+      'calories': calories,
+      'foods': foodsReplace == null ? [] : foodsReplace,
+      'status': status,
+    };
   }
 
   // ---------------------------------------------------------------------------
@@ -107,6 +173,7 @@ class MealDto extends Meal {
       glucid: meal.glucid,
       calories: meal.calories,
       foodsReplace: meal.foodsReplace,
+      status: meal.status,
     );
   }
 
@@ -118,6 +185,7 @@ class MealDto extends Meal {
       glucid: glucid,
       calories: calories,
       foodsReplace: foodsReplace,
+      status: status,
     );
   }
 
@@ -131,6 +199,7 @@ class MealDto extends Meal {
             glucid: entity.glucid,
             calories: entity.calories,
             foodsReplace: entity.foodsReplace,
+            status: entity.status,
           ),
         )
         .toList();

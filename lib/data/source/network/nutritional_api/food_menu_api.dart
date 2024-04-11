@@ -34,8 +34,10 @@ class FoodMenuApiImpl implements FoodMenuApi {
       // return l;
       // todo: add to test
 
-      FoodMenuDto foodMenu = await FoodMenuDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_Menu_final.json'));
-
+      print ("get food menu");
+      FoodMenuDto foodMenu = await FoodMenuDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_menu_final.json'));
+      print ("done");
+      print (foodMenu.toString());
       return foodMenu;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code

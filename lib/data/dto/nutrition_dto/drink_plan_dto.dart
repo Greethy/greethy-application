@@ -28,8 +28,8 @@ class DrinkPlanDto extends DrinkPlan {
       dailyGoal: json['daily_goal'],
       totalDay: json['total_day'],
       lastDrink: json['last_drink'],
-      drinkScheduleDay: json['drink_schedule_day'] == null ? null : List<DrinkSchedule>.from(json['drink_schedule_day_group'].map((x) => DrinkScheduleDto.fromMap(x))),
-      drinkScheduleDayGroup: json['drink_schedule_day_group'] == null ? [] : List<String>.from(json['drink_schedule_day_group']!.map((x) => x)),
+      drinkScheduleDay: json['drink_schedule_day'] == null ? null : List<DrinkSchedule>.from(json['drink_schedule_day'].map((x) => DrinkScheduleDto.fromMap(x))),
+      drinkScheduleDayGroup: json['drink_schedule_day_group'] == null ? [] : List<String>.from(json['drink_schedule_day_group']),
     );
   }
 

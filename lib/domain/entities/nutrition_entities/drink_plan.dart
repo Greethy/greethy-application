@@ -38,5 +38,8 @@ class DrinkSchedule extends Equatable {
   });
 
   @override
-  List<Object?> get props => [time, drinkMl];
+  List<Object?> get props => [
+        time,
+        drinkMl,
+      ];
 }

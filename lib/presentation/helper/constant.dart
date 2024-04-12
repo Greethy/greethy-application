@@ -1,5 +1,14 @@
 class Constants {
   static String dummyProfilePic = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6TaCLCqU4K0ieF27ayjl51NmitWaJAh_X0r1rLX4gMvOe0MDaYw&s';
+
+  static String breakfast = "breakfast";
+  static String snack = "snack";
+  static String lunch = "lunch";
+  static String dinner = "dinner";
+  static String breakfastImg = "assets/fitness_app/breakfast.png";
+  static String snackImg = "assets/fitness_app/snack.png";
+  static String lunchImg = "assets/fitness_app/lunch.png";
+  static String dinnerImg = "assets/fitness_app/dinner.png";
 }
 
 enum AuthStatus {

@@ -3,8 +3,8 @@ import 'package:greethy_application/presentation/state/nutrition_home_screen_sta
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/glass_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/meals_list_today_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutritional_specs_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_meals_list_today_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/water_view.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +65,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   @override
   Widget build(BuildContext context) {
-    var state = Provider.of<NutritionHomeScreenState>(context, listen: true);
+    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
     return Container(
       color: AppTheme.background,
       child: Scaffold(

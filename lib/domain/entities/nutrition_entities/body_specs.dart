@@ -67,8 +67,8 @@ class Pal extends Equatable {
 }
 
 class Bmr extends Equatable {
-  final int? bmrPerKg;
-  final int? bmrPerDay;
+  final double? bmrPerKg;
+  final double? bmrPerDay;
 
   Bmr({
     this.bmrPerKg,

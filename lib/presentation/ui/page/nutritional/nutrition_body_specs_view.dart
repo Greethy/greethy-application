@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:intl/intl.dart';
 
 class BodySpecsView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final int weight;
+  final int height;
+  final double bmi;
+  final double pal;
+  final double bmr;
+  final String status;
 
   const BodySpecsView({
     Key? key,
     this.animationController,
     this.animation,
+    required this.weight,
+    required this.height,
+    required this.bmi,
+    required this.pal,
+    required this.bmr,
+    required this.status,
   }) : super(key: key);
 
   @override
@@ -72,7 +85,7 @@ class BodySpecsView extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 4, bottom: 3),
                                     child: Text(
-                                      '206.8',
+                                      weight.toString(),
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -85,7 +98,7 @@ class BodySpecsView extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8, bottom: 8),
                                     child: Text(
-                                      'Ibs',
+                                      'Kg',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -113,7 +126,7 @@ class BodySpecsView extends StatelessWidget {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                          'Today 8:26 AM',
+                                          DateFormat('h:mm a').format(DateTime.now()),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: AppTheme.fontName,
@@ -127,7 +140,7 @@ class BodySpecsView extends StatelessWidget {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 4, bottom: 14),
+                                    padding: const EdgeInsets.only(top: 4, bottom: 4),
                                     child: Text(
                                       'InBody SmartScale',
                                       textAlign: TextAlign.center,
@@ -140,6 +153,20 @@ class BodySpecsView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 4),
+                                    child: Text(
+                                      "Pal: " + pal.toString(),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: AppTheme.fontName,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: AppTheme.grey.withOpacity(0.5),
+                                      ),
+                                    ),
+                                  ),
+
                                 ],
                               )
                             ],
@@ -167,7 +194,7 @@ class BodySpecsView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  '185 cm',
+                                  height.toString() + ' cm',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -203,7 +230,7 @@ class BodySpecsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      '27.3 BMI',
+                                      bmi.toString() + ' BMI',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -216,7 +243,7 @@ class BodySpecsView extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        'Overweight',
+                                        status,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontName,
@@ -241,7 +268,7 @@ class BodySpecsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Text(
-                                      '20%',
+                                      bmr.toString(),
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
@@ -253,7 +280,7 @@ class BodySpecsView extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        'Body fat',
+                                        'bmr',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontName,

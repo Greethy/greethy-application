@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/body_specs_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/glass_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_meals_list_today_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_specs_view.dart';
@@ -69,10 +69,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             getMainListViewUI(state),
             getAppBarUI(),
             SizedBox(
-              height: MediaQuery
-                  .of(context)
-                  .padding
-                  .bottom,
+              height: MediaQuery.of(context).padding.bottom,
             )
           ],
         ),
@@ -152,6 +149,12 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
         )),
         animationController: widget.animationController!,
+        weight: state.bodySpecs?.weight ?? 0,
+        height: state.bodySpecs?.height ?? 0,
+        bmi: state.bodySpecs?.bmi?.index ?? 0,
+        pal: state.bodySpecs?.pal?.value ?? 0,
+        bmr: state.bodySpecs?.bmr?.bmrPerDay ?? 0,
+        status: state.bodySpecs?.bmi?.status ?? "Bình Thường",
       ),
     );
 
@@ -205,14 +208,8 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           return ListView.builder(
             controller: scrollController,
             padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height + MediaQuery
-                  .of(context)
-                  .padding
-                  .top + 24,
-              bottom: 62 + MediaQuery
-                  .of(context)
-                  .padding
-                  .bottom,
+              top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
             ),
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
@@ -253,10 +250,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: MediaQuery
-                            .of(context)
-                            .padding
-                            .top,
+                        height: MediaQuery.of(context).padding.top,
                       ),
                       Padding(
                         padding: EdgeInsets.only(

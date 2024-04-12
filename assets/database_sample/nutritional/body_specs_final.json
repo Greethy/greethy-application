@@ -12,8 +12,8 @@
     "value": 1.75
   },
   "bmr": {
-    "bmrPerKg": 20,
-    "bmrPerDay": 1470
+    "bmrPerKg": 20.0,
+    "bmrPerDay": 1470.0
   },
   "create_at": "12/12/2022"
 }

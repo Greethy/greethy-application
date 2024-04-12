@@ -19,22 +19,24 @@
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        "1sadf",
-        "2asdfasdf",
-        "4asdfá"
+        {
+          "name" : "cơm",
+          "foodId" : "1"
+        }
       ],
       "status": true
     },
     {
-      "meal": "morning_snack",
+      "meal": "snack",
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        "1",
-        "2",
-        "4"
+        {
+          "name" : "cơm",
+          "foodId" : "1"
+        }
       ],
       "status": true
     },
@@ -45,22 +47,24 @@
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        "1",
-        "2",
-        "4"
+        {
+          "name" : "cơm",
+          "foodId" : "1"
+        }
       ],
       "status": true
     },
     {
-      "meal": "afternoon_snack",
+      "meal": "snack",
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        "1",
-        "2",
-        "4"
+        {
+          "name" : "cơm",
+          "foodId" : "1"
+        }
       ],
       "status": false
     },
@@ -71,9 +75,10 @@
       "glucid": 62.4,
       "calories": 1102.0,
       "foods": [
-        "1",
-        "2",
-        "4"
+        {
+          "name" : "cơm",
+          "foodId" : "1"
+        }
       ],
       "status": false
     }

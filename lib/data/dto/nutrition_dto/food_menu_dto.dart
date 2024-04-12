@@ -126,7 +126,7 @@ class MealDto extends Meal {
     super.lipid,
     super.glucid,
     super.calories,
-    super.foodsReplace,
+    super.foods,
     super.status,
   });
 
@@ -146,7 +146,7 @@ class MealDto extends Meal {
         lipid: json['lipid'],
         glucid: json['glucid'],
         calories: json['calories'],
-        foodsReplace: json['foods'] == null ? [] : List<String>.from(json['foods']),
+        foods: json['foods'] == null ? [] : List<FoodIndexDto>.from(json['foods'].map((x) => FoodIndexDto.fromMap(x))),
         status: json['status'],
       );
 
@@ -157,7 +157,7 @@ class MealDto extends Meal {
       'lipid': lipid,
       'glucid': glucid,
       'calories': calories,
-      'foods': foodsReplace == null ? [] : foodsReplace,
+      'foods': foods == null ? null : FoodIndexDto.fromFoodIndexList(foods!).map((x) => x.toMap()).toList(),
       'status': status,
     };
   }
@@ -172,7 +172,7 @@ class MealDto extends Meal {
       lipid: meal.lipid,
       glucid: meal.glucid,
       calories: meal.calories,
-      foodsReplace: meal.foodsReplace,
+      foods: meal.foods,
       status: meal.status,
     );
   }
@@ -184,7 +184,7 @@ class MealDto extends Meal {
       lipid: lipid,
       glucid: glucid,
       calories: calories,
-      foodsReplace: foodsReplace,
+      foods: foods,
       status: status,
     );
   }
@@ -198,8 +198,65 @@ class MealDto extends Meal {
             lipid: entity.lipid,
             glucid: entity.glucid,
             calories: entity.calories,
-            foodsReplace: entity.foodsReplace,
+            foods: entity.foods,
             status: entity.status,
+          ),
+        )
+        .toList();
+  }
+}
+
+class FoodIndexDto extends FoodIndex {
+  FoodIndexDto({
+    super.name,
+    super.foodId,
+  });
+
+  // ---------------------------------------------------------------------------
+  // JSON
+  // ---------------------------------------------------------------------------
+  factory FoodIndexDto.fromRawJson(String str) => FoodIndexDto.fromMap(json.decode(str));
+
+  String toRawJson() => json.encode(toMap());
+
+  // ---------------------------------------------------------------------------
+  // Maps
+  // ---------------------------------------------------------------------------
+  factory FoodIndexDto.fromMap(Map<String, dynamic> json) => FoodIndexDto(
+        name: json['name'],
+        foodId: json['foodId'],
+      );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'foodId': foodId,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static FoodIndexDto fromFoodIndex(FoodIndex food) {
+    return FoodIndexDto(
+      name: food.name,
+      foodId: food.foodId,
+    );
+  }
+
+  FoodIndex toMeal() {
+    return FoodIndex(
+      name: name,
+      foodId: foodId,
+    );
+  }
+
+  static List<FoodIndexDto> fromFoodIndexList(List<FoodIndex> foodList) {
+    return foodList
+        .map(
+          (entity) => FoodIndexDto(
+            name: entity.name,
+            foodId: entity.foodId,
           ),
         )
         .toList();

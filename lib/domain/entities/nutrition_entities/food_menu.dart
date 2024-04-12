@@ -53,7 +53,7 @@ class Meal extends Equatable {
   final double? lipid;
   final double? glucid;
   final double? calories;
-  final List<String>? foodsReplace;
+  final List<FoodIndex>? foods;
   final bool? status;
 
   Meal({
@@ -62,7 +62,7 @@ class Meal extends Equatable {
     this.lipid,
     this.glucid,
     this.calories,
-    this.foodsReplace,
+    this.foods,
     this.status,
   });
 
@@ -73,7 +73,23 @@ class Meal extends Equatable {
         lipid,
         glucid,
         calories,
-        foodsReplace,
+        foods,
         status,
       ];
+}
+
+class FoodIndex extends Equatable {
+  final String? name;
+  final String? foodId;
+
+  FoodIndex({
+    this.name,
+    this.foodId,
+  });
+
+  @override
+  List<Object?> get props => [
+    name,
+    foodId,
+  ];
 }

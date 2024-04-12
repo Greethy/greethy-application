@@ -34,10 +34,8 @@ class DrinkPlanApiImpl implements DrinkPlanApi {
       // return l;
       // todo: add to test
 
-      print("hello");
       DrinkPlanDto drinkPlanDto = await DrinkPlanDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/drink_shedule/drink_plan_final.json'));
 
-      print (drinkPlanDto.toString());
       return drinkPlanDto;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code

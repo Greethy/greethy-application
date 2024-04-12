@@ -1,18 +1,20 @@
-
-import 'package:greethy_application/main.dart';
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/wave_view.dart';
+import 'package:greethy_application/main.dart';
+import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/wave_view.dart';
 
 class WaterView extends StatefulWidget {
   const WaterView({
     Key? key,
     this.mainScreenAnimationController,
     this.mainScreenAnimation,
+    required this.state,
   }) : super(key: key);
 
   final AnimationController? mainScreenAnimationController;
   final Animation<double>? mainScreenAnimation;
+  final NutritionHomeScreenState state;
 
   @override
   _WaterViewState createState() => _WaterViewState();
@@ -75,7 +77,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4, bottom: 3),
                                       child: Text(
-                                        '2100',
+                                        widget.state.drinkPlan!.totalDay.toString(),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontName,
@@ -104,7 +106,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 4, top: 2, bottom: 14),
                                   child: Text(
-                                    'of daily goal 3.5L',
+                                    'of daily goal ' + (widget.state.drinkPlan!.dailyGoal ?? 0 / 1000).toStringAsFixed(1) + "L",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontName,
@@ -117,6 +119,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                 ),
                               ],
                             ),
+
                             /// dividing line
                             Padding(
                               padding: const EdgeInsets.only(left: 4, right: 4, top: 8, bottom: 16),
@@ -128,6 +131,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
+
                             /// history drink
                             Padding(
                               padding: const EdgeInsets.only(top: 16),
@@ -150,7 +154,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                          'Last drink 8:26 AM',
+                                          'Last drink ' + widget.state.drinkPlan!.lastDrink!,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: AppTheme.fontName,
@@ -196,6 +200,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
+
                       /// button + -
                       SizedBox(
                         width: 34,
@@ -251,6 +256,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
+
                       /// widget water level
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 8, top: 16),
@@ -274,7 +280,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                             ],
                           ),
                           child: WaveView(
-                            percentageValue: 60.0,
+                            percentageValue: double.parse((widget.state.drinkPlan!.totalDay! * 100 / widget.state.drinkPlan!.dailyGoal!).toStringAsFixed(1)),
                           ),
                         ),
                       )

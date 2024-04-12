@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
 import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_body_specs_view.dart';
@@ -96,14 +97,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
         )),
         animationController: widget.animationController!,
-        eaten: state.eaten,
-        burned: state.burn,
-        progressValueCarbs: state.progressValueCarbs,
-        progressValueFat: state.progressValueFat,
-        progressValueProtein: state.progressValueProtein,
-        carbs: state.carbs,
-        fat: state.fat,
-        protein: state.protein,
+        state: state,
       ),
     );
 
@@ -149,12 +143,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
         )),
         animationController: widget.animationController!,
-        weight: state.bodySpecs?.weight ?? 0,
-        height: state.bodySpecs?.height ?? 0,
-        bmi: state.bodySpecs?.bmi?.index ?? 0,
-        pal: state.bodySpecs?.pal?.value ?? 0,
-        bmr: state.bodySpecs?.bmr?.bmrPerDay ?? 0,
-        status: state.bodySpecs?.bmi?.status ?? "Bình Thường",
+        bodySpecs: state.bodySpecs ?? BodySpecs(),
       ),
     );
 
@@ -177,6 +166,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
         )),
         mainScreenAnimationController: widget.animationController!,
+        state: state,
       ),
     );
     listViews.add(

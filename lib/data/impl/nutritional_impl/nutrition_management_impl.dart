@@ -16,7 +16,6 @@ class NutritionManagementRepositoryImpl implements NutritionManagementRepository
 
   @override
   Future<NutritionManagement?> getNutritionManagement() async {
-    print("getNutritionManagement NutritionManagementRepositoryImpl");
     String? id = await _localStorage.loadUser().id;
     if (id == null || id == ""){
       // todo add test

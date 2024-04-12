@@ -9,7 +9,6 @@ class GetNutritionManagement {
   final NutritionManagementRepository _repository;
 
   Future<NutritionManagement?> call() async {
-    print("GetNutritionManagement call");
     final NutritionManagement? nutritionManagement = await _repository.getNutritionManagement();
     return nutritionManagement;
   }

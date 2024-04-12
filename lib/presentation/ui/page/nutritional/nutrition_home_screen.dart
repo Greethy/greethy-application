@@ -24,6 +24,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+  final int count = 9;
 
   @override
   void initState() {
@@ -56,13 +57,6 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     super.initState();
   }
 
-  Future<bool> getData() async {
-    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
-    await state.initDatabase();
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
@@ -75,7 +69,10 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             getMainListViewUI(state),
             getAppBarUI(),
             SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
+              height: MediaQuery
+                  .of(context)
+                  .padding
+                  .bottom,
             )
           ],
         ),
@@ -83,8 +80,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
   }
 
-  void addAllListData(NutritionHomeScreenState state) {
-    const int count = 9;
+  Future<void> addAllListData(NutritionHomeScreenState state) async {
     listViews.add(
       TitleView(
         titleTxt: 'Nutritional Specs',
@@ -133,6 +129,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
         )),
         mainScreenAnimationController: widget.animationController,
+        meals: state.meals,
       ),
     );
 
@@ -189,19 +186,33 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
   }
 
+  Future<bool> getData(NutritionHomeScreenState state) async {
+    await state.initDatabase();
+    if (listViews.length == 0) {
+      await addAllListData(state);
+    }
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    return true;
+  }
+
   Widget getMainListViewUI(NutritionHomeScreenState state) {
     return FutureBuilder<bool>(
-      future: state.initDatabase(),
+      future: getData(state),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (!snapshot.hasData) {
           return const SizedBox();
         } else {
-          addAllListData(state);
           return ListView.builder(
             controller: scrollController,
             padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
+              top: AppBar().preferredSize.height + MediaQuery
+                  .of(context)
+                  .padding
+                  .top + 24,
+              bottom: 62 + MediaQuery
+                  .of(context)
+                  .padding
+                  .bottom,
             ),
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
@@ -242,7 +253,10 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: MediaQuery.of(context).padding.top,
+                        height: MediaQuery
+                            .of(context)
+                            .padding
+                            .top,
                       ),
                       Padding(
                         padding: EdgeInsets.only(

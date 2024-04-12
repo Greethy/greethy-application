@@ -16,7 +16,9 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/food_useca
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/get_nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/post_nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/put_nutrition_management.dart';
+import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/meals_card.dart';
 
 class NutritionHomeScreenState extends AppState {
   NutritionHomeScreenState({
@@ -60,6 +62,8 @@ class NutritionHomeScreenState extends AppState {
   // Properties
   // ---------------------------------------------------------------------------
 
+  bool initData = false;
+
   late NutritionManagement? _nutritionManagement;
 
   NutritionManagement? get nutritionManagement => _nutritionManagement;
@@ -94,7 +98,7 @@ class NutritionHomeScreenState extends AppState {
 
   DrinkScheduleGroup? get drinkScheduleGroup => _drinkScheduleGroup;
 
-  late String _foodMenuId;
+  String _foodMenuId = "0";
 
   late FoodMenu? _foodMenu;
 
@@ -138,13 +142,20 @@ class NutritionHomeScreenState extends AppState {
 
   double get progressValueProtein => _progressValueProtein;
 
+  List<MealsModel> _meals = [];
+
+  List<MealsModel> get meals => _meals;
+
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
 
   /// init data
-  Future<bool> initDatabase() async {
-    print("start initDatabase");
+  Future<void> initDatabase() async {
+    if (initData == true) {
+      return;
+    }
+
     // get database
     _nutritionManagement = await _getNutritionManagement.call();
 
@@ -154,21 +165,16 @@ class NutritionHomeScreenState extends AppState {
     _eatingPlanId = _nutritionManagement!.eatingPlanPersonalId!;
     _eatingPlan = await _getEatingPlan.call(id: _eatingPlanId);
 
-    print("start get _drinkPlanId");
     _drinkPlanId = _nutritionManagement!.drinkPlanId!;
     _drinkPlan = await _getDrinkPlan.call(id: _drinkPlanId);
 
-    print("start get _foodMenuId");
     _foodMenuId = _eatingPlan!.eatingScheduleWeek![0].menuId!;
     _foodMenu = await _getFoodMenu.call(id: _foodMenuId);
-    print("end get _foodMenuId");
 
     // calculate
     await calculateBodyParameters();
-    print("end calculateBodyParameters");
 
-    isBusy = false;
-    return true;
+    initData = true;
   }
 
   Future<void> calculateBodyParameters() async {
@@ -186,6 +192,47 @@ class NutritionHomeScreenState extends AppState {
           fatEating += m.lipid ?? 0;
           proteinEating += m.protein ?? 0;
         }
+        MealsModel mealModel = MealsModel();
+        if (m.meal == Constants.breakfast) {
+          mealModel.titleTxt = "Bữa Sáng";
+          mealModel.imagePath = Constants.breakfastImg;
+          mealModel.startColor = '#FA7D82';
+          mealModel.endColor = '#FFB295';
+        } else if (m.meal == Constants.snack) {
+          mealModel.titleTxt = "Bữa Nhẹ";
+          mealModel.imagePath = Constants.snackImg;
+          mealModel.startColor = '#FE95B6';
+          mealModel.endColor = '#FF5287';
+        } else if (m.meal == Constants.lunch) {
+          mealModel.titleTxt = "Bữa Trưa";
+          mealModel.imagePath = Constants.lunchImg;
+          mealModel.startColor = '#738AE6';
+          mealModel.endColor = '#5C5EDD';
+        } else if (m.meal == Constants.dinner) {
+          mealModel.titleTxt = "Bữa Sáng";
+          mealModel.imagePath = Constants.dinnerImg;
+          mealModel.startColor = '#6F72CA';
+          mealModel.endColor = '#1E1466';
+        }
+
+        mealModel.kacl = m.calories!.toInt();
+
+        List<String> listFood = [];
+        List<FoodIndex>? listFoodIndex = m.foods;
+        if (listFoodIndex != null && listFoodIndex != []) {
+          for (FoodIndex f in listFoodIndex) {
+            f.name != null ? listFood.add(f.name ?? '') : {};
+          }
+        }
+
+        if (listFood.length > 0) {
+          mealModel.meals = listFood;
+        } else {
+          mealModel.meals = <String>['Recommend:', m.calories!.toInt().toString() + " kcal"];
+        }
+
+
+        _meals.add(mealModel);
       }
     }
     _eaten = eating;
@@ -202,6 +249,7 @@ class NutritionHomeScreenState extends AppState {
     _progressValueCarbs = (_progressValueCarbs * 10).roundToDouble() / 10;
     _progressValueFat = (_progressValueFat * 10).roundToDouble() / 10;
     _progressValueProtein = (_progressValueProtein * 10).roundToDouble() / 10;
+
   }
 
   /// post body specs

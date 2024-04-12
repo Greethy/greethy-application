@@ -6,10 +6,12 @@ class MealsListTodayView extends StatefulWidget {
     Key? key,
     this.mainScreenAnimationController,
     this.mainScreenAnimation,
+    required this.meals,
   }) : super(key: key);
 
   final AnimationController? mainScreenAnimationController;
   final Animation<double>? mainScreenAnimation;
+  final List<MealsModel> meals;
 
   @override
   _MealsListTodayViewState createState() => _MealsListTodayViewState();
@@ -17,7 +19,6 @@ class MealsListTodayView extends StatefulWidget {
 
 class _MealsListTodayViewState extends State<MealsListTodayView> with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<MealsModel> mealsModel = MealsModel.tabIconsList;
 
   @override
   void initState() {
@@ -54,10 +55,10 @@ class _MealsListTodayViewState extends State<MealsListTodayView> with TickerProv
               width: double.infinity,
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: mealsModel.length,
+                itemCount: widget.meals.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  final int count = mealsModel.length > 10 ? 10 : mealsModel.length;
+                  final int count = widget.meals.length > 10 ? 10 : widget.meals.length;
                   final Animation<double> animation = Tween<double>(begin: 0.0, end: 1.0).animate(
                     CurvedAnimation(
                       parent: animationController!,
@@ -67,7 +68,7 @@ class _MealsListTodayViewState extends State<MealsListTodayView> with TickerProv
                   animationController?.forward();
 
                   return MealsView(
-                    mealsModel: mealsModel[index],
+                    mealsModel: widget.meals[index],
                     animation: animation,
                     animationController: animationController!,
                   );

@@ -228,7 +228,7 @@ class NutritionHomeScreenState extends AppState {
           mealModel.endColor = '#1E1466';
         }
 
-        mealModel.kacl = m.calories!.toInt();
+        mealModel.kcal = m.calories!.toInt();
 
         List<String> listFood = [];
         List<FoodIndex>? listFoodIndex = m.foods;

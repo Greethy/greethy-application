@@ -3,7 +3,12 @@ import 'package:greethy_application/main.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class MealsView extends StatelessWidget {
-  const MealsView({Key? key, this.mealsModel, this.animationController, this.animation}) : super(key: key);
+  const MealsView({
+    Key? key,
+    this.mealsModel,
+    this.animationController,
+    this.animation,
+  }) : super(key: key);
 
   final MealsModel? mealsModel;
   final AnimationController? animationController;
@@ -86,60 +91,62 @@ class MealsView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            mealsModel?.kacl != 0
-                                ? Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      Text(
-                                        mealsModel!.kacl.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          letterSpacing: 0.2,
-                                          color: AppTheme.white,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 4, bottom: 3),
-                                        child: Text(
-                                          'kcal',
-                                          style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 10,
-                                            letterSpacing: 0.2,
-                                            color: AppTheme.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : Container(
-                                    decoration: BoxDecoration(
-                                      color: AppTheme.nearlyWhite,
-                                      shape: BoxShape.circle,
-                                      boxShadow: <BoxShadow>[
-                                        BoxShadow(
-                                          color: AppTheme.nearlyBlack.withOpacity(0.4),
-                                          offset: Offset(8.0, 8.0),
-                                          blurRadius: 8.0,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(6.0),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: HexColor(mealsModel!.endColor),
-                                        size: 24,
-                                      ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Text(
+                                  mealsModel!.kcal.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: AppTheme.fontName,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    letterSpacing: 0.2,
+                                    color: AppTheme.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4, bottom: 3),
+                                  child: Text(
+                                    'kcal',
+                                    style: TextStyle(
+                                      fontFamily: AppTheme.fontName,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      letterSpacing: 0.2,
+                                      color: AppTheme.white,
                                     ),
                                   ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 70,
+                    right: 0,
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: AppTheme.nearlyWhite.withOpacity(0.2),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    left: 5,
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: AppTheme.nearlyWhite.withOpacity(0.2),
+                        shape: BoxShape.circle,
                       ),
                     ),
                   ),
@@ -181,7 +188,7 @@ class MealsModel {
     this.startColor = '',
     this.endColor = '',
     this.meals,
-    this.kacl = 0,
+    this.kcal = 0,
   });
 
   String imagePath;
@@ -189,5 +196,5 @@ class MealsModel {
   String startColor;
   String endColor;
   List<String>? meals;
-  int kacl;
+  int kcal;
 }

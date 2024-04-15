@@ -8,6 +8,9 @@ import 'package:greethy_application/domain/entities/nutrition_entities/food_menu
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/get_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_increase_water.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_reduce_water.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/get_drink_schedule_group.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_plan_usecase/get_eating_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_schedule_group_usecase/get_eating_schedule_group.dart';
@@ -27,6 +30,9 @@ class NutritionHomeScreenState extends AppState {
     required PutNutritionManagement putNutritionManagement,
     required GetBodySpecs getBodySpecs,
     required GetDrinkPlan getDrinkPlan,
+    required PostDrinkPlan postDrinkPlan,
+    required PostIncreaseWater postIncreaseWater,
+    required PostReduceWater postReduceWater,
     required GetEatingPlan getEatingPlan,
     required GetEatingScheduleGroup getEatingScheduleGroup,
     required GetDrinkScheduleGroup getDrinkScheduleGroup,
@@ -37,6 +43,9 @@ class NutritionHomeScreenState extends AppState {
         _putNutritionManagement = putNutritionManagement,
         _getBodySpecs = getBodySpecs,
         _getDrinkPlan = getDrinkPlan,
+        _postDrinkPlan = postDrinkPlan,
+        _postIncreaseWater = postIncreaseWater,
+        _postReduceWater = postReduceWater,
         _getEatingPlan = getEatingPlan,
         _getEatingScheduleGroup = getEatingScheduleGroup,
         _getDrinkScheduleGroup = getDrinkScheduleGroup,
@@ -52,6 +61,9 @@ class NutritionHomeScreenState extends AppState {
   final PutNutritionManagement _putNutritionManagement;
   final GetBodySpecs _getBodySpecs;
   final GetDrinkPlan _getDrinkPlan;
+  final PostDrinkPlan _postDrinkPlan;
+  final PostIncreaseWater _postIncreaseWater;
+  final PostReduceWater _postReduceWater;
   final GetEatingPlan _getEatingPlan;
   final GetEatingScheduleGroup _getEatingScheduleGroup;
   final GetDrinkScheduleGroup _getDrinkScheduleGroup;
@@ -151,9 +163,9 @@ class NutritionHomeScreenState extends AppState {
   // ---------------------------------------------------------------------------
 
   /// init data
-  Future<void> initDatabase() async {
+  Future<bool> initDatabase() async {
     if (initData == true) {
-      return;
+      return true;
     }
 
     // get database
@@ -175,6 +187,7 @@ class NutritionHomeScreenState extends AppState {
     await calculateBodyParameters();
 
     initData = true;
+    return true;
   }
 
   Future<void> calculateBodyParameters() async {
@@ -231,7 +244,6 @@ class NutritionHomeScreenState extends AppState {
           mealModel.meals = <String>['Recommend:', m.calories!.toInt().toString() + " kcal"];
         }
 
-
         _meals.add(mealModel);
       }
     }
@@ -249,7 +261,6 @@ class NutritionHomeScreenState extends AppState {
     _progressValueCarbs = (_progressValueCarbs * 10).roundToDouble() / 10;
     _progressValueFat = (_progressValueFat * 10).roundToDouble() / 10;
     _progressValueProtein = (_progressValueProtein * 10).roundToDouble() / 10;
-
   }
 
   /// post body specs
@@ -264,5 +275,23 @@ class NutritionHomeScreenState extends AppState {
     isBusy = true;
     _nutritionManagement = await _putNutritionManagement.call(id: id, nutritionManagement: nutritionManagement);
     isBusy = false;
+  }
+
+  /// Increase the amount of water you drink
+  Future<void> increaseWaterIntake() async {
+    isBusy = true;
+    _drinkPlan = await _postIncreaseWater.call();
+    print(_drinkPlan.toString());
+    isBusy = false;
+    notifyListeners();
+  }
+
+  /// Reduce the amount of water you drink
+  Future<void> reduceWaterIntake() async {
+    isBusy = true;
+    _drinkPlan = await _postReduceWater.call();
+    print(_drinkPlan.toString());
+    isBusy = false;
+    notifyListeners();
   }
 }

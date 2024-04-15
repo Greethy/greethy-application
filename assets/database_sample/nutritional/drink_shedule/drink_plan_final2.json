@@ -1,0 +1,28 @@
+{
+  "id": "1",
+  "daily_goal": 3000,
+  "total_day": 2500,
+  "last_drink": "2:00 PM",
+  "drink_schedule_day": [
+    {
+      "time": "12:00 12/12/2022",
+      "drink_ml": 200
+    },
+    {
+      "time": "11:00 12/12/2022",
+      "drink_ml": 200
+    },
+    {
+      "time": "9:00 12/12/2022",
+      "drink_ml": 200
+    },
+    {
+      "time": "8:00 12/12/2022",
+      "drink_ml": 200
+    }
+  ],
+  "drink_schedule_day_group": [
+    "1",
+    "2"
+  ]
+}

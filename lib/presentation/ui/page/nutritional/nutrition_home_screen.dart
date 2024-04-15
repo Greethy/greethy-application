@@ -33,6 +33,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       parent: widget.animationController!,
       curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn),
     ));
+    addAllListData();
 
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
@@ -78,7 +79,8 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
   }
 
-  Future<void> addAllListData(NutritionHomeScreenState state) async {
+  Future<void> addAllListData() async {
+    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
     listViews.add(
       TitleView(
         titleTxt: 'Nutritional Specs',
@@ -143,7 +145,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
           curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
         )),
         animationController: widget.animationController!,
-        bodySpecs: state.bodySpecs ?? BodySpecs(),
+        state: state,
       ),
     );
 
@@ -160,13 +162,17 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
 
     listViews.add(
-      WaterView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
-        )),
-        mainScreenAnimationController: widget.animationController!,
-        state: state,
+      Consumer<NutritionHomeScreenState>(
+        builder: (context, myProvider, _) {
+          return WaterView(
+            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+              parent: widget.animationController!,
+              curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
+            )),
+            mainScreenAnimationController: widget.animationController!,
+            state: state,
+          );
+        },
       ),
     );
     listViews.add(
@@ -181,34 +187,35 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   Future<bool> getData(NutritionHomeScreenState state) async {
     await state.initDatabase();
-    if (listViews.length == 0) {
-      await addAllListData(state);
-    }
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
   }
 
   Widget getMainListViewUI(NutritionHomeScreenState state) {
-    return FutureBuilder<bool>(
-      future: getData(state),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        if (!snapshot.hasData) {
-          return const SizedBox();
-        } else {
-          return ListView.builder(
-            controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              widget.animationController?.forward();
-              return listViews[index];
-            },
-          );
-        }
+    return Consumer<NutritionHomeScreenState>(
+      builder: (context, state, _) {
+        return FutureBuilder<bool>(
+          future: getData(state),
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (!snapshot.hasData) {
+              return const SizedBox();
+            } else {
+              return ListView.builder(
+                controller: scrollController,
+                padding: EdgeInsets.only(
+                  top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
+                  bottom: 62 + MediaQuery.of(context).padding.bottom,
+                ),
+                itemCount: listViews.length,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (BuildContext context, int index) {
+                  widget.animationController?.forward();
+                  return listViews[index];
+                },
+              );
+            }
+          },
+        );
       },
     );
   }

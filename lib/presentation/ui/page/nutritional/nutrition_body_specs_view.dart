@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
+import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:intl/intl.dart';
 
 class BodySpecsView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final BodySpecs bodySpecs;
+  final NutritionHomeScreenState state;
 
   const BodySpecsView({
     Key? key,
     this.animationController,
     this.animation,
-    required this.bodySpecs,
+    required this.state,
   }) : super(key: key);
 
   @override
@@ -46,23 +46,53 @@ class BodySpecsView extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(top: 16, left: 16, right: 24),
+                      padding: const EdgeInsets.only(top: 10, left: 16, right: 24),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.only(left: 4, bottom: 8, top: 16),
-                            child: Text(
-                              'Weight',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: AppTheme.fontName,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                letterSpacing: -0.1,
-                                color: AppTheme.darkText,
-                              ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Weight',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: AppTheme.fontName,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    letterSpacing: -0.1,
+                                    color: AppTheme.darkText,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.access_time,
+                                      color: AppTheme.grey.withOpacity(0.5),
+                                      size: 16,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 4.0),
+                                      child: Text(
+                                        DateFormat('h:mm a').format(DateTime.now()),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: AppTheme.fontName,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          letterSpacing: 0.0,
+                                          color: AppTheme.grey.withOpacity(0.5),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           Row(
@@ -76,7 +106,7 @@ class BodySpecsView extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 4, bottom: 3),
                                     child: Text(
-                                      bodySpecs.weight.toString(),
+                                      state.bodySpecs!.weight.toString(),
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -103,35 +133,11 @@ class BodySpecsView extends StatelessWidget {
                                 ],
                               ),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.access_time,
-                                        color: AppTheme.grey.withOpacity(0.5),
-                                        size: 16,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 4.0),
-                                        child: Text(
-                                          DateFormat('h:mm a').format(DateTime.now()),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            letterSpacing: 0.0,
-                                            color: AppTheme.grey.withOpacity(0.5),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 4, bottom: 4),
+                                    padding: const EdgeInsets.only(top: 0, bottom: 4),
                                     child: Text(
                                       'InBody SmartScale',
                                       textAlign: TextAlign.center,
@@ -147,7 +153,7 @@ class BodySpecsView extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(bottom: 4),
                                     child: Text(
-                                      "Pal: " + bodySpecs.pal.toString(),
+                                      "Pal: " + state.bodySpecs!.pal!.value.toString(),
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -184,7 +190,7 @@ class BodySpecsView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  bodySpecs.height.toString() + ' cm',
+                                  state.bodySpecs!.height.toString() + ' cm',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -220,7 +226,7 @@ class BodySpecsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      bodySpecs.bmi?.index.toString() ?? '' + ' BMI',
+                                      state.bodySpecs?.bmi?.index.toString() ?? '' + ' BMI',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -233,7 +239,7 @@ class BodySpecsView extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        bodySpecs.bmi!.status ?? "Bình Thường",
+                                        state.bodySpecs?.bmi!.status ?? "Bình Thường",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: AppTheme.fontName,
@@ -258,7 +264,7 @@ class BodySpecsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Text(
-                                      bodySpecs.bmr!.bmrPerDay.toString(),
+                                      state.bodySpecs?.bmr!.bmrPerDay.toString() ?? '',
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,

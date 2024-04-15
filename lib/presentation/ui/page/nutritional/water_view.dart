@@ -208,49 +208,46 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
-                                shape: BoxShape.circle,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
-                                    offset: const Offset(4.0, 4.0),
-                                    blurRadius: 8.0,
-                                  ),
-                                ],
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                widget.state.increaseWaterIntake();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: AppTheme.nearlyDarkBlue,
+                                backgroundColor: AppTheme.nearlyWhite,
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(6.0),
+                                elevation: 8.0,
+                                shadowColor: AppTheme.nearlyDarkBlue.withOpacity(0.4),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.add,
-                                  color: AppTheme.nearlyDarkBlue,
-                                  size: 24,
-                                ),
+                              child: Icon(
+                                Icons.add,
+                                color: AppTheme.nearlyDarkBlue,
+                                size: 24,
                               ),
                             ),
                             const SizedBox(
                               height: 28,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
-                                shape: BoxShape.circle,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
-                                    offset: const Offset(4.0, 4.0),
-                                    blurRadius: 8.0,
-                                  ),
-                                ],
+                            ElevatedButton(
+                              onPressed: () {
+                                widget.state.reduceWaterIntake();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: AppTheme.nearlyDarkBlue,
+                                backgroundColor: AppTheme.nearlyWhite,
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(6.0),
+                                elevation: 8.0,
+                                shadowColor: AppTheme.nearlyDarkBlue.withOpacity(0.4),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.remove,
-                                  color: AppTheme.nearlyDarkBlue,
-                                  size: 24,
-                                ),
+                              child: Icon(
+                                Icons.remove,
+                                color: AppTheme.nearlyDarkBlue,
+                                size: 24,
                               ),
                             ),
                           ],

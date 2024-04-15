@@ -27,4 +27,16 @@ class DrinkPlanRepositoryImpl implements DrinkPlanRepository {
     final DrinkPlanDto? fetched = await _api.put(id, drinkPlan);
     return fetched == null ? null : fetched.toDrinkPlan();
   }
+
+  @override
+  Future<DrinkPlan?> postIncreaseWater() async {
+    final DrinkPlanDto? fetched = await _api.postIncreaseWater();
+    return fetched == null ? null : fetched.toDrinkPlan();
+  }
+
+  @override
+  Future<DrinkPlan?> postReduceWater() async {
+    final DrinkPlanDto? fetched = await _api.postReduceWater();
+    return fetched == null ? null : fetched.toDrinkPlan();
+  }
 }

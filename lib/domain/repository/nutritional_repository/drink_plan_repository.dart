@@ -9,6 +9,10 @@ abstract class DrinkPlanRepository {
     required DrinkPlan drinkPlan,
   });
 
+  Future<DrinkPlan?> postIncreaseWater();
+
+  Future<DrinkPlan?> postReduceWater();
+
   Future<DrinkPlan?> putDrinkPlan({
     required String id,
     required DrinkPlan drinkPlan,

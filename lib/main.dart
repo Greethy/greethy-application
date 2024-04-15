@@ -26,6 +26,8 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs
 import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/put_body_specs.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/get_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_drink_plan.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_increase_water.dart';
+import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_reduce_water.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/put_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/get_drink_schedule_group.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_schedule_group_usecase/post_drink_schedule_group.dart';
@@ -120,6 +122,8 @@ class _AppRootState extends State<AppRoot> {
   late GetDrinkPlan _GetDrinkPlan;
   late PostDrinkPlan _PostDrinkPlan;
   late PutDrinkPlan _PutDrinkPlan;
+  late PostIncreaseWater _PostIncreaseWater;
+  late PostReduceWater _PostReduceWater;
   late GetDrinkScheduleGroup _GetDrinkScheduleGroup;
   late PostDrinkScheduleGroup _PostDrinkScheduleGroup;
   late PutDrinkScheduleGroup _PutDrinkScheduleGroup;
@@ -184,6 +188,8 @@ class _AppRootState extends State<AppRoot> {
     _GetDrinkPlan = GetDrinkPlan(repository: drinkPlanRepo);
     _PostDrinkPlan = PostDrinkPlan(repository: drinkPlanRepo);
     _PutDrinkPlan = PutDrinkPlan(repository: drinkPlanRepo);
+    _PostIncreaseWater = PostIncreaseWater(repository: drinkPlanRepo);
+    _PostReduceWater = PostReduceWater(repository: drinkPlanRepo);
 
     final DrinkScheduleGroupApiImpl drinkScheduleGroupApi = DrinkScheduleGroupApiImpl();
     final DrinkScheduleGroupRepositoryImpl drinkScheduleGroupRepo = DrinkScheduleGroupRepositoryImpl(api: drinkScheduleGroupApi);
@@ -341,6 +347,9 @@ class _AppRootState extends State<AppRoot> {
                   putNutritionManagement: _PutNutritionManagement,
                   getBodySpecs: _GetBodySpecs,
                   getDrinkPlan: _GetDrinkPlan,
+                  postDrinkPlan: _PostDrinkPlan,
+                  postIncreaseWater: _PostIncreaseWater,
+                  postReduceWater: _PostReduceWater,
                   getEatingPlan: _GetEatingPlan,
                   getEatingScheduleGroup: _GetEatingScheduleGroup,
                   getDrinkScheduleGroup: _GetDrinkScheduleGroup,

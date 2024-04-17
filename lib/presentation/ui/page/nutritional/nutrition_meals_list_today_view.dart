@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/meals_card.dart';
 
 class MealsListTodayView extends StatefulWidget {
@@ -6,12 +7,12 @@ class MealsListTodayView extends StatefulWidget {
     Key? key,
     this.mainScreenAnimationController,
     this.mainScreenAnimation,
-    required this.meals,
+    required this.state,
   }) : super(key: key);
 
   final AnimationController? mainScreenAnimationController;
   final Animation<double>? mainScreenAnimation;
-  final List<MealsModel> meals;
+  final NutritionHomeScreenState state;
 
   @override
   _MealsListTodayViewState createState() => _MealsListTodayViewState();
@@ -55,10 +56,10 @@ class _MealsListTodayViewState extends State<MealsListTodayView> with TickerProv
               width: double.infinity,
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: widget.meals.length,
+                itemCount: widget.state.meals.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  final int count = widget.meals.length > 10 ? 10 : widget.meals.length;
+                  final int count = widget.state.meals.length > 10 ? 10 : widget.state.meals.length;
                   final Animation<double> animation = Tween<double>(begin: 0.0, end: 1.0).animate(
                     CurvedAnimation(
                       parent: animationController!,
@@ -68,7 +69,8 @@ class _MealsListTodayViewState extends State<MealsListTodayView> with TickerProv
                   animationController?.forward();
 
                   return MealsView(
-                    mealsModel: widget.meals[index],
+                    state: widget.state,
+                    mealsModel: widget.state.meals[index],
                     animation: animation,
                     animationController: animationController!,
                   );

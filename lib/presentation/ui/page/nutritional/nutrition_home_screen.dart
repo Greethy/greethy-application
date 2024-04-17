@@ -85,19 +85,24 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       TitleView(
         titleTxt: 'Nutritional Specs',
         subTxt: 'Details',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
       NutritionalSpecsView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
         state: state,
       ),
@@ -107,22 +112,30 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       TitleView(
         titleTxt: 'Meals today',
         subTxt: 'Customize',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
       ),
     );
 
     listViews.add(
-      MealsListTodayView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
-        )),
-        mainScreenAnimationController: widget.animationController,
-        meals: state.meals,
+      Consumer<NutritionHomeScreenState>(
+        builder: (context, state, _) {
+          return MealsListTodayView(
+            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            mainScreenAnimationController: widget.animationController,
+            state: state,
+          );
+        },
       ),
     );
 
@@ -130,20 +143,24 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       TitleView(
         titleTxt: 'Body Specs',
         subTxt: 'Today',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
       ),
     );
 
     listViews.add(
       BodySpecsView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
         state: state,
       ),
@@ -153,22 +170,26 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       TitleView(
         titleTxt: 'Water',
         subTxt: 'Aqua SmartBottle',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-          parent: widget.animationController!,
-          curve: Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn),
-        )),
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn),
+          ),
+        ),
         animationController: widget.animationController!,
       ),
     );
 
     listViews.add(
       Consumer<NutritionHomeScreenState>(
-        builder: (context, myProvider, _) {
+        builder: (context, state, _) {
           return WaterView(
-            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-              parent: widget.animationController!,
-              curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
-            )),
+            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
             mainScreenAnimationController: widget.animationController!,
             state: state,
           );
@@ -177,10 +198,12 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
     listViews.add(
       GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 8, 1.0, curve: Curves.fastOutSlowIn),
-          )),
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+              parent: widget.animationController!,
+              curve: Interval((1 / count) * 8, 1.0, curve: Curves.fastOutSlowIn),
+            ),
+          ),
           animationController: widget.animationController!),
     );
   }

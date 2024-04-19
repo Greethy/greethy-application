@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/finance_state/group_income_state.dart';
-import 'package:greethy_application/presentation/state/finance_state/group_shopping_state.dart';
-import 'package:greethy_application/presentation/state/finance_state/group_spending_plan_state.dart';
-import 'package:greethy_application/presentation/state/finance_state/income_monthly_state.dart';
-import 'package:greethy_application/presentation/state/finance_state/kind_cost_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/group_income_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/group_shopping_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/group_spending_plan_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/income_monthly_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/kind_cost_state.dart';
 import 'package:greethy_application/presentation/ui/page/finance/shopping_management/plan_page.dart';
 import 'package:provider/provider.dart';
 
-import '../../../state/finance_state/collective_state.dart';
-import '../../../state/finance_state/finance_management_state.dart';
-import '../../../state/finance_state/shopping_monthly_state.dart';
-import '../../../state/finance_state/shopping_state.dart';
-import '../../../state/finance_state/spending_plan_monthly_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/collective_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/finance_management_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/shopping_monthly_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/shopping_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/spending_plan_monthly_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import '../common/error_indicator.dart';
 import 'add/add_page.dart';

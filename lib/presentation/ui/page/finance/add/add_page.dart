@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/income_monthly_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/shopping_monthly_state.dart';
+import 'package:greethy_application/presentation/state/old_finance_state/shopping_state.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../state/finance_state/income_monthly_state.dart';
-import '../../../../state/finance_state/shopping_monthly_state.dart';
-import '../../../../state/finance_state/shopping_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'add_pageview_income.dart';
 import 'add_pageview_shopping.dart';

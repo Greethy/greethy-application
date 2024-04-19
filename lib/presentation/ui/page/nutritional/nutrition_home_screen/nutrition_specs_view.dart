@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/main.dart';
 import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_circle_card.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_horizontal_card.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/widget/information_vertical_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/widget/information_circle_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/widget/information_horizontal_card.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/widget/information_vertical_card.dart';
 
 class NutritionalSpecsView extends StatelessWidget {
   final AnimationController? animationController;

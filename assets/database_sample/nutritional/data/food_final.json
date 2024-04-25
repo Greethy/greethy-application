@@ -1,40 +1,76 @@
 {
   "id": "1",
   "food_name": "Cơm trắng",
-  "food_type": ["Lương thực", "bla bla"],
-  "food_image_url" : "food_image/salmon/6382.png",
+  "food_type": [
+    "Lương thực",
+    "bla bla"
+  ],
+  "food_image_url": "food_image/salmon/6382.png",
   "food_video_cooking": "food_image/salmon/6382.mp4",
   "total_calories": 1567.0,
   "recipe": "mô tả công thức, cách nấu ăn....",
   "tips": "một số các mẹo vặt...",
-  "ingredients" : [
+  "ingredients": [
     {
       "ingredient_id": "1",
-      "ingredient_name" : "Cơm trắng",
-      "ingredient_replace": ["2", "3", "4"],
-      "value" : 200.0,
-      "unit" : "G",
-      "prepare" : "",
-      "kcal" : 123.0
+      "ingredient_name": "Cơm trắng",
+      "ingredient_replace": [
+        "2",
+        "3",
+        "4"
+      ],
+      "value": 200.0,
+      "unit": "G",
+      "prepare": "",
+      "kcal": 123.0
     },
     {
-      "ingredient_name" : "nước",
-      "ingredient_replace": ["2", "3", "4"],
-      "value" : 1,
-      "unit" : "l",
-      "kcal" : 100.0
+      "ingredient_name": "nước",
+      "ingredient_replace": [
+        "2",
+        "3",
+        "4"
+      ],
+      "value": 1,
+      "unit": "l",
+      "kcal": 100.0
     }
   ],
-  "nutrients" : [
+  "nutrients": [
     {
-      "nutrition_name" : "vitamin A",
-      "value" : 5.0,
-      "unit" : "mg"
+      "nutrition_name": "vitamin A",
+      "value": 5.0,
+      "unit": "mg"
     },
     {
-      "nutrition_name" : "sodium",
-      "value" : 11.0,
-      "unit" : "mg"
+      "nutrition_name": "sodium",
+      "value": 11.0,
+      "unit": "mg"
     }
-  ]
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "sad",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2010-08-02T21:27:44+0000"
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/menu/genie/genie_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/genie/genie_screen.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/responsive.dart';
 
 import 'all_restaurants/all_restaurants_screen.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/popular_category.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/popular_category.dart';
 
 class PopularCategoriesView extends StatelessWidget {
   final categories = PopularCategory.getPopularCategories();

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/spotlight_best_top_food.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/spotlight_best_top_food.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/mobile/spotlight_best_top_food_item.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widgets/responsive.dart';
 
-class TopOffersViews extends StatelessWidget {
-  final restaurants = SpotlightBestTopFood.getTopRestaurants();
+class BestInSafetyViews extends StatelessWidget {
+  final restaurants = SpotlightBestTopFood.getBestRestaurants();
 
-  TopOffersViews({super.key});
+  BestInSafetyViews({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isTabletDesktop = Responsive.isTabletDesktop(context);
+    final customWidth = MediaQuery.of(context).size.width / (isTabletDesktop ? 3.8 : 1.1);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -26,21 +30,15 @@ class TopOffersViews extends StatelessWidget {
                     const Icon(Icons.security),
                     UIHelper.horizontalSpaceExtraSmall(),
                     Text(
-                      'Top Offers',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium!
-                          .copyWith(fontSize: 20.0),
+                      'Best in Safety',
+                      style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 20.0),
                     ),
                     const Spacer(),
                     Row(
                       children: <Widget>[
                         Text(
                           'SEE ALL',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
                         ),
                         UIHelper.horizontalSpaceExtraSmall(),
                         ClipOval(
@@ -62,29 +60,30 @@ class TopOffersViews extends StatelessWidget {
                 ),
                 UIHelper.verticalSpaceExtraSmall(),
                 Text(
-                  'Get 20-50% Off',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Colors.grey),
+                  'Restaurants with best safety standards',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.grey),
                 ),
               ],
             ),
           ),
           UIHelper.verticalSpaceMedium(),
           LimitedBox(
-            maxHeight: 300.0,
+            maxHeight: 320.0,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemCount: restaurants.length,
               itemBuilder: (context, index) => SizedBox(
-                width: MediaQuery.of(context).size.width / 1.1,
+                width: customWidth,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    SpotlightBestTopFoodItem(restaurant: restaurants[index][0]),
-                    SpotlightBestTopFoodItem(restaurant: restaurants[index][1])
+                    Expanded(
+                      child: SpotlightBestTopFoodItem(restaurant: restaurants[index][0]),
+                    ),
+                    Expanded(
+                      child: SpotlightBestTopFoodItem(restaurant: restaurants[index][1]),
+                    ),
                   ],
                 ),
               ),

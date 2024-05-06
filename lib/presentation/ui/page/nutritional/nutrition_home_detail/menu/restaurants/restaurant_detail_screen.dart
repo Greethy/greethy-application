@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/restaurant_detail.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/restaurant_detail.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/custom_divider_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/veg_badge_view.dart';
 
-class RestaurantDetailScreen extends StatelessWidget {
-  const RestaurantDetailScreen({super.key});
+class FoodDetailScreen extends StatelessWidget {
+  const FoodDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

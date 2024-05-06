@@ -1,4 +1,4 @@
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/spotlight_best_top_food.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/spotlight_best_top_food.dart';
 
 import 'indian_food.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/genie.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/genie.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/custom_divider_view.dart';
 

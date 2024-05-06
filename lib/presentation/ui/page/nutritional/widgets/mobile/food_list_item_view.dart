@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/spotlight_best_top_food.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/spotlight_best_top_food.dart';
 
 class FoodListItemView extends StatelessWidget {
   final SpotlightBestTopFood restaurant;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/menu/restaurants/restaurant_detail_screen.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/top_picks_food.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/restaurants/restaurant_detail_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/top_picks_food.dart';
 
 class TopPicksForYouView extends StatelessWidget {
   final foods = TopPicksFood.getTopPicksfoods();
@@ -36,7 +36,7 @@ class TopPicksForYouView extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const RestaurantDetailScreen(),
+                      builder: (context) => const FoodDetailScreen(),
                     ),
                   );
                 },

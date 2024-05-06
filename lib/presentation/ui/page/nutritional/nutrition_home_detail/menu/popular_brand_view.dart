@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/menu/restaurants/restaurant_detail_screen.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_management/models/popular_brands.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/restaurants/restaurant_detail_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/popular_brands.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/responsive.dart';
 
 class PopularBrandsView extends StatelessWidget {
@@ -38,7 +38,7 @@ class PopularBrandsView extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RestaurantDetailScreen(),
+                                builder: (context) => const FoodDetailScreen(),
                               ),
                             );
                           },

@@ -4,12 +4,12 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/custom_divider_view.dart';
 
-class GenieScreen extends StatelessWidget {
-  const GenieScreen({super.key});
+class SupportScreen extends StatelessWidget {
+  const SupportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final services = Genie.getGenieServices();
+    final services = Support.getSupportServices();
 
     return Scaffold(
       body: SafeArea(
@@ -40,7 +40,7 @@ class GenieScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'Genie',
+                                'Support',
                                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white),
                               ),
                               UIHelper.horizontalSpaceSmall(),
@@ -53,7 +53,7 @@ class GenieScreen extends StatelessWidget {
                           ),
                           UIHelper.verticalSpaceExtraSmall(),
                           Text(
-                            'Anything you need, delivered',
+                            'Greethy',
                             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                   color: Colors.grey[200],
                                   fontSize: 17.0,
@@ -72,8 +72,8 @@ class GenieScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             const _HeaderView(
-                              title: 'Pickup or Drop any items',
-                              buttonTitle: 'ADD PICKUP DROP DETAILS',
+                              title: 'Tất cả những gì bạn cần,',
+                              buttonTitle: 'chúng tôi đều cung cấp',
                             ),
                             const CustomDividerView(dividerHeight: 3.0),
                             UIHelper.verticalSpaceMedium(),

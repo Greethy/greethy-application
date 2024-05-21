@@ -3,8 +3,8 @@ import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/dotted_seperator_view.dart';
 
-class GenieView extends StatelessWidget {
-  const GenieView({super.key});
+class SupportView extends StatelessWidget {
+  const SupportView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,10 @@ class GenieView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('Genie', style: Theme.of(context).textTheme.headlineMedium),
+                    Text('Support', style: Theme.of(context).textTheme.headlineMedium),
                     UIHelper.verticalSpaceSmall(),
                     Text(
-                      'Anything you need, deliverd.\nPick-up, Drop or Buy anything,\nfrom anywhere in your city',
+                      'Tất cả những gì bạn cần.\nChúng tôi đều cung cấp,\nĐể hướng tới cộng đồng người Việt Nam',
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
@@ -49,13 +49,13 @@ class GenieView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _GenieCardView(
-                title: 'Buy\nAnything',
+              _SupportCardView(
+                title: 'Chia sẻ\nCông thức',
                 desc: 'Stationery\nMedicine\nGrocery\n& more',
                 image: 'assets/images/delivery-boy.png',
               ),
-              _GenieCardView(
-                title: 'Pickup &\nDrop',
+              _SupportCardView(
+                title: 'Hỗ Trợ &\nTài Trợ',
                 desc: 'Lunchbox\nCharger\nDocuments\nClothes',
                 image: 'assets/images/pizza-delivery-boy.png',
               )
@@ -67,8 +67,8 @@ class GenieView extends StatelessWidget {
   }
 }
 
-class _GenieCardView extends StatelessWidget {
-  const _GenieCardView({
+class _SupportCardView extends StatelessWidget {
+  const _SupportCardView({
     required this.title,
     required this.desc,
     required this.image,

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/popular_category.dart';
 
-class PopularCategoriesView extends StatelessWidget {
-  final categories = PopularCategory.getPopularCategories();
+class ContributorsView extends StatelessWidget {
+  final categories = PopularCategory.getContributors();
 
-  PopularCategoriesView({super.key});
+  ContributorsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PopularCategoriesView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'Popular Categories',
+            'Contributors',
             style:
                 Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 20.0),
           ),

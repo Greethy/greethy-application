@@ -4,10 +4,10 @@ import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/models/spotlight_best_top_food.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/mobile/spotlight_best_top_food_item.dart';
 
-class TopOffersViews extends StatelessWidget {
+class MenuTomorrow extends StatelessWidget {
   final restaurants = SpotlightBestTopFood.getTopRestaurants();
 
-  TopOffersViews({super.key});
+  MenuTomorrow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class TopOffersViews extends StatelessWidget {
                     const Icon(Icons.security),
                     UIHelper.horizontalSpaceExtraSmall(),
                     Text(
-                      'Top Offers',
+                      'Thực đơn ngày mai',
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium!

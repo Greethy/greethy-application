@@ -5,10 +5,10 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/mobile/spotlight_best_top_food_item.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/responsive.dart';
 
-class BestInSafetyViews extends StatelessWidget {
+class MenuToday extends StatelessWidget {
   final restaurants = SpotlightBestTopFood.getBestRestaurants();
 
-  BestInSafetyViews({super.key});
+  MenuToday({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class BestInSafetyViews extends StatelessWidget {
                     const Icon(Icons.security),
                     UIHelper.horizontalSpaceExtraSmall(),
                     Text(
-                      'Best in Safety',
+                      'Thực đơn hôm nay',
                       style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 20.0),
                     ),
                     const Spacer(),

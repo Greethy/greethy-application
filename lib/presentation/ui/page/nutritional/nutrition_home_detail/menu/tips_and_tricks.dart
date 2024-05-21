@@ -3,14 +3,13 @@ import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widgets/responsive.dart';
 
-class MenuSafetyBannerView extends StatelessWidget {
-  const MenuSafetyBannerView({super.key});
+class TipsAndTricksBannerView extends StatelessWidget {
+  const TipsAndTricksBannerView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isTabletDesktop = Responsive.isTabletDesktop(context);
-    final cardWidth =
-        MediaQuery.of(context).size.width / (isTabletDesktop ? 3.8 : 1.2);
+    final cardWidth = MediaQuery.of(context).size.width / (isTabletDesktop ? 3.8 : 1.2);
 
     return Container(
       margin: const EdgeInsets.all(15.0),
@@ -26,7 +25,7 @@ class MenuSafetyBannerView extends StatelessWidget {
               UIHelper.horizontalSpaceExtraSmall(),
               Flexible(
                 child: Text(
-                  "SWIGGY's KEY MEASURES TO ENSURE SAFETY",
+                  "Mẹo nấu ăn ngon hơn mỗi ngày",
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                         color: menuGreen,
                         fontSize: 15.0,
@@ -65,19 +64,18 @@ class MenuSafetyBannerView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'No-contact Delivery',
+                                  'Món canh bị nhạt',
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 UIHelper.verticalSpaceExtraSmall(),
                                 Text(
-                                  'Have your order dropped of at your door or gate for added safety',
+                                  'nếu bạn sử dụng mắm để nấu ăn, hãy cho chúng vào cuối dùng để món ăn không bị nhạt nữa.',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ],
@@ -86,11 +84,8 @@ class MenuSafetyBannerView extends StatelessWidget {
                           UIHelper.verticalSpaceExtraSmall(),
                           TextButton(
                             child: Text(
-                              'Know More',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(color: darkGreen),
+                              'Xem thêm',
+                              style: Theme.of(context).textTheme.titleLarge!.copyWith(color: darkGreen),
                             ),
                             onPressed: () {},
                           )

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/zdataDev/tabIcon_data.dart';
-import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_home_screen.dart';
-import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
-import 'package:provider/provider.dart';
-
-import '../../../state/authState.dart';
+import 'package:greethy_application/presentation/state/authState.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import '../finance/finance_management_page.dart';
-import '../plays/plays_page.dart';
-import 'bottom_navigation_view/bottom_bar_view.dart';
+import 'package:greethy_application/presentation/ui/page/character/action_navigation_view/action_bar_view.dart';
+import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
+import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
+import 'package:greethy_application/presentation/ui/page/flare_character/penguin.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_home_screen.dart';
+import 'package:greethy_application/presentation/ui/page/plays/plays_page.dart';
+import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
+import 'package:greethy_application/zdataDev/tabIcon_data.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     tabIconsList[3].isSelected = true;
 
     animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = NavigationApp();
+    tabBody = Penguin();
     super.initState();
   }
 
@@ -56,9 +56,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               return const SizedBox();
             } else {
               return Stack(
+                alignment: Alignment.center,
                 children: <Widget>[
-                  tabBody,
-                  bottomBar(),
+                  Positioned(
+                    top: 20,
+                    left: 0,
+                    right: 0,
+                    child: appBar(),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: tabBody,
+                  ),
+                  actionBar(),
                 ],
               );
             }
@@ -73,14 +86,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return true;
   }
 
-  Widget bottomBar() {
+  Widget actionBar() {
     var state = Provider.of<AuthState>(context, listen: false);
     return Column(
       children: <Widget>[
         const Expanded(
           child: SizedBox(),
         ),
-        BottomBarView(
+        ActionBarView(
           tabIconsList: tabIconsList,
           addClick: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => FeedScreen()));
@@ -125,6 +138,48 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           },
         ),
       ],
+    );
+  }
+
+  Widget appBar() {
+    return SizedBox(
+      height: AppBar().preferredSize.height,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 8, left: 10),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(AppBar().preferredSize.height),
+                child: Icon(
+                  Icons.notifications_active_rounded,
+                  color: AppTheme.dark_grey,
+                ),
+                onTap: () {},
+              ),
+            ),
+          ),
+          SizedBox(width: 10,),
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  'Flutter UI',
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: AppTheme.darkText,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+        ],
+      ),
     );
   }
 }

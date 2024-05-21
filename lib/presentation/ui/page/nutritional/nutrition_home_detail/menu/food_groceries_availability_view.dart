@@ -144,7 +144,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              GenieGroceryCardView(
+              SupportGroceryCardView(
                 title: 'Món Bắc',
                 subtitle: 'Tất cả những gì bạn cần',
                 image: 'assets/images/food1.jpg',
@@ -152,12 +152,12 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const GenieScreen(),
+                      builder: (context) => const SupportScreen(),
                     ),
                   );
                 },
               ),
-              GenieGroceryCardView(
+              SupportGroceryCardView(
                 title: 'Món Trung',
                 subtitle: 'Greethy',
                 image: 'assets/images/food4.jpg',
@@ -165,12 +165,12 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const GenieScreen(),
+                      builder: (context) => const SupportScreen(),
                     ),
                   );
                 },
               ),
-              GenieGroceryCardView(
+              SupportGroceryCardView(
                 title: 'Món Nam',
                 subtitle: 'Đều có!!!\n ^_^',
                 image: 'assets/images/food6.jpg',

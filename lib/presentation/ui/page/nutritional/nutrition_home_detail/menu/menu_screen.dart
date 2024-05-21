@@ -16,7 +16,7 @@ import 'offers/offer_screen.dart';
 import 'popular_brand_view.dart';
 import 'popular_categories_view.dart';
 import 'restaurants/restaurant_vertical_list_view.dart';
-import 'menu_safety_banner_view.dart';
+import 'tips_and_tricks.dart';
 import 'top_offer_view.dart';
 import 'top_picks_for_you_view.dart';
 
@@ -41,31 +41,33 @@ class NutritionHomeManagementScreen extends StatelessWidget {
                     /// todo: Quảng cáo
                     OfferBannerView(),
                     const CustomDividerView(),
+                    /// todo: món cay, hải sản, ...
                     VietnamessFoodView(),
                     const CustomDividerView(),
                     // InTheSpotlightView(),
                     // const CustomDividerView(),
                     // PopularBrandsView(),
                     // const CustomDividerView(),
-                    const MenuSafetyBannerView(),
-                    BestInSafetyViews(),
+                    /// Tip and Tricks về dinh dưỡng;
+                    const TipsAndTricksBannerView(),
+                    MenuToday(),
                     const CustomDividerView(),
-                    TopOffersViews(),
+                    MenuTomorrow(),
                     const CustomDividerView(),
-                    const GenieView(),
+                    const SupportView(),
                     const CustomDividerView(),
-                    PopularCategoriesView(),
+                    ContributorsView(),
                     const CustomDividerView(),
-                    RestaurantVerticalListView(
-                      title: 'Popular Restaurants',
-                      restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
-                    ),
-                    const CustomDividerView(),
-                    RestaurantVerticalListView(
-                      title: 'All Restaurants Nearby',
-                      restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
-                      isAllRestaurantNearby: true,
-                    ),
+                    // RestaurantVerticalListView(
+                    //   title: 'Popular Restaurants',
+                    //   restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
+                    // ),
+                    // const CustomDividerView(),
+                    // RestaurantVerticalListView(
+                    //   title: 'All Restaurants Nearby',
+                    //   restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
+                    //   isAllRestaurantNearby: true,
+                    // ),
                     const SeeAllRestaurantBtn(),
                     const LiveForFoodView(),
                   ],

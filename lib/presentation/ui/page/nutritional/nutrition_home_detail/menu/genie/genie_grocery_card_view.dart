@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
 
-class GenieGroceryCardView extends StatelessWidget {
-  const GenieGroceryCardView({super.key,
+class SupportGroceryCardView extends StatelessWidget {
+  const SupportGroceryCardView({super.key,
     required this.title,
     required this.image,
     required this.subtitle,

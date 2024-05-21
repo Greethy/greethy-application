@@ -7,7 +7,7 @@ class PopularCategory {
   final String image;
   final String name;
 
-  static List<PopularCategory> getPopularCategories() {
+  static List<PopularCategory> getContributors() {
     return const [
       PopularCategory(
         image: 'assets/icons/coffee.png',

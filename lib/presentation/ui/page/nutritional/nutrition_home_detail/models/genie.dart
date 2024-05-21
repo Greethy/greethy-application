@@ -1,5 +1,5 @@
-class Genie {
-  const Genie({
+class Support {
+  const Support({
     required this.image,
     required this.title,
   });
@@ -7,13 +7,13 @@ class Genie {
   final String image;
   final String title;
 
-  static List<Genie> getGenieServices() {
+  static List<Support> getSupportServices() {
     return const [
-      Genie(image: 'assets/icons/home.png', title: 'Home\nFood'),
-      Genie(image: 'assets/icons/documents.png', title: 'Documents\nBooks'),
-      Genie(image: 'assets/icons/delivery.png', title: 'Business\nDeliveries'),
-      Genie(image: 'assets/icons/courier.png', title: 'Courier'),
-      Genie(image: 'assets/icons/more.png', title: 'Anything\nElse'),
+      Support(image: 'assets/icons/home.png', title: 'Home\nFood'),
+      Support(image: 'assets/icons/documents.png', title: 'Documents\nBooks'),
+      Support(image: 'assets/icons/delivery.png', title: 'Business\nDeliveries'),
+      Support(image: 'assets/icons/courier.png', title: 'Courier'),
+      Support(image: 'assets/icons/more.png', title: 'Anything\nElse'),
     ];
   }
 }

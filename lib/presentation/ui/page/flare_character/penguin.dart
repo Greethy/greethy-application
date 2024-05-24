@@ -118,174 +118,172 @@ class _PenguinState extends State<Penguin> with FlareController {
     return Stack(
       children: [
         Positioned(
-          child: Scaffold(
-            body: Center(
-              child: Container(
-                width: width_character,
-                height: height_character,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: FlareActor(
-                        "assets/penguin/Penguin.flr",
-                        alignment: Alignment.center,
-                        isPaused: _isPaused,
-                        fit: BoxFit.cover,
-                        animation: "walk",
-                        controller: this,
+          child: Center(
+            child: Container(
+              width: width_character,
+              height: height_character,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: FlareActor(
+                      "assets/penguin/Penguin.flr",
+                      alignment: Alignment.center,
+                      isPaused: _isPaused,
+                      fit: BoxFit.cover,
+                      animation: "walk",
+                      controller: this,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onLongPressStart: (_) {
+                          print("onLongPressStart");
+                          _startDownSpeed();
+                        },
+                        onLongPressEnd: (_) {
+                          print("onLongPressEnd");
+                          _stopSpeed();
+                        },
+                        // child: Center(child: Text("1")),
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: GestureDetector(
-                          onLongPressStart: (_) {
-                            print("onLongPressStart");
-                            _startDownSpeed();
-                          },
-                          onLongPressEnd: (_) {
-                            print("onLongPressEnd");
-                            _stopSpeed();
-                          },
-                          // child: Center(child: Text("1")),
-                        ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: width_sensor,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onTap: () {
+                          print("onTap");
+                          setState(() {
+                            _speed = 1.0;
+                          });
+                        },
+                        // child: Center(child: Text("2")),
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      left: width_sensor,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onLongPressStart: (_) {
+                          print("onLongPressStart");
+                          _startUpSpeed();
+                        },
+                        onLongPressEnd: (_) {
+                          print("onLongPressEnd");
+                          _stopSpeed();
+                        },
+                        // child: Center(child: Text("3")),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: height_sensor,
+                    left: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      // child: Center(
+                      //   child: Text("4"),
+                      // ),
+                    ),
+                  ),
+                  Positioned(
+                    top: height_sensor,
+                    left: width_sensor,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isPaused = !_isPaused;
+                          });
+                        },
+                        // child: Center(child: Text("5")),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: height_sensor,
+                    right: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      // child: Center(
+                      //   child: Text("6"),
+                      // ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onLongPressStart: (_) {
+                          print("onLongPressStart");
+                          _startDownRockAmount();
+                        },
+                        onLongPressEnd: (_) {
+                          print("onLongPressEnd");
+                          _stopRockAmount();
+                        },
+                        // child: Center(child: Text("7")),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: width_sensor,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: Center(
                         child: GestureDetector(
                           onTap: () {
-                            print("onTap");
                             setState(() {
-                              _speed = 1.0;
+                              _rockAmount = 0.5;
                             });
                           },
-                          // child: Center(child: Text("2")),
+                          // child: Center(child: Text("8")),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: GestureDetector(
-                          onLongPressStart: (_) {
-                            print("onLongPressStart");
-                            _startUpSpeed();
-                          },
-                          onLongPressEnd: (_) {
-                            print("onLongPressEnd");
-                            _stopSpeed();
-                          },
-                          // child: Center(child: Text("3")),
-                        ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      height: height_sensor,
+                      width: width_sensor,
+                      child: GestureDetector(
+                        onLongPressStart: (_) {
+                          print("onLongPressStart");
+                          _startUpRockAmount();
+                        },
+                        onLongPressEnd: (_) {
+                          print("onLongPressEnd");
+                          _stopRockAmount();
+                        },
+                        // child: Center(child: Text("9")),
                       ),
                     ),
-                    Positioned(
-                      top: height_sensor,
-                      left: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        // child: Center(
-                        //   child: Text("4"),
-                        // ),
-                      ),
-                    ),
-                    Positioned(
-                      top: height_sensor,
-                      left: width_sensor,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _isPaused = !_isPaused;
-                            });
-                          },
-                          // child: Center(child: Text("5")),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: height_sensor,
-                      right: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        // child: Center(
-                        //   child: Text("6"),
-                        // ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: GestureDetector(
-                          onLongPressStart: (_) {
-                            print("onLongPressStart");
-                            _startDownRockAmount();
-                          },
-                          onLongPressEnd: (_) {
-                            print("onLongPressEnd");
-                            _stopRockAmount();
-                          },
-                          // child: Center(child: Text("7")),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: width_sensor,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _rockAmount = 0.5;
-                              });
-                            },
-                            // child: Center(child: Text("8")),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: height_sensor,
-                        width: width_sensor,
-                        child: GestureDetector(
-                          onLongPressStart: (_) {
-                            print("onLongPressStart");
-                            _startUpRockAmount();
-                          },
-                          onLongPressEnd: (_) {
-                            print("onLongPressEnd");
-                            _stopRockAmount();
-                          },
-                          // child: Center(child: Text("9")),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

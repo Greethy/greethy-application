@@ -8,8 +8,10 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';
 import 'package:greethy_application/presentation/ui/page/profile/profile_image_view.dart';
+import 'package:greethy_application/presentation/widgets/custom_divider_view.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/information_owner.dart';
+import 'package:greethy_application/test_library/test_nutrition_home_screen/information_owner_view.dart';
+import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/Total_nutrition_per_day_view.dart';
 import 'package:provider/provider.dart';
 
 class MyNutritionDiaryScreen extends StatefulWidget {
@@ -100,24 +102,21 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
 
     listViews.add(
-      TitleView(
-          titleTxt: 'Nutritional Specs',
-          subTxt: 'Details',
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-              parent: widget.animationController!,
-              curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
-            ),
+      TotalNutritionPerDay(
+        titleTxt: "Tổng dinh dưỡng theo ngày",
+        state: state,
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
           ),
-          animationController: widget.animationController!,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NutritionHomeManagementScreen(),
-              ),
-            );
-          }),
+        ),
+        animationController: widget.animationController!,
+      ),
+    );
+
+    listViews.add(
+      CustomDividerView(dividerHeight: 35, text: "Bữa Sáng"),
     );
 
     listViews.add(
@@ -131,6 +130,10 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
         animationController: widget.animationController!,
         state: state,
       ),
+    );
+
+    listViews.add(
+      CustomDividerView(),
     );
 
     listViews.add(
@@ -251,7 +254,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
               return ListView.builder(
                 controller: scrollController,
                 padding: EdgeInsets.only(
-                  top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 24,
+                  top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 30,
                   bottom: 62 + MediaQuery.of(context).padding.bottom,
                 ),
                 itemCount: listViews.length,
@@ -310,16 +313,33 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Gia Đình',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontFamily: AppTheme.fontName,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 22 + 6 - 6 * topBarOpacity,
-                                    letterSpacing: 1.2,
-                                    color: GreethyColor.kawa_green,
-                                  ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Eating Plan',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: AppTheme.fontName,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 5 + 6 - 6 * topBarOpacity,
+                                        letterSpacing: 1.2,
+                                        color: GreethyColor.kawa_green,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Home diary',
+                                      textAlign: TextAlign.center,
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        fontFamily: AppTheme.fontName,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 22 + 6 - 6 * topBarOpacity,
+                                        letterSpacing: 1.2,
+                                        color: GreethyColor.kawa_green,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

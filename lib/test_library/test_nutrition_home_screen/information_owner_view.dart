@@ -28,7 +28,7 @@ class InformationOwner extends StatelessWidget {
           child: new Transform(
             transform: new Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
               child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 24),
+                padding: const EdgeInsets.only(left: 5, right: 24),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -80,7 +80,7 @@ class InformationOwner extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: AppTheme.fontName,
                               fontWeight: FontWeight.w500,
-                              fontSize: 19,
+                              fontSize: 18,
                               letterSpacing: 0.5,
                               color: GreethyColor.kawa_green,
                             ),
@@ -91,7 +91,7 @@ class InformationOwner extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: AppTheme.fontName,
                               fontWeight: FontWeight.w300,
-                              fontSize: 17,
+                              fontSize: 16,
                               letterSpacing: 0.5,
                               color: AppTheme.lightText,
                             ),

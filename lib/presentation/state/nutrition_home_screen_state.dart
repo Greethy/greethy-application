@@ -92,11 +92,17 @@ class NutritionHomeScreenState extends AppState {
 
   DrinkPlan? get drinkPlan => _drinkPlan;
 
+  // eating plan @{
+
   late String _eatingPlanId;
 
   late EatingPlan? _eatingPlan;
 
   EatingPlan? get eatingPlan => _eatingPlan;
+
+  int bmrPerDay = 0;
+
+  // }@
 
   late String _eatingScheduleGroupId;
 
@@ -176,6 +182,7 @@ class NutritionHomeScreenState extends AppState {
 
     _eatingPlanId = _nutritionManagement!.eatingPlanPersonalId!;
     _eatingPlan = await _getEatingPlan.call(id: _eatingPlanId);
+    bmrPerDay = _eatingPlan!.bmrPerDay! ;
 
     print("chunhthanhde test " + _eatingPlan.toString());
 

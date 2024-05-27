@@ -7,7 +7,7 @@ class EatingPlanDto extends EatingPlan {
     super.id,
     super.eatingPlanName,
     super.bio,
-    super.ownerId,
+    super.owner,
     super.participants,
     super.bmrPerDay,
     super.eatingScheduleWeek,
@@ -29,10 +29,12 @@ class EatingPlanDto extends EatingPlan {
         id: json['id'],
         eatingPlanName: json['eating_plan_name'],
         bio: json['bio'],
-        ownerId: json['owner_id'],
+        owner: json['owner'] == null ? null : EatingPlanOwenrDto.fromMap(json['owner']),
         participants: json['participants'] == null ? [] : List<String>.from(json['participants']),
         bmrPerDay: json['bmrPerDay'],
-        eatingScheduleWeek: json['eating_schedule_week'] == null ? null : List<EatingScheduleWeekDto>.from(json['eating_schedule_week'].map((x) => EatingScheduleWeekDto.fromMap(x))),
+        eatingScheduleWeek: json['eating_schedule_week'] == null
+            ? null
+            : List<EatingScheduleWeekDto>.from(json['eating_schedule_week'].map((x) => EatingScheduleWeekDto.fromMap(x))),
         eatingScheduleGroup: json['eating_schedule_group'] == null ? [] : List<String>.from(json['eating_schedule_group']),
         createDate: json['create_date'],
       );
@@ -42,10 +44,11 @@ class EatingPlanDto extends EatingPlan {
       'id': id,
       'eating_plan_name': eatingPlanName,
       'bio': bio,
-      'owner_id': ownerId,
+      'owner': owner != null ? EatingPlanOwenrDto.fromEatingPlanOwenr(owner!).toMap() : null,
       'participants': participants == null ? [] : participants,
       'bmrPerDay': bmrPerDay,
-      'eating_schedule_week': eatingScheduleWeek == null ? null : EatingScheduleWeekDto.fromEatingScheduleWeekList(eatingScheduleWeek!).map((x) => x.toMap()).toList(),
+      'eating_schedule_week':
+          eatingScheduleWeek == null ? null : EatingScheduleWeekDto.fromEatingScheduleWeekList(eatingScheduleWeek!).map((x) => x.toMap()).toList(),
       'eating_schedule_group': eatingScheduleGroup == null ? [] : eatingScheduleGroup,
       'create_date': createDate,
     };
@@ -59,7 +62,7 @@ class EatingPlanDto extends EatingPlan {
       id: eatingPlan.id,
       eatingPlanName: eatingPlan.eatingPlanName,
       bio: eatingPlan.bio,
-      ownerId: eatingPlan.ownerId,
+      owner: eatingPlan.owner,
       participants: eatingPlan.participants,
       bmrPerDay: eatingPlan.bmrPerDay,
       eatingScheduleWeek: eatingPlan.eatingScheduleWeek,
@@ -73,12 +76,63 @@ class EatingPlanDto extends EatingPlan {
       id: id,
       eatingPlanName: eatingPlanName,
       bio: bio,
-      ownerId: ownerId,
+      owner: owner,
       participants: participants,
       bmrPerDay: bmrPerDay,
       eatingScheduleWeek: eatingScheduleWeek,
       eatingScheduleGroup: eatingScheduleGroup,
       createDate: createDate,
+    );
+  }
+}
+
+class EatingPlanOwenrDto extends EatingPlanOwner {
+  EatingPlanOwenrDto({
+    super.id,
+    super.name,
+    super.avatar,
+  });
+
+  // ---------------------------------------------------------------------------
+  // JSON
+  // ---------------------------------------------------------------------------
+  factory EatingPlanOwenrDto.fromRawJson(String str) => EatingPlanOwenrDto.fromMap(json.decode(str));
+
+  String toRawJson() => json.encode(toMap());
+
+  // ---------------------------------------------------------------------------
+  // Maps
+  // ---------------------------------------------------------------------------
+  factory EatingPlanOwenrDto.fromMap(Map<String, dynamic> json) => EatingPlanOwenrDto(
+        id: json['id'],
+        name: json['name'],
+        avatar: json['avatar'],
+      );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'avatar': avatar,
+    };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Domain
+  // ---------------------------------------------------------------------------
+  static EatingPlanOwenrDto fromEatingPlanOwenr(EatingPlanOwner eatingPlanOwner) {
+    return EatingPlanOwenrDto(
+        id: eatingPlanOwner.id,
+        name: eatingPlanOwner.name,
+        avatar: eatingPlanOwner.avatar
+    );
+  }
+
+  EatingPlanOwner toEatingPlanOwner() {
+    return EatingPlanOwner(
+      id: id,
+      name: name,
+      avatar: avatar,
     );
   }
 }

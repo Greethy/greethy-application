@@ -2,7 +2,11 @@
   "id": "1",
   "eating_plan_name": "Bữa ăn cho gia đình",
   "bio": "Gia đình cùng nhau giữ gìn sức khỏe",
-  "owner_id": "2",
+  "owner": {
+    "id": "2",
+    "name": "chunhthanhde",
+    "avatar": "https://"
+  },
   "participants": [
     "2",
     "3",

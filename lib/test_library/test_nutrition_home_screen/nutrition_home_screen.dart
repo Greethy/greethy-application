@@ -20,7 +20,6 @@ class MyNutritionDiaryScreen extends StatefulWidget {
 }
 
 class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with TickerProviderStateMixin {
-
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -30,12 +29,14 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   @override
   void initState() {
+    // animation view page
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
       parent: widget.animationController!,
       curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn),
     ));
     addAllListData();
 
+    // scroll listener
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
         if (topBarOpacity != 1.0) {
@@ -82,6 +83,28 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   Future<void> addAllListData() async {
     var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
+
+    listViews.add(
+      TitleView(
+          titleTxt: 'Nutritional Specs',
+          subTxt: 'Details',
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+              parent: widget.animationController!,
+              curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+            ),
+          ),
+          animationController: widget.animationController!,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NutritionHomeManagementScreen(),
+              ),
+            );
+          }),
+    );
+
     listViews.add(
       TitleView(
           titleTxt: 'Nutritional Specs',
@@ -294,14 +317,14 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Dinh Duong',
+                                  'Gia Đình',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 22 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
-                                    color: AppTheme.darkerText,
+                                    color: GreethyColor.kawa_green,
                                   ),
                                 ),
                               ),
@@ -313,7 +336,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(Radius.circular(32.0)),
                                 onTap: () {
-                                  print("lam lich hoat dong");
+                                  print("mui ten ben trái");
                                 },
                                 child: Center(
                                   child: Icon(
@@ -358,7 +381,9 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                               child: InkWell(
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(Radius.circular(32.0)),
-                                onTap: () {},
+                                onTap: () {
+                                  print("mui ten ben phải");
+                                },
                                 child: Center(
                                   child: Icon(
                                     Icons.keyboard_arrow_right,

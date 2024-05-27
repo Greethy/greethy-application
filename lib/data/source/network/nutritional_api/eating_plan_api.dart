@@ -34,7 +34,8 @@ class EatingPlanApiImpl implements EatingPlanApi {
       // return l;
       // todo: add to test
 
-      EatingPlanDto eatingPlanDto = await EatingPlanDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/eatting_schedule/eating_plan_final.json'));
+      EatingPlanDto eatingPlanDto =
+          await EatingPlanDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/eatting_schedule/eating_plan_final.json'));
 
       return eatingPlanDto;
     } on DioException catch (e) {

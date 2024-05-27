@@ -7,7 +7,9 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_meals_list_today_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';
+import 'package:greethy_application/presentation/ui/page/profile/profile_image_view.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
+import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/information_owner.dart';
 import 'package:provider/provider.dart';
 
 class MyNutritionDiaryScreen extends StatefulWidget {
@@ -85,24 +87,16 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
 
     listViews.add(
-      TitleView(
-          titleTxt: 'Nutritional Specs',
-          subTxt: 'Details',
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-              parent: widget.animationController!,
-              curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
-            ),
+      InformationOwner(
+        state: state,
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
           ),
-          animationController: widget.animationController!,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NutritionHomeManagementScreen(),
-              ),
-            );
-          }),
+        ),
+        animationController: widget.animationController!,
+      ),
     );
 
     listViews.add(

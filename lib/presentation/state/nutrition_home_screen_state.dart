@@ -177,6 +177,8 @@ class NutritionHomeScreenState extends AppState {
     _eatingPlanId = _nutritionManagement!.eatingPlanPersonalId!;
     _eatingPlan = await _getEatingPlan.call(id: _eatingPlanId);
 
+    print("chunhthanhde test " + _eatingPlan.toString());
+
     _drinkPlanId = _nutritionManagement!.drinkPlanId!;
     _drinkPlan = await _getDrinkPlan.call(id: _drinkPlanId);
 

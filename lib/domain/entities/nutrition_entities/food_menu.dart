@@ -81,15 +81,18 @@ class Meal extends Equatable {
 class FoodIndex extends Equatable {
   final String? name;
   final String? foodId;
+  final String? foodPic;
 
   FoodIndex({
     this.name,
     this.foodId,
+    this.foodPic,
   });
 
   @override
   List<Object?> get props => [
     name,
     foodId,
+    foodPic
   ];
 }

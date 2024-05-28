@@ -210,6 +210,7 @@ class FoodIndexDto extends FoodIndex {
   FoodIndexDto({
     super.name,
     super.foodId,
+    super.foodPic,
   });
 
   // ---------------------------------------------------------------------------
@@ -225,12 +226,14 @@ class FoodIndexDto extends FoodIndex {
   factory FoodIndexDto.fromMap(Map<String, dynamic> json) => FoodIndexDto(
         name: json['name'],
         foodId: json['foodId'],
+        foodPic: json['foodPic'],
       );
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'foodId': foodId,
+      'foodPic': foodPic,
     };
   }
 
@@ -241,6 +244,7 @@ class FoodIndexDto extends FoodIndex {
     return FoodIndexDto(
       name: food.name,
       foodId: food.foodId,
+      foodPic: food.foodPic,
     );
   }
 
@@ -248,6 +252,7 @@ class FoodIndexDto extends FoodIndex {
     return FoodIndex(
       name: name,
       foodId: foodId,
+      foodPic: foodPic,
     );
   }
 
@@ -257,6 +262,7 @@ class FoodIndexDto extends FoodIndex {
           (entity) => FoodIndexDto(
             name: entity.name,
             foodId: entity.foodId,
+            foodPic: entity.foodPic,
           ),
         )
         .toList();

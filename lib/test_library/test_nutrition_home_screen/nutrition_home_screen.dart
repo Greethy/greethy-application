@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/glass_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_body_specs_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_meals_list_today_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';
 import 'package:greethy_application/presentation/widgets/custom_divider_view.dart';
-import 'package:greethy_application/presentation/widgets/title_view.dart';
 import 'package:greethy_application/test_library/test_nutrition_home_screen/information_owner_view.dart';
 import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/food_view.dart';
 import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/total_nutrition_per_day_view.dart';
@@ -85,6 +80,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   Future<void> addAllListData() async {
     var state = Provider.of<EatingMenuScreenState>(context, listen: false);
+    listViews = [];
 
     listViews.add(
       InformationOwner(
@@ -113,22 +109,110 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       ),
     );
 
-    listViews.add(
-      CustomDividerView(dividerHeight: 35, text: "Bữa Sáng"),
-    );
+    if (state.breakfast != null) {
+      listViews.add(
+        CustomDividerView(dividerHeight: 35, text: "Bữa Sáng"),
+      );
 
-    listViews.add(
-      FoodView(
-        state: state,
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+      for (FoodIndex food in state.foodIndexBreakfast) {
+        listViews.add(
+          FoodView(
+            foodInfo: food,
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            animationController: widget.animationController!,
           ),
-        ),
-        animationController: widget.animationController!,
-      ),
-    );
+        );
+      }
+    }
+
+    if (state.morningSnack != null) {
+      listViews.add(
+        CustomDividerView(dividerHeight: 35, text: "Bữa Phụ Sáng"),
+      );
+
+      for (FoodIndex food in state.foodIndexBreakfast) {
+        listViews.add(
+          FoodView(
+            foodInfo: food,
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            animationController: widget.animationController!,
+          ),
+        );
+      }
+    }
+
+    if (state.lunch != null) {
+      listViews.add(
+        CustomDividerView(dividerHeight: 35, text: "Bữa Trưa"),
+      );
+
+      for (FoodIndex food in state.foodIndexBreakfast) {
+        listViews.add(
+          FoodView(
+            foodInfo: food,
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            animationController: widget.animationController!,
+          ),
+        );
+      }
+    }
+
+    if (state.afternoonSnack != null) {
+      listViews.add(
+        CustomDividerView(dividerHeight: 35, text: "Bữa Phụ Chiều"),
+      );
+
+      for (FoodIndex food in state.foodIndexBreakfast) {
+        listViews.add(
+          FoodView(
+            foodInfo: food,
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            animationController: widget.animationController!,
+          ),
+        );
+      }
+    }
+
+    if (state.dinner != null) {
+      listViews.add(
+        CustomDividerView(dividerHeight: 35, text: "Bữa Tối"),
+      );
+
+      for (FoodIndex food in state.foodIndexBreakfast) {
+        listViews.add(
+          FoodView(
+            foodInfo: food,
+            animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
+              ),
+            ),
+            animationController: widget.animationController!,
+          ),
+        );
+      }
+    }
 
     // listViews.add(
     //   NutritionalSpecsView(

@@ -39,6 +39,7 @@ class EatingMenuScreenState extends AppState {
   // Properties
   // ---------------------------------------------------------------------------
 
+  /// init database status
   bool initData = false;
 
   late NutritionManagement? _nutritionManagement;
@@ -57,65 +58,59 @@ class EatingMenuScreenState extends AppState {
 
   // }@
 
-  late String _eatingScheduleGroupId;
-
-  late EatingScheduleGroup? _eatingScheduleGroup;
-
-  EatingScheduleGroup? get eatingScheduleGroup => _eatingScheduleGroup;
-
-  late String _drinkScheduleGroupId;
-
-  late DrinkScheduleGroup? _drinkScheduleGroup;
-
-  DrinkScheduleGroup? get drinkScheduleGroup => _drinkScheduleGroup;
-
   String _foodMenuId = "0";
 
   late FoodMenu? _foodMenu;
 
   FoodMenu? get foodMenu => _foodMenu;
 
-  late String _foodId;
+  /// food list
+  List<Meal> _meals = [];
 
-  late Food? _food;
+  /// breakfast food list
+  Meal? _breakfast;
 
-  Food? get food => _food;
+  Meal? get breakfast => _breakfast;
 
-  int _burn = 0;
+  List<FoodIndex> _foodIndexBreakfast = [];
 
-  int get burn => _burn;
+  List<FoodIndex> get foodIndexBreakfast => _foodIndexBreakfast;
 
-  int _eaten = 0;
+  /// breakfast snack food list
+  Meal? _morningSnack;
 
-  int get eaten => _eaten;
+  Meal? get morningSnack => _morningSnack;
 
-  double _carbs = 0;
+  List<FoodIndex> _foodIndexSnackMorning = [];
 
-  double get carbs => _carbs;
+  List<FoodIndex> get foodIndexSnackMorning => _foodIndexSnackMorning;
 
-  double _fat = 0;
+  /// lunch food list
+  Meal? _lunch;
 
-  double get fat => _fat;
+  Meal? get lunch => _lunch;
 
-  double _protein = 0;
+  List<FoodIndex> _foodIndexLunch = [];
 
-  double get protein => _protein;
+  List<FoodIndex> get foodIndexLunch => _foodIndexLunch;
 
-  double _progressValueCarbs = 0;
+  /// lunch snack food list
+  Meal? _afternoonSnack;
 
-  double get progressValueCarbs => _progressValueCarbs;
+  Meal? get afternoonSnack => _afternoonSnack;
 
-  double _progressValueFat = 0;
+  List<FoodIndex> _foodIndexSnackAfternoon = [];
 
-  double get progressValueFat => _progressValueFat;
+  List<FoodIndex> get foodIndexSnackAfternoon => _foodIndexSnackAfternoon;
 
-  double _progressValueProtein = 0;
+  /// dinner food list
+  Meal? _dinner;
 
-  double get progressValueProtein => _progressValueProtein;
+  Meal? get dinner => _dinner;
 
-  List<MealsModel> _meals = [];
+  List<FoodIndex> _foodIndexDinner = [];
 
-  List<MealsModel> get meals => _meals;
+  List<FoodIndex> get foodIndexDinner => _foodIndexDinner;
 
   // ---------------------------------------------------------------------------
   // Actions
@@ -137,7 +132,31 @@ class EatingMenuScreenState extends AppState {
     _foodMenuId = _eatingPlan!.eatingScheduleWeek![0].menuId!;
     _foodMenu = await _getFoodMenu.call(id: _foodMenuId);
 
+    _meals = _foodMenu!.meals!;
+
+    for (Meal meal in _meals) {
+      if (meal.meal == "breakfast") {
+        _breakfast = meal;
+        _foodIndexBreakfast = meal.foods!;
+      } else if (meal.meal == "morning snack") {
+        _morningSnack = meal;
+        _foodIndexSnackMorning = meal.foods!;
+      } else if (meal.meal == "lunch") {
+        _lunch = meal;
+        _foodIndexLunch = meal.foods!;
+      } else if (meal.meal == "afternoon snack") {
+        _afternoonSnack = meal;
+        _foodIndexSnackAfternoon = meal.foods!;
+      } else if (meal.meal == "dinner") {
+        _dinner = meal;
+        _foodIndexDinner = meal.foods!;
+      } else {
+        print(meal.toString());
+      }
+    }
+
     initData = true;
     return true;
   }
+
 }

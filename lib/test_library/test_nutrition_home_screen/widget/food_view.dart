@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class FoodView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final EatingMenuScreenState state;
+  final FoodIndex foodInfo;
 
   const FoodView({
     Key? key,
     this.animationController,
     this.animation,
-    required this.state,
+    required this.foodInfo,
   }) : super(key: key);
 
   @override
@@ -53,7 +54,7 @@ class FoodView extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 2 / 5,
                           height: MediaQuery.of(context).size.width / 3,
                           child: Image.network(
-                            'https://media.licdn.com/dms/image/D5603AQE94bklZfqiEQ/profile-displayphoto-shrink_800_800/0/1692931978549?e=1718841600&v=beta&t=KbMr4hpwt6gMHyG6lMYw4LCg5cYqeK6IeDkcNMmQ9cY',
+                            foodInfo.foodPic ?? '',
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -65,7 +66,7 @@ class FoodView extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Hủ Tiếu"),
+                            Text(foodInfo.name ?? "Hủ Tiếu"),
                             SizedBox(
                               height: 10,
                             ),

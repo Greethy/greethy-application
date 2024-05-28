@@ -22,13 +22,13 @@
         {
           "name" : "cơm",
           "foodId" : "1",
-          "foodPic" : "https"
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
     },
     {
-      "meal": "snack",
+      "meal": "morning snack",
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
@@ -37,7 +37,7 @@
         {
           "name" : "cơm",
           "foodId" : "1",
-          "foodPic" : "https"
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
@@ -52,7 +52,7 @@
         {
           "name" : "cơm",
           "foodId" : "1",
-          "foodPic" : "https"
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
@@ -67,7 +67,7 @@
         {
           "name" : "cơm",
           "foodId" : "1",
-          "foodPic" : "https"
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": false
@@ -82,7 +82,7 @@
         {
           "name" : "cơm",
           "foodId" : "1",
-          "foodPic" : "https"
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": false

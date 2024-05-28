@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
+import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/glass_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_meals_list_today_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';
-import 'package:greethy_application/presentation/ui/page/profile/profile_image_view.dart';
 import 'package:greethy_application/presentation/widgets/custom_divider_view.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
 import 'package:greethy_application/test_library/test_nutrition_home_screen/information_owner_view.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/Total_nutrition_per_day_view.dart';
+import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/food_view.dart';
+import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/total_nutrition_per_day_view.dart';
 import 'package:provider/provider.dart';
 
 class MyNutritionDiaryScreen extends StatefulWidget {
@@ -38,7 +37,6 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       parent: widget.animationController!,
       curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn),
     ));
-    addAllListData();
 
     // scroll listener
     scrollController.addListener(() {
@@ -67,7 +65,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   @override
   Widget build(BuildContext context) {
-    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
+    var state = Provider.of<EatingMenuScreenState>(context, listen: false);
     return Container(
       color: AppTheme.background,
       child: Scaffold(
@@ -86,7 +84,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
   }
 
   Future<void> addAllListData() async {
-    var state = Provider.of<NutritionHomeScreenState>(context, listen: false);
+    var state = Provider.of<EatingMenuScreenState>(context, listen: false);
 
     listViews.add(
       InformationOwner(
@@ -120,130 +118,144 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     );
 
     listViews.add(
-      NutritionalSpecsView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
-          ),
-        ),
-        animationController: widget.animationController!,
+      FoodView(
         state: state,
-      ),
-    );
-
-    listViews.add(
-      CustomDividerView(),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: 'Meals today',
-        subTxt: 'Customize',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
-            curve: Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn),
+            curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
           ),
         ),
         animationController: widget.animationController!,
       ),
     );
 
-    listViews.add(
-      Consumer<NutritionHomeScreenState>(
-        builder: (context, state, _) {
-          return MealsListTodayView(
-            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                parent: widget.animationController!,
-                curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
-              ),
-            ),
-            mainScreenAnimationController: widget.animationController,
-            state: state,
-          );
-        },
-      ),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: 'Body Specs',
-        subTxt: 'Today',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn),
-          ),
-        ),
-        animationController: widget.animationController!,
-      ),
-    );
-
-    listViews.add(
-      BodySpecsView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
-          ),
-        ),
-        animationController: widget.animationController!,
-        state: state,
-      ),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: 'Water',
-        subTxt: 'Aqua SmartBottle',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn),
-          ),
-        ),
-        animationController: widget.animationController!,
-      ),
-    );
-
-    listViews.add(
-      Consumer<NutritionHomeScreenState>(
-        builder: (context, state, _) {
-          return WaterView(
-            mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                parent: widget.animationController!,
-                curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
-              ),
-            ),
-            mainScreenAnimationController: widget.animationController!,
-            state: state,
-          );
-        },
-      ),
-    );
-    listViews.add(
-      GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-              parent: widget.animationController!,
-              curve: Interval((1 / count) * 8, 1.0, curve: Curves.fastOutSlowIn),
-            ),
-          ),
-          animationController: widget.animationController!),
-    );
+    // listViews.add(
+    //   NutritionalSpecsView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //       CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve: Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn),
+    //       ),
+    //     ),
+    //     animationController: widget.animationController!,
+    //     state: state,
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   CustomDividerView(),
+    // );
+    //
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Meals today',
+    //     subTxt: 'Customize',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //       CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve: Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn),
+    //       ),
+    //     ),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   Consumer<EatingMenuScreenState>(
+    //     builder: (context, state, _) {
+    //       return MealsListTodayView(
+    //         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //           CurvedAnimation(
+    //             parent: widget.animationController!,
+    //             curve: Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn),
+    //           ),
+    //         ),
+    //         mainScreenAnimationController: widget.animationController,
+    //         state: state,
+    //       );
+    //     },
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Body Specs',
+    //     subTxt: 'Today',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //       CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve: Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn),
+    //       ),
+    //     ),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   BodySpecsView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //       CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve: Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn),
+    //       ),
+    //     ),
+    //     animationController: widget.animationController!,
+    //     state: state,
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Water',
+    //     subTxt: 'Aqua SmartBottle',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //       CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve: Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn),
+    //       ),
+    //     ),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+    //
+    // listViews.add(
+    //   Consumer<EatingMenuScreenState>(
+    //     builder: (context, state, _) {
+    //       return WaterView(
+    //         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //           CurvedAnimation(
+    //             parent: widget.animationController!,
+    //             curve: Interval((1 / count) * 7, 1.0, curve: Curves.fastOutSlowIn),
+    //           ),
+    //         ),
+    //         mainScreenAnimationController: widget.animationController!,
+    //         state: state,
+    //       );
+    //     },
+    //   ),
+    // );
+    // listViews.add(
+    //   GlassView(
+    //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //           parent: widget.animationController!,
+    //           curve: Interval((1 / count) * 8, 1.0, curve: Curves.fastOutSlowIn),
+    //         ),
+    //       ),
+    //       animationController: widget.animationController!),
+    // );
   }
 
-  Future<bool> getData(NutritionHomeScreenState state) async {
+  Future<bool> getData(EatingMenuScreenState state) async {
     await state.initDatabase();
+    addAllListData();
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
   }
 
-  Widget getMainListViewUI(NutritionHomeScreenState state) {
-    return Consumer<NutritionHomeScreenState>(
+  Widget getMainListViewUI(EatingMenuScreenState state) {
+    return Consumer<EatingMenuScreenState>(
       builder: (context, state, _) {
         return FutureBuilder<bool>(
           future: getData(state),

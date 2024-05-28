@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 
 import 'package:greethy_application/presentation/theme/theme.dart';
@@ -9,7 +10,7 @@ import 'package:greethy_application/presentation/widgets/newWidget/rippleButton.
 class InformationOwner extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final NutritionHomeScreenState state;
+  final EatingMenuScreenState state;
 
   const InformationOwner({
     Key? key,

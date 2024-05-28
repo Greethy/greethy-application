@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
-
+import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class TotalNutritionPerDay extends StatelessWidget {
   final String titleTxt;
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final NutritionHomeScreenState state;
+  final EatingMenuScreenState state;
 
   const TotalNutritionPerDay({
     Key? key,

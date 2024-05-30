@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class FoodMenu extends Equatable {
   final String? id;
+  final String? eatingPlanId;
   final String? createdDate;
   final List<String>? menuType;
   final MenuCalories? menuCalories;
@@ -9,6 +10,7 @@ class FoodMenu extends Equatable {
 
   FoodMenu({
     this.id,
+    this.eatingPlanId,
     this.createdDate,
     this.menuType,
     this.menuCalories,
@@ -18,6 +20,7 @@ class FoodMenu extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        eatingPlanId,
         createdDate,
         menuType,
         menuCalories,
@@ -90,9 +93,5 @@ class FoodIndex extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-    name,
-    foodId,
-    foodPic
-  ];
+  List<Object?> get props => [name, foodId, foodPic];
 }

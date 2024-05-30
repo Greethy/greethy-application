@@ -5,6 +5,7 @@ import 'package:greethy_application/domain/entities/nutrition_entities/food_menu
 class FoodMenuDto extends FoodMenu {
   FoodMenuDto({
     super.id,
+    super.eatingPlanId,
     super.createdDate,
     super.menuType,
     super.menuCalories,
@@ -23,6 +24,7 @@ class FoodMenuDto extends FoodMenu {
   // ---------------------------------------------------------------------------
   factory FoodMenuDto.fromMap(Map<String, dynamic> json) => FoodMenuDto(
         id: json['id'],
+    eatingPlanId: json['eatingPlan_id'],
         createdDate: json['created_date'],
         menuType: json['menu_type'] == null ? [] : List<String>.from(json['menu_type']),
         menuCalories: json['menu_calories'] == null ? null : MenuCaloriesDto.fromMap(json['menu_calories']),
@@ -32,6 +34,7 @@ class FoodMenuDto extends FoodMenu {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'eatingPlan_id': eatingPlanId,
       'created_date': createdDate,
       'menu_type': menuType == null ? [] : menuType,
       'menu_calories': menuCalories == null ? null : MenuCaloriesDto.fromMenuCalories(menuCalories!).toMap(),
@@ -45,6 +48,7 @@ class FoodMenuDto extends FoodMenu {
   static FoodMenuDto fromFoodMenu(FoodMenu foodMenu) {
     return FoodMenuDto(
       id: foodMenu.id,
+      eatingPlanId: foodMenu.eatingPlanId,
       createdDate: foodMenu.createdDate,
       menuType: foodMenu.menuType,
       menuCalories: foodMenu.menuCalories,
@@ -55,6 +59,7 @@ class FoodMenuDto extends FoodMenu {
   FoodMenu toFoodMenu() {
     return FoodMenu(
       id: id,
+      eatingPlanId: eatingPlanId,
       createdDate: createdDate,
       menuType: menuType,
       menuCalories: menuCalories,

@@ -48,14 +48,21 @@ class FoodView extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.all(5),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 2 / 5,
-                          height: MediaQuery.of(context).size.width / 3,
-                          child: Image.network(
-                            foodInfo.foodPic ?? '',
-                            fit: BoxFit.cover,
+                      child: InkWell(
+                        highlightColor: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        onTap: () {
+                          print("ra screen món ăn");
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 2 / 5,
+                            height: MediaQuery.of(context).size.width / 3,
+                            child: Image.network(
+                              foodInfo.foodPic ?? '',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -66,7 +73,18 @@ class FoodView extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(foodInfo.name ?? "Hủ Tiếu"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5, right: 5),
+                              child: Text(
+                                foodInfo.name ?? "Hủ Tiếu",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                             SizedBox(
                               height: 10,
                             ),
@@ -77,7 +95,18 @@ class FoodView extends StatelessWidget {
                                   flex: 1,
                                   child: Column(
                                     children: [
-                                      Icon(Icons.change_circle_outlined),
+                                      InkWell(
+                                        highlightColor: Colors.transparent,
+                                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                        onTap: () {
+                                          print("ra screen món ăn");
+                                        },
+                                        child: Icon(
+                                          Icons.info_rounded,
+                                          size: 32.0,
+                                          color: GreethyColor.kawa_green,
+                                        ),
+                                      ),
                                       Wrap(
                                         children: [Text("Công thức")],
                                       ),
@@ -92,12 +121,23 @@ class FoodView extends StatelessWidget {
                                   flex: 1,
                                   child: Column(
                                     children: [
-                                      Icon(Icons.change_circle_outlined),
-                                      Wrap(
-                                        children: [Text("Thông tin")],
+                                      InkWell(
+                                        highlightColor: Colors.transparent,
+                                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                        onTap: () {
+                                          print("đổi món ăn");
+                                        },
+                                        child: Icon(
+                                          Icons.change_circle,
+                                          size: 32.0,
+                                          color: GreethyColor.kawa_green,
+                                        ),
                                       ),
                                       Wrap(
-                                        children: [Text("Dinh Dưỡng")],
+                                        children: [Text("Đổi")],
+                                      ),
+                                      Wrap(
+                                        children: [Text("Món ăn")],
                                       )
                                     ],
                                   ),

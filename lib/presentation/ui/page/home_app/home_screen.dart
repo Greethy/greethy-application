@@ -5,11 +5,9 @@ import 'package:greethy_application/presentation/ui/page/character/action_naviga
 import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
 import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
 import 'package:greethy_application/presentation/ui/page/flare_character/penguin.dart';
-// import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_home_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';
 import 'package:greethy_application/presentation/ui/page/plays/plays_page.dart';
 import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
-// add to test
-import 'package:greethy_application/test_library/test_nutrition_home_screen/nutrition_home_screen.dart';
 import 'package:greethy_application/zdataDev/tabIcon_data.dart';
 import 'package:provider/provider.dart';
 
@@ -37,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
 
     // add to test
-    // tabBody = Penguin();
-    tabBody = MyNutritionDiaryScreen(animationController: animationController);
+    tabBody = Penguin();
+    // tabBody = MyNutritionDiaryScreen(animationController: animationController);
     super.initState();
   }
 
@@ -117,9 +115,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 if (!mounted) {
                   return;
                 }
-                setState(() {
-                  tabBody = MyNutritionDiaryScreen(animationController: animationController);
-                });
+                Navigator.push(context, MenuDiaryScreen.getRoute(foodMenuId: '1'));
               });
             } else if (index == 1) {
               animationController?.reverse().then<dynamic>((data) {

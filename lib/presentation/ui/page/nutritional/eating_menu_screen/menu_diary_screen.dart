@@ -2,22 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/state/eating_menu_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/information_owner_view.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/custom_divider_meal_view.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/food_view.dart';
-import 'package:greethy_application/test_library/test_nutrition_home_screen/widget/total_nutrition_per_day_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/custom_divider_meal_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/food_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/information_owner_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/total_nutrition_per_day_view.dart';
 import 'package:provider/provider.dart';
 
-class MyNutritionDiaryScreen extends StatefulWidget {
-  const MyNutritionDiaryScreen({Key? key, this.animationController}) : super(key: key);
+class MenuDiaryScreen extends StatefulWidget {
+  const MenuDiaryScreen({
+    Key? key,
+    required this.foodMenuId,
+  }) : super(key: key);
 
-  final AnimationController? animationController;
+  final String foodMenuId;
+
+  static MaterialPageRoute getRoute({required String foodMenuId}) {
+    return MaterialPageRoute(
+      builder: (_) => Provider(
+        create: (_) => EatingMenuScreenState(foodMenuId: foodMenuId),
+        child: ChangeNotifierProvider(
+          create: (BuildContext context) => EatingMenuScreenState(foodMenuId: foodMenuId),
+          builder: (_, child) => MenuDiaryScreen(
+            foodMenuId: foodMenuId,
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
-  _MyNutritionDiaryScreenState createState() => _MyNutritionDiaryScreenState();
+  _MenuDiaryScreenState createState() => _MenuDiaryScreenState();
 }
 
-class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with TickerProviderStateMixin {
+class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderStateMixin {
+  AnimationController? animationController;
+
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -27,9 +46,10 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
 
   @override
   void initState() {
+    animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
     // animation view page
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: widget.animationController!,
+      parent: animationController!,
       curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn),
     ));
 
@@ -56,6 +76,12 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -87,11 +113,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
         state: state,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
-            parent: widget.animationController!,
+            parent: animationController!,
             curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
           ),
         ),
-        animationController: widget.animationController!,
+        animationController: animationController!,
       ),
     );
 
@@ -101,11 +127,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
         state: state,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
-            parent: widget.animationController!,
+            parent: animationController!,
             curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
           ),
         ),
-        animationController: widget.animationController!,
+        animationController: animationController!,
       ),
     );
 
@@ -124,11 +150,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             foodInfo: food,
             animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                parent: widget.animationController!,
+                parent: animationController!,
                 curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
               ),
             ),
-            animationController: widget.animationController!,
+            animationController: animationController!,
           ),
         );
       }
@@ -149,11 +175,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             foodInfo: food,
             animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                parent: widget.animationController!,
+                parent: animationController!,
                 curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
               ),
             ),
-            animationController: widget.animationController!,
+            animationController: animationController!,
           ),
         );
       }
@@ -174,11 +200,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             foodInfo: food,
             animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                parent: widget.animationController!,
+                parent: animationController!,
                 curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
               ),
             ),
-            animationController: widget.animationController!,
+            animationController: animationController!,
           ),
         );
       }
@@ -199,11 +225,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             foodInfo: food,
             animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                parent: widget.animationController!,
+                parent: animationController!,
                 curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
               ),
             ),
-            animationController: widget.animationController!,
+            animationController: animationController!,
           ),
         );
       }
@@ -224,11 +250,11 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
             foodInfo: food,
             animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                parent: widget.animationController!,
+                parent: animationController!,
                 curve: Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn),
               ),
             ),
-            animationController: widget.animationController!,
+            animationController: animationController!,
           ),
         );
       }
@@ -260,7 +286,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                 itemCount: listViews.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) {
-                  widget.animationController?.forward();
+                  animationController?.forward();
                   return listViews[index];
                 },
               );
@@ -275,7 +301,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
     return Column(
       children: <Widget>[
         AnimatedBuilder(
-          animation: widget.animationController!,
+          animation: animationController!,
           builder: (BuildContext context, Widget? child) {
             return FadeTransition(
               opacity: topBarAnimation!,

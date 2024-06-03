@@ -5,6 +5,7 @@ import 'package:greethy_application/presentation/ui/page/auth/selectAuthMethod.d
 import 'package:greethy_application/presentation/ui/page/auth/verifyEmail.dart';
 import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';
 
 import 'customRoute.dart';
 import '../auth/forgetPasswordPage.dart';
@@ -80,7 +81,20 @@ class Routes {
         }
         return CustomRoute(builder: (BuildContext context) => const SplashPage());
 
-      // case "CreateFeedPage":
+
+      case "EatingPlanPage":
+        String eatingPlanId;
+        if (pathElements.length > 2) {
+          eatingPlanId = pathElements[2];
+          return CustomRoute<bool>(
+              builder: (BuildContext context) => MenuDiaryScreen(
+                foodMenuId: eatingPlanId,
+              ));
+        }
+        return CustomRoute(builder: (BuildContext context) => const SplashPage());
+
+
+    // case "CreateFeedPage":
       //   return CustomRoute<bool>(
       //       builder: (BuildContext context) =>
       //           ChangeNotifierProvider<ComposeTweetState>(

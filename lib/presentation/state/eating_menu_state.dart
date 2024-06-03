@@ -9,42 +9,47 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_sch
 import 'package:greethy_application/domain/usecase/nutrition_usercase/food_menu_usecase/get_food_menu.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/food_usecase/get_food.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/get_nutrition_management.dart';
+import 'package:greethy_application/presentation/helper/injection.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/widget/meals_card.dart';
 
 class EatingMenuScreenState extends AppState {
   EatingMenuScreenState({
-    required GetNutritionManagement getNutritionManagement,
-    required GetEatingPlan getEatingPlan,
-    required GetEatingScheduleGroup getEatingScheduleGroup,
-    required GetFoodMenu getFoodMenu,
-    required GetFood getFood,
-  })  : _getNutritionManagement = getNutritionManagement,
-        _getEatingPlan = getEatingPlan,
-        _getEatingScheduleGroup = getEatingScheduleGroup,
-        _getFoodMenu = getFoodMenu,
-        _getFood = getFood;
+    required String foodMenuId,
+  }) : _foodMenuId = foodMenuId {
+    // initDatabase();
+  }
+
+  // ---------------------------------------------------------------------------
+  // required
+  // ---------------------------------------------------------------------------
+
+  final String _foodMenuId;
 
   // ---------------------------------------------------------------------------
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetNutritionManagement _getNutritionManagement;
-  final GetEatingPlan _getEatingPlan;
-  final GetEatingScheduleGroup _getEatingScheduleGroup;
-  final GetFoodMenu _getFoodMenu;
-  final GetFood _getFood;
+  final GetNutritionManagement _getNutritionManagement = DependencyInjection().getNutritionManagement;
+  final GetEatingPlan _getEatingPlan = DependencyInjection().getEatingPlan;
+  final GetEatingScheduleGroup _getEatingScheduleGroup = DependencyInjection().getEatingScheduleGroup;
+  final GetFoodMenu _getFoodMenu = DependencyInjection().getFoodMenu;
+  final GetFood _getFood = DependencyInjection().getFood;
 
   // ---------------------------------------------------------------------------
   // Properties
   // ---------------------------------------------------------------------------
 
-  /// init database status
+  // init database status
   bool initData = false;
+
+  // nutrition management @{
 
   late NutritionManagement? _nutritionManagement;
 
   NutritionManagement? get nutritionManagement => _nutritionManagement;
+
+  // }@
 
   // eating plan @{
 
@@ -58,7 +63,7 @@ class EatingMenuScreenState extends AppState {
 
   // }@
 
-  String _foodMenuId = "0";
+  // food menu @{
 
   late FoodMenu? _foodMenu;
 
@@ -112,6 +117,8 @@ class EatingMenuScreenState extends AppState {
 
   List<FoodIndex> get foodIndexDinner => _foodIndexDinner;
 
+  // }@
+
   // ---------------------------------------------------------------------------
   // Actions
   // ---------------------------------------------------------------------------
@@ -122,16 +129,15 @@ class EatingMenuScreenState extends AppState {
       return true;
     }
 
-    // get database
-    _nutritionManagement = await _getNutritionManagement.call();
+    // get food menu
+    _foodMenu = await _getFoodMenu.call(id: _foodMenuId);
 
-    _eatingPlanId = _nutritionManagement!.eatingPlanPersonalId!;
+    // get eating plan
+    _eatingPlanId = _foodMenu!.eatingPlanId!;
     _eatingPlan = await _getEatingPlan.call(id: _eatingPlanId);
     bmrPerDay = _eatingPlan!.bmrPerDay!;
 
-    _foodMenuId = _eatingPlan!.eatingScheduleWeek![0].menuId!;
-    _foodMenu = await _getFoodMenu.call(id: _foodMenuId);
-
+    // handle data food menu
     _meals = _foodMenu!.meals!;
 
     for (Meal meal in _meals) {
@@ -158,5 +164,4 @@ class EatingMenuScreenState extends AppState {
     initData = true;
     return true;
   }
-
 }

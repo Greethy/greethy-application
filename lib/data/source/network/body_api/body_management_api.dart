@@ -1,42 +1,42 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:greethy_application/data/dto/nutrition_dto/body_specs_dto.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
+import 'package:greethy_application/data/dto/body_dto/body_management_dto.dart';
+import 'package:greethy_application/domain/entities/body_entities/body_management.dart';
 
-abstract class BodySpecsApi {
-  Future<BodySpecsDto?> get(
+abstract class BodySpecsManagementApi {
+  Future<BodySpecsManagementDto?> get(
     String id,
   );
 
-  Future<BodySpecsDto?> post(
-    BodySpecs bodySpecs,
+  Future<BodySpecsManagementDto?> post(
+    BodySpecsManagement BodySpecsManagement,
   );
 
-  Future<BodySpecsDto?> put(
+  Future<BodySpecsManagementDto?> put(
     String id,
-    BodySpecs bodySpecs,
+    BodySpecsManagement BodySpecsManagement,
   );
 }
 
-class BodySpecsApiImpl implements BodySpecsApi {
+class BodySpecsManagementApiImpl implements BodySpecsManagementApi {
   final dio = Dio();
 
   @override
-  Future<BodySpecsDto?> get(String id) async {
+  Future<BodySpecsManagementDto?> get(String id) async {
     try {
       id = "1";
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');
 
-      final l = response.data['results'].map((e) => BodySpecsDto.fromMap(e));
+      final l = response.data['results'].map((e) => BodySpecsManagementDto.fromMap(e));
       print(response.data);
 
       // return l;
       // todo: add to test
 
-      BodySpecsDto bodySpecsDto = await BodySpecsDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/body_specs_final.json'));
+      BodySpecsManagementDto BodySpecsManagement = await BodySpecsManagementDto.fromRawJson(await rootBundle.loadString('assets/database_sample/BodySpecsal/BodySpecsal_management_final.json'));
 
-      return bodySpecsDto;
+      return BodySpecsManagement;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.
@@ -46,7 +46,7 @@ class BodySpecsApiImpl implements BodySpecsApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return BodySpecsDto();
+        if (e.response?.statusCode == 404) return BodySpecsManagementDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -54,16 +54,16 @@ class BodySpecsApiImpl implements BodySpecsApi {
       }
     }
 
-    return BodySpecsDto();
+    return BodySpecsManagementDto();
   }
 
   @override
-  Future<BodySpecsDto?> post( BodySpecs bodySpecs) async {
+  Future<BodySpecsManagementDto?> post(BodySpecsManagement drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');
 
-      final l = response.data['results'].map((e) => BodySpecsDto.fromMap(e));
+      final l = response.data['results'].map((e) => BodySpecsManagementDto.fromMap(e));
 
       return l;
     } on DioException catch (e) {
@@ -75,7 +75,7 @@ class BodySpecsApiImpl implements BodySpecsApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return BodySpecsDto();
+        if (e.response?.statusCode == 404) return BodySpecsManagementDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -83,16 +83,16 @@ class BodySpecsApiImpl implements BodySpecsApi {
       }
     }
 
-    return BodySpecsDto();
+    return BodySpecsManagementDto();
   }
 
   @override
-  Future<BodySpecsDto?> put(String id, BodySpecs bodySpecs) async {
+  Future<BodySpecsManagementDto?> put(String id, BodySpecsManagement drinkSheduleGroup) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');
 
-      final l = response.data['results'].map((e) => BodySpecsDto.fromMap(e));
+      final l = response.data['results'].map((e) => BodySpecsManagementDto.fromMap(e));
 
       return l;
     } on DioException catch (e) {
@@ -104,7 +104,7 @@ class BodySpecsApiImpl implements BodySpecsApi {
         print(e.response?.requestOptions);
 
         //  API responds with 404 when reached the end
-        if (e.response?.statusCode == 404) return BodySpecsDto();
+        if (e.response?.statusCode == 404) return BodySpecsManagementDto();
       } else {
         // Something happened in setting up or sending the request that triggered an Error
         print(e.requestOptions);
@@ -112,6 +112,6 @@ class BodySpecsApiImpl implements BodySpecsApi {
       }
     }
 
-    return BodySpecsDto();
+    return BodySpecsManagementDto();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
+import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/drink_plan.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/drink_shedule_group.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/eating_plan.dart';
@@ -6,7 +6,7 @@ import 'package:greethy_application/domain/entities/nutrition_entities/eating_sh
 import 'package:greethy_application/domain/entities/nutrition_entities/food.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/get_body_specs.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/get_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_increase_water.dart';
@@ -177,7 +177,7 @@ class NutritionHomeScreenState extends AppState {
     // get database
     _nutritionManagement = await _getNutritionManagement.call();
 
-    _bodySpecsId = _nutritionManagement!.bodySpecs![0];
+    // _bodySpecsId = _nutritionManagement!.bodySpecs![0];
     _bodySpecs = await _getBodySpecs.call(id: _bodySpecsId);
 
     _eatingPlanId = _nutritionManagement!.eatingPlanPersonalId!;

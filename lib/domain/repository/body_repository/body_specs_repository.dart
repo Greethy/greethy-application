@@ -1,4 +1,4 @@
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
+import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
 
 abstract class BodySpecsRepository {
   Future<BodySpecs?> getBodySpecs({

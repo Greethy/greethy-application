@@ -5,6 +5,7 @@ class FoodMenu extends Equatable {
   final String? eatingPlanId;
   final String? createdDate;
   final List<String>? menuType;
+  final String? relatedGroupId;
   final MenuCalories? menuCalories;
   final List<Meal>? meals;
 
@@ -13,6 +14,7 @@ class FoodMenu extends Equatable {
     this.eatingPlanId,
     this.createdDate,
     this.menuType,
+    this.relatedGroupId,
     this.menuCalories,
     this.meals,
   });
@@ -23,6 +25,7 @@ class FoodMenu extends Equatable {
         eatingPlanId,
         createdDate,
         menuType,
+        relatedGroupId,
         menuCalories,
         meals,
       ];

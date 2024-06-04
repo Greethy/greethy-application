@@ -12,7 +12,7 @@ class PutDrinkPlan {
     required DrinkPlan drinkPlan,
     required String id,
   }) async {
-    final DrinkPlan? user = await _repository.putDrinkPlan(drinkPlan: drinkPlan, id: id);
-    return user;
+    final DrinkPlan? result = await _repository.putDrinkPlan(drinkPlan: drinkPlan, id: id);
+    return result;
   }
 }

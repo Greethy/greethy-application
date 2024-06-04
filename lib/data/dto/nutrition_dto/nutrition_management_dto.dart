@@ -6,7 +6,6 @@ class NutritionManagementDto extends NutritionManagement {
   NutritionManagementDto({
     super.id,
     super.ownId,
-    super.bodySpecs,
     super.drinkPlanId,
     super.eatingPlanPersonalId,
     super.eatingPlanCollective,
@@ -25,7 +24,6 @@ class NutritionManagementDto extends NutritionManagement {
   factory NutritionManagementDto.fromMap(Map<String, dynamic> json) => NutritionManagementDto(
         id: json['id'],
         ownId: json['userId'],
-        bodySpecs: json['body_specs'] == null ? [] : List<String>.from(json['body_specs']),
         drinkPlanId: json['drink_plan_id'],
         eatingPlanPersonalId: json['eating_plan_personal_id'],
         eatingPlanCollective: json['eating_plan_collective'] == null ? null : EatingPlanCollectiveDto.fromMap(json['eating_plan_collective']),
@@ -35,7 +33,6 @@ class NutritionManagementDto extends NutritionManagement {
     return {
       'id': id,
       'userId': ownId,
-      'body_specs': bodySpecs == null ? [] : bodySpecs,
       'drink_plan_id': drinkPlanId,
       'eating_plan_personal_id': eatingPlanPersonalId,
       'eating_plan_collective': eatingPlanCollective == null ? null : EatingPlanCollectiveDto.fromEatingPlanCollective(eatingPlanCollective!).toMap(),
@@ -49,7 +46,6 @@ class NutritionManagementDto extends NutritionManagement {
     return NutritionManagementDto(
       id: nutritionManagement.id,
       ownId: nutritionManagement.ownId,
-      bodySpecs: nutritionManagement.bodySpecs,
       drinkPlanId: nutritionManagement.drinkPlanId,
       eatingPlanPersonalId: nutritionManagement.eatingPlanPersonalId,
       eatingPlanCollective: nutritionManagement.eatingPlanCollective,
@@ -60,7 +56,6 @@ class NutritionManagementDto extends NutritionManagement {
     return NutritionManagement(
       id: id,
       ownId: ownId,
-      bodySpecs: bodySpecs,
       drinkPlanId: drinkPlanId,
       eatingPlanPersonalId: eatingPlanPersonalId,
       eatingPlanCollective: eatingPlanCollective,

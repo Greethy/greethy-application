@@ -11,7 +11,7 @@ class PostFoodMenu {
   Future<FoodMenu?> call({
     required FoodMenu foodMenu,
   }) async {
-    final FoodMenu? user = await _repository.postFoodMenu(foodMenu: foodMenu);
-    return user;
+    final FoodMenu? result = await _repository.postFoodMenu(foodMenu: foodMenu);
+    return result;
   }
 }

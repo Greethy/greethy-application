@@ -8,6 +8,7 @@ class FoodMenuDto extends FoodMenu {
     super.eatingPlanId,
     super.createdDate,
     super.menuType,
+    super.relatedGroupId,
     super.menuCalories,
     super.meals,
   });
@@ -24,9 +25,10 @@ class FoodMenuDto extends FoodMenu {
   // ---------------------------------------------------------------------------
   factory FoodMenuDto.fromMap(Map<String, dynamic> json) => FoodMenuDto(
         id: json['id'],
-    eatingPlanId: json['eatingPlan_id'],
+        eatingPlanId: json['eatingPlan_id'],
         createdDate: json['created_date'],
         menuType: json['menu_type'] == null ? [] : List<String>.from(json['menu_type']),
+        relatedGroupId: json['related_group_id'],
         menuCalories: json['menu_calories'] == null ? null : MenuCaloriesDto.fromMap(json['menu_calories']),
         meals: json['meals'] == null ? null : List<MealDto>.from(json['meals'].map((x) => MealDto.fromMap(x))),
       );
@@ -37,6 +39,7 @@ class FoodMenuDto extends FoodMenu {
       'eatingPlan_id': eatingPlanId,
       'created_date': createdDate,
       'menu_type': menuType == null ? [] : menuType,
+      'related_group_id': relatedGroupId,
       'menu_calories': menuCalories == null ? null : MenuCaloriesDto.fromMenuCalories(menuCalories!).toMap(),
       'meals': meals == null ? null : MealDto.fromMealList(meals!).map((x) => x.toMap()).toList(),
     };
@@ -51,6 +54,7 @@ class FoodMenuDto extends FoodMenu {
       eatingPlanId: foodMenu.eatingPlanId,
       createdDate: foodMenu.createdDate,
       menuType: foodMenu.menuType,
+      relatedGroupId: foodMenu.relatedGroupId,
       menuCalories: foodMenu.menuCalories,
       meals: foodMenu.meals,
     );
@@ -62,6 +66,7 @@ class FoodMenuDto extends FoodMenu {
       eatingPlanId: eatingPlanId,
       createdDate: createdDate,
       menuType: menuType,
+      relatedGroupId: relatedGroupId,
       menuCalories: menuCalories,
       meals: meals,
     );

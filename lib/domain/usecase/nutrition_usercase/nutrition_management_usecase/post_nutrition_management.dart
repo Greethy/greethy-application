@@ -11,7 +11,7 @@ class PostNutritionManagement {
   Future<NutritionManagement?> call({
     required NutritionManagement nutritionManagement,
   }) async {
-    final NutritionManagement? user = await _repository.postNutritionManagement(nutritionManagement: nutritionManagement);
-    return user;
+    final NutritionManagement? result = await _repository.postNutritionManagement(nutritionManagement: nutritionManagement);
+    return result;
   }
 }

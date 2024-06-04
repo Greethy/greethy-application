@@ -12,7 +12,7 @@ class PutEatingPlan {
     required EatingPlan eatingPlan,
     required String id,
   }) async {
-    final EatingPlan? user = await _repository.putEatingPlan(eatingPlan: eatingPlan, id: id);
-    return user;
+    final EatingPlan? result = await _repository.putEatingPlan(eatingPlan: eatingPlan, id: id);
+    return result;
   }
 }

@@ -1,7 +1,7 @@
-import 'package:greethy_application/data/dto/nutrition_dto/body_specs_dto.dart';
-import 'package:greethy_application/data/source/network/nutritional_api/body_specs_api.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
-import 'package:greethy_application/domain/repository/nutritional_repository/body_specs_repository.dart';
+import 'package:greethy_application/data/dto/body_dto/body_specs_dto.dart';
+import 'package:greethy_application/data/source/network/body_api/body_specs_api.dart';
+import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
+import 'package:greethy_application/domain/repository/body_repository/body_specs_repository.dart';
 
 class BodySpecsRepositoryImpl implements BodySpecsRepository {
   final BodySpecsApi _api;

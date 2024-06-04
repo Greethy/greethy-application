@@ -11,7 +11,7 @@ class PostIngredient {
   Future<Ingredient?> call({
     required Ingredient ingredient,
   }) async {
-    final Ingredient? user = await _repository.postIngredient(ingredient: ingredient);
-    return user;
+    final Ingredient? result = await _repository.postIngredient(ingredient: ingredient);
+    return result;
   }
 }

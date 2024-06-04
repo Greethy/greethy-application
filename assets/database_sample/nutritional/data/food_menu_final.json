@@ -1,5 +1,6 @@
 {
   "id": "1",
+  "eatingPlan_id": "1",
   "created_date": "03/10/2023",
   "menu_type": [
     "Lose Weight",
@@ -21,13 +22,14 @@
       "foods": [
         {
           "name" : "cơm",
-          "foodId" : "1"
+          "foodId" : "1",
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
     },
     {
-      "meal": "snack",
+      "meal": "morning snack",
       "protein": 21.0,
       "lipid": 16.6,
       "glucid": 62.4,
@@ -35,7 +37,8 @@
       "foods": [
         {
           "name" : "cơm",
-          "foodId" : "1"
+          "foodId" : "1",
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
@@ -49,7 +52,8 @@
       "foods": [
         {
           "name" : "cơm",
-          "foodId" : "1"
+          "foodId" : "1",
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": true
@@ -63,7 +67,8 @@
       "foods": [
         {
           "name" : "cơm",
-          "foodId" : "1"
+          "foodId" : "1",
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": false
@@ -77,7 +82,8 @@
       "foods": [
         {
           "name" : "cơm",
-          "foodId" : "1"
+          "foodId" : "1",
+          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         }
       ],
       "status": false

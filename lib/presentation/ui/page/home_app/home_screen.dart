@@ -5,7 +5,7 @@ import 'package:greethy_application/presentation/ui/page/character/action_naviga
 import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
 import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
 import 'package:greethy_application/presentation/ui/page/flare_character/penguin.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_home_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';
 import 'package:greethy_application/presentation/ui/page/plays/plays_page.dart';
 import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
 import 'package:greethy_application/zdataDev/tabIcon_data.dart';
@@ -33,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     tabIconsList[3].isSelected = true;
 
     animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
+
+    // add to test
     tabBody = Penguin();
+    // tabBody = MyNutritionDiaryScreen(animationController: animationController);
     super.initState();
   }
 
@@ -112,9 +115,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 if (!mounted) {
                   return;
                 }
-                setState(() {
-                  tabBody = MyNutritionDiaryScreen(animationController: animationController);
-                });
+                Navigator.push(context, MenuDiaryScreen.getRoute(foodMenuId: '1'));
               });
             } else if (index == 1) {
               animationController?.reverse().then<dynamic>((data) {
@@ -161,7 +162,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           Expanded(
             child: Center(
               child: Padding(
@@ -177,7 +180,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
           ),
-
         ],
       ),
     );

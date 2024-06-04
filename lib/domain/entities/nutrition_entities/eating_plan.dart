@@ -4,7 +4,7 @@ class EatingPlan extends Equatable {
   final String? id;
   final String? eatingPlanName;
   final String? bio;
-  final String? ownerId;
+  final EatingPlanOwner? owner;
   final List<String>? participants;
   final int? bmrPerDay;
   final List<EatingScheduleWeek>? eatingScheduleWeek;
@@ -15,7 +15,7 @@ class EatingPlan extends Equatable {
     this.id,
     this.eatingPlanName,
     this.bio,
-    this.ownerId,
+    this.owner,
     this.participants,
     this.bmrPerDay,
     this.eatingScheduleWeek,
@@ -28,7 +28,7 @@ class EatingPlan extends Equatable {
         id,
         eatingPlanName,
         bio,
-        ownerId,
+        owner,
         participants,
         bmrPerDay,
         eatingScheduleWeek,
@@ -50,5 +50,24 @@ class EatingScheduleWeek extends Equatable {
   List<Object?> get props => [
         date,
         menuId,
+      ];
+}
+
+class EatingPlanOwner extends Equatable {
+  final String? id;
+  final String? name;
+  final String? avatar;
+
+  EatingPlanOwner({
+    this.id,
+    this.name,
+    this.avatar,
+  });
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        avatar,
       ];
 }

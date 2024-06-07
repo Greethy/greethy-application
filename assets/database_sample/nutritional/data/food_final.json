@@ -5,7 +5,10 @@
     "Lương thực",
     "bla bla"
   ],
-  "food_image_url": "food_image/salmon/6382.png",
+  "food_image_url": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/800px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+    "https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505"
+  ],
   "food_video_cooking": "food_image/salmon/6382.mp4",
   "total_calories": 1567,
   "recipe": "mô tả công thức, cách nấu ăn....",

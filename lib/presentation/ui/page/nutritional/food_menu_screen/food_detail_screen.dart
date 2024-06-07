@@ -5,6 +5,7 @@ import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/custom_divider_meal_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/custom_divider_food_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/food_img_list_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -111,7 +112,13 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
     listViews.add(
       CustomDividerFoodView(
         dividerHeight: 35,
-        text: "aaaaaaaaaaaa",
+        state: state,
+      ),
+    );
+
+    listViews.add(
+      FoodImageListView(
+        state: state,
       ),
     );
   }
@@ -119,7 +126,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
   Future<bool> getData(FoodScreenState state) async {
     await state.initDatabase();
     addAllListData();
-    await Future<dynamic>.delayed(const Duration(milliseconds: 2000));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
   }
 

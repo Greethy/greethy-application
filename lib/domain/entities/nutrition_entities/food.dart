@@ -4,7 +4,7 @@ class Food extends Equatable {
   final String? id;
   final String? foodName;
   final List<String>? foodType;
-  final String? foodImageUrl;
+  final List<String>? foodImageUrl;
   final String? foodVideoCooking;
   final int? totalCalories;
   final String? recipe;

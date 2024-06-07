@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class CustomDividerFoodView extends StatefulWidget {
   final double dividerHeight;
   final Color? color;
-  final String text;
+  final FoodScreenState state;
 
   const CustomDividerFoodView({
     super.key,
     this.dividerHeight = 10.0,
     this.color,
-    required this.text,
+    required this.state,
   }) : assert(dividerHeight != 0.0);
 
   @override
@@ -46,7 +47,7 @@ class _CustomDividerFoodViewState extends State<CustomDividerFoodView> {
                     width: 25,
                   ),
                   Text(
-                    widget.text,
+                    widget.state.food?.foodName ?? "",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

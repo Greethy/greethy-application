@@ -40,12 +40,11 @@ class FoodScreenState extends AppState {
   bool initData = false;
   
 
-  // food menu @{
+  // food @{
 
   late Food? _food;
 
   Food? get food => _food;
-  
 
   // }@
 

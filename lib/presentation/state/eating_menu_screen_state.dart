@@ -1,7 +1,4 @@
-import 'package:greethy_application/domain/entities/nutrition_entities/drink_shedule_group.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/eating_plan.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/eating_shedule_group.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/food.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/eating_plan_usecase/get_eating_plan.dart';
@@ -11,7 +8,6 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/food_useca
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/get_nutrition_management.dart';
 import 'package:greethy_application/presentation/helper/injection.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/widget/meals_card.dart';
 
 class EatingMenuScreenState extends AppState {
   EatingMenuScreenState({

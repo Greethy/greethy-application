@@ -73,7 +73,7 @@ class Ingredient extends Equatable {
 
 class Nutrient extends Equatable {
   final String? nutritionName;
-  final String? value;
+  final double? value;
   final String? unit;
 
   Nutrient({

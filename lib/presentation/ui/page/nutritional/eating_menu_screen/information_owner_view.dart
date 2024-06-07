@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/eating_menu_state.dart';
+import 'package:greethy_application/presentation/state/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/state/nutrition_home_screen_state.dart';
 
 import 'package:greethy_application/presentation/theme/theme.dart';

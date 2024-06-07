@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
+import 'package:greethy_application/presentation/state/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/food_detail_screen.dart';
 
 class FoodView extends StatelessWidget {
   final AnimationController? animationController;
@@ -52,8 +52,7 @@ class FoodView extends StatelessWidget {
                         highlightColor: Colors.transparent,
                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         onTap: () {
-                          // print("ra screen món ăn");
-                          Navigator.push(context, FoodDetailScreen.getRoute(foodId: foodInfo.foodId ?? "1"));
+                          print("ra screen món ăn");
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
@@ -100,8 +99,7 @@ class FoodView extends StatelessWidget {
                                         highlightColor: Colors.transparent,
                                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                                         onTap: () {
-                                          // print("ra screen món ăn");
-                                          Navigator.push(context, FoodDetailScreen.getRoute(foodId: foodInfo.foodId ?? "1"));
+                                          print("ra screen món ăn");
                                         },
                                         child: Icon(
                                           Icons.info_rounded,

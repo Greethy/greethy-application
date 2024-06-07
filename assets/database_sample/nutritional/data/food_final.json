@@ -7,7 +7,7 @@
   ],
   "food_image_url": "food_image/salmon/6382.png",
   "food_video_cooking": "food_image/salmon/6382.mp4",
-  "total_calories": 1567.0,
+  "total_calories": 1567,
   "recipe": "mô tả công thức, cách nấu ăn....",
   "tips": "một số các mẹo vặt...",
   "ingredients": [
@@ -33,6 +33,7 @@
       ],
       "value": 1,
       "unit": "l",
+      "prepare": "",
       "kcal": 100.0
     }
   ],

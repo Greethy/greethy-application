@@ -29,6 +29,8 @@ class FoodMenu extends Equatable {
         menuCalories,
         meals,
       ];
+
+  get foodPic => null;
 }
 
 class MenuCalories extends Equatable {

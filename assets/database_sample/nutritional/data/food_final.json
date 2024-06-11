@@ -17,23 +17,14 @@
     {
       "ingredient_id": "1",
       "ingredient_name": "Cơm trắng",
-      "ingredient_replace": [
-        "2",
-        "3",
-        "4"
-      ],
       "value": 200.0,
       "unit": "G",
       "prepare": "",
       "kcal": 123.0
     },
     {
+      "ingredient_id": "2",
       "ingredient_name": "nước",
-      "ingredient_replace": [
-        "2",
-        "3",
-        "4"
-      ],
       "value": 1,
       "unit": "l",
       "prepare": "",

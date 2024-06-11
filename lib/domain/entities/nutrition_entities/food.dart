@@ -43,7 +43,6 @@ class Food extends Equatable {
 class Ingredient extends Equatable {
   final String? ingredientId;
   final String? ingredientName;
-  final List<String>? ingredientReplaceId;
   final double? value;
   final String? unit;
   final String? prepare;
@@ -52,7 +51,6 @@ class Ingredient extends Equatable {
   Ingredient({
     this.ingredientId,
     this.ingredientName,
-    this.ingredientReplaceId,
     this.value,
     this.unit,
     this.prepare,
@@ -63,7 +61,6 @@ class Ingredient extends Equatable {
   List<Object?> get props => [
         ingredientId,
         ingredientName,
-        ingredientReplaceId,
         value,
         unit,
         prepare,

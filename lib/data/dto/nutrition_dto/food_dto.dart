@@ -92,7 +92,6 @@ class IngredientDto extends Ingredient {
   IngredientDto({
     super.ingredientId,
     super.ingredientName,
-    super.ingredientReplaceId,
     super.value,
     super.unit,
     super.prepare,
@@ -112,7 +111,6 @@ class IngredientDto extends Ingredient {
   factory IngredientDto.fromMap(Map<String, dynamic> json) => IngredientDto(
         ingredientId: json['ingredient_id'],
         ingredientName: json['ingredient_name'],
-        ingredientReplaceId: json['ingredient_replace'] == null ? [] : List<String>.from(json['ingredient_replace']),
         value: json['value'].toDouble(),
         unit: json['unit'],
         prepare: json['prepare'],
@@ -123,7 +121,6 @@ class IngredientDto extends Ingredient {
     return {
       'ingredient_id': ingredientId,
       'ingredient_name': ingredientName,
-      'ingredient_replace': ingredientReplaceId == null ? [] : ingredientReplaceId,
       'value': value,
       'unit': unit,
       'prepare': prepare,
@@ -138,7 +135,6 @@ class IngredientDto extends Ingredient {
     return IngredientDto(
       ingredientId: ingredient.ingredientId,
       ingredientName: ingredient.ingredientName,
-      ingredientReplaceId: ingredient.ingredientReplaceId,
       value: ingredient.value,
       unit: ingredient.unit,
       prepare: ingredient.prepare,
@@ -150,7 +146,6 @@ class IngredientDto extends Ingredient {
     return Ingredient(
       ingredientId: ingredientId,
       ingredientName: ingredientName,
-      ingredientReplaceId: ingredientReplaceId,
       value: value,
       unit: unit,
       prepare: prepare,
@@ -164,7 +159,6 @@ class IngredientDto extends Ingredient {
           (entity) => IngredientDto(
             ingredientId: entity.ingredientId,
             ingredientName: entity.ingredientName,
-            ingredientReplaceId: entity.ingredientReplaceId,
             value: entity.value,
             unit: entity.unit,
             prepare: entity.prepare,

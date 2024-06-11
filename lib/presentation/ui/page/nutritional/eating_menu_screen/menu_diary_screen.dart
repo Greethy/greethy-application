@@ -6,7 +6,7 @@ import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/information_owner_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/total_nutrition_per_day_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/menu_screen.dart';
+import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:provider/provider.dart';
 
 class MenuDiaryScreen extends StatefulWidget {

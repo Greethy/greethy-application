@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/state/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/custom_divider_meal_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/custom_divider_food_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/custom_divider_nutrition_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/food_img_list_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:provider/provider.dart';
 
 class FoodDetailScreen extends StatefulWidget {
@@ -118,6 +115,13 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
 
     listViews.add(
       FoodImageListView(
+        state: state,
+      ),
+    );
+
+    listViews.add(
+      CustomDividerNutritionDetailView(
+        dividerHeight: 35,
         state: state,
       ),
     );

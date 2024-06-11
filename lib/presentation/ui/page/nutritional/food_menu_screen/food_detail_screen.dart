@@ -3,7 +3,7 @@ import 'package:greethy_application/presentation/state/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_nutrition_detail_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/dyamic_table.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/nutrition_table_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/food_img_list_view.dart';
 import 'package:provider/provider.dart';
 
@@ -127,40 +127,11 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
       ),
     );
 
-    listViews.add(Padding(
-      padding: EdgeInsets.all(16.0),
-      child: DynamicTable(
-        columns: 3,
-        rows: 5,
-        cells: [
-          [
-            Text('CHỈ TIÊU', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('GIÁ TRỊ', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('ĐƠN VỊ', style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-          [
-            Text('Năng lượng (calories)', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-            Text(widget.meal!.calories.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('Kcal', style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-          [
-            Text('Protein', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(widget.meal!.protein.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-          [
-            Text('Lipid', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(widget.meal!.lipid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-          [
-            Text('Glucid', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(widget.meal!.glucid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-        ],
+    listViews.add(
+      NutritionFoodTable(
+        state: state,
       ),
-    ),);
+    );
   }
 
   Future<bool> getData(FoodScreenState state) async {

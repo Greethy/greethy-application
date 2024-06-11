@@ -12,6 +12,7 @@ class FoodDto extends Food {
     super.totalCalories,
     super.recipe,
     super.tips,
+    super.moreInformation,
     super.ingredients,
     super.nutrients,
   });
@@ -27,17 +28,18 @@ class FoodDto extends Food {
   // Maps
   // ---------------------------------------------------------------------------
   factory FoodDto.fromMap(Map<String, dynamic> json) => FoodDto(
-    id: json['id'],
-    foodName: json['food_name'],
-    foodType: json['food_type'] == null ? [] : List<String>.from(json['food_type']),
-    foodImageUrl: json['food_image_url'] == null ? [] : List<String>.from(json['food_image_url']),
-    foodVideoCooking: json['food_video_cooking'],
-    totalCalories: json['total_calories'],
-    recipe: json['recipe'],
-    tips: json['tips'],
-    ingredients: json['ingredients'] == null ? null : List<IngredientDto>.from(json['ingredients'].map((x) => IngredientDto.fromMap(x))),
-    nutrients: json['nutrients'] == null ? null : List<NutrientDto>.from(json['nutrients'].map((x) => NutrientDto.fromMap(x))),
-  );
+        id: json['id'],
+        foodName: json['food_name'],
+        foodType: json['food_type'] == null ? [] : List<String>.from(json['food_type']),
+        foodImageUrl: json['food_image_url'] == null ? [] : List<String>.from(json['food_image_url']),
+        foodVideoCooking: json['food_video_cooking'],
+        totalCalories: json['total_calories'],
+        recipe: json['recipe'],
+        tips: json['tips'],
+        moreInformation: json["more_information"],
+        ingredients: json['ingredients'] == null ? null : List<IngredientDto>.from(json['ingredients'].map((x) => IngredientDto.fromMap(x))),
+        nutrients: json['nutrients'] == null ? null : List<NutrientDto>.from(json['nutrients'].map((x) => NutrientDto.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() {
     return {
@@ -49,6 +51,7 @@ class FoodDto extends Food {
       'total_calories': totalCalories,
       'recipe': recipe,
       'tips': tips,
+      'more_information': moreInformation,
       'ingredients': ingredients == null ? null : IngredientDto.fromIngredientList(ingredients!).map((x) => x.toMap()).toList(),
       'nutrients': nutrients == null ? null : NutrientDto.fromNutrientList(nutrients!).map((x) => x.toMap()).toList(),
     };
@@ -67,6 +70,7 @@ class FoodDto extends Food {
       totalCalories: food.totalCalories,
       recipe: food.recipe,
       tips: food.tips,
+      moreInformation: food.moreInformation,
       ingredients: food.ingredients,
       nutrients: food.nutrients,
     );
@@ -82,6 +86,7 @@ class FoodDto extends Food {
       totalCalories: totalCalories,
       recipe: recipe,
       tips: tips,
+      moreInformation: moreInformation,
       ingredients: ingredients,
       nutrients: nutrients,
     );

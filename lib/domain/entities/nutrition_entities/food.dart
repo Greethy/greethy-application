@@ -9,6 +9,7 @@ class Food extends Equatable {
   final int? totalCalories;
   final String? recipe;
   final String? tips;
+  final String? moreInformation;
   final List<Ingredient>? ingredients;
   final List<Nutrient>? nutrients;
 
@@ -21,6 +22,7 @@ class Food extends Equatable {
     this.totalCalories,
     this.recipe,
     this.tips,
+    this.moreInformation,
     this.ingredients,
     this.nutrients,
   });
@@ -35,6 +37,7 @@ class Food extends Equatable {
         totalCalories,
         recipe,
         tips,
+        moreInformation,
         ingredients,
         nutrients,
       ];

@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/food_screen_state.dart';
 
-class IngredientsFoodTable extends StatelessWidget {
+class NutritionFoodTable extends StatelessWidget {
   final FoodScreenState state;
 
-  IngredientsFoodTable({
+  NutritionFoodTable({
     required this.state,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(16.0),
       child: Table(
-        children: List.generate(state.ingredients.length + 1, (rowIndex) {
+        children: List.generate(state.nutrients.length + 1, (rowIndex) {
           return TableRow(
-            children: List.generate(4, (colIndex) {
+            children: List.generate(3, (colIndex) {
               if (rowIndex == 0) {
                 // Header row
                 return Container(
-                  height: 70,
+                  height: 50,
                   color: Colors.grey[300],
-                  child: Padding(
-                    padding: EdgeInsets.all(3),
-                    child: Center(
-                      child: state.ingredientsCells[0][colIndex],
-                    ),
+                  child: Center(
+                    child: state.nutrientsCells[0][colIndex],
                   ),
                 );
               } else {
@@ -33,7 +30,7 @@ class IngredientsFoodTable extends StatelessWidget {
                 return Container(
                   height: 50,
                   child: Center(
-                    child: state.ingredientsCells[rowIndex][colIndex],
+                    child: state.nutrientsCells[rowIndex][colIndex],
                   ),
                 );
               }

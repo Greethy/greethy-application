@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/cooking_recipe_table_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_food_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_kcal_total_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_nutrition_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/nutrition_table_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/food_img_list_view.dart';
@@ -129,6 +131,19 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
 
     listViews.add(
       NutritionFoodTable(
+        state: state,
+      ),
+    );
+
+    listViews.add(
+      CustomDividerKcalTotalView(
+        dividerHeight: 35,
+        state: state,
+      ),
+    );
+
+    listViews.add(
+      IngredientsFoodTable(
         state: state,
       ),
     );

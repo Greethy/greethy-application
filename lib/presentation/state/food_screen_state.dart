@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/food_usecase/get_food.dart';
@@ -62,38 +61,34 @@ class FoodScreenState extends AppState {
 
   /// init data
   Future<bool> initDatabase() async {
-    print("chunhthandhe " + initData.toString());
     if (initData == true) {
       return true;
     }
 
     // get food detail
     _food = await _getFood.call(id: _foodId);
-
-    print("chunhthandhe lalala" + _food.toString());
-
     _nutrients = _food!.nutrients!;
-    print("_nutrients lalala" + _nutrients.toString());
+    _ingredients = _food!.ingredients!;
+
     await initNutrientsCells();
     await initIngredients();
 
     initData = true;
-    isBusy = false;
     return true;
   }
 
   Future<void> initNutrientsCells() async {
     List<Widget> headerRow = [
-      Text('CHỈ TIÊU', style: TextStyle(fontWeight: FontWeight.bold)),
-      Text('GIÁ TRỊ', style: TextStyle(fontWeight: FontWeight.bold)),
-      Text('ĐƠN VỊ', style: TextStyle(fontWeight: FontWeight.bold)),
+      Text('CHỈ TIÊU', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+      Text('GIÁ TRỊ', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+      Text('ĐƠN VỊ', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
     ];
     _nutrientsCells.add(headerRow);
     for (Nutrient nutrient in _nutrients) {
       List<Widget> row = [
-        Text(nutrient.nutritionName ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(nutrient.value.toString() ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(nutrient.unit ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
+        Text(nutrient.nutritionName ?? "", textAlign: TextAlign.center),
+        Text(nutrient.value.toString() ?? "", textAlign: TextAlign.center),
+        Text(nutrient.unit ?? "", textAlign: TextAlign.center),
       ];
       _nutrientsCells.add(row);
     }
@@ -101,20 +96,20 @@ class FoodScreenState extends AppState {
 
   Future<void> initIngredients() async {
     List<Widget> headerRow = [
-      Text('TÊN NGUYÊN LIỆU', style: TextStyle(fontWeight: FontWeight.bold)),
-      Text('ĐỊNH LƯỢNG ĐÃ SƠ CHẾ', style: TextStyle(fontWeight: FontWeight.bold)),
-      Text('DINH DƯỠNG', style: TextStyle(fontWeight: FontWeight.bold)),
-      Text('CÁCH CHUẨN BỊ', style: TextStyle(fontWeight: FontWeight.bold)),
+      Text('TÊN NGUYÊN LIỆU', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+      Text('ĐỊNH LƯỢNG ĐÃ SƠ CHẾ', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+      Text('DINH DƯỠNG', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+      Text('CÁCH CHUẨN BỊ', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
     ];
-    _nutrientsCells.add(headerRow);
+    _ingredientsCells.add(headerRow);
     for (Ingredient ingredient in _ingredients) {
       List<Widget> row = [
-        Text(ingredient.ingredientName ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(ingredient.value.toString() + ingredient.unit.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(ingredient.kcal.toString() ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(ingredient.prepare ?? "", style: TextStyle(fontWeight: FontWeight.bold)),
+        Text(ingredient.ingredientName ?? "", textAlign: TextAlign.center),
+        Text(ingredient.value.toString() + ingredient.unit.toString(), textAlign: TextAlign.center),
+        Text(ingredient.kcal.toString() ?? "", textAlign: TextAlign.center),
+        Text(ingredient.prepare ?? "", textAlign: TextAlign.center),
       ];
-      _nutrientsCells.add(row);
+      _ingredientsCells.add(row);
     }
   }
 }

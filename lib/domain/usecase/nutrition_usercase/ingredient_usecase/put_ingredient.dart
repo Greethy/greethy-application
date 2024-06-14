@@ -12,7 +12,7 @@ class PutIngredient {
     required Ingredient ingredient,
     required String id,
   }) async {
-    final Ingredient? user = await _repository.putIngredient(ingredient: ingredient, id: id);
-    return user;
+    final Ingredient? result = await _repository.putIngredient(ingredient: ingredient, id: id);
+    return result;
   }
 }

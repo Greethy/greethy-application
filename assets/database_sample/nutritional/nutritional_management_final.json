@@ -1,15 +1,12 @@
 {
   "id": "1",
   "userId": "1",
-  "body_specs": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5"
-  ],
   "drink_plan_id": "1",
   "eating_plan_personal_id": "1",
+  "lunch_rations": 3,
+  "dinner_rations": 4,
+  "breakfast_snack": false,
+  "afternoon_snack": true,
   "eating_plan_collective": {
     "eating_plan_collective_start_at": "12/12/2022",
     "eating_plan_collective_id": "4",

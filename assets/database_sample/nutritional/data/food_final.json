@@ -1,51 +1,160 @@
 {
   "id": "1",
-  "food_name": "Cơm trắng",
+  "food_name": "BÁNH CANH GIÒ HEO",
   "food_type": [
     "Lương thực",
     "bla bla"
   ],
-  "food_image_url": "food_image/salmon/6382.png",
-  "food_video_cooking": "food_image/salmon/6382.mp4",
-  "total_calories": 1567.0,
-  "recipe": "mô tả công thức, cách nấu ăn....",
-  "tips": "một số các mẹo vặt...",
+  "food_image_url": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/800px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+    "https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505"
+  ],
+  "food_video_cooking": "QJZUwiJhKZ0",
+  "total_calories": 1567,
+  "recipe": "•  Nấu nước dùng: Cho thịt heo và giò heo vào nồi nước đun sôi, giảm lửa, hớt bọt kỹ. Khi thịt heo chín, vớt ra để nguội, cắt lát mỏng. Tiếp tục hầm giò heo khoảng 15 phút thì cho củ cải trắng vào. Nấu lửa vừa khoảng 30-40 phút, vớt giò heo ra, thêm nước để bằng với lượng nước ban đầu, cho nấm rơm vào nồi nước dùng, nấu sôi lại, nêm Bột ngọt LOGOSPAVN1, Hạt nêm LOGOSPAVN2 Heo và nước mắm, khuấy nhẹ cho gia vị tan đều.\n•  Phi hành: Cho hành và dầu ăn vào chảo nhỏ, phi đến khi hành vàng thơm, vớt ra để ráo dầu.\n•  Trình bày: Cho bánh canh vào tô, xếp giò heo, thịt heo và hành ngò lên trên rồi chan nước dùng cùng với củ cải trắng, nấm rơm vào ngập bánh canh, thêm hành phi, dùng nóng.",
+  "tips": "• Vị của nước dùng sẽ ngọt và ngon hơn khi ninh củ cải trắng cùng giò heo và luộc phần thịt heo trong nồi nước dùng.\n• Để nấu nước dùng từ xương dùng dần, chần xương qua nước nóng, ninh xương với tỉ lệ 1kg xương + 4 lít nước, nấu sôi, giảm lửa, hớt bọt kỹ. Ninh khoảng 2-3h, vớt bỏ xương và lọc được khoảng 3 lít nước dùng trong. Nước dùng sau khi để nguội có thể bảo quản trong ngăn đông để dùng dần.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết nấu các loại nước dùng ngon.",
   "ingredients": [
     {
       "ingredient_id": "1",
-      "ingredient_name": "Cơm trắng",
-      "ingredient_replace": [
-        "2",
-        "3",
-        "4"
-      ],
-      "value": 200.0,
-      "unit": "G",
+      "ingredient_name": "Hành tím tươi",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái lát mỏng",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Thịt thăn lợn (heo)",
+      "value": 10,
+      "unit": "g",
       "prepare": "",
       "kcal": 123.0
     },
     {
-      "ingredient_name": "nước",
-      "ingredient_replace": [
-        "2",
-        "3",
-        "4"
-      ],
+      "ingredient_id": "3",
+      "ingredient_name": "Bánh canh bột gạo",
+      "value": 200,
+      "unit": "g",
+      "prepare": "Chần nước sôi",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Nấm rơm",
+      "value": 30,
+      "unit": "g",
+      "prepare": "Thái đôi",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Hành lá/Hành hoa",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "6",
+      "ingredient_name": "Chân giò lợn/Giò heo",
+      "value": 30,
+      "unit": "g",
+      "prepare": "Chặt miếng vừa ăn",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "7",
+      "ingredient_name": "Rau mùi/Ngò rí",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "8",
+      "ingredient_name": "Củ cải trắng",
+      "value": 60,
+      "unit": "g",
+      "prepare": "Thái khối",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "9",
+      "ingredient_name": "Nước lọc",
+      "value": 300,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "10",
+      "ingredient_name": "Hạt nêm",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "11",
+      "ingredient_name": "Bột ngọt",
       "value": 1,
-      "unit": "l",
-      "kcal": 100.0
+      "unit": "g",
+      "prepare": "",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "12",
+      "ingredient_name": "Nước mắm",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 123.0
+    },
+    {
+      "ingredient_id": "13",
+      "ingredient_name": "Dầu ăn/Dầu thực vật",
+      "value": 9,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 123.0
     }
   ],
   "nutrients": [
     {
-      "nutrition_name": "vitamin A",
-      "value": 5.0,
+      "nutrition_name": "Năng lượng",
+      "value": 434.0,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 13.5,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 16.0,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 59.1,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 93.0,
       "unit": "mg"
     },
     {
-      "nutrition_name": "sodium",
-      "value": 11.0,
+      "nutrition_name": "Sắt",
+      "value": 2.8,
       "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 1.7,
+      "unit": "g"
     }
   ],
   "kudos": {

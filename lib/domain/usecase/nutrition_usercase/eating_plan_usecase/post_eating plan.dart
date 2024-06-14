@@ -11,7 +11,7 @@ class PostEatingPlan {
   Future<EatingPlan?> call({
     required EatingPlan eatingPlan,
   }) async {
-    final EatingPlan? user = await _repository.postEatingPlan(eatingPlan: eatingPlan);
-    return user;
+    final EatingPlan? result = await _repository.postEatingPlan(eatingPlan: eatingPlan);
+    return result;
   }
 }

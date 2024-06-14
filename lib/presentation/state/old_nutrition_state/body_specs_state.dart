@@ -1,7 +1,8 @@
-import 'package:greethy_application/domain/entities/nutrition_entities/body_specs.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/post_body_specs.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/put_body_specs.dart';
+import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/get_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/post_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/put_body_specs.dart';
+
 
 import '../appState.dart';
 

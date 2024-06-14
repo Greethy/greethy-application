@@ -4,11 +4,12 @@ class Food extends Equatable {
   final String? id;
   final String? foodName;
   final List<String>? foodType;
-  final String? foodImageUrl;
+  final List<String>? foodImageUrl;
   final String? foodVideoCooking;
   final int? totalCalories;
   final String? recipe;
   final String? tips;
+  final String? moreInformation;
   final List<Ingredient>? ingredients;
   final List<Nutrient>? nutrients;
 
@@ -21,6 +22,7 @@ class Food extends Equatable {
     this.totalCalories,
     this.recipe,
     this.tips,
+    this.moreInformation,
     this.ingredients,
     this.nutrients,
   });
@@ -35,6 +37,7 @@ class Food extends Equatable {
         totalCalories,
         recipe,
         tips,
+        moreInformation,
         ingredients,
         nutrients,
       ];
@@ -43,7 +46,6 @@ class Food extends Equatable {
 class Ingredient extends Equatable {
   final String? ingredientId;
   final String? ingredientName;
-  final List<String>? ingredientReplaceId;
   final double? value;
   final String? unit;
   final String? prepare;
@@ -52,7 +54,6 @@ class Ingredient extends Equatable {
   Ingredient({
     this.ingredientId,
     this.ingredientName,
-    this.ingredientReplaceId,
     this.value,
     this.unit,
     this.prepare,
@@ -63,7 +64,6 @@ class Ingredient extends Equatable {
   List<Object?> get props => [
         ingredientId,
         ingredientName,
-        ingredientReplaceId,
         value,
         unit,
         prepare,
@@ -73,7 +73,7 @@ class Ingredient extends Equatable {
 
 class Nutrient extends Equatable {
   final String? nutritionName;
-  final String? value;
+  final double? value;
   final String? unit;
 
   Nutrient({

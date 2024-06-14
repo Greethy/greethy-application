@@ -11,7 +11,7 @@ class PostDrinkScheduleGroup {
   Future<DrinkScheduleGroup?> call({
     required DrinkScheduleGroup drinkScheduleGroup,
   }) async {
-    final DrinkScheduleGroup? user = await _repository.postDrinkScheduleGroup(drinkScheduleGroup: drinkScheduleGroup);
-    return user;
+    final DrinkScheduleGroup? result = await _repository.postDrinkScheduleGroup(drinkScheduleGroup: drinkScheduleGroup);
+    return result;
   }
 }

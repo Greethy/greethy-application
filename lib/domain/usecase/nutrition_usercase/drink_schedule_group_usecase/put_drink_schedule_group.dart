@@ -12,7 +12,7 @@ class PutDrinkScheduleGroup {
     required DrinkScheduleGroup drinkScheduleGroup,
     required String id,
   }) async {
-    final DrinkScheduleGroup? user = await _repository.putDrinkScheduleGroup(drinkScheduleGroup: drinkScheduleGroup, id: id);
-    return user;
+    final DrinkScheduleGroup? result = await _repository.putDrinkScheduleGroup(drinkScheduleGroup: drinkScheduleGroup, id: id);
+    return result;
   }
 }

@@ -12,6 +12,7 @@ class FoodDto extends Food {
     super.totalCalories,
     super.recipe,
     super.tips,
+    super.moreInformation,
     super.ingredients,
     super.nutrients,
   });
@@ -27,28 +28,30 @@ class FoodDto extends Food {
   // Maps
   // ---------------------------------------------------------------------------
   factory FoodDto.fromMap(Map<String, dynamic> json) => FoodDto(
-    id: json['id'],
-    foodName: json['food_name'],
-    foodType: json['food_type'] == null ? [] : List<String>.from(json['food_type']),
-    foodImageUrl: json['food_image_url'],
-    foodVideoCooking: json['food_video_cooking'],
-    totalCalories: json['total_calories'],
-    recipe: json['recipe'],
-    tips: json['tips'],
-    ingredients: json['ingredients'] == null ? null : List<IngredientDto>.from(json['ingredients'].map((x) => IngredientDto.fromMap(x))),
-    nutrients: json['nutrients'] == null ? null : List<NutrientDto>.from(json['nutrients'].map((x) => NutrientDto.fromMap(x))),
-  );
+        id: json['id'],
+        foodName: json['food_name'],
+        foodType: json['food_type'] == null ? [] : List<String>.from(json['food_type']),
+        foodImageUrl: json['food_image_url'] == null ? [] : List<String>.from(json['food_image_url']),
+        foodVideoCooking: json['food_video_cooking'],
+        totalCalories: json['total_calories'],
+        recipe: json['recipe'],
+        tips: json['tips'],
+        moreInformation: json["more_information"],
+        ingredients: json['ingredients'] == null ? null : List<IngredientDto>.from(json['ingredients'].map((x) => IngredientDto.fromMap(x))),
+        nutrients: json['nutrients'] == null ? null : List<NutrientDto>.from(json['nutrients'].map((x) => NutrientDto.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'food_name': foodName,
       'food_type': foodType == null ? [] : foodType,
-      'food_image_url': foodImageUrl,
+      'food_image_url': foodImageUrl == null ? [] : foodImageUrl,
       'food_video_cooking': foodVideoCooking,
       'total_calories': totalCalories,
       'recipe': recipe,
       'tips': tips,
+      'more_information': moreInformation,
       'ingredients': ingredients == null ? null : IngredientDto.fromIngredientList(ingredients!).map((x) => x.toMap()).toList(),
       'nutrients': nutrients == null ? null : NutrientDto.fromNutrientList(nutrients!).map((x) => x.toMap()).toList(),
     };
@@ -67,6 +70,7 @@ class FoodDto extends Food {
       totalCalories: food.totalCalories,
       recipe: food.recipe,
       tips: food.tips,
+      moreInformation: food.moreInformation,
       ingredients: food.ingredients,
       nutrients: food.nutrients,
     );
@@ -82,6 +86,7 @@ class FoodDto extends Food {
       totalCalories: totalCalories,
       recipe: recipe,
       tips: tips,
+      moreInformation: moreInformation,
       ingredients: ingredients,
       nutrients: nutrients,
     );
@@ -92,7 +97,6 @@ class IngredientDto extends Ingredient {
   IngredientDto({
     super.ingredientId,
     super.ingredientName,
-    super.ingredientReplaceId,
     super.value,
     super.unit,
     super.prepare,
@@ -112,7 +116,6 @@ class IngredientDto extends Ingredient {
   factory IngredientDto.fromMap(Map<String, dynamic> json) => IngredientDto(
         ingredientId: json['ingredient_id'],
         ingredientName: json['ingredient_name'],
-        ingredientReplaceId: json['ingredient_replace'] == null ? [] : List<String>.from(json['ingredient_replace']),
         value: json['value'].toDouble(),
         unit: json['unit'],
         prepare: json['prepare'],
@@ -123,7 +126,6 @@ class IngredientDto extends Ingredient {
     return {
       'ingredient_id': ingredientId,
       'ingredient_name': ingredientName,
-      'ingredient_replace': ingredientReplaceId == null ? [] : ingredientReplaceId,
       'value': value,
       'unit': unit,
       'prepare': prepare,
@@ -138,7 +140,6 @@ class IngredientDto extends Ingredient {
     return IngredientDto(
       ingredientId: ingredient.ingredientId,
       ingredientName: ingredient.ingredientName,
-      ingredientReplaceId: ingredient.ingredientReplaceId,
       value: ingredient.value,
       unit: ingredient.unit,
       prepare: ingredient.prepare,
@@ -150,7 +151,6 @@ class IngredientDto extends Ingredient {
     return Ingredient(
       ingredientId: ingredientId,
       ingredientName: ingredientName,
-      ingredientReplaceId: ingredientReplaceId,
       value: value,
       unit: unit,
       prepare: prepare,
@@ -164,7 +164,6 @@ class IngredientDto extends Ingredient {
           (entity) => IngredientDto(
             ingredientId: entity.ingredientId,
             ingredientName: entity.ingredientName,
-            ingredientReplaceId: entity.ingredientReplaceId,
             value: entity.value,
             unit: entity.unit,
             prepare: entity.prepare,

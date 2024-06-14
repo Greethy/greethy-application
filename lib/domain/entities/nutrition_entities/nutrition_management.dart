@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 class NutritionManagement extends Equatable {
   final String? id;
   final String? ownId;
-  final List<String>? bodySpecs;
   final String? drinkPlanId;
   final String? eatingPlanPersonalId;
   final EatingPlanCollective? eatingPlanCollective;
@@ -11,7 +10,6 @@ class NutritionManagement extends Equatable {
   NutritionManagement({
     this.id,
     this.ownId,
-    this.bodySpecs,
     this.drinkPlanId,
     this.eatingPlanPersonalId,
     this.eatingPlanCollective,
@@ -21,7 +19,6 @@ class NutritionManagement extends Equatable {
   List<Object?> get props => [
         id,
         ownId,
-        bodySpecs,
         drinkPlanId,
         eatingPlanPersonalId,
         eatingPlanCollective,

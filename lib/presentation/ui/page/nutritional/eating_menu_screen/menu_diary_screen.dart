@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
-import 'package:greethy_application/presentation/state/eating_menu_state.dart';
+import 'package:greethy_application/presentation/state/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/custom_divider_meal_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/food_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/information_owner_view.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/total_nutrition_per_day_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/custom_divider_meal_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/food_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/information_owner_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/total_nutrition_per_day_view.dart';
+import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:provider/provider.dart';
 
 class MenuDiaryScreen extends StatefulWidget {
@@ -377,6 +378,13 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
                                 borderRadius: const BorderRadius.all(Radius.circular(32.0)),
                                 onTap: () {
                                   print("mui ten ben trái");
+                                  // add to test
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const NutritionHomeManagementScreen(),
+                                    ),
+                                  );
                                 },
                                 child: Center(
                                   child: Icon(

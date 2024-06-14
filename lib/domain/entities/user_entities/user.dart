@@ -11,6 +11,7 @@ class User extends Equatable {
   final PersonalInfo? personalInfo;
   final PremiumUser? premiumUser;
   final bool? isVerified;
+  final String? bodySpecsManagementId;
   final String? financialManagementId;
   final String? nutritionalManagementId;
   final String? fitnessManagementId;
@@ -29,6 +30,7 @@ class User extends Equatable {
     this.personalInfo,
     this.premiumUser,
     this.isVerified,
+    this.bodySpecsManagementId,
     this.financialManagementId,
     this.nutritionalManagementId,
     this.fitnessManagementId,
@@ -48,6 +50,7 @@ class User extends Equatable {
         personalInfo,
         premiumUser,
         isVerified,
+        bodySpecsManagementId,
         financialManagementId,
         nutritionalManagementId,
         fitnessManagementId,
@@ -67,6 +70,7 @@ class User extends Equatable {
     PersonalInfo? personalInfo,
     PremiumUser? premiumUser,
     bool? isVerified,
+    String? bodySpecsManagementId,
     String? financialManagementId,
     String? nutritionalManagementId,
     String? fitnessManagementId,
@@ -85,6 +89,7 @@ class User extends Equatable {
       personalInfo: personalInfo ?? this.personalInfo,
       premiumUser: premiumUser ?? this.premiumUser,
       isVerified: isVerified ?? this.isVerified,
+      bodySpecsManagementId: bodySpecsManagementId ?? this.bodySpecsManagementId,
       financialManagementId: financialManagementId ?? this.financialManagementId,
       nutritionalManagementId: nutritionalManagementId ?? this.nutritionalManagementId,
       fitnessManagementId: fitnessManagementId ?? this.fitnessManagementId,

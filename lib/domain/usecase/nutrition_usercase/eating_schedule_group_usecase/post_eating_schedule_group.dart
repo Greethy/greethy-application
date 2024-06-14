@@ -11,7 +11,7 @@ class PostEatingScheduleGroup {
   Future<EatingScheduleGroup?> call({
     required EatingScheduleGroup eatingScheduleGroup,
   }) async {
-    final EatingScheduleGroup? user = await _repository.postEatingScheduleGroup(eatingScheduleGroup: eatingScheduleGroup);
-    return user;
+    final EatingScheduleGroup? result = await _repository.postEatingScheduleGroup(eatingScheduleGroup: eatingScheduleGroup);
+    return result;
   }
 }

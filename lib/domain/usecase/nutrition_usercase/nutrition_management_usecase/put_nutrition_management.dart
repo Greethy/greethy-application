@@ -12,7 +12,7 @@ class PutNutritionManagement {
     required NutritionManagement nutritionManagement,
     required String id,
   }) async {
-    final NutritionManagement? user = await _repository.putNutritionManagement(nutritionManagement: nutritionManagement, id: id);
-    return user;
+    final NutritionManagement? result = await _repository.putNutritionManagement(nutritionManagement: nutritionManagement, id: id);
+    return result;
   }
 }

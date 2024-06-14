@@ -3,7 +3,7 @@
  */
 
 import 'package:greethy_application/data/impl/auth_repository_impl.dart';
-import 'package:greethy_application/data/impl/nutritional_impl/body_specs_impl.dart';
+import 'package:greethy_application/data/impl/body_impl/body_specs_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/drink_plan_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/drink_schedule_group_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/eating_plan_impl.dart';
@@ -14,7 +14,7 @@ import 'package:greethy_application/data/impl/nutritional_impl/ingredient_impl.d
 import 'package:greethy_application/data/impl/nutritional_impl/nutrition_management_impl.dart';
 import 'package:greethy_application/data/source/local/local_storage_user.dart';
 import 'package:greethy_application/data/source/network/auth_api.dart';
-import 'package:greethy_application/data/source/network/nutritional_api/body_specs_api.dart';
+import 'package:greethy_application/data/source/network/body_api/body_specs_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/drink_plan_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/drink_schedule_group_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/eating_plan_api.dart';
@@ -27,9 +27,9 @@ import 'package:greethy_application/domain/usecase/auth_usercase/get_status_logi
 import 'package:greethy_application/domain/usecase/auth_usercase/save_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signup.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/get_body_specs.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/post_body_specs.dart';
-import 'package:greethy_application/domain/usecase/nutrition_usercase/body_specs_usecase/put_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/get_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/post_body_specs.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/put_body_specs.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/get_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_drink_plan.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/drink_plan_usecase/post_increase_water.dart';

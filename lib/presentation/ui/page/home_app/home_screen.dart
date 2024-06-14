@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   return;
                 }
                 setState(() {
-                  tabBody = NavigationApp();
+                  // tabBody = NavigationApp();
                 });
               });
             }

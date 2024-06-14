@@ -30,11 +30,10 @@ class FoodApiImpl implements FoodApi {
 
       final l = response.data['results'].map((e) => FoodDto.fromMap(e));
       print(response.data);
-
-      // return l;
-      // todo: add to test
-
+      print("food out 1");
       FoodDto food = await FoodDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_final.json'));
+      print("food out");
+      print(food.toString());
 
       return food;
     } on DioException catch (e) {

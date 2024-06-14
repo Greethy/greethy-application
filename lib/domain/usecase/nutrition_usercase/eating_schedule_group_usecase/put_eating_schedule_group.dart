@@ -12,7 +12,7 @@ class PutEatingScheduleGroup {
     required EatingScheduleGroup eatingScheduleGroup,
     required String id,
   }) async {
-    final EatingScheduleGroup? user = await _repository.putEatingScheduleGroup(eatingScheduleGroup: eatingScheduleGroup, id: id);
-    return user;
+    final EatingScheduleGroup? result = await _repository.putEatingScheduleGroup(eatingScheduleGroup: eatingScheduleGroup, id: id);
+    return result;
   }
 }

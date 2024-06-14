@@ -23,48 +23,51 @@ class TotalNutritionPerDay extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
           opacity: animation!,
-          child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
+          child: Transform(
+            transform: Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                child: Row(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                child: Column(
                   children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        titleTxt,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 18,
-                          letterSpacing: 0.5,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Năng lượng cần thiết:',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
+                        Text(
+                          '2.405,1 Kcal',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            state.bmrPerDay.toString(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
-                              letterSpacing: 0.5,
-                            ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Năng lượng thực đơn hiện tại:',
+                          style: TextStyle(
+                            fontSize: 18,
                           ),
-                          Text(
-                            " Kcal",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
-                              letterSpacing: 0.5,
-                            ),
+                        ),
+                        Text(
+                          '${state.bmrPerDay} Kcal',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey,
                           ),
-                        ],
-                      ),
-                    )
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

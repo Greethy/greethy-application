@@ -52,7 +52,7 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name": "cơm",
+          "name": "CƠM",
           "foodId": "1",
           "foodPic": "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         },
@@ -82,7 +82,7 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name": "cơm",
+          "name": "CƠM",
           "foodId": "1",
           "foodPic": "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
         },

@@ -6,7 +6,7 @@
     "Lose Weight",
     "More energy"
   ],
-  "related_group_id":"1",
+  "related_group_id": "1",
   "menu_calories": {
     "protein": 210.0,
     "lipid": 160.6,
@@ -22,9 +22,9 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name" : "cơm",
-          "foodId" : "1",
-          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+          "name": "GÀ HẦM THUỐC BẮC",
+          "foodId": "1",
+          "foodPic": "https://vinger.com.vn/wp-content/uploads/2022/11/ga-ham-thuoc-bac-ngon-ming.jpg"
         }
       ],
       "status": true
@@ -37,9 +37,9 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name" : "cơm",
-          "foodId" : "1",
-          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+          "name": "NƯỚC CHANH DÂY",
+          "foodId": "1",
+          "foodPic": "https://pastaparadise.com.vn/wp-content/uploads/2021/01/image-removebg-preview.png"
         }
       ],
       "status": true
@@ -52,27 +52,27 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name" : "cơm",
-          "foodId" : "1",
-          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+          "name": "cơm",
+          "foodId": "1",
+          "foodPic": "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+        },
+        {
+          "name": "CÁ CHIM CHIÊN GIÒN",
+          "foodId": "1",
+          "foodPic": "https://cdn.tgdd.vn/2020/09/CookProduct/Untitled-2-Recovered-1200x676-2.jpg"
+        },
+        {
+          "name": "CANH CẢI BẮP CÀ CHUA NẤU THỊT",
+          "foodId": "1",
+          "foodPic": "https://cookbeo.com/media/2021/07/canh-bap-cai-ca-chua/canh-bap-cai-ca-chua.jpg"
+        },
+        {
+          "name": "RAU MUỐNG XÀO MỰC",
+          "foodId": "1",
+          "foodPic": "https://leaufood.com/wp-content/uploads/2022/12/muc-kho-xao-rau-muong.jpg"
         }
       ],
       "status": true
-    },
-    {
-      "meal": "snack",
-      "protein": 21.0,
-      "lipid": 16.6,
-      "glucid": 62.4,
-      "calories": 1102.0,
-      "foods": [
-        {
-          "name" : "cơm",
-          "foodId" : "1",
-          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
-        }
-      ],
-      "status": false
     },
     {
       "meal": "dinner",
@@ -82,9 +82,24 @@
       "calories": 1102.0,
       "foods": [
         {
-          "name" : "cơm",
-          "foodId" : "1",
-          "foodPic" : "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+          "name": "cơm",
+          "foodId": "1",
+          "foodPic": "https://media.cnn.com/api/v1/images/stellar/prod/140430115517-06-comfort-foods.jpg?"
+        },
+        {
+          "name": "SU HÀO ĐẬU BẮP LUỘC",
+          "foodId": "1",
+          "foodPic": "https://vuonpho.com/wp-content/uploads/2016/12/su-hao-luoc.jpg"
+        },
+        {
+          "name": "BÒ OM CỦ CẢI (MN)",
+          "foodId": "1",
+          "foodPic": "https://www.nhahangquangon.com/wp-content/uploads/2015/10/cach-lam-mon-thit-bo-kho-cu-cai-dam-da-dua-com.jpg"
+        },
+        {
+          "name": "CANH TẦN Ô NẤM NẤU TÔM",
+          "foodId": "1",
+          "foodPic": "https://cdn.tgdd.vn/2020/10/CookProduct/Moncanhrautanovoitom-1200x675.jpg"
         }
       ],
       "status": false

@@ -27,7 +27,7 @@ class TotalNutritionPerDay extends StatelessWidget {
             transform: new Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24),
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -35,11 +35,8 @@ class TotalNutritionPerDay extends StatelessWidget {
                         titleTxt,
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontFamily: AppTheme.fontName,
-                          fontWeight: FontWeight.w500,
                           fontSize: 18,
                           letterSpacing: 0.5,
-                          color: AppTheme.lightText,
                         ),
                       ),
                     ),
@@ -51,20 +48,18 @@ class TotalNutritionPerDay extends StatelessWidget {
                             state.bmrPerDay.toString(),
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              fontFamily: AppTheme.fontName,
                               fontWeight: FontWeight.normal,
                               fontSize: 16,
                               letterSpacing: 0.5,
-                              color: AppTheme.nearlyDarkBlue,
                             ),
                           ),
-                          SizedBox(
-                            height: 38,
-                            width: 26,
-                            child: Icon(
-                              Icons.water_drop_outlined,
-                              color: AppTheme.darkText,
-                              size: 18,
+                          Text(
+                            " Kcal",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              letterSpacing: 0.5,
                             ),
                           ),
                         ],

@@ -28,105 +28,106 @@ class InformationOwner extends StatelessWidget {
           opacity: animation!,
           child: new Transform(
             transform: new Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5, right: 24),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5, right: 24, top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child:  Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: GreethyColor.kawa_green,
+                          width: 2.0,
+                        ), // Inner green border
+                        shape: BoxShape.circle,
+                      ),
                       child: Container(
-                        alignment: Alignment.topLeft,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 500),
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 5),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: GreethyColor.kawa_green,
-                                width: 1.0,
-                              ), // Inner green border
-                              shape: BoxShape.circle,
+                      alignment: Alignment.topLeft,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 500),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white, width: 5),
+                          shape: BoxShape.circle,
+                        ),
+                        child: RippleButton(
+                            child: CircularImage(
+                              path: state.eatingPlan!.owner!.avatar!,
+                              height: 45,
                             ),
-                            child: RippleButton(
-                              child: CircularImage(
-                                path: state.eatingPlan!.owner!.avatar!,
-                                height: 35,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  ProfileImageView.getRoute(
-                                    state.eatingPlan!.owner!.id!
-                                  ),
-                                );
-                              },
-                            ),
+                            borderRadius: BorderRadius.circular(50),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                ProfileImageView.getRoute(state.eatingPlan!.owner!.id!),
+                              );
+                            },
                           ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            state.eatingPlan!.owner!.name!,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: AppTheme.fontName,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              letterSpacing: 0.5,
-                              color: GreethyColor.kawa_green,
-                            ),
+                      ),),
+
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          state.eatingPlan!.owner!.name!,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            letterSpacing: 0.5,
+                            color: GreethyColor.kawa_green,
                           ),
-                          Text(
-                            state.eatingPlan!.bio!,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: AppTheme.fontName,
-                              fontWeight: FontWeight.w300,
-                              fontSize: 16,
-                              letterSpacing: 0.5,
-                              color: AppTheme.lightText,
+                        ),
+                        Text(
+                          state.eatingPlan!.bio!,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 16,
+                            letterSpacing: 0.5,
+                            color: AppTheme.lightText,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  InkWell(
+                    highlightColor: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    onTap: () {
+                      print("mở setting plan page");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 38,
+                            width: 26,
+                            child: Icon(
+                              Icons.settings,
+                              color: AppTheme.darkText,
+                              size: 30,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    InkWell(
-                      highlightColor: Colors.transparent,
-                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                      onTap: () {
-                        print("mở setting plan page");
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Row(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 38,
-                              width: 26,
-                              child: Icon(
-                                Icons.settings,
-                                color: AppTheme.darkText,
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                ],
               ),
-
+            ),
           ),
         );
       },

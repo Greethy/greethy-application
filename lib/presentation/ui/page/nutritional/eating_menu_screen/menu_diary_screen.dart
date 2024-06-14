@@ -355,7 +355,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
                                       ),
                                     ),
                                     Text(
-                                      'Home diary',
+                                      'Menu Diary',
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       style: TextStyle(

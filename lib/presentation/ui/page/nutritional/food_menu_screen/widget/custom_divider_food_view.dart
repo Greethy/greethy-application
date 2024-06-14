@@ -19,8 +19,6 @@ class CustomDividerFoodView extends StatefulWidget {
 }
 
 class _CustomDividerFoodViewState extends State<CustomDividerFoodView> {
-  bool _click = false;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,38 +34,15 @@ class _CustomDividerFoodViewState extends State<CustomDividerFoodView> {
               bottom: BorderSide(color: Colors.grey, width: 1.0),
             ),
           ),
-          child: InkWell(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(15, 2, 15, 2),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 25,
-                  ),
-                  Text(
-                    widget.state.food?.foodName ?? "",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Icon(
-                    Icons.arrow_drop_down_circle,
-                    size: 25.0,
-                    color: GreethyColor.pakistanGreen,
-                  ),
-                ],
+          child: Center(
+            child: Text(
+              widget.state.food?.foodName ?? "",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
-            onTap: () {
-              print("press late");
-              setState(() {
-                _click = !_click;
-              });
-            },
           ),
         ),
       ],

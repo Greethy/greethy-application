@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/cooking_instructions_food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/cooking_recipe_table_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_kcal_total_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/custom_divider_nutrition_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/nutrition_table_detail_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/food_img_list_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/unit_conversion_table_of_ingredients_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/widget/youtube_video_widget.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/widget/custom_divider_view.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class FoodDetailScreen extends StatefulWidget {
@@ -147,6 +152,38 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
         state: state,
       ),
     );
+
+    listViews.add(
+      UnitConversionTableOfIngredientsView(
+        dividerHeight: 35,
+      ),
+    );
+
+    listViews.add(
+      CustomDividerView(
+        dividerHeight: 35,
+        text: "HƯỚNG DẪN THỰC HIỆN",
+      ),
+    );
+
+    listViews.add(
+      CookingInstructionsFoodView(
+        state: state,
+      ),
+    );
+
+    listViews.add(
+      CustomDividerView(
+        dividerHeight: 35,
+        text: "VIDEO HƯỚNG DẪN",
+      ),
+    );
+
+    listViews.add(
+      YouTubeVideoWidget(
+        state: state,
+      ),
+    );
   }
 
   Future<bool> getData(FoodScreenState state) async {
@@ -245,7 +282,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> with TickerProvider
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Home diary',
+                                  'GREETHY FOOD',
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                   style: TextStyle(

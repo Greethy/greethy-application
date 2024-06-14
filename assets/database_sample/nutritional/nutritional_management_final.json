@@ -1,13 +1,6 @@
 {
   "id": "1",
   "userId": "1",
-  "body_specs": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5"
-  ],
   "drink_plan_id": "1",
   "eating_plan_personal_id": "1",
   "lunch_rations": 3,

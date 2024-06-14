@@ -140,7 +140,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
       listViews.add(
         CustomDividerMealView(
           dividerHeight: 35,
-          text: "Bữa Sáng",
+          text: "BỮA SÁNG",
           meal: state.breakfast,
         ),
       );
@@ -165,12 +165,12 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
       listViews.add(
         CustomDividerMealView(
           dividerHeight: 35,
-          text: "Bữa Phụ Sáng",
+          text: "BỮA PHỤ SÁNG",
           meal: state.morningSnack,
         ),
       );
 
-      for (FoodIndex food in state.foodIndexBreakfast) {
+      for (FoodIndex food in state.foodIndexSnackMorning) {
         listViews.add(
           FoodView(
             foodInfo: food,
@@ -190,12 +190,12 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
       listViews.add(
         CustomDividerMealView(
           dividerHeight: 35,
-          text: "Bữa Trưa",
+          text: "BỮA TRƯA",
           meal: state.lunch,
         ),
       );
 
-      for (FoodIndex food in state.foodIndexBreakfast) {
+      for (FoodIndex food in state.foodIndexLunch) {
         listViews.add(
           FoodView(
             foodInfo: food,
@@ -215,12 +215,12 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
       listViews.add(
         CustomDividerMealView(
           dividerHeight: 35,
-          text: "Bữa Phụ Chiều",
+          text: "BỮA PHỤ CHIỀU",
           meal: state.afternoonSnack,
         ),
       );
 
-      for (FoodIndex food in state.foodIndexBreakfast) {
+      for (FoodIndex food in state.foodIndexSnackAfternoon) {
         listViews.add(
           FoodView(
             foodInfo: food,
@@ -240,12 +240,12 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
       listViews.add(
         CustomDividerMealView(
           dividerHeight: 35,
-          text: "Bữa Tối",
+          text: "BỮA TỐI",
           meal: state.dinner,
         ),
       );
 
-      for (FoodIndex food in state.foodIndexBreakfast) {
+      for (FoodIndex food in state.foodIndexDinner) {
         listViews.add(
           FoodView(
             foodInfo: food,

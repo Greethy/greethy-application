@@ -26,7 +26,9 @@ class _CustomDividerMealViewState extends State<CustomDividerMealView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Padding(padding:EdgeInsetsDirectional.only(top: 16),
+      child:
+    Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
@@ -75,41 +77,41 @@ class _CustomDividerMealViewState extends State<CustomDividerMealView> {
         ),
         _click
             ? Padding(
-                padding: EdgeInsets.all(16.0),
-                child: DynamicTable(
-                  columns: 3,
-                  rows: 5,
-                  cells: [
-                    [
-                      Text('CHỈ TIÊU', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('GIÁ TRỊ', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('ĐƠN VỊ', style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                    [
-                      Text('Năng lượng (calories)', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-                      Text(widget.meal!.calories.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Kcal', style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                    [
-                      Text('Protein', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(widget.meal!.protein.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                    [
-                      Text('Lipid', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(widget.meal!.lipid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                    [
-                      Text('Glucid', style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(widget.meal!.glucid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                  ],
-                ),
-              )
+          padding: EdgeInsets.all(16.0),
+          child: DynamicTable(
+            columns: 3,
+            rows: 5,
+            cells: [
+              [
+                Text('CHỈ TIÊU', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('GIÁ TRỊ', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('ĐƠN VỊ', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+              [
+                Text('Năng lượng (calories)', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+                Text(widget.meal!.calories.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Kcal', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+              [
+                Text('Protein', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.meal!.protein.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+              [
+                Text('Lipid', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.meal!.lipid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+              [
+                Text('Glucid', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.meal!.glucid.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('g', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ],
+          ),
+        )
             : SizedBox.shrink(),
       ],
-    );
+    ),);
   }
 }

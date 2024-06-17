@@ -25,7 +25,7 @@ class FoodView extends StatelessWidget {
           child: new Transform(
             transform: new Matrix4.translationValues(0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 0),
+              padding: const EdgeInsets.only(left: 12, right: 12, top: 16, bottom: 0),
               child: Container(
                 decoration: BoxDecoration(
                   color: AppTheme.white,

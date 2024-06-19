@@ -11,7 +11,7 @@ class _FootnoteViewState extends State<FootnoteView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,7 @@ class _FootnoteViewState extends State<FootnoteView> {
             // Ảnh
             Center(
               child: Image.network(
-                'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/405182058_122121285482086639_8326761993881129327_n.jpg?stp=dst-jpg_s960x960&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGriacBYRWErUSk7c5-tqg3yecMmtofmEHJ5wya2h-YQdPNG8D3ATeywmWZ42YYCXAWLX8Zmki7r6SscghBEgvt&_nc_ohc=X-bAm-RAHvEQ7kNvgHNeUZh&_nc_ht=scontent.fhan17-1.fna&oh=00_AYDXOIwjh7k5SPa4C-3v1Z2q_Hg_3LoU4fEW2zFW6bL9wA&oe=6671CD58', // Thay thế bằng URL ảnh của bạn
+                'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/405182058_122121285482086639_8326761993881129327_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGriacBYRWErUSk7c5-tqg3yecMmtofmEHJ5wya2h-YQdPNG8D3ATeywmWZ42YYCXAWLX8Zmki7r6SscghBEgvt&_nc_ohc=t7q65spof94Q7kNvgEg-M-N&_nc_ht=scontent.fhan17-1.fna&oh=00_AYDN0Bz5zTNkvvGDhrC2QrDKbnQp3JygwXjgPH2XdRzvUg&oe=667864D8',
                 height: 200,
                 fit: BoxFit.cover,
               ),

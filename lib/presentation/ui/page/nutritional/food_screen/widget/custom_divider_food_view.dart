@@ -21,31 +21,29 @@ class CustomDividerFoodView extends StatefulWidget {
 class _CustomDividerFoodViewState extends State<CustomDividerFoodView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: widget.dividerHeight,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: widget.color ?? GreethyColor.mossGreen,
-            border: Border(
-              top: BorderSide(color: Colors.grey, width: 1.0),
-              bottom: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-          ),
-          child: Center(
-            child: Text(
-              widget.state.food?.foodName ?? "",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: widget.color ?? GreethyColor.kawa_green,
+        border: Border(
+          top: BorderSide(color: Colors.grey, width: 1.0),
+          bottom: BorderSide(color: Colors.grey, width: 1.0),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(5),
+        child: Center(
+          child: Text(
+            widget.state.food?.foodName ?? "",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

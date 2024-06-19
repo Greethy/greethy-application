@@ -163,7 +163,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
 
     listViews.add(
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        padding: const EdgeInsets.symmetric(horizontal: 7.0, vertical: 5.0),
         child: Stack(
           children: <Widget>[
             ClipRRect(

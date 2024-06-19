@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/nutritional/food_menu_screen/food_detail_screen.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/food_screen/food_detail_screen.dart';
 
 class FoodView extends StatelessWidget {
   final AnimationController? animationController;

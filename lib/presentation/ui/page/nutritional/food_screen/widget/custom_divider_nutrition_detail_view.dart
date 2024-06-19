@@ -29,7 +29,7 @@ class _CustomDividerNutritionDetailViewState extends State<CustomDividerNutritio
           height: widget.dividerHeight,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: widget.color ?? GreethyColor.mossGreen,
+            color: widget.color ?? GreethyColor.kawa_green,
             border: Border(
               top: BorderSide(color: Colors.grey, width: 1.0),
               bottom: BorderSide(color: Colors.grey, width: 1.0),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/food_screen_state.dart';
+import 'package:greethy_application/presentation/state/nutrition/food_screen_state.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YouTubeVideoWidget extends StatefulWidget {

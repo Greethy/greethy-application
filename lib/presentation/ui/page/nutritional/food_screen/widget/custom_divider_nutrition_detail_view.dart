@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/food_screen_state.dart';
+import 'package:greethy_application/presentation/state/nutrition/food_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 class CustomDividerNutritionDetailView extends StatefulWidget {

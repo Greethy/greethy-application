@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/custom_menu_options_screen.dart';
 import 'package:greethy_application/presentation/ui/page/profile/local_widgets/circular_image.dart';
 import 'package:greethy_application/presentation/ui/page/profile/profile_image_view.dart';
 import 'package:greethy_application/presentation/widgets/newWidget/rippleButton.dart';
@@ -172,7 +173,12 @@ class InformationOwner extends StatelessWidget {
                                 ),
                                 child: TextButton(
                                   onPressed: () {
-                                    print("Nhấn nút Tùy chỉnh");
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => CustomMenuOptionsScreen(),
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     'Tùy chỉnh',

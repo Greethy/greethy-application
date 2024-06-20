@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/authState.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/character/action_navigation_view/action_bar_view.dart';
-import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
 import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
 import 'package:greethy_application/presentation/ui/page/flare_character/penguin.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';

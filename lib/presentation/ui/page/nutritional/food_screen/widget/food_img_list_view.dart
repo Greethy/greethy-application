@@ -82,18 +82,23 @@ class _FoodImageListView extends State<FoodImageListView> with TickerProviderSta
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
                     animationController?.forward();
-                    return Container(
-                        margin: const EdgeInsets.only(right: 10.0),
+                    return Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 5.0),
                         padding: const EdgeInsets.all(10.0),
                         width: 350,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2.0),
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 1.0),
                           borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: Image.network(
                           state.food!.foodImageUrl![index],
                           fit: BoxFit.cover,
-                        ));
+                        ),
+                      ),
+                    );
                   },
                 ),
               );

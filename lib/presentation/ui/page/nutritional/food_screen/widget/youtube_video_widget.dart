@@ -8,7 +8,6 @@ class YouTubeVideoWidget extends StatefulWidget {
   const YouTubeVideoWidget({
     super.key,
     required this.state,
-
   });
 
   @override
@@ -32,12 +31,15 @@ class _YouTubeVideoWidgetState extends State<YouTubeVideoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-      controller: _controller,
-      showVideoProgressIndicator: true,
-      onEnded: (meta) {
-        print('Video has ended');
-      },
+    return Padding(
+      padding: EdgeInsets.only(top: 10, bottom: 10),
+      child: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+        onEnded: (meta) {
+          print('Video has ended');
+        },
+      ),
     );
   }
 

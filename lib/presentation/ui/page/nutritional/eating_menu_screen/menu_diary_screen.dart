@@ -4,6 +4,7 @@ import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/state/nutrition/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/custom_divider_meal_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/information_owner_view.dart';

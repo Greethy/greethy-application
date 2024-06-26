@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/nutrition/customize_menu_option_screen.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/members_list_menu_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/setting_menu_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/quote_view.dart';

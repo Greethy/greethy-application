@@ -4,7 +4,7 @@ import 'package:greethy_application/domain/entities/user_entities/networking.dar
 
 class NetworkingDto extends Networking {
   NetworkingDto({
-    required super.id,
+    super.id,
     super.userId,
     super.following,
     super.followers,

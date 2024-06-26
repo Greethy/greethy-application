@@ -102,6 +102,7 @@ flutter:
         - assets/database_sample/nutritional/eatting_schedule/
         - assets/database_sample/nutritional/data/
         - assets/database_sample/nutritional/drink_shedule/
+        - assets/database_sample/body/
         - ami/gif/
 
     # An image asset can refer to one or more resolution-specific "variants", see
@@ -156,6 +157,12 @@ flutter:
                 weight: 900
               - asset: assets/fonts/HelveticaNeueIt.ttf
                 style: italic
+        - family: Spri
+          fonts:
+              - asset: assets/fonts/SpriteGraffiti-Extras.ttf
+              - asset: assets/fonts/SpriteGraffiti-Regular.ttf
+              - asset: assets/fonts/SpriteGraffiti-Shadow.ttf
+
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages

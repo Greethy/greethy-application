@@ -3,6 +3,7 @@
  */
 
 import 'package:greethy_application/data/impl/auth_repository_impl.dart';
+import 'package:greethy_application/data/impl/body_impl/body_management_impl.dart';
 import 'package:greethy_application/data/impl/body_impl/body_specs_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/drink_plan_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/drink_schedule_group_impl.dart';
@@ -14,6 +15,7 @@ import 'package:greethy_application/data/impl/nutritional_impl/ingredient_impl.d
 import 'package:greethy_application/data/impl/nutritional_impl/nutrition_management_impl.dart';
 import 'package:greethy_application/data/source/local/local_storage_user.dart';
 import 'package:greethy_application/data/source/network/auth_api.dart';
+import 'package:greethy_application/data/source/network/body_api/body_management_api.dart';
 import 'package:greethy_application/data/source/network/body_api/body_specs_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/drink_plan_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/drink_schedule_group_api.dart';
@@ -27,6 +29,9 @@ import 'package:greethy_application/domain/usecase/auth_usercase/get_status_logi
 import 'package:greethy_application/domain/usecase/auth_usercase/save_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signup.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_management_usecase/get_body_management.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_management_usecase/post_body_management.dart';
+import 'package:greethy_application/domain/usecase/body_usecase/body_management_usecase/put_body_management.dart';
 import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/get_body_specs.dart';
 import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/post_body_specs.dart';
 import 'package:greethy_application/domain/usecase/body_usecase/body_specs_usecase/put_body_specs.dart';
@@ -73,10 +78,15 @@ class DependencyInjection {
   static late SignUp _signUp;
   static late SaveStatusLogin _saveStatusLogin;
 
-  // use case nutrition
+  // usecase body specs
+  static late GetBodySpecsManagement _GetBodySpecsManagement;
+  static late PostBodySpecsManagement _PostBodySpecsManagement;
+  static late PutBodySpecsManagement _PutBodySpecsManagement;
   static late GetBodySpecs _GetBodySpecs;
   static late PostBodySpecs _PostBodySpecs;
   static late PutBodySpecs _PutBodySpecs;
+
+  // use case nutrition
   static late GetDrinkPlan _GetDrinkPlan;
   static late PostDrinkPlan _PostDrinkPlan;
   static late PutDrinkPlan _PutDrinkPlan;
@@ -112,11 +122,22 @@ class DependencyInjection {
 
   SaveStatusLogin get saveStatusLogin => _saveStatusLogin;
 
+
+
+  GetBodySpecsManagement get getBodySpecsManagement => _GetBodySpecsManagement;
+
+  PostBodySpecsManagement get postBodySpecsManagement => _PostBodySpecsManagement;
+
+  PutBodySpecsManagement get putBodySpecsManagement => _PutBodySpecsManagement;
+
   GetBodySpecs get getBodySpecs => _GetBodySpecs;
 
   PostBodySpecs get postBodySpecs => _PostBodySpecs;
 
   PutBodySpecs get putBodySpecs => _PutBodySpecs;
+
+
+
 
   GetDrinkPlan get getDrinkPlan => _GetDrinkPlan;
 
@@ -182,16 +203,30 @@ class DependencyInjection {
 
     /// }@
 
-    /// init Nutrition @{
+    /// init Body Specs @{
     final BodySpecsApiImpl bodySpecsApi = BodySpecsApiImpl();
     final BodySpecsRepositoryImpl bodySpecsRepo = BodySpecsRepositoryImpl(api: bodySpecsApi);
     _GetBodySpecs = GetBodySpecs(repository: bodySpecsRepo);
     _PostBodySpecs = PostBodySpecs(repository: bodySpecsRepo);
     _PutBodySpecs = PutBodySpecs(repository: bodySpecsRepo);
 
+    final BodySpecsManagementApiImpl bodySpecsManagementApi = BodySpecsManagementApiImpl();
+    final BodySpecsManagementRepositoryImpl bodySpecsManagementRepo = BodySpecsManagementRepositoryImpl(
+      api: bodySpecsManagementApi,
+      localStorage: localStorage,
+    );
+    _GetBodySpecsManagement = GetBodySpecsManagement(repository: bodySpecsManagementRepo);
+    _PostBodySpecsManagement = PostBodySpecsManagement(repository: bodySpecsManagementRepo);
+    _PutBodySpecsManagement = PutBodySpecsManagement(repository: bodySpecsManagementRepo);
+
+    /// }@
+
+    /// init Nutrition @{
     final NutritionManagementApiImpl nutritionManagementApi = NutritionManagementApiImpl();
-    final NutritionManagementRepositoryImpl nutritionManagementRepo =
-        NutritionManagementRepositoryImpl(api: nutritionManagementApi, localStorage: localStorage);
+    final NutritionManagementRepositoryImpl nutritionManagementRepo = NutritionManagementRepositoryImpl(
+      api: nutritionManagementApi,
+      localStorage: localStorage,
+    );
     _GetNutritionManagement = GetNutritionManagement(repository: nutritionManagementRepo);
     _PostNutritionManagement = PostNutritionManagement(repository: nutritionManagementRepo);
     _PutNutritionManagement = PutNutritionManagement(repository: nutritionManagementRepo);

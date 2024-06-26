@@ -1,3 +1,4 @@
+import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/design_course/design_course_app_theme.dart';
 import 'package:greethy_application/presentation/ui/page/design_course/models/category.dart';
 import 'package:greethy_application/main.dart';

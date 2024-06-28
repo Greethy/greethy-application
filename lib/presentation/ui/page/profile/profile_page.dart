@@ -68,11 +68,11 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
       iconTheme: const IconThemeData(color: Colors.white),
       backgroundColor: GreethyColor.mystic,
       actions: <Widget>[
-        profileState.isBusy
-            ? const SizedBox.shrink()
+
+
 
             /// pop up menu choice
-            : PopupMenuButton<Choice>(
+             PopupMenuButton<Choice>(
                 onSelected: (d) {
                   if (d.title == "Share") {
                     shareProfile(context);
@@ -100,9 +100,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
           StretchMode.zoomBackground,
           StretchMode.blurBackground,
         ],
-        background: profileState.isBusy
-            ? const SizedBox.shrink()
-            : Stack(
+        background:  Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
                   SizedBox.expand(
@@ -270,14 +268,12 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
             getAppbar(),
 
             /// profile User - name follower
-            profileState.isBusy
-                ? _emptyBox()
-                : SliverToBoxAdapter(
+
+                SliverToBoxAdapter(
                     child: Container(
                       // color: Colors.white,
-                      child: profileState.isBusy
-                          ? const SizedBox.shrink()
-                          : UserNameRowWidget(
+
+                          child: UserNameRowWidget(
                               user: profileState.profileUserModel,
                               isMyProfile: isMyProfile,
                               networking: profileState.profileNetworking,

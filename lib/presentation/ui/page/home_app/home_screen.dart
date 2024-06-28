@@ -201,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     color: GreethyColor.kawa_green,
                   ),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => FeedScreen()));
+                    Navigator.push(context, ProfilePage.getRoute(profileId: ''));
                   },
                 ),
               ),

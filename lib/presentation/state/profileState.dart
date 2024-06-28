@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:greethy_application/data/dto/user_dto/networking_dto.dart';
 import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 import 'package:greethy_application/domain/entities/user_entities/networking.dart';
@@ -66,7 +67,7 @@ class ProfileState extends AppState {
   }
 
   /// Fetch profile dataDev of user whoose profile is opened
-  void _getProfileUser(String? userProfileId) {
+  Future<void> _getProfileUser(String? userProfileId) async {
     // try {
     //
     //   kDatabase
@@ -119,55 +120,7 @@ class ProfileState extends AppState {
       "created_date": "20230212",
     });
 
-    _profileNetworkingModel = NetworkingDto.fromMap({
-      "id": 1,
-      "userId": 1,
-      "following": [1, 2, 3],
-      "followers": [4, 5],
-      "resFollowing": [6, 7],
-      "resFollower": [8, 9],
-      "relatives": {
-        "resHomieSend": [
-          {
-            "position": "Con trai",
-            "userId": 3,
-          },
-          {
-            "position": "Con gái",
-            "userId": 7,
-          }
-        ],
-        "resHomieGet": [
-          {
-            "position": "Bồ",
-            "userId": 5,
-          }
-        ],
-        "homieList": [
-          {"position": "Vợ", "userId": 1}
-        ]
-      },
-      "clubGroup": {
-        "topClub": [
-          {"club_name": "Club ăn chơi nhảy múa", "club_profile_pic": "bababab.com.vn", "club_star": 1000, "club_plays_personal_id": 1, "club_id": 2},
-          {"club_name": "lối sống healthy", "club_profile_pic": "bababab.com.vn", "club_star": 1000, "club_plays_personal_id": 1, "club_id": 2},
-        ],
-        "clubList": [
-          {"club_id": 1, "club_plays_personal_id": 1},
-          {"club_id": 2, "club_plays_personal_id": 2},
-          {"club_id": 3, "club_plays_personal_id": 3}
-        ]
-      },
-      "challengesTrophy": {
-        "presentChallenge": [
-          {"challenges_name": "chạy bộ trên đường trường sơn", "challenges_image": "chung.com.vn", "challenges_time_start": "12:00 12/12/2002", "challenges_time_close": "12:00 13/12/2002", "challenge_id": 2}
-        ],
-        "trophyChallenge": [
-          {"challenges_name": "Đạp xe trên đường quốc lộ", "challenges_image": "chung.com.vn", "challenge_trophy": "vàng", "challenge_id": 1}
-        ],
-        "challengesJoinList": [1, 2, 3, 4, 5]
-      }
-    });
+    _profileNetworkingModel = await NetworkingDto.fromRawJson(await rootBundle.loadString('assets/database_sample/user/networking_final.json'));
 
     //
     // todo: add api to get get profile của người dùng được xem profile

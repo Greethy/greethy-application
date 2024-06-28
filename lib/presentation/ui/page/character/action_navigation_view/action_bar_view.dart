@@ -91,62 +91,62 @@ class _ActionBarViewState extends State<ActionBarView> with TickerProviderStateM
             );
           },
         ),
-        Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
-          child: SizedBox(
-            width: 38 * 2.0,
-            height: 38 + 62.0,
-            child: Container(
-              alignment: Alignment.topCenter,
-              color: Colors.transparent,
-              child: SizedBox(
-                width: 38 * 2.0,
-                height: 38 * 2.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ScaleTransition(
-                    alignment: Alignment.center,
-                    scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                      CurvedAnimation(parent: animationController!, curve: Curves.fastOutSlowIn),
-                    ),
-                    child: Container(
-                      // alignment: Alignment.center,s
-                      decoration: BoxDecoration(
-                        color: AppTheme.nearlyDarkBlue,
-                        gradient: LinearGradient(colors: [
-                          AppTheme.nearlyDarkBlue,
-                          HexColor('#6A88E5'),
-                        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                        shape: BoxShape.circle,
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
-                            offset: const Offset(8.0, 16.0),
-                            blurRadius: 16.0,
-                          ),
-                        ],
-                      ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          splashColor: Colors.white.withOpacity(0.1),
-                          highlightColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          onTap: widget.addClick,
-                          child: Icon(
-                            Icons.add,
-                            color: AppTheme.white,
-                            size: 32,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+        //   child: SizedBox(
+        //     width: 38 * 2.0,
+        //     height: 38 + 62.0,
+        //     child: Container(
+        //       alignment: Alignment.topCenter,
+        //       color: Colors.transparent,
+        //       child: SizedBox(
+        //         width: 38 * 2.0,
+        //         height: 38 * 2.0,
+        //         child: Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: ScaleTransition(
+        //             alignment: Alignment.center,
+        //             scale: Tween<double>(begin: 0.0, end: 1.0).animate(
+        //               CurvedAnimation(parent: animationController!, curve: Curves.fastOutSlowIn),
+        //             ),
+        //             child: Container(
+        //               // alignment: Alignment.center,s
+        //               decoration: BoxDecoration(
+        //                 color: AppTheme.nearlyDarkBlue,
+        //                 gradient: LinearGradient(colors: [
+        //                   AppTheme.nearlyDarkBlue,
+        //                   HexColor('#6A88E5'),
+        //                 ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        //                 shape: BoxShape.circle,
+        //                 boxShadow: <BoxShadow>[
+        //                   BoxShadow(
+        //                     color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
+        //                     offset: const Offset(8.0, 16.0),
+        //                     blurRadius: 16.0,
+        //                   ),
+        //                 ],
+        //               ),
+        //               child: Material(
+        //                 color: Colors.transparent,
+        //                 child: InkWell(
+        //                   splashColor: Colors.white.withOpacity(0.1),
+        //                   highlightColor: Colors.transparent,
+        //                   focusColor: Colors.transparent,
+        //                   onTap: widget.addClick,
+        //                   child: Icon(
+        //                     Icons.add,
+        //                     color: AppTheme.white,
+        //                     size: 32,
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

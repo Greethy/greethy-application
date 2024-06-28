@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Networking extends Equatable {
-  final String id;
+  final String? id;
   final String? userId;
   final List<String>? following;
   final List<String>? followers;
@@ -12,7 +12,7 @@ class Networking extends Equatable {
   final ChallengesTrophy? challengesTrophy;
 
   Networking({
-    required this.id,
+    this.id,
     this.userId,
     this.following,
     this.followers,
@@ -26,7 +26,7 @@ class Networking extends Equatable {
   @override
   List<Object?> get props => [
         id,
-    userId,
+        userId,
         following,
         followers,
         resFollowing,
@@ -92,7 +92,7 @@ class TopClub extends Equatable {
   final String? clubName;
   final String? clubProfilePic;
   final int? clubStar;
-  final int? clubPlaysPersonalId;
+  final String? clubPlaysPersonalId;
   final String clubId;
 
   TopClub({

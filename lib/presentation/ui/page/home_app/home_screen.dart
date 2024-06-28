@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/authState.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/body_specs/body_specs_input_screen.dart';
 import 'package:greethy_application/presentation/ui/page/character/action_navigation_view/action_bar_view.dart';
-import 'package:greethy_application/presentation/ui/page/character/navigation/navigation_app.dart';
+import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/finance/finance_management_page.dart';
-import 'package:greethy_application/presentation/ui/page/flare_character/penguin.dart';
+import 'package:greethy_application/presentation/ui/page/flare_character/ami.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';
 import 'package:greethy_application/presentation/ui/page/plays/plays_page.dart';
-import 'package:greethy_application/presentation/ui/page/training/training_screen.dart';
+import 'package:greethy_application/presentation/ui/page/profile/profile_page.dart';
 import 'package:greethy_application/zdataDev/tabIcon_data.dart';
 import 'package:provider/provider.dart';
 
@@ -21,10 +22,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
-  Widget tabBody = Container(
-    color: AppTheme.background,
-  );
-
   @override
   void initState() {
     tabIconsList.forEach((TabIconData tab) {
@@ -34,8 +31,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     animationController = AnimationController(duration: const Duration(milliseconds: 600), vsync: this);
 
-    // add to test
-    tabBody = Penguin();
+    // add to tes
     // tabBody = MyNutritionDiaryScreen(animationController: animationController);
     super.initState();
   }
@@ -49,7 +45,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.background,
+      // decoration: BoxDecoration(
+      //   color: AppTheme.background,
+      //   image: DecorationImage(
+      //     image: AssetImage('assets/background.jpg'),
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: FutureBuilder<bool>(
@@ -62,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 alignment: Alignment.center,
                 children: <Widget>[
                   Positioned(
-                    top: 20,
+                    top: 30,
                     left: 0,
                     right: 0,
                     child: appBar(),
@@ -72,9 +74,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    child: tabBody,
+                    child: Ami(),
                   ),
-                  actionBar(),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 10,
+                    child: actionBar(),
+                  ),
                 ],
               );
             }
@@ -98,9 +106,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ),
         ActionBarView(
           tabIconsList: tabIconsList,
-          addClick: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedScreen()));
-          },
+          // addClick: () {
+          //   Navigator.push(context, MaterialPageRoute(builder: (context) => FeedScreen()));
+          // },
           changeIndex: (int index) {
             if (index == 0) {
               animationController?.reverse().then<dynamic>((data) {
@@ -122,9 +130,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 if (!mounted) {
                   return;
                 }
-                setState(() {
-                  tabBody = TrainingScreen(animationController: animationController);
-                });
+                // setState(() {
+                //   tabBody = TrainingScreen(animationController: animationController);
+                // });
               });
             } else if (index == 3) {
               animationController?.reverse().then<dynamic>((data) {
@@ -144,43 +152,62 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget appBar() {
     return SizedBox(
-      height: AppBar().preferredSize.height,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 8, left: 10),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(AppBar().preferredSize.height),
-                child: Icon(
-                  Icons.notifications_active_rounded,
-                  color: AppTheme.dark_grey,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(AppBar().preferredSize.height),
+                  child: Icon(
+                    size: 30,
+                    Icons.info_outline,
+                    color: GreethyColor.kawa_green,
+                  ),
+                  onTap: () {
+                    Navigator.push(context, BodySpecsInputScreen.getRoute());
+                  },
                 ),
-                onTap: () {},
               ),
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: Text(
-                  'Flutter UI',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: AppTheme.darkText,
-                    fontWeight: FontWeight.w700,
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Text(
+                    'GREETHY',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: '',
+                      color: GreethyColor.kawa_green,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(AppBar().preferredSize.height),
+                  child: Icon(
+                    size: 30,
+                    Icons.accessibility_new_outlined,
+                    color: GreethyColor.kawa_green,
+                  ),
+                  onTap: () {
+                    Navigator.push(context, ProfilePage.getRoute(profileId: ''));
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

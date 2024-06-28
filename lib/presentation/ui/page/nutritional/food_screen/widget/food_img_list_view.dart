@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/food_screen_state.dart';
+import 'package:greethy_application/presentation/state/nutrition/food_screen_state.dart';
+import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:provider/provider.dart';
 
 class FoodImageListView extends StatefulWidget {

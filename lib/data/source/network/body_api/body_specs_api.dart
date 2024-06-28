@@ -65,7 +65,10 @@ class BodySpecsApiImpl implements BodySpecsApi {
 
       final l = response.data['results'].map((e) => BodySpecsDto.fromMap(e));
 
-      return l;
+      // add to test
+      BodySpecsDto bodySpecsDto = await BodySpecsDto.fromRawJson(await rootBundle.loadString('assets/database_sample/body/body_specs_final.json'));
+
+      return bodySpecsDto;
     } on DioException catch (e) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.

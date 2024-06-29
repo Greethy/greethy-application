@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../profile/profile_page.dart';
+import '../profile/profile_page_screen.dart';
 import 'state/feed_viewmodel.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 

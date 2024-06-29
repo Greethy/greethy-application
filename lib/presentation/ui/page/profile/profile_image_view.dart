@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/ui/page/profile/profile_page.dart';
+import 'package:greethy_application/presentation/ui/page/profile/profile_page_screen.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 
 import '../common/customRoute.dart';

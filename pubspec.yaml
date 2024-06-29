@@ -104,6 +104,7 @@ flutter:
         - assets/database_sample/nutritional/drink_shedule/
         - assets/database_sample/body/
         - ami/gif/
+        - ami/img/
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

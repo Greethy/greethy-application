@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/widgets/newWidget/customLoader.dart';
 import 'package:greethy_application/presentation/widgets/newWidget/rippleButton.dart';
 import 'package:provider/provider.dart';

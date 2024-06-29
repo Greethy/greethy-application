@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greethy_application/presentation/helper/injection.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/state/nutrition/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/state/old_nutrition_state/body_specs_state.dart';
 import 'package:greethy_application/presentation/state/old_nutrition_state/drink_plan_state.dart';

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../common/customRoute.dart';
 import '../../../../helper/utility.dart';
-import '../../../../state/authState.dart';
+import '../../../../state/user/authState.dart';
 import '../../../../widgets/cache_image.dart';
 import '../../../../widgets/customFlatButton.dart';
 import '../../../../widgets/customWidgets.dart';

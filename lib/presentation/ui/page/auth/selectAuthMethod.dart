@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/ui/page/auth/signup.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/widgets/customFlatButton.dart';
@@ -50,8 +50,8 @@ class _WelcomePageState extends State<WelcomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 40),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background_test.jpg'),
-            fit: BoxFit.cover,
+            image: AssetImage('ami/img/7.png'),
+            fit: BoxFit.none,
           ),
         ),
         child: Column(
@@ -73,7 +73,7 @@ class _WelcomePageState extends State<WelcomePage> {
             const Spacer(),
             const TitleText(
               'Sẵn sàng trở thành phiên bản tốt hơn của bản thân thôi nào.',
-              color: Colors.white,
+              color: GreethyColor.kawa_green,
               fontSize: 25,
               textAlign: TextAlign.center,
             ),
@@ -81,7 +81,6 @@ class _WelcomePageState extends State<WelcomePage> {
               height: 20,
             ),
             _submitButton(),
-            const Spacer(),
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -89,7 +88,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 const TitleText(
                   'Bạn đã có tài khoản rồi chứ?',
                   fontSize: 14,
-                  color: GreethyColor.white,
+                  color: GreethyColor.kawa_green,
                   fontWeight: FontWeight.w300,
                 ),
                 InkWell(
@@ -107,7 +106,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     child: TitleText(
                       ' Log in',
                       fontSize: 14,
-                      color: GreethyColor.white,
+                      color: GreethyColor.kawa_green,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

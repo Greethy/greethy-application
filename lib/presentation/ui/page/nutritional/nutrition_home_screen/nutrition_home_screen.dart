@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
 import 'package:greethy_application/presentation/state/nutrition/nutrition_home_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/common/splash.dart';
-
-import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/glass_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_body_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_meals_list_today_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';

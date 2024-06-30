@@ -1,29 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
+import 'package:greethy_application/domain/entities/user_entities/user.dart';
 
-abstract class AuthApi {
-  Future<UserDto?> signIn(
-    String gmail,
-    String password,
-    String type,
+abstract class UserApi {
+  Future<UserDto?> get(
+    String id,
   );
 
-  Future<UserDto?> signUp(
-    String gmail,
-    String password,
-    String type,
+  Future<UserDto?> put(
+    String id,
+    User User,
   );
 }
 
-class AuthApiImpl implements AuthApi {
+class UserApiImpl implements UserApi {
   final dio = Dio();
 
   @override
-  Future<UserDto?> signIn(String gmail, String password, String type ) async {
+  Future<UserDto?> get(String id) async {
     try {
+      id = "1";
       Response response;
-      response = await dio.get('https://rickandmortyapi.com/api/character/?id=1');
+      response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');
 
       final l = response.data['results'].map((e) => UserDto.fromMap(e));
       print(response.data);
@@ -31,11 +30,7 @@ class AuthApiImpl implements AuthApi {
       // return l;
       // todo: add to test
 
-      print('chunhthanhde ');
-
-      UserDto userDto = await UserDto.fromRawJson(await rootBundle.loadString('assets/database_sample/user/user_final.json'));
-
-      print('chunhthanhde ' + userDto.toString());
+      UserDto userDto = await UserDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/body_specs_final.json'));
 
       return userDto;
     } on DioException catch (e) {
@@ -59,7 +54,7 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<UserDto?> signUp(String gmail, String password, String type) async {
+  Future<UserDto?> put(String id, User User) async {
     try {
       Response response;
       response = await dio.get('https://rickandmortyapi.com/api/character/?id=2');

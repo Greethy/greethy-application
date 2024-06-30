@@ -3,6 +3,7 @@ import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/profile/profile_image_view.dart';
 import 'package:greethy_application/presentation/ui/page/profile/profile_page_top_club_scroll_view.dart';
 import 'package:greethy_application/presentation/ui/page/profile/profile_page_trophy_scroll_view.dart';
+import 'package:greethy_application/presentation/ui/page/profile/profile_page_user_detail_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../../state/user/profile_screen_sate.dart';
@@ -235,13 +236,13 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
             /// profile User - name follower
             SliverToBoxAdapter(
               child: Container(
-                  // color: Colors.white,
+                  color: Colors.white,
 
-                  // child: UserNameRowWidget(
-                  //     user: profileState.profileUserModel,
-                  //     isMyProfile: isMyProfile,
-                  //     networking: profileState.profileNetworking,
-                  //   ),
+                  child: UserNameRowWidget(
+                      user: profileState.profileUserModel,
+                      isMyProfile: isMyProfile,
+                      networking: profileState.profileNetworking,
+                    ),
                   ),
             ),
           ];

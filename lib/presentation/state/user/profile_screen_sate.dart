@@ -1,19 +1,41 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:greethy_application/data/dto/user_dto/networking_dto.dart';
 import 'package:greethy_application/data/dto/user_dto/user_dto.dart';
 import 'package:greethy_application/domain/entities/user_entities/networking.dart';
+import 'package:greethy_application/domain/usecase/user_usercase/get_user.dart';
+import 'package:greethy_application/domain/usecase/user_usercase/put_user.dart';
+import 'package:greethy_application/presentation/helper/injection.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
 import 'package:greethy_application/presentation/state/appState.dart';
 
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
 
-class ProfileState extends AppState {
-  ProfileState(this.profileId) {
+class ProfileScreenState extends AppState {
+  ProfileScreenState(this.profileId) {
     databaseInit();
     userId = profileId;
     _getloggedInUserProfile(userId);
     _getProfileUser(profileId);
   }
+
+  // ---------------------------------------------------------------------------
+  // required
+  // ---------------------------------------------------------------------------
+
+  final String profileId;
+
+  // ---------------------------------------------------------------------------
+  // Use cases
+  // ---------------------------------------------------------------------------
+
+  final GetUser _getBodySpecsManagement = DependencyInjection().getUser;
+  final PutUser _postBodySpecs = DependencyInjection().putUser;
+
+  // ---------------------------------------------------------------------------
+  // Properties
+  // ---------------------------------------------------------------------------
 
   /// user who is logged into the app
   ///
@@ -31,13 +53,18 @@ class ProfileState extends AppState {
   ///
   /// This is the id of user whose profile is open.
   /// Profile and Networking dataDev of user whose profile is open.
-  final String profileId;
   late User _profileUserModel;
   late Networking _profileNetworkingModel;
 
   User get profileUserModel => _profileUserModel;
 
   Networking get profileNetworking => _profileNetworkingModel;
+
+  bool get isMyProfile => profileId == userId;
+
+  // ---------------------------------------------------------------------------
+  // Actions
+  // ---------------------------------------------------------------------------
 
   databaseInit() {
     //
@@ -46,8 +73,6 @@ class ProfileState extends AppState {
     //
     //
   }
-
-  bool get isMyProfile => profileId == userId;
 
   /// Fetch profile of logged in  user
   void _getloggedInUserProfile(String userId) async {
@@ -66,30 +91,8 @@ class ProfileState extends AppState {
     //
   }
 
-  /// Fetch profile dataDev of user whoose profile is opened
+  /// Fetch profile dataDev of user whose profile is opened
   Future<void> _getProfileUser(String? userProfileId) async {
-    // try {
-    //
-    //   kDatabase
-    //       .child("profile")
-    //       .child(userProfileId!)
-    //       .once()
-    //       .then((DatabaseEvent event) {
-    //     final snapshot = event.snapshot;
-    //     if (snapshot.value != null) {
-    //       var map = snapshot.value as Map;
-    //       // ignore: unnecessary_null_comparison
-    //       if (map != null) {
-    //         _profileUserModel = UserModel.fromJson(map);
-    //         Utility.logEvent('get_profile', parameter: {});
-    //       }
-    //     }
-    //     loading = false;
-    //   });
-    // } catch (error) {
-    //   loading = false;
-    //   cprint(error, errorIn: 'getProfileUser');
-    //   }
     isBusy = true;
     _profileUserModel = UserDto.fromMap({
       "id": "1",
@@ -97,7 +100,8 @@ class ProfileState extends AppState {
       "password": "123456",
       "nickName": "ChunhThanhDe",
       "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKqhrG9LEclwdnAPAUWi_To05F6N9Xq_h2OZ8VwmuyoiQ",
-      "bio": "chunglaca Dear anh chị em Trung tâm Công nghệ Điện tử, Công đoàn HEC đã gửi số lượng CĐV của HEC tham gia cuộc thi Chung tay vì an toàn giao thông năm 2023 đến Công đoàn cấp trên",
+      "bio":
+          "chunglaca Dear anh chị em Trung tâm Công nghệ Điện tử, Công đoàn HEC đã gửi số lượng CĐV của HEC tham gia cuộc thi Chung tay vì an toàn giao thông năm 2023 đến Công đoàn cấp trên",
       "personal_info": {
         "name": "Nguyễn Thành Chung",
         "location": "Ha Noi",
@@ -173,38 +177,62 @@ class ProfileState extends AppState {
     }
   }
 
-  // void addFollowNotification() {
-  // Sends notification to user who created tweet
-  // UserModel owner can see notification on notification page
-  // kDatabase.child('notification').child(profileId).child(userId).set({
-  //   'type': NotificationType.Follow.toString(),
-  //   'createdAt': DateTime.now().toUtc().toString(),
-  //   'dataDev': UserModel(
-  //           displayName: userModel.displayName,
-  //           profilePic: userModel.profilePic,
-  //           isVerified: userModel.isVerified,
-  //           userId: userModel.userId,
-  //           bio: userModel.bio == "Edit profile to update bio"
-  //               ? ""
-  //               : userModel.bio,
-  //           userName: userModel.userName)
-  //       .toJson()
-  // });
-  // }
+  Future<void> updateUserProfile(User? userModel, {File? image, File? bannerImage}) async {
+    try {
+      if (image == null && bannerImage == null) {
+      } else {
+        /// upload profile image if not null
+        if (image != null) {
+          /// get image storage path from server
+          // userModel!.avatar = await _uploadFileToStorage(image, 'user/profile/${userModel.userName}/${path.basename(image.path)}');
+          // print(fileURL);
+          // var name = userModel.personalInfo?.name ?? googleUser!.displayName;
+          // _firebaseAuth.currentUser!.updateDisplayName(name);
+          // _firebaseAuth.currentUser!.updatePhotoURL(userModel.profilePic);
+          Utility.logEvent('user_profile_image');
+        }
+
+        /// upload banner image if not null
+        if (bannerImage != null) {
+          /// get banner storage path from server
+          // userModel!.bannerImage = await _uploadFileToStorage(bannerImage, 'user/profile/${userModel.userName}/${path.basename(bannerImage.path)}');
+          // Utility.logEvent('user_banner_image');
+        }
+      }
+
+      Utility.logEvent('update_user');
+    } catch (error) {
+      cprint(error, errorIn: 'updateUserProfile');
+    }
+  }
+
+// void addFollowNotification() {
+// Sends notification to user who created tweet
+// UserModel owner can see notification on notification page
+// kDatabase.child('notification').child(profileId).child(userId).set({
+//   'type': NotificationType.Follow.toString(),
+//   'createdAt': DateTime.now().toUtc().toString(),
+//   'dataDev': UserModel(
+//           displayName: userModel.displayName,
+//           profilePic: userModel.profilePic,
+//           isVerified: userModel.isVerified,
+//           userId: userModel.userId,
+//           bio: userModel.bio == "Edit profile to update bio"
+//               ? ""
+//               : userModel.bio,
+//           userName: userModel.userName)
+//       .toJson()
+// });
+// }
 
   /// Trigger when logged-in user's profile change or updated
   /// Firebase event callback for profile update
-  // void _onProfileChanged(DatabaseEvent event) {
-  //   // final updatedUser = UserModel.fromJson(event.snapshot.value as Map);
-  //
-  //   if (updatedUser.userId == profileId) {
-  //     _profileUserModel = updatedUser;
-  //   }
-  //   notifyListeners();
-  // }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+// void _onProfileChanged(DatabaseEvent event) {
+//   // final updatedUser = UserModel.fromJson(event.snapshot.value as Map);
+//
+//   if (updatedUser.userId == profileId) {
+//     _profileUserModel = updatedUser;
+//   }
+//   notifyListeners();
+// }
 }

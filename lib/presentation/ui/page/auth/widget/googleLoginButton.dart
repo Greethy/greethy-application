@@ -36,6 +36,7 @@ class GoogleLoginButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: RippleButton(
         onPressed: () {
+          print("google signin");
           _googleLogin(context);
         },
         borderRadius: BorderRadius.circular(10),

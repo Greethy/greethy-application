@@ -1,0 +1,87 @@
+{
+  "id": "7",
+  "food_name": "XOÀI",
+  "food_type": [
+    "Trái cây"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "dQw4w9WgXcQ",
+  "total_calories": 68.7,
+  "recipe": "•  Rửa sạch xoài, gọt vỏ và cắt miếng vừa ăn.\n•  Trình bày: Bày xoài ra đĩa và dùng trực tiếp.",
+  "tips": "• Chọn xoài chín vừa để có vị ngọt và thơm ngon nhất.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết chọn và bảo quản xoài tươi ngon.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Xoài",
+      "value": 100,
+      "unit": "g",
+      "prepare": "Rửa sạch, gọt vỏ và cắt miếng vừa ăn",
+      "kcal": 68.7
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 68.7,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 0.6,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 0.3,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 15.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 10.0,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 0.4,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.0,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

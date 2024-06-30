@@ -1,0 +1,119 @@
+{
+  "id": "8",
+  "food_name": "GÀ KHO SẢ",
+  "food_type": [
+    "Thịt gia cầm"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "dQw4w9WgXcQ",
+  "total_calories": 149.2,
+  "recipe": "•  Ướp thịt gà với Gia vị nêm sẵn Thịt kho LOGOSPAVN7, sả bào và dầu ăn, để thấm vị trong 15 phút.\n•  Kho: Cho thịt gà lên bếp, xào săn kỹ rồi thêm nước vào xâm xấp thịt, vặn nhỏ lửa đun liu riu tới khi nước cạn sánh lại, tắt bếp.\n•  Trình bày: Cho gà kho sả ra dĩa, cho húng quế lên trên, dùng nóng.",
+  "tips": "• Xào kỹ thịt gà cho thịt thật săn và thấm vị trước khi cho nước vào kho, thịt sẽ thơm ngon và có màu đẹp.\n• Sử dụng Gia vị nêm sẵn Thịt kho LOGOSPAVN7 để kho thịt gà giúp tiết kiệm thời gian khi chế biến mà món kho vẫn thơm ngon.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá cách chế biến các món thịt kho ngon.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Đùi gà công nghiệp",
+      "value": 80,
+      "unit": "g",
+      "prepare": "Chặt miếng vừa ăn",
+      "kcal": 149.2
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Sả cây",
+      "value": 3,
+      "unit": "g",
+      "prepare": "Bào mỏng",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "3",
+      "ingredient_name": "Rau húng quế/Rau húng chó",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Gia vị nêm sẵn Thịt kho",
+      "value": 4,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Dầu ăn/Dầu thực vật",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 149.2,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 14.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 8.5,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 3.3,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 20.5,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 0.7,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.8,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

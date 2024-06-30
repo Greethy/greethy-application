@@ -1,0 +1,135 @@
+{
+  "id": "9",
+  "food_name": "CANH CẢI NGỌT NẤU THỊT BÒ",
+  "food_type": [
+    "Món canh"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "dQw4w9WgXcQ",
+  "total_calories": 71.8,
+  "recipe": "•  Nấu canh: Phi thơm hành với dầu ăn, cho bắp vào xào sơ rồi cho nước lọc vào đun sôi. Nấu khoảng 10 phút cho bắp mềm thì thêm rau cải và thịt bò vào, nêm Hạt nêm LOGOSPAVN2 Heo vào, khuấy nhẹ cho gia vị tan đều. Khi rau cải ngọt vừa chín tới, tắt bếp.\n•  Trình bày: Cho canh cải ngọt nấu thịt bò ra tô, dùng nóng.",
+  "tips": "• Nên cho thịt bò vào sau để thịt bò mềm, không bị dai.\n• Khi nêm Hạt nêm LOGOSPAVN2 Heo nên khuấy đều để hạt nêm tan nhanh vào nước.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá cách chế biến các món ngon từ thịt bò.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Thịt bò lưng, nạc",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Băm nhỏ",
+      "kcal": 71.8
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Nước lọc",
+      "value": 200,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "3",
+      "ingredient_name": "Hành tím tươi",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Băm nhỏ",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Ngô/Bắp tươi",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Tách hạt",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Cải ngọt",
+      "value": 50,
+      "unit": "g",
+      "prepare": "Thái khúc dài 2cm",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "6",
+      "ingredient_name": "Hạt nêm",
+      "value": 2,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "7",
+      "ingredient_name": "Dầu ăn/Dầu thực vật",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 71.8,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 3.7,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 3.6,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 6.0,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 68.6,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 0.7,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.8,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

@@ -1,0 +1,144 @@
+{
+  "id": "5",
+  "food_name": "CANH KHOAI MỠ NẤU TÔM",
+  "food_type": [
+    "Món canh",
+    "Món nấu"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "QJZUwiJhKZ0",
+  "total_calories": 116.0,
+  "recipe": "•  Nấu canh: Phi thơm hành băm với toàn bộ lượng dầu ăn, cho tôm vào xào săn, đổ nước lọc vào đun sôi. Cho khoai mỡ và nêm Hạt nêm LOGOSPAVN2 Heo vào, nấu đến khi khoai mỡ chín, thêm rau om và ngò gai, tắt lửa.\n•  Trình bày: Cho canh khoai mỡ nấu tôm ra tô, dùng nóng.",
+  "tips": "Nêm Hạt nêm LOGOSPAVN2 Heo vào nấu cùng với khoai từ đầu để canh khoai mỡ có hương vị đậm đà ngon ngọt hơn.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết nấu các món canh khoai mỡ ngon.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Tôm biển",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái hạt lựu, băm sơ",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Nước lọc",
+      "value": 200,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "3",
+      "ingredient_name": "Hành tím tươi",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Băm nhỏ",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Củ cái/Củ canh/Khoai mỡ",
+      "value": 50,
+      "unit": "g",
+      "prepare": "Nạo hoặc băm nhuyễn",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Rau mùi tàu/Ngò gai",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "6",
+      "ingredient_name": "Rau ngổ/Rau om",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "7",
+      "ingredient_name": "Hạt nêm",
+      "value": 2,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 116.0
+    },
+    {
+      "ingredient_id": "8",
+      "ingredient_name": "Dầu ăn/Dầu thực vật",
+      "value": 4,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 116.0
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 116.0,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 3.7,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 4.2,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 15.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 19.3,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 1.7,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.8,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

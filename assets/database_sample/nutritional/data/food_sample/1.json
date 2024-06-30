@@ -1,0 +1,216 @@
+{
+  "id": "2",
+  "food_name": "HỦ TIẾU",
+  "food_type": [
+    "Lương thực",
+    "Món nước"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "QJZUwiJhKZ0",
+  "total_calories": 435.3,
+  "recipe": "•  Nấu nước dùng: Cho xương sườn heo và thịt heo vào nồi nước, đun sôi, giảm lửa, hớt bọt kỹ, thêm củ cải trắng. Thịt heo chín, vớt ra để nguội, thái lát mỏng. Tiếp tục nấu lửa vừa khoảng 40-45 phút thì châm thêm nước cho bằng lượng nước trong công thức, đun sôi nước dùng, nêm Hạt nêm LOGOSPAVN2 Heo, Bột ngọt LOGOSPAVN1 và nước mắm, khuấy nhẹ cho gia vị tan đều.\n•  Luộc tôm: Cho tôm vào nồi với ít nước, luộc chín, để nguội, bóc bỏ vỏ tôm.\n•  Phi hành: Cho hành và dầu ăn vào chảo nhỏ, phi đến khi hành vàng thơm, vớt ra để ráo dầu.\n•  Trình bày: Cho hủ tiếu đã luộc mềm vào tô, xếp thịt heo, tôm và lá hẹ lên trên, rắc hành lá và ngó rí, chan nước dùng cùng với củ cải trắng ngập hủ tíếu, thêm hành phi, dùng với rau xà lách và giá.",
+  "tips": "Vị của nước dùng sẽ ngọt và ngon hơn khi ninh củ cải trắng cùng xương và luộc phần thịt heo trong nồi nước dùng.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết nấu các loại nước dùng ngon.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Xương sườn lợn (heo)",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Chặt miếng nhỏ, chần qua nước sôi",
+      "kcal": 50.0
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Tôm biển",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Để nguyên con đã bóc vỏ",
+      "kcal": 40.0
+    },
+    {
+      "ingredient_id": "3",
+      "ingredient_name": "Thịt lợn (heo) nạc",
+      "value": 40,
+      "unit": "g",
+      "prepare": "Để nguyên miếng",
+      "kcal": 80.0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Nước lọc",
+      "value": 300,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0.0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Giá đậu xanh",
+      "value": 40,
+      "unit": "g",
+      "prepare": "Ngâm nước muối loãng, để ráo",
+      "kcal": 10.0
+    },
+    {
+      "ingredient_id": "6",
+      "ingredient_name": "Hành tím tươi",
+      "value": 20,
+      "unit": "g",
+      "prepare": "Bào mỏng",
+      "kcal": 10.0
+    },
+    {
+      "ingredient_id": "7",
+      "ingredient_name": "Hành lá/Hành hoa",
+      "value": 5,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 5.0
+    },
+    {
+      "ingredient_id": "8",
+      "ingredient_name": "Hẹ lá/Hẹ sẻ/Hẹ tăm",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái khúc ngắn",
+      "kcal": 5.0
+    },
+    {
+      "ingredient_id": "9",
+      "ingredient_name": "Củ cải trắng",
+      "value": 30,
+      "unit": "g",
+      "prepare": "Thái miếng vừa ăn",
+      "kcal": 10.0
+    },
+    {
+      "ingredient_id": "10",
+      "ingredient_name": "Hủ tiếu/Hủ tiếu dốt",
+      "value": 80,
+      "unit": "g",
+      "prepare": "Luộc mềm",
+      "kcal": 70.0
+    },
+    {
+      "ingredient_id": "11",
+      "ingredient_name": "Rau mùi/Ngò rí",
+      "value": 5,
+      "unit": "g",
+      "prepare": "Thái nhỏ",
+      "kcal": 5.0
+    },
+    {
+      "ingredient_id": "12",
+      "ingredient_name": "Rau sà lách/Rau xà lách",
+      "value": 20,
+      "unit": "g",
+      "prepare": "Ngâm nước muối loãng, để ráo",
+      "kcal": 10.0
+    },
+    {
+      "ingredient_id": "13",
+      "ingredient_name": "Hạt nêm",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 5.0
+    },
+    {
+      "ingredient_id": "14",
+      "ingredient_name": "Bột ngọt",
+      "value": 1,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0.0
+    },
+    {
+      "ingredient_id": "15",
+      "ingredient_name": "Nước mắm",
+      "value": 2,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 2.0
+    },
+    {
+      "ingredient_id": "16",
+      "ingredient_name": "Dầu ăn thấm vào thực phẩm (*)",
+      "value": 3,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 27.0
+    },
+    {
+      "ingredient_id": "17",
+      "ingredient_name": "Dầu ăn dùng để chiên",
+      "value": 30,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 270.0
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 435.3,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 20.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 7.4,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 71.2,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 107.1,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 2.3,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 1.4,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "10",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "ChunhThanhDe",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "8",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T10:00:00+0000"
+}

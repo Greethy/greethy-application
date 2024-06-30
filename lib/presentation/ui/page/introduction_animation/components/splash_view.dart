@@ -27,9 +27,12 @@ class _SplashViewState extends State<SplashView> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Image.asset(
-                'assets/introduction_animation/introduction_image.png',
-                fit: BoxFit.cover,
+              height: 2 * MediaQuery.of(context).size.height / 3,
+              child: Center(
+                child: Image.asset(
+                  'ami/img/1.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(

@@ -11,7 +11,7 @@ import 'customRoute.dart';
 import '../auth/forgetPasswordPage.dart';
 import '../auth/signin.dart';
 import '../auth/signup.dart';
-import '../profile/profile_page.dart';
+import '../profile/profile_page_screen.dart';
 import '../../../widgets/customWidgets.dart';
 
 class Routes {

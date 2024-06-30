@@ -10,7 +10,7 @@ class FeaturedTopClubs extends StatelessWidget {
       child: Row(
         children: <Widget>[
           FeatureTopClubCard(
-            image: "assets/images/bottom_img_1.png",
+            image: "assets/images/bottom_img_3.png",
             press: () {},
           ),
           FeatureTopClubCard(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/widgets/customWidgets.dart';
 import 'package:greethy_application/presentation/widgets/newWidget/emptyList.dart';

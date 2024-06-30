@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../domain/entities/user_entities/networking.dart';
 import '../../../../domain/entities/user_entities/user.dart';
 import '../../../helper/utility.dart';
-import '../../../state/profileState.dart';
+import '../../../state/user/profile_screen_sate.dart';
 import '../../../widgets/customWidgets.dart';
 import '../../../widgets/newWidget/rippleButton.dart';
 import '../../../widgets/url_text/customUrlText.dart';
@@ -57,7 +57,7 @@ class UserNameRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var profileState = Provider.of<ProfileState>(context);
+    var profileState = Provider.of<ProfileScreenState>(context);
     bool isFollower() {
       // if (profileState.profileUserModel.followersList != null && profileState.profileUserModel.followersList!.isNotEmpty) {
       //   return (profileState.profileUserModel.followersList!.any((x) => x == profileState.userId));
@@ -287,7 +287,7 @@ class UserNameRowWidget extends StatelessWidget {
                     networking.followers!.length.toString(),
                     'Số lượng Plays',
                     () {
-                      var state = context.read<ProfileState>();
+                      var state = context.read<ProfileScreenState>();
                       // Navigator.push(
                       //   context,
                       //   FollowerListPage.getRoute(
@@ -302,7 +302,7 @@ class UserNameRowWidget extends StatelessWidget {
                     networking.followers!.length.toString(),
                     'Người theo dõi',
                     () {
-                      var state = context.read<ProfileState>();
+                      var state = context.read<ProfileScreenState>();
                       // Navigator.push(
                       //   context,
                       //   FollowerListPage.getRoute(
@@ -313,7 +313,7 @@ class UserNameRowWidget extends StatelessWidget {
                     },
                   ),
                   _textButton(context, networking.following!.length.toString(), 'Đang theo dõi', () {
-                    var state = context.read<ProfileState>();
+                    var state = context.read<ProfileScreenState>();
                     // Navigator.push(
                     //   context,
                     //   FollowingListPage.getRoute(

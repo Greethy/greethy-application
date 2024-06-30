@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../state/authState.dart';
+import '../state/user/authState.dart';
 import '../ui/page/profile/local_widgets/circular_image.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'customWidgets.dart';

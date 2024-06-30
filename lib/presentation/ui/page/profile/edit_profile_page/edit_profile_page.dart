@@ -1,16 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../common/customRoute.dart';
 import '../../../../helper/utility.dart';
-import '../../../../state/authState.dart';
 import '../../../../widgets/cache_image.dart';
 import '../../../../widgets/customFlatButton.dart';
 import '../../../../widgets/customWidgets.dart';
-import 'package:image_picker/image_picker.dart';
-
+import '../../common/customRoute.dart';
 import '../local_widgets/circular_image.dart';
 
 class EditProfilePage extends StatefulWidget {

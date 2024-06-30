@@ -73,7 +73,7 @@ class CareView extends StatelessWidget {
                   child: Container(
                     constraints: BoxConstraints(maxWidth: 350, maxHeight: 250),
                     child: Image.asset(
-                      'assets/introduction_animation/care_image.png',
+                      'ami/img/3.png',
                       fit: BoxFit.contain,
                     ),
                   ),

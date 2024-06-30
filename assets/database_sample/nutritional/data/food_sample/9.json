@@ -1,0 +1,159 @@
+{
+  "id": "10",
+  "food_name": "ĐẬU RỒNG CÀ RỐT XÀO MỰC",
+  "food_type": [
+    "Món xào"
+  ],
+  "food_image_url": [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg"
+  ],
+  "food_video_cooking": "dQw4w9WgXcQ",
+  "total_calories": 71.3,
+  "recipe": "•  Xào: Phi thơm hành tỏi băm với dầu ăn, cho mực vào xào săn, trút ra dĩa. Tiếp tục cho cà rốt và đậu rồng đã chần qua nước sôi vào xào, nêm Hạt nêm LOGOSPAVN2 Heo, Bột ngọt LOGOSPAVN1 và dầu hào, xào lửa lớn và đảo nhanh tay cho rau thấm gia vị, sau đó cho phần mực đã xào vào xóc đều rồi tắt bếp.\n•  Trình bày: Cho đậu rồng xào mực ra dĩa, khi ăn chấm với Nước tương LOGOSPAVN5 tùy khẩu vị.",
+  "tips": "• Nên chần các loại rau củ cứng trước khi xào để rau củ dễ thấm gia vị và chín đều hơn.\n• Xào rau với lửa lớn để rau nhanh chín và giữ được màu sắc, độ giòn, vị ngọt của rau.",
+  "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết nấu các món xào ngon.",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Mực tươi",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái miếng vừa ăn",
+      "kcal": 71.3
+    },
+    {
+      "ingredient_id": "2",
+      "ingredient_name": "Đậu rồng",
+      "value": 50,
+      "unit": "g",
+      "prepare": "Thái xéo, chần qua nước sôi",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "3",
+      "ingredient_name": "Hành tím tươi",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Băm nhỏ",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "4",
+      "ingredient_name": "Cà rốt",
+      "value": 10,
+      "unit": "g",
+      "prepare": "Thái sợi, chần qua nước sôi",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "5",
+      "ingredient_name": "Tỏi ta",
+      "value": 1,
+      "unit": "g",
+      "prepare": "Băm nhỏ",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "6",
+      "ingredient_name": "Hạt nêm",
+      "value": 1,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "7",
+      "ingredient_name": "Bột ngọt",
+      "value": 1,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "8",
+      "ingredient_name": "Nước tương",
+      "value": 0,
+      "unit": "g",
+      "prepare": "Một ít",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "9",
+      "ingredient_name": "Dầu hào",
+      "value": 2,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    },
+    {
+      "ingredient_id": "10",
+      "ingredient_name": "Dầu ăn/Dầu thực vật",
+      "value": 4,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 0
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 71.3,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 2.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 4.2,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 5.6,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 37.8,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 0.8,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.2,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "haha",
+      "Cool",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "TranChauMai",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Cool",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

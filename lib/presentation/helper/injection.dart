@@ -13,6 +13,7 @@ import 'package:greethy_application/data/impl/nutritional_impl/food_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/food_menu_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/ingredient_impl.dart';
 import 'package:greethy_application/data/impl/nutritional_impl/nutrition_management_impl.dart';
+import 'package:greethy_application/data/impl/user_repository_impl.dart';
 import 'package:greethy_application/data/source/local/local_storage_user.dart';
 import 'package:greethy_application/data/source/network/auth_api.dart';
 import 'package:greethy_application/data/source/network/body_api/body_management_api.dart';
@@ -25,6 +26,7 @@ import 'package:greethy_application/data/source/network/nutritional_api/food_api
 import 'package:greethy_application/data/source/network/nutritional_api/food_menu_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/ingredient_api.dart';
 import 'package:greethy_application/data/source/network/nutritional_api/nutritional_management_api.dart';
+import 'package:greethy_application/data/source/network/user_api/user_api.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/get_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/save_status_login.dart';
 import 'package:greethy_application/domain/usecase/auth_usercase/signin.dart';
@@ -61,6 +63,8 @@ import 'package:greethy_application/domain/usecase/nutrition_usercase/ingredient
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/get_nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/post_nutrition_management.dart';
 import 'package:greethy_application/domain/usecase/nutrition_usercase/nutrition_management_usecase/put_nutrition_management.dart';
+import 'package:greethy_application/domain/usecase/user_usercase/get_user.dart';
+import 'package:greethy_application/domain/usecase/user_usercase/put_user.dart';
 import 'package:greethy_application/main.dart';
 
 class DependencyInjection {
@@ -78,7 +82,11 @@ class DependencyInjection {
   static late SignUp _signUp;
   static late SaveStatusLogin _saveStatusLogin;
 
-  // usecase body specs
+  // use case user
+  static late GetUser _GetUser;
+  static late PutUser _PutUser;
+
+  // use case body specs
   static late GetBodySpecsManagement _GetBodySpecsManagement;
   static late PostBodySpecsManagement _PostBodySpecsManagement;
   static late PutBodySpecsManagement _PutBodySpecsManagement;
@@ -123,6 +131,10 @@ class DependencyInjection {
   SaveStatusLogin get saveStatusLogin => _saveStatusLogin;
 
 
+  GetUser get getUser => _GetUser;
+
+  PutUser get putUser => _PutUser;
+
 
   GetBodySpecsManagement get getBodySpecsManagement => _GetBodySpecsManagement;
 
@@ -135,7 +147,6 @@ class DependencyInjection {
   PostBodySpecs get postBodySpecs => _PostBodySpecs;
 
   PutBodySpecs get putBodySpecs => _PutBodySpecs;
-
 
 
 
@@ -200,6 +211,14 @@ class DependencyInjection {
     _getStatusLogin = GetStatusLogin(repository: repo);
     _signUp = SignUp(repository: repo);
     _saveStatusLogin = SaveStatusLogin(repository: repo);
+
+    /// }@
+
+    /// init Body Specs @{
+    final UserApiImpl userApi = UserApiImpl();
+    final UserRepositoryImpl userRepo = UserRepositoryImpl(api: userApi, localStorage: localStorage);
+    _GetUser = GetUser(repository: userRepo);
+    _PutUser = PutUser(repository: userRepo);
 
     /// }@
 

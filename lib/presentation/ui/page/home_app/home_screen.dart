@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/body_specs/body_specs_input_screen.dart';
 import 'package:greethy_application/presentation/ui/page/character/action_navigation_view/action_bar_view.dart';
@@ -8,7 +8,7 @@ import 'package:greethy_application/presentation/ui/page/finance/finance_managem
 import 'package:greethy_application/presentation/ui/page/flare_character/ami.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/menu_diary_screen.dart';
 import 'package:greethy_application/presentation/ui/page/plays/plays_page.dart';
-import 'package:greethy_application/presentation/ui/page/profile/profile_page.dart';
+import 'package:greethy_application/presentation/ui/page/profile/profile_page_screen.dart';
 import 'package:greethy_application/zdataDev/tabIcon_data.dart';
 import 'package:provider/provider.dart';
 

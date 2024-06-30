@@ -138,7 +138,7 @@ class AuthState extends AppState {
   /// Create user profile from google login
   Future<void> createUserFromGoogleSignIn(GoogleSignInAccount user) async {
     var googleKey = await user.authentication;
-    print("googleKey :" + googleKey.accessToken.toString());
+    print(" _userModel = await _signIn.call :" + googleKey.accessToken.toString());
     _userModel = await _signIn.call(gmail: user.email, password: googleKey.accessToken.toString(), type: "google");
 
     if (_userModel?.id != null) {

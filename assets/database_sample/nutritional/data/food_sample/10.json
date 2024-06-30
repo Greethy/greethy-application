@@ -1,0 +1,86 @@
+{
+  "id": "11",
+  "food_name": "NHO",
+  "food_type": [
+    "Trái cây"
+  ],
+  "food_image_url": [
+    "https://example.com/nho_image1.jpg",
+    "https://example.com/nho_image2.jpg"
+  ],
+  "food_video_cooking": "",
+  "total_calories": 49.4,
+  "recipe": "",
+  "tips": "",
+  "more_information": "",
+  "ingredients": [
+    {
+      "ingredient_id": "1",
+      "ingredient_name": "Nho",
+      "value": 70,
+      "unit": "g",
+      "prepare": "",
+      "kcal": 49.4
+    }
+  ],
+  "nutrients": [
+    {
+      "nutrition_name": "Năng lượng",
+      "value": 49.4,
+      "unit": "Kcal"
+    },
+    {
+      "nutrition_name": "Protein",
+      "value": 0.3,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Lipid",
+      "value": 0.1,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Glucid",
+      "value": 11.9,
+      "unit": "g"
+    },
+    {
+      "nutrition_name": "Canxi",
+      "value": 11.9,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Sắt",
+      "value": 0.4,
+      "unit": "mg"
+    },
+    {
+      "nutrition_name": "Muối",
+      "value": 0.0,
+      "unit": "g"
+    }
+  ],
+  "kudos": {
+    "quantity_kudos": "5",
+    "kind_kudos": [
+      "Wow",
+      "heart"
+    ],
+    "group_kudos": "2"
+  },
+  "Comment": {
+    "outstanding": {
+      "nickname": "TranChauMai",
+      "user_id": "1",
+      "URL_avar": "http://www.facebook.com/X999/posts/Y999",
+      "emoticon": {
+        "most_emte_name": "Wow",
+        "quantity_emote": "100"
+      },
+      "message": "hahahahaha"
+    },
+    "quantity_comment": "5",
+    "group_comment": "2"
+  },
+  "created_at": "2024-06-30T12:00:00+0000"
+}

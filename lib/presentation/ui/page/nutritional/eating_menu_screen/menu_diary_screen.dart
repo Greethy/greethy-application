@@ -4,14 +4,13 @@ import 'package:greethy_application/presentation/helper/ui_helper.dart';
 import 'package:greethy_application/presentation/state/nutrition/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/app_colors.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
-import 'package:greethy_application/presentation/ui/page/common/splash.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/custom_divider_meal_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/food_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/information_owner_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/quote_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/total_nutrition_per_day_view.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/search_food_screen/search_food_all_menu.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/footnote_view.dart';
-import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/all_restaurants/all_restaurants_screen.dart';
 import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/offers/offer_banner_view.dart';
 import 'package:provider/provider.dart';
@@ -171,12 +170,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
               borderRadius: BorderRadius.circular(10.0),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AllRestaurantsScreen(),
-                    ),
-                  );
+                  Navigator.push(context, SearchListScreen.getRoute());
                 },
                 child: Container(
                   height: 170.0,

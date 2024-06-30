@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helper/shared_prefrence_helper.dart';
-import '../../../state/authState.dart';
+import '../../../state/user/authState.dart';
 import '../common/locator.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {

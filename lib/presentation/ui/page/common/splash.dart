@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/helper/constant.dart';
 import 'package:greethy_application/presentation/helper/utility.dart';
-import 'package:greethy_application/presentation/state/authState.dart';
+import 'package:greethy_application/presentation/state/user/authState.dart';
 import 'package:greethy_application/presentation/ui/page/auth/selectAuthMethod.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:package_info_plus/package_info_plus.dart';

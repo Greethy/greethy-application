@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
 import 'package:greethy_application/domain/repository/nutritional_repository/nutrition_management_repository.dart';
 
-class GetNutritionManagement {
-  GetNutritionManagement({
+class CaseGetNutritionManagement {
+  CaseGetNutritionManagement({
     required NutritionManagementRepository repository,
   }) : _repository = repository;
 

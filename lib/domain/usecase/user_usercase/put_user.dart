@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/domain/repository/user_reposotory/user_repository.dart';
 
-class PutUser {
-  PutUser({
+class CasePutUser {
+  CasePutUser({
     required UserRepository repository,
   }) : _repository = repository;
 

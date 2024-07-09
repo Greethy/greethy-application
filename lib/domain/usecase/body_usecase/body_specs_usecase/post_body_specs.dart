@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
 import 'package:greethy_application/domain/repository/body_repository/body_specs_repository.dart';
 
-class PostBodySpecs {
-  PostBodySpecs({
+class CasePostBodySpecs {
+  CasePostBodySpecs({
     required BodySpecsRepository repository,
   }) : _repository = repository;
 

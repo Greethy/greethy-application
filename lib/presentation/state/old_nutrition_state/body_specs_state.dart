@@ -8,9 +8,9 @@ import '../appState.dart';
 
 class BodySpecsState extends AppState {
   BodySpecsState({
-    required GetBodySpecs getBodySpecs,
-    required PostBodySpecs postBodySpecs,
-    required PutBodySpecs putBodySpecs,
+    required CaseGetBodySpecs getBodySpecs,
+    required CasePostBodySpecs postBodySpecs,
+    required CasePutBodySpecs putBodySpecs,
   })  : _getBodySpecs = getBodySpecs,
         _postBodySpecs = postBodySpecs,
         _putBodySpecs = putBodySpecs;
@@ -19,9 +19,9 @@ class BodySpecsState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetBodySpecs _getBodySpecs;
-  final PostBodySpecs _postBodySpecs;
-  final PutBodySpecs _putBodySpecs;
+  final CaseGetBodySpecs _getBodySpecs;
+  final CasePostBodySpecs _postBodySpecs;
+  final CasePutBodySpecs _putBodySpecs;
 
   // ---------------------------------------------------------------------------
   // Properties

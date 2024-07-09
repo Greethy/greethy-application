@@ -77,166 +77,166 @@ class DependencyInjection {
   }
 
   // use case auth
-  static late SignIn _signIn;
-  static late GetStatusLogin _getStatusLogin;
-  static late SignUp _signUp;
-  static late SaveStatusLogin _saveStatusLogin;
+  static late CaseSignIn _CaseSignIn;
+  static late CaseGetStatusLogin _CaseGetStatusLogin;
+  static late CaseSignUp _CaseSignUp;
+  static late CaseSaveStatusLogin _saveStatusLogin;
 
   // use case user
-  static late GetUser _GetUser;
-  static late PutUser _PutUser;
+  static late CaseGetUser _CaseGetUser;
+  static late CasePutUser _CasePutUser;
 
   // use case body specs
-  static late GetBodySpecsManagement _GetBodySpecsManagement;
-  static late PostBodySpecsManagement _PostBodySpecsManagement;
-  static late PutBodySpecsManagement _PutBodySpecsManagement;
-  static late GetBodySpecs _GetBodySpecs;
-  static late PostBodySpecs _PostBodySpecs;
-  static late PutBodySpecs _PutBodySpecs;
+  static late CaseCaseGetBodySpecsManagement _CaseCaseGetBodySpecsManagement;
+  static late CaseCasePostBodySpecsManagement _CaseCasePostBodySpecsManagement;
+  static late CaseCasePutBodySpecsManagement _CaseCasePutBodySpecsManagement;
+  static late CaseGetBodySpecs _CaseGetBodySpecs;
+  static late CasePostBodySpecs _CasePostBodySpecs;
+  static late CasePutBodySpecs _CasePutBodySpecs;
 
   // use case nutrition
-  static late GetDrinkPlan _GetDrinkPlan;
-  static late PostDrinkPlan _PostDrinkPlan;
-  static late PutDrinkPlan _PutDrinkPlan;
-  static late PostIncreaseWater _PostIncreaseWater;
-  static late PostReduceWater _PostReduceWater;
-  static late GetDrinkScheduleGroup _GetDrinkScheduleGroup;
-  static late PostDrinkScheduleGroup _PostDrinkScheduleGroup;
-  static late PutDrinkScheduleGroup _PutDrinkScheduleGroup;
-  static late GetEatingPlan _GetEatingPlan;
-  static late PostEatingPlan _PostEatingPlan;
-  static late PutEatingPlan _PutEatingPlan;
-  static late GetEatingScheduleGroup _GetEatingScheduleGroup;
-  static late PostEatingScheduleGroup _PostEatingScheduleGroup;
-  static late PutEatingScheduleGroup _PutEatingScheduleGroup;
-  static late GetFoodMenu _GetFoodMenu;
-  static late PostFoodMenu _PostFoodMenu;
-  static late PutFoodMenu _PutFoodMenu;
-  static late GetFood _GetFood;
-  static late PostFood _PostFood;
-  static late PutFood _PutFood;
-  static late GetIngredient _GetIngredient;
-  static late PostIngredient _PostIngredient;
-  static late PutIngredient _PutIngredient;
-  static late GetNutritionManagement _GetNutritionManagement;
-  static late PostNutritionManagement _PostNutritionManagement;
-  static late PutNutritionManagement _PutNutritionManagement;
+  static late CaseGetDrinkPlan _CaseGetDrinkPlan;
+  static late CasePostDrinkPlan _CasePostDrinkPlan;
+  static late CasePutDrinkPlan _CasePutDrinkPlan;
+  static late CasePostIncreaseWater _CasePostIncreaseWater;
+  static late CasePostReduceWater _CasePostReduceWater;
+  static late CaseGetDrinkScheduleGroup _CaseGetDrinkScheduleGroup;
+  static late CasePostDrinkScheduleGroup _CasePostDrinkScheduleGroup;
+  static late CasePutDrinkScheduleGroup _CasePutDrinkScheduleGroup;
+  static late CaseGetEatingPlan _CaseGetEatingPlan;
+  static late CasePostEatingPlan _CasePostEatingPlan;
+  static late CasePutEatingPlan _CasePutEatingPlan;
+  static late CaseGetEatingScheduleGroup _CaseGetEatingScheduleGroup;
+  static late CasePostEatingScheduleGroup _CasePostEatingScheduleGroup;
+  static late CasePutEatingScheduleGroup _CasePutEatingScheduleGroup;
+  static late CaseCaseGetFoodMenu _CaseCaseGetFoodMenu;
+  static late CaseCasePostFoodMenu _CaseCasePostFoodMenu;
+  static late CaseCasePutFoodMenu _CaseCasePutFoodMenu;
+  static late CaseGetFood _CaseGetFood;
+  static late CasePostFood _CasePostFood;
+  static late CasePutFood _CasePutFood;
+  static late CaseGetIngredient _CaseGetIngredient;
+  static late CasePostIngredient _CasePostIngredient;
+  static late CasePutIngredient _CasePutIngredient;
+  static late CaseGetNutritionManagement _CaseGetNutritionManagement;
+  static late CasePostNutritionManagement _CasePostNutritionManagement;
+  static late CasePutNutritionManagement _CasePutNutritionManagement;
 
-  SignIn get signIn => _signIn;
+  CaseSignIn get signIn => _CaseSignIn;
 
-  GetStatusLogin get getStatusLogin => _getStatusLogin;
+  CaseGetStatusLogin get getStatusLogin => _CaseGetStatusLogin;
 
-  SignUp get signUp => _signUp;
+  CaseSignUp get signUp => _CaseSignUp;
 
-  SaveStatusLogin get saveStatusLogin => _saveStatusLogin;
-
-
-  GetUser get getUser => _GetUser;
-
-  PutUser get putUser => _PutUser;
+  CaseSaveStatusLogin get saveStatusLogin => _saveStatusLogin;
 
 
-  GetBodySpecsManagement get getBodySpecsManagement => _GetBodySpecsManagement;
+  CaseGetUser get getUser => _CaseGetUser;
 
-  PostBodySpecsManagement get postBodySpecsManagement => _PostBodySpecsManagement;
-
-  PutBodySpecsManagement get putBodySpecsManagement => _PutBodySpecsManagement;
-
-  GetBodySpecs get getBodySpecs => _GetBodySpecs;
-
-  PostBodySpecs get postBodySpecs => _PostBodySpecs;
-
-  PutBodySpecs get putBodySpecs => _PutBodySpecs;
+  CasePutUser get putUser => _CasePutUser;
 
 
+  CaseCaseGetBodySpecsManagement get getBodySpecsManagement => _CaseCaseGetBodySpecsManagement;
 
-  GetDrinkPlan get getDrinkPlan => _GetDrinkPlan;
+  CaseCasePostBodySpecsManagement get postBodySpecsManagement => _CaseCasePostBodySpecsManagement;
 
-  PostDrinkPlan get postDrinkPlan => _PostDrinkPlan;
+  CaseCasePutBodySpecsManagement get putBodySpecsManagement => _CaseCasePutBodySpecsManagement;
 
-  PutDrinkPlan get putDrinkPlan => _PutDrinkPlan;
+  CaseGetBodySpecs get getBodySpecs => _CaseGetBodySpecs;
 
-  PostIncreaseWater get postIncreaseWater => _PostIncreaseWater;
+  CasePostBodySpecs get postBodySpecs => _CasePostBodySpecs;
 
-  PostReduceWater get postReduceWater => _PostReduceWater;
+  CasePutBodySpecs get putBodySpecs => _CasePutBodySpecs;
 
-  GetDrinkScheduleGroup get getDrinkScheduleGroup => _GetDrinkScheduleGroup;
 
-  PostDrinkScheduleGroup get postDrinkScheduleGroup => _PostDrinkScheduleGroup;
 
-  PutDrinkScheduleGroup get putDrinkScheduleGroup => _PutDrinkScheduleGroup;
+  CaseGetDrinkPlan get getDrinkPlan => _CaseGetDrinkPlan;
 
-  GetEatingPlan get getEatingPlan => _GetEatingPlan;
+  CasePostDrinkPlan get postDrinkPlan => _CasePostDrinkPlan;
 
-  PostEatingPlan get postEatingPlan => _PostEatingPlan;
+  CasePutDrinkPlan get putDrinkPlan => _CasePutDrinkPlan;
 
-  PutEatingPlan get putEatingPlan => _PutEatingPlan;
+  CasePostIncreaseWater get postIncreaseWater => _CasePostIncreaseWater;
 
-  GetEatingScheduleGroup get getEatingScheduleGroup => _GetEatingScheduleGroup;
+  CasePostReduceWater get postReduceWater => _CasePostReduceWater;
 
-  PostEatingScheduleGroup get postEatingScheduleGroup => _PostEatingScheduleGroup;
+  CaseGetDrinkScheduleGroup get getDrinkScheduleGroup => _CaseGetDrinkScheduleGroup;
 
-  PutEatingScheduleGroup get putEatingScheduleGroup => _PutEatingScheduleGroup;
+  CasePostDrinkScheduleGroup get postDrinkScheduleGroup => _CasePostDrinkScheduleGroup;
 
-  GetFoodMenu get getFoodMenu => _GetFoodMenu;
+  CasePutDrinkScheduleGroup get putDrinkScheduleGroup => _CasePutDrinkScheduleGroup;
 
-  PostFoodMenu get postFoodMenu => _PostFoodMenu;
+  CaseGetEatingPlan get getEatingPlan => _CaseGetEatingPlan;
 
-  PutFoodMenu get putFoodMenu => _PutFoodMenu;
+  CasePostEatingPlan get postEatingPlan => _CasePostEatingPlan;
 
-  GetFood get getFood => _GetFood;
+  CasePutEatingPlan get putEatingPlan => _CasePutEatingPlan;
 
-  PostFood get postFood => _PostFood;
+  CaseGetEatingScheduleGroup get getEatingScheduleGroup => _CaseGetEatingScheduleGroup;
 
-  PutFood get putFood => _PutFood;
+  CasePostEatingScheduleGroup get postEatingScheduleGroup => _CasePostEatingScheduleGroup;
 
-  GetIngredient get getIngredient => _GetIngredient;
+  CasePutEatingScheduleGroup get putEatingScheduleGroup => _CasePutEatingScheduleGroup;
 
-  PostIngredient get postIngredient => _PostIngredient;
+  CaseCaseGetFoodMenu get getFoodMenu => _CaseCaseGetFoodMenu;
 
-  PutIngredient get putIngredient => _PutIngredient;
+  CaseCasePostFoodMenu get postFoodMenu => _CaseCasePostFoodMenu;
 
-  GetNutritionManagement get getNutritionManagement => _GetNutritionManagement;
+  CaseCasePutFoodMenu get putFoodMenu => _CaseCasePutFoodMenu;
 
-  PostNutritionManagement get postNutritionManagement => _PostNutritionManagement;
+  CaseGetFood get getFood => _CaseGetFood;
 
-  PutNutritionManagement get putNutritionManagement => _PutNutritionManagement;
+  CasePostFood get postFood => _CasePostFood;
+
+  CasePutFood get putFood => _CasePutFood;
+
+  CaseGetIngredient get getIngredient => _CaseGetIngredient;
+
+  CasePostIngredient get postIngredient => _CasePostIngredient;
+
+  CasePutIngredient get putIngredient => _CasePutIngredient;
+
+  CaseGetNutritionManagement get getNutritionManagement => _CaseGetNutritionManagement;
+
+  CasePostNutritionManagement get postNutritionManagement => _CasePostNutritionManagement;
+
+  CasePutNutritionManagement get putNutritionManagement => _CasePutNutritionManagement;
 
   void init() {
     /// init Auth @{
     final api = AuthApiImpl();
     final localStorage = LocalStorageUserImpl(sharedPreferences: sharedPref);
     final repo = AuthRepositoryImpl(api: api, localStorage: localStorage);
-    _signIn = SignIn(repository: repo);
-    _getStatusLogin = GetStatusLogin(repository: repo);
-    _signUp = SignUp(repository: repo);
-    _saveStatusLogin = SaveStatusLogin(repository: repo);
+    _CaseSignIn = CaseSignIn(repository: repo);
+    _CaseGetStatusLogin = CaseGetStatusLogin(repository: repo);
+    _CaseSignUp = CaseSignUp(repository: repo);
+    _saveStatusLogin = CaseSaveStatusLogin(repository: repo);
 
     /// }@
 
     /// init Body Specs @{
     final UserApiImpl userApi = UserApiImpl();
     final UserRepositoryImpl userRepo = UserRepositoryImpl(api: userApi, localStorage: localStorage);
-    _GetUser = GetUser(repository: userRepo);
-    _PutUser = PutUser(repository: userRepo);
+    _CaseGetUser = CaseGetUser(repository: userRepo);
+    _CasePutUser = CasePutUser(repository: userRepo);
 
     /// }@
 
     /// init Body Specs @{
     final BodySpecsApiImpl bodySpecsApi = BodySpecsApiImpl();
     final BodySpecsRepositoryImpl bodySpecsRepo = BodySpecsRepositoryImpl(api: bodySpecsApi);
-    _GetBodySpecs = GetBodySpecs(repository: bodySpecsRepo);
-    _PostBodySpecs = PostBodySpecs(repository: bodySpecsRepo);
-    _PutBodySpecs = PutBodySpecs(repository: bodySpecsRepo);
+    _CaseGetBodySpecs = CaseGetBodySpecs(repository: bodySpecsRepo);
+    _CasePostBodySpecs = CasePostBodySpecs(repository: bodySpecsRepo);
+    _CasePutBodySpecs = CasePutBodySpecs(repository: bodySpecsRepo);
 
     final BodySpecsManagementApiImpl bodySpecsManagementApi = BodySpecsManagementApiImpl();
     final BodySpecsManagementRepositoryImpl bodySpecsManagementRepo = BodySpecsManagementRepositoryImpl(
       api: bodySpecsManagementApi,
       localStorage: localStorage,
     );
-    _GetBodySpecsManagement = GetBodySpecsManagement(repository: bodySpecsManagementRepo);
-    _PostBodySpecsManagement = PostBodySpecsManagement(repository: bodySpecsManagementRepo);
-    _PutBodySpecsManagement = PutBodySpecsManagement(repository: bodySpecsManagementRepo);
+    _CaseCaseGetBodySpecsManagement = CaseCaseGetBodySpecsManagement(repository: bodySpecsManagementRepo);
+    _CaseCasePostBodySpecsManagement = CaseCasePostBodySpecsManagement(repository: bodySpecsManagementRepo);
+    _CaseCasePutBodySpecsManagement = CaseCasePutBodySpecsManagement(repository: bodySpecsManagementRepo);
 
     /// }@
 
@@ -246,53 +246,53 @@ class DependencyInjection {
       api: nutritionManagementApi,
       localStorage: localStorage,
     );
-    _GetNutritionManagement = GetNutritionManagement(repository: nutritionManagementRepo);
-    _PostNutritionManagement = PostNutritionManagement(repository: nutritionManagementRepo);
-    _PutNutritionManagement = PutNutritionManagement(repository: nutritionManagementRepo);
+    _CaseGetNutritionManagement = CaseGetNutritionManagement(repository: nutritionManagementRepo);
+    _CasePostNutritionManagement = CasePostNutritionManagement(repository: nutritionManagementRepo);
+    _CasePutNutritionManagement = CasePutNutritionManagement(repository: nutritionManagementRepo);
 
     final DrinkPlanApiImpl dinkPlanApi = DrinkPlanApiImpl();
     final DrinkPlanRepositoryImpl drinkPlanRepo = DrinkPlanRepositoryImpl(api: dinkPlanApi);
-    _GetDrinkPlan = GetDrinkPlan(repository: drinkPlanRepo);
-    _PostDrinkPlan = PostDrinkPlan(repository: drinkPlanRepo);
-    _PutDrinkPlan = PutDrinkPlan(repository: drinkPlanRepo);
-    _PostIncreaseWater = PostIncreaseWater(repository: drinkPlanRepo);
-    _PostReduceWater = PostReduceWater(repository: drinkPlanRepo);
+    _CaseGetDrinkPlan = CaseGetDrinkPlan(repository: drinkPlanRepo);
+    _CasePostDrinkPlan = CasePostDrinkPlan(repository: drinkPlanRepo);
+    _CasePutDrinkPlan = CasePutDrinkPlan(repository: drinkPlanRepo);
+    _CasePostIncreaseWater = CasePostIncreaseWater(repository: drinkPlanRepo);
+    _CasePostReduceWater = CasePostReduceWater(repository: drinkPlanRepo);
 
     final DrinkScheduleGroupApiImpl drinkScheduleGroupApi = DrinkScheduleGroupApiImpl();
     final DrinkScheduleGroupRepositoryImpl drinkScheduleGroupRepo = DrinkScheduleGroupRepositoryImpl(api: drinkScheduleGroupApi);
-    _GetDrinkScheduleGroup = GetDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
-    _PostDrinkScheduleGroup = PostDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
-    _PutDrinkScheduleGroup = PutDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+    _CaseGetDrinkScheduleGroup = CaseGetDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+    _CasePostDrinkScheduleGroup = CasePostDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
+    _CasePutDrinkScheduleGroup = CasePutDrinkScheduleGroup(repository: drinkScheduleGroupRepo);
 
     final EatingPlanApiImpl eatingPlanApi = EatingPlanApiImpl();
     final EatingPlanRepositoryImpl eatingPlanRepo = EatingPlanRepositoryImpl(api: eatingPlanApi);
-    _GetEatingPlan = GetEatingPlan(repository: eatingPlanRepo);
-    _PostEatingPlan = PostEatingPlan(repository: eatingPlanRepo);
-    _PutEatingPlan = PutEatingPlan(repository: eatingPlanRepo);
+    _CaseGetEatingPlan = CaseGetEatingPlan(repository: eatingPlanRepo);
+    _CasePostEatingPlan = CasePostEatingPlan(repository: eatingPlanRepo);
+    _CasePutEatingPlan = CasePutEatingPlan(repository: eatingPlanRepo);
 
     final EatingScheduleGroupApiImpl eatingScheduleGroupApi = EatingScheduleGroupApiImpl();
     final EatingScheduleGroupRepositoryImpl eatingScheduleGroupRepo = EatingScheduleGroupRepositoryImpl(api: eatingScheduleGroupApi);
-    _GetEatingScheduleGroup = GetEatingScheduleGroup(repository: eatingScheduleGroupRepo);
-    _PostEatingScheduleGroup = PostEatingScheduleGroup(repository: eatingScheduleGroupRepo);
-    _PutEatingScheduleGroup = PutEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+    _CaseGetEatingScheduleGroup = CaseGetEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+    _CasePostEatingScheduleGroup = CasePostEatingScheduleGroup(repository: eatingScheduleGroupRepo);
+    _CasePutEatingScheduleGroup = CasePutEatingScheduleGroup(repository: eatingScheduleGroupRepo);
 
     final FoodMenuApiImpl foodMenuApi = FoodMenuApiImpl();
     final FoodMenuRepositoryImpl foodMenuRepo = FoodMenuRepositoryImpl(api: foodMenuApi);
-    _GetFoodMenu = GetFoodMenu(repository: foodMenuRepo);
-    _PostFoodMenu = PostFoodMenu(repository: foodMenuRepo);
-    _PutFoodMenu = PutFoodMenu(repository: foodMenuRepo);
+    _CaseCaseGetFoodMenu = CaseCaseGetFoodMenu(repository: foodMenuRepo);
+    _CaseCasePostFoodMenu = CaseCasePostFoodMenu(repository: foodMenuRepo);
+    _CaseCasePutFoodMenu = CaseCasePutFoodMenu(repository: foodMenuRepo);
 
     final FoodApiImpl foodApi = FoodApiImpl();
     final FoodRepositoryImpl foodRepo = FoodRepositoryImpl(api: foodApi);
-    _GetFood = GetFood(repository: foodRepo);
-    _PostFood = PostFood(repository: foodRepo);
-    _PutFood = PutFood(repository: foodRepo);
+    _CaseGetFood = CaseGetFood(repository: foodRepo);
+    _CasePostFood = CasePostFood(repository: foodRepo);
+    _CasePutFood = CasePutFood(repository: foodRepo);
 
     final IngredientApiImpl ingredientApi = IngredientApiImpl();
     final IngredientRepositoryImpl ingredientRepo = IngredientRepositoryImpl(api: ingredientApi);
-    _GetIngredient = GetIngredient(repository: ingredientRepo);
-    _PostIngredient = PostIngredient(repository: ingredientRepo);
-    _PutIngredient = PutIngredient(repository: ingredientRepo);
+    _CaseGetIngredient = CaseGetIngredient(repository: ingredientRepo);
+    _CasePostIngredient = CasePostIngredient(repository: ingredientRepo);
+    _CasePutIngredient = CasePutIngredient(repository: ingredientRepo);
 
     /// }@
   }

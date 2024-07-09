@@ -26,11 +26,11 @@ class EatingMenuScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetNutritionManagement _getNutritionManagement = DependencyInjection().getNutritionManagement;
-  final GetEatingPlan _getEatingPlan = DependencyInjection().getEatingPlan;
-  final GetEatingScheduleGroup _getEatingScheduleGroup = DependencyInjection().getEatingScheduleGroup;
-  final GetFoodMenu _getFoodMenu = DependencyInjection().getFoodMenu;
-  final GetFood _getFood = DependencyInjection().getFood;
+  final CaseGetNutritionManagement _getNutritionManagement = DependencyInjection().getNutritionManagement;
+  final CaseGetEatingPlan _getEatingPlan = DependencyInjection().getEatingPlan;
+  final CaseGetEatingScheduleGroup _getEatingScheduleGroup = DependencyInjection().getEatingScheduleGroup;
+  final CaseCaseGetFoodMenu _getFoodMenu = DependencyInjection().getFoodMenu;
+  final CaseGetFood _getFood = DependencyInjection().getFood;
 
   // ---------------------------------------------------------------------------
   // Properties

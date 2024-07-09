@@ -1,10 +1,8 @@
-import 'package:greethy_application/domain/entities/body_entities/body_specs.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/drink_plan.dart';
-import 'package:greethy_application/domain/repository/body_repository/body_specs_repository.dart';
 import 'package:greethy_application/domain/repository/nutritional_repository/drink_plan_repository.dart';
 
-class PostDrinkPlan {
-  PostDrinkPlan({
+class CasePostDrinkPlan {
+  CasePostDrinkPlan({
     required DrinkPlanRepository repository,
   }) : _repository = repository;
 

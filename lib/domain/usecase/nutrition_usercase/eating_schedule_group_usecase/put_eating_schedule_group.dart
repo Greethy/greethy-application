@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/nutrition_entities/eating_shedule_group.dart';
 import 'package:greethy_application/domain/repository/nutritional_repository/eating_schedule_group_repository.dart';
 
-class PutEatingScheduleGroup {
-  PutEatingScheduleGroup({
+class CasePutEatingScheduleGroup {
+  CasePutEatingScheduleGroup({
     required EatingScheduleGroupRepository repository,
   }) : _repository = repository;
 

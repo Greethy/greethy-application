@@ -18,8 +18,8 @@ class _FootnoteViewState extends State<FootnoteView> {
           children: [
             // Ảnh
             Center(
-              child: Image.network(
-                'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/405182058_122121285482086639_8326761993881129327_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGriacBYRWErUSk7c5-tqg3yecMmtofmEHJ5wya2h-YQdPNG8D3ATeywmWZ42YYCXAWLX8Zmki7r6SscghBEgvt&_nc_ohc=t7q65spof94Q7kNvgEg-M-N&_nc_ht=scontent.fhan17-1.fna&oh=00_AYDN0Bz5zTNkvvGDhrC2QrDKbnQp3JygwXjgPH2XdRzvUg&oe=667864D8',
+              child: Image.asset(
+                'assets/images/background.jpg',
                 height: 200,
                 fit: BoxFit.cover,
               ),

@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class EatingScheduleGroupState extends AppState {
   EatingScheduleGroupState({
-    required GetEatingScheduleGroup getEatingScheduleGroup,
-    required PostEatingScheduleGroup postEatingScheduleGroup,
-    required PutEatingScheduleGroup putEatingScheduleGroup,
+    required CaseGetEatingScheduleGroup getEatingScheduleGroup,
+    required CasePostEatingScheduleGroup postEatingScheduleGroup,
+    required CasePutEatingScheduleGroup putEatingScheduleGroup,
   })  : _getEatingScheduleGroup = getEatingScheduleGroup,
         _postEatingScheduleGroup = postEatingScheduleGroup,
         _putEatingScheduleGroup = putEatingScheduleGroup;
@@ -18,9 +18,9 @@ class EatingScheduleGroupState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetEatingScheduleGroup _getEatingScheduleGroup;
-  final PostEatingScheduleGroup _postEatingScheduleGroup;
-  final PutEatingScheduleGroup _putEatingScheduleGroup;
+  final CaseGetEatingScheduleGroup _getEatingScheduleGroup;
+  final CasePostEatingScheduleGroup _postEatingScheduleGroup;
+  final CasePutEatingScheduleGroup _putEatingScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Properties

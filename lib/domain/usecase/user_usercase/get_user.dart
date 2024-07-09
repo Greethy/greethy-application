@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/domain/repository/user_reposotory/user_repository.dart';
 
-class GetUser {
-  GetUser({
+class CaseGetUser {
+  CaseGetUser({
     required UserRepository repository,
   }) : _repository = repository;
 

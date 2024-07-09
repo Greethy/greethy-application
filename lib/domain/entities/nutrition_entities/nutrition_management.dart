@@ -5,6 +5,10 @@ class NutritionManagement extends Equatable {
   final String? ownId;
   final String? drinkPlanId;
   final String? eatingPlanPersonalId;
+  final int? lunchRations;
+  final int? dinnerRations;
+  final bool? breakfastSnack;
+  final bool? afternoonSnack;
   final EatingPlanCollective? eatingPlanCollective;
 
   NutritionManagement({
@@ -12,6 +16,10 @@ class NutritionManagement extends Equatable {
     this.ownId,
     this.drinkPlanId,
     this.eatingPlanPersonalId,
+    this.lunchRations,
+    this.dinnerRations,
+    this.breakfastSnack,
+    this.afternoonSnack,
     this.eatingPlanCollective,
   });
 
@@ -21,6 +29,10 @@ class NutritionManagement extends Equatable {
         ownId,
         drinkPlanId,
         eatingPlanPersonalId,
+        lunchRations,
+        dinnerRations,
+        breakfastSnack,
+        afternoonSnack,
         eatingPlanCollective,
       ];
 }

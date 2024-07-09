@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/nutrition_entities/food.dart';
 import 'package:greethy_application/domain/repository/nutritional_repository/food_repository.dart';
 
-class PutFood {
-  PutFood({
+class CasePutFood {
+  CasePutFood({
     required FoodRepository repository,
   }) : _repository = repository;
 

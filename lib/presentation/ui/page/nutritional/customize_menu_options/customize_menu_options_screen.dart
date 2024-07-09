@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:greethy_application/presentation/state/nutrition/customize_menu_option_screen.dart';
+import 'package:greethy_application/presentation/state/nutrition/customize_menu_option_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/widget/meal_rations_widget.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/quote_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/footnote_view.dart';
 import 'package:provider/provider.dart';
 
 class CustomizeMenuOptionsScreen extends StatefulWidget {
   const CustomizeMenuOptionsScreen({
+    required this.eatingPlanId,
     Key? key,
-    required this.foodId,
   }) : super(key: key);
 
-  final String foodId;
+  final String eatingPlanId;
 
-  static MaterialPageRoute getRoute({required String foodId}) {
+  static MaterialPageRoute getRoute({required String eatingPlanId}) {
     return MaterialPageRoute(
-      builder: (_) => Provider(
-        create: (_) => CustomizeMenuOptionScreenState(foodId: foodId),
-        child: ChangeNotifierProvider(
-          create: (BuildContext context) => CustomizeMenuOptionScreenState(foodId: foodId),
-          builder: (_, child) => CustomizeMenuOptionsScreen(
-            foodId: foodId,
+      builder: (_) =>
+          Provider(
+            create: (_) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
+            child: ChangeNotifierProvider(
+              create: (BuildContext context) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
+              builder: (_, child) => CustomizeMenuOptionsScreen(eatingPlanId: eatingPlanId,),
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -37,6 +37,7 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
+  List<Widget> listViews2 = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
 
@@ -95,7 +96,10 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
             getMainListViewUI(state),
             getAppBarUI(state),
             SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
+              height: MediaQuery
+                  .of(context)
+                  .padding
+                  .bottom,
             )
           ],
         ),
@@ -116,8 +120,10 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
                 length: 2,
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 30,
-                    bottom: 62 + MediaQuery.of(context).padding.bottom,
+                    top: AppBar().preferredSize.height + MediaQuery
+                        .of(context)
+                        .padding
+                        .top + 30,
                   ),
                   child: Scaffold(
                     appBar: const TabBar(
@@ -140,11 +146,11 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
                         ),
                         ListView.builder(
                           controller: scrollController,
-                          itemCount: listViews.length,
+                          itemCount: listViews2.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (BuildContext context, int index) {
                             animationController?.forward();
-                            return listViews[index];
+                            return listViews2[index];
                           },
                         ),
                       ],
@@ -303,9 +309,47 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
     );
   }
 
+  Future<void> addAllListConfig() async {
+    var state = Provider.of<CustomizeMenuOptionScreenState>(context, listen: false);
+    listViews2 = [];
+
+    listViews2.add(
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _buildInfoRow('ID', state.nutritionManagement!.id.toString()),
+                _buildInfoRow('User ID', state.nutritionManagement!.ownId.toString()),
+                _buildInfoRow('Drink Plan ID', state.nutritionManagement!.drinkPlanId.toString()),
+                _buildInfoRow('Personal Eating Plan ID', state.nutritionManagement!.eatingPlanPersonalId.toString()),
+                MealRationsWidget(meal: 'Lunch Rations',initialRations: state.nutritionManagement!.lunchRations,),
+                MealRationsWidget(meal: 'Dinner Rations',initialRations: state.nutritionManagement!.dinnerRations),
+                _buildInfoRow('Breakfast Snack', state.nutritionManagement!.breakfastSnack! ? 'Yes' : 'No'),
+                _buildInfoRow('Afternoon Snack', state.nutritionManagement!.afternoonSnack! ? 'Yes' : 'No'),
+                _buildInfoRow('Collective Eating Plan Start Date', state.nutritionManagement!.eatingPlanCollective.toString()),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    listViews2.add(
+      QuoteScreen(),
+    );
+
+    listViews2.add(
+      FootnoteView(),
+    );
+  }
+
   Future<bool> getData(CustomizeMenuOptionScreenState state) async {
     await state.initDatabase();
     addAllListData();
+    addAllListConfig();
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
   }
@@ -392,4 +436,59 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
       },
     );
   }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: GreethyColor.kawa_green.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
+          border: Border.all(
+            color: GreethyColor.kawa_green,
+            width: 1.0,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Text(
+                  '$label: ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.black.withOpacity(0.8),
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }

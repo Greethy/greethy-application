@@ -1,7 +1,7 @@
 import 'package:greethy_application/domain/repository/auth_repository.dart';
 
-class GetStatusLogin {
-  GetStatusLogin({
+class CaseGetStatusLogin {
+  CaseGetStatusLogin({
     required AuthRepository repository,
   }) : _repository = repository;
 

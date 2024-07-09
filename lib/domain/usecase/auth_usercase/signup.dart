@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/user_entities/user.dart';
 import 'package:greethy_application/domain/repository/auth_repository.dart';
 
-class SignUp {
-  SignUp({
+class CaseSignUp {
+  CaseSignUp({
     required AuthRepository repository,
   }) : _repository = repository;
 

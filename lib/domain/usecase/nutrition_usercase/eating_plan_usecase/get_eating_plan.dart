@@ -1,8 +1,8 @@
 import 'package:greethy_application/domain/entities/nutrition_entities/eating_plan.dart';
 import 'package:greethy_application/domain/repository/nutritional_repository/eating_plan_repository.dart';
 
-class GetEatingPlan {
-  GetEatingPlan({
+class CaseGetEatingPlan {
+  CaseGetEatingPlan({
     required EatingPlanRepository repository,
   }) : _repository = repository;
 

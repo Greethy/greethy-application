@@ -8,6 +8,10 @@ class NutritionManagementDto extends NutritionManagement {
     super.ownId,
     super.drinkPlanId,
     super.eatingPlanPersonalId,
+    super.lunchRations,
+    super.dinnerRations,
+    super.breakfastSnack,
+    super.afternoonSnack,
     super.eatingPlanCollective,
   });
 
@@ -26,6 +30,10 @@ class NutritionManagementDto extends NutritionManagement {
         ownId: json['userId'],
         drinkPlanId: json['drink_plan_id'],
         eatingPlanPersonalId: json['eating_plan_personal_id'],
+        lunchRations: json['lunch_rations'],
+        dinnerRations: json['dinner_rations'],
+        breakfastSnack: json['breakfast_snack'],
+        afternoonSnack: json['afternoon_snack'],
         eatingPlanCollective: json['eating_plan_collective'] == null ? null : EatingPlanCollectiveDto.fromMap(json['eating_plan_collective']),
       );
 
@@ -35,6 +43,10 @@ class NutritionManagementDto extends NutritionManagement {
       'userId': ownId,
       'drink_plan_id': drinkPlanId,
       'eating_plan_personal_id': eatingPlanPersonalId,
+      'lunch_rations': lunchRations,
+      'dinner_rations': dinnerRations,
+      'breakfast_snack': breakfastSnack,
+      'afternoon_snack': afternoonSnack,
       'eating_plan_collective': eatingPlanCollective == null ? null : EatingPlanCollectiveDto.fromEatingPlanCollective(eatingPlanCollective!).toMap(),
     };
   }
@@ -48,6 +60,10 @@ class NutritionManagementDto extends NutritionManagement {
       ownId: nutritionManagement.ownId,
       drinkPlanId: nutritionManagement.drinkPlanId,
       eatingPlanPersonalId: nutritionManagement.eatingPlanPersonalId,
+      lunchRations: nutritionManagement.lunchRations,
+      dinnerRations: nutritionManagement.dinnerRations,
+      breakfastSnack: nutritionManagement.breakfastSnack,
+      afternoonSnack: nutritionManagement.afternoonSnack,
       eatingPlanCollective: nutritionManagement.eatingPlanCollective,
     );
   }
@@ -58,6 +74,10 @@ class NutritionManagementDto extends NutritionManagement {
       ownId: ownId,
       drinkPlanId: drinkPlanId,
       eatingPlanPersonalId: eatingPlanPersonalId,
+      lunchRations: lunchRations,
+      dinnerRations: dinnerRations,
+      breakfastSnack: breakfastSnack,
+      afternoonSnack: afternoonSnack,
       eatingPlanCollective: eatingPlanCollective,
     );
   }

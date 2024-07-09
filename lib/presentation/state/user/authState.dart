@@ -18,22 +18,22 @@ import 'package:greethy_application/presentation/ui/page/common/locator.dart';
 
 class AuthState extends AppState {
   AuthState({
-    required SignIn signIn,
-    required GetStatusLogin getStatusLogin,
-    required SignUp signUp,
-    required SaveStatusLogin saveStatusLogin,
-  })  : _signIn = signIn,
-        _getStatusLogin = getStatusLogin,
-        _signUp = signUp,
-        _saveStatusLogin = saveStatusLogin;
+    required CaseSignIn signIn,
+    required CaseGetStatusLogin getStatusLogin,
+    required CaseSignUp signUp,
+    required CaseSaveStatusLogin saveStatusLogin,
+  })  : _CaseSignIn = signIn,
+        _CaseGetStatusLogin = getStatusLogin,
+        _CaseSignUp = signUp,
+        _CaseSaveStatusLogin = saveStatusLogin;
 
   // ---------------------------------------------------------------------------
   // Use cases
   // ---------------------------------------------------------------------------
-  final SignIn _signIn;
-  final GetStatusLogin _getStatusLogin;
-  final SignUp _signUp;
-  final SaveStatusLogin _saveStatusLogin;
+  final CaseSignIn _CaseSignIn;
+  final CaseGetStatusLogin _CaseGetStatusLogin;
+  final CaseSignUp _CaseSignUp;
+  final CaseSaveStatusLogin _CaseSaveStatusLogin;
 
   // ---------------------------------------------------------------------------
   // Properties
@@ -82,7 +82,7 @@ class AuthState extends AppState {
       _facebookAuth.logOut();
       Utility.logEvent('Facebook_logout', parameter: {});
     }
-    _saveStatusLogin.call("");
+    _CaseSaveStatusLogin.call("");
     isBusy = false;
     await getIt<SharedPreferenceHelper>().clearPreferenceValues();
   }
@@ -91,7 +91,7 @@ class AuthState extends AppState {
   Future<String?> signIn(String email, String password, {required BuildContext context}) async {
     try {
       isBusy = true;
-      _userModel = await _signIn.call(gmail: email, password: password, type: "normal");
+      _userModel = await _CaseSignIn.call(gmail: email, password: password, type: "normal");
       if (_userModel?.id != null){
         authStatus = AuthStatus.LOGGED_IN;
       }
@@ -138,13 +138,13 @@ class AuthState extends AppState {
   /// Create user profile from google login
   Future<void> createUserFromGoogleSignIn(GoogleSignInAccount user) async {
     var googleKey = await user.authentication;
-    print(" _userModel = await _signIn.call :" + googleKey.accessToken.toString());
-    _userModel = await _signIn.call(gmail: user.email, password: googleKey.accessToken.toString(), type: "google");
+    print(" _userModel = await _CaseSignIn.call :" + googleKey.accessToken.toString());
+    _userModel = await _CaseSignIn.call(gmail: user.email, password: googleKey.accessToken.toString(), type: "google");
 
     if (_userModel?.id != null) {
       authStatus = AuthStatus.LOGGED_IN;
       String token = "";
-      await _saveStatusLogin("google " + token);
+      await _CaseSaveStatusLogin("google " + token);
     }
     isBusy = false;
   }
@@ -180,12 +180,12 @@ class AuthState extends AppState {
     final String name = userData['name'];
     final String avatar = userData['picture']['dataDev']['url'];
 
-    _userModel = await _signIn.call(gmail: email, password: accessToken.toString(), type: "facebook");
+    _userModel = await _CaseSignIn.call(gmail: email, password: accessToken.toString(), type: "facebook");
 
     if(_userModel?.id != null){
       authStatus = AuthStatus.LOGGED_IN;
       String token = "";
-      await _saveStatusLogin("facebook " + token);
+      await _CaseSaveStatusLogin("facebook " + token);
     }
 
     isBusy = false;
@@ -218,7 +218,7 @@ class AuthState extends AppState {
     try {
       isBusy = true;
       Utility.logEvent('get_currentUser', parameter: {});
-      _howToLogin = await _getStatusLogin.call();
+      _howToLogin = await _CaseGetStatusLogin.call();
       if (_howToLogin != "") {
         if (_howToLogin.contains("google ") || _howToLogin.contains("facebook ") || _howToLogin.contains("normal ")) {
           authStatus = AuthStatus.LOGGED_IN;

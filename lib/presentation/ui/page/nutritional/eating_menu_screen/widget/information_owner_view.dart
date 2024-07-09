@@ -173,7 +173,7 @@ class InformationOwner extends StatelessWidget {
                                 ),
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.push(context, CustomizeMenuOptionsScreen.getRoute(foodId: "test"));
+                                    Navigator.push(context, CustomizeMenuOptionsScreen.getRoute(eatingPlanId: "test"));
                                   },
                                   child: Text(
                                     'Tùy chỉnh',

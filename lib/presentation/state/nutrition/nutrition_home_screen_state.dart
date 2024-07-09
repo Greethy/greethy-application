@@ -25,19 +25,19 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 
 class NutritionHomeScreenState extends AppState {
   NutritionHomeScreenState({
-    required GetNutritionManagement getNutritionManagement,
-    required PostNutritionManagement postNutritionManagement,
-    required PutNutritionManagement putNutritionManagement,
-    required GetBodySpecs getBodySpecs,
-    required GetDrinkPlan getDrinkPlan,
-    required PostDrinkPlan postDrinkPlan,
-    required PostIncreaseWater postIncreaseWater,
-    required PostReduceWater postReduceWater,
-    required GetEatingPlan getEatingPlan,
-    required GetEatingScheduleGroup getEatingScheduleGroup,
-    required GetDrinkScheduleGroup getDrinkScheduleGroup,
-    required GetFoodMenu getFoodMenu,
-    required GetFood getFood,
+    required CaseGetNutritionManagement getNutritionManagement,
+    required CasePostNutritionManagement postNutritionManagement,
+    required CasePutNutritionManagement putNutritionManagement,
+    required CaseGetBodySpecs getBodySpecs,
+    required CaseGetDrinkPlan getDrinkPlan,
+    required CasePostDrinkPlan postDrinkPlan,
+    required CasePostIncreaseWater postIncreaseWater,
+    required CasePostReduceWater postReduceWater,
+    required CaseGetEatingPlan getEatingPlan,
+    required CaseGetEatingScheduleGroup getEatingScheduleGroup,
+    required CaseGetDrinkScheduleGroup getDrinkScheduleGroup,
+    required CaseCaseGetFoodMenu getFoodMenu,
+    required CaseGetFood getFood,
   })  : _getNutritionManagement = getNutritionManagement,
         _postNutritionManagement = postNutritionManagement,
         _putNutritionManagement = putNutritionManagement,
@@ -56,19 +56,19 @@ class NutritionHomeScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetNutritionManagement _getNutritionManagement;
-  final PostNutritionManagement _postNutritionManagement;
-  final PutNutritionManagement _putNutritionManagement;
-  final GetBodySpecs _getBodySpecs;
-  final GetDrinkPlan _getDrinkPlan;
-  final PostDrinkPlan _postDrinkPlan;
-  final PostIncreaseWater _postIncreaseWater;
-  final PostReduceWater _postReduceWater;
-  final GetEatingPlan _getEatingPlan;
-  final GetEatingScheduleGroup _getEatingScheduleGroup;
-  final GetDrinkScheduleGroup _getDrinkScheduleGroup;
-  final GetFoodMenu _getFoodMenu;
-  final GetFood _getFood;
+  final CaseGetNutritionManagement _getNutritionManagement;
+  final CasePostNutritionManagement _postNutritionManagement;
+  final CasePutNutritionManagement _putNutritionManagement;
+  final CaseGetBodySpecs _getBodySpecs;
+  final CaseGetDrinkPlan _getDrinkPlan;
+  final CasePostDrinkPlan _postDrinkPlan;
+  final CasePostIncreaseWater _postIncreaseWater;
+  final CasePostReduceWater _postReduceWater;
+  final CaseGetEatingPlan _getEatingPlan;
+  final CaseGetEatingScheduleGroup _getEatingScheduleGroup;
+  final CaseGetDrinkScheduleGroup _getDrinkScheduleGroup;
+  final CaseCaseGetFoodMenu _getFoodMenu;
+  final CaseGetFood _getFood;
 
   // ---------------------------------------------------------------------------
   // Properties

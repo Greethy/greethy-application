@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class FoodState extends AppState {
   FoodState({
-    required GetFood getFood,
-    required PostFood postFood,
-    required PutFood putFood,
+    required CaseGetFood getFood,
+    required CasePostFood postFood,
+    required CasePutFood putFood,
   })  : _getFood = getFood,
         _postFood = postFood,
         _putFood = putFood;
@@ -18,9 +18,9 @@ class FoodState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetFood _getFood;
-  final PostFood _postFood;
-  final PutFood _putFood;
+  final CaseGetFood _getFood;
+  final CasePostFood _postFood;
+  final CasePutFood _putFood;
 
   // ---------------------------------------------------------------------------
   // Properties

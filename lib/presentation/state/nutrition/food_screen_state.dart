@@ -21,7 +21,7 @@ class FoodScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetFood _getFood = DependencyInjection().getFood;
+  final CaseGetFood _getFood = DependencyInjection().getFood;
 
   // ---------------------------------------------------------------------------
   // Properties

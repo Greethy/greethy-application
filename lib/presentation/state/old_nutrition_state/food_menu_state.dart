@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class FoodMenuState extends AppState {
   FoodMenuState({
-    required GetFoodMenu getFoodMenu,
-    required PostFoodMenu postFoodMenu,
-    required PutFoodMenu putFoodMenu,
+    required CaseCaseGetFoodMenu getFoodMenu,
+    required CaseCasePostFoodMenu postFoodMenu,
+    required CaseCasePutFoodMenu putFoodMenu,
   })  : _getFoodMenu = getFoodMenu,
         _postFoodMenu = postFoodMenu,
         _putFoodMenu = putFoodMenu;
@@ -18,9 +18,9 @@ class FoodMenuState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetFoodMenu _getFoodMenu;
-  final PostFoodMenu _postFoodMenu;
-  final PutFoodMenu _putFoodMenu;
+  final CaseCaseGetFoodMenu _getFoodMenu;
+  final CaseCasePostFoodMenu _postFoodMenu;
+  final CaseCasePutFoodMenu _putFoodMenu;
 
   // ---------------------------------------------------------------------------
   // Properties

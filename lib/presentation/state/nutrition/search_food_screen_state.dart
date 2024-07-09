@@ -20,8 +20,8 @@ class FoodSearchScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetNutritionManagement _getNutritionManagement = DependencyInjection().getNutritionManagement;
-  final GetFood _getFood = DependencyInjection().getFood;
+  final CaseGetNutritionManagement _getNutritionManagement = DependencyInjection().getNutritionManagement;
+  final CaseGetFood _getFood = DependencyInjection().getFood;
 
   // ---------------------------------------------------------------------------
   // Properties

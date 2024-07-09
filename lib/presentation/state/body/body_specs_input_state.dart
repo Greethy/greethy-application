@@ -10,8 +10,8 @@ class BodySpecsInputScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetBodySpecsManagement _getBodySpecsManagement = DependencyInjection().getBodySpecsManagement;
-  final PostBodySpecs _postBodySpecs = DependencyInjection().postBodySpecs;
+  final CaseCaseGetBodySpecsManagement _getBodySpecsManagement = DependencyInjection().getBodySpecsManagement;
+  final CasePostBodySpecs _postBodySpecs = DependencyInjection().postBodySpecs;
 
   // ---------------------------------------------------------------------------
   // Properties

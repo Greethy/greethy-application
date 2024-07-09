@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class IngredientState extends AppState {
   IngredientState({
-    required GetIngredient getIngredient,
-    required PostIngredient postIngredient,
-    required PutIngredient putIngredient,
+    required CaseGetIngredient getIngredient,
+    required CasePostIngredient postIngredient,
+    required CasePutIngredient putIngredient,
   })  : _getIngredient = getIngredient,
         _postIngredient = postIngredient,
         _putIngredient = putIngredient;
@@ -18,9 +18,9 @@ class IngredientState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetIngredient _getIngredient;
-  final PostIngredient _postIngredient;
-  final PutIngredient _putIngredient;
+  final CaseGetIngredient _getIngredient;
+  final CasePostIngredient _postIngredient;
+  final CasePutIngredient _putIngredient;
 
   // ---------------------------------------------------------------------------
   // Properties

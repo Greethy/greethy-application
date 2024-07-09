@@ -22,4 +22,8 @@ class AppState extends ChangeNotifier {
     _pageIndex = index;
     notifyListeners();
   }
+
+  actionUpdate(){
+    notifyListeners();
+  }
 }

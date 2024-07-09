@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class DrinkScheduleGroupState extends AppState {
   DrinkScheduleGroupState({
-    required GetDrinkScheduleGroup getDrinkScheduleGroup,
-    required PostDrinkScheduleGroup postDrinkScheduleGroup,
-    required PutDrinkScheduleGroup putDrinkScheduleGroup,
+    required CaseGetDrinkScheduleGroup getDrinkScheduleGroup,
+    required CasePostDrinkScheduleGroup postDrinkScheduleGroup,
+    required CasePutDrinkScheduleGroup putDrinkScheduleGroup,
   })  : _getDrinkScheduleGroup = getDrinkScheduleGroup,
         _postDrinkScheduleGroup = postDrinkScheduleGroup,
         _putDrinkScheduleGroup = putDrinkScheduleGroup;
@@ -18,9 +18,9 @@ class DrinkScheduleGroupState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetDrinkScheduleGroup _getDrinkScheduleGroup;
-  final PostDrinkScheduleGroup _postDrinkScheduleGroup;
-  final PutDrinkScheduleGroup _putDrinkScheduleGroup;
+  final CaseGetDrinkScheduleGroup _getDrinkScheduleGroup;
+  final CasePostDrinkScheduleGroup _postDrinkScheduleGroup;
+  final CasePutDrinkScheduleGroup _putDrinkScheduleGroup;
 
   // ---------------------------------------------------------------------------
   // Properties

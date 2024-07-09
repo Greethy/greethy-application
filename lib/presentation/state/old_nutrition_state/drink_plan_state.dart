@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class DrinkPlanState extends AppState {
   DrinkPlanState({
-    required GetDrinkPlan getDrinkPlan,
-    required PostDrinkPlan postDrinkPlan,
-    required PutDrinkPlan putDrinkPlan,
+    required CaseGetDrinkPlan getDrinkPlan,
+    required CasePostDrinkPlan postDrinkPlan,
+    required CasePutDrinkPlan putDrinkPlan,
   })  : _getDrinkPlan = getDrinkPlan,
         _postDrinkPlan = postDrinkPlan,
         _putDrinkPlan = putDrinkPlan;
@@ -18,9 +18,9 @@ class DrinkPlanState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetDrinkPlan _getDrinkPlan;
-  final PostDrinkPlan _postDrinkPlan;
-  final PutDrinkPlan _putDrinkPlan;
+  final CaseGetDrinkPlan _getDrinkPlan;
+  final CasePostDrinkPlan _postDrinkPlan;
+  final CasePutDrinkPlan _putDrinkPlan;
 
   // ---------------------------------------------------------------------------
   // Properties

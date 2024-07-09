@@ -7,9 +7,9 @@ import '../appState.dart';
 
 class NutritionManagementState extends AppState {
   NutritionManagementState({
-    required GetNutritionManagement getNutritionManagement,
-    required PostNutritionManagement postNutritionManagement,
-    required PutNutritionManagement putNutritionManagement,
+    required CaseGetNutritionManagement getNutritionManagement,
+    required CasePostNutritionManagement postNutritionManagement,
+    required CasePutNutritionManagement putNutritionManagement,
   })  : _getNutritionManagement = getNutritionManagement,
         _postNutritionManagement = postNutritionManagement,
         _putNutritionManagement = putNutritionManagement;
@@ -18,9 +18,9 @@ class NutritionManagementState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetNutritionManagement _getNutritionManagement;
-  final PostNutritionManagement _postNutritionManagement;
-  final PutNutritionManagement _putNutritionManagement;
+  final CaseGetNutritionManagement _getNutritionManagement;
+  final CasePostNutritionManagement _postNutritionManagement;
+  final CasePutNutritionManagement _putNutritionManagement;
 
   // ---------------------------------------------------------------------------
   // Properties

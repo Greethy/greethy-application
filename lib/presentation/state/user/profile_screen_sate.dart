@@ -30,8 +30,8 @@ class ProfileScreenState extends AppState {
   // Use cases
   // ---------------------------------------------------------------------------
 
-  final GetUser _getBodySpecsManagement = DependencyInjection().getUser;
-  final PutUser _postBodySpecs = DependencyInjection().putUser;
+  final CaseGetUser _getBodySpecsManagement = DependencyInjection().getUser;
+  final CasePutUser _postBodySpecs = DependencyInjection().putUser;
 
   // ---------------------------------------------------------------------------
   // Properties

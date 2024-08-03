@@ -1,3 +1,6 @@
+import 'package:flutter/services.dart';
+import 'package:greethy_application/data/dto/nutrition_dto/eating_plan_dto.dart';
+import 'package:greethy_application/data/dto/nutrition_dto/food_menu_dto.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/eating_plan.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/nutrition_management.dart';
@@ -159,5 +162,66 @@ class EatingMenuScreenState extends AppState {
 
     initData = true;
     return true;
+  }
+
+  Future<bool> initDatabase2() async {
+    FoodMenuDto foodMenuDto = FoodMenuDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_menu_sample/1.json'));
+
+    // get food menu
+    _foodMenu = foodMenuDto.toFoodMenu();
+
+    print(_foodMenu.toString());
+
+    // get eating plan
+    _eatingPlanId = _foodMenu!.eatingPlanId!;
+
+    EatingPlanDto eatingPlanDto = await EatingPlanDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/eatting_schedule/eating_plan_final.json'));
+    _eatingPlan = eatingPlanDto.toEatingPlan();
+
+    bmrPerDay = _eatingPlan!.bmrPerDay!;
+
+    // handle data food menu
+    _meals = _foodMenu!.meals!;
+
+    for (Meal meal in _meals) {
+      if (meal.meal == "breakfast") {
+        _breakfast = meal;
+        _foodIndexBreakfast = meal.foods!;
+      } else if (meal.meal == "morning snack") {
+        _morningSnack = meal;
+        _foodIndexSnackMorning = meal.foods!;
+      } else if (meal.meal == "lunch") {
+        _lunch = meal;
+        _foodIndexLunch = meal.foods!;
+      } else if (meal.meal == "afternoon snack") {
+        _afternoonSnack = meal;
+        _foodIndexSnackAfternoon = meal.foods!;
+      } else if (meal.meal == "dinner") {
+        _dinner = meal;
+        _foodIndexDinner = meal.foods!;
+      } else {
+        print(meal.toString());
+      }
+    }
+
+    notifyListeners();
+
+    initData = true;
+    return true;
+  }
+
+  updateStatus(String meal) {
+    if (meal == "BỮA TỐI") {
+      _dinner = _dinner?.copyWith(status: _dinner?.status == null ? false : !_dinner!.status!);
+    } else if (meal == "BỮA SÁNG") {
+      _breakfast = _breakfast?.copyWith(status: _breakfast?.status == null ? false : !_breakfast!.status!);
+    } else if (meal == "BỮA TRƯA") {
+      _lunch = _lunch?.copyWith(status: _lunch?.status == null ? false : !_lunch!.status!);
+    } else if (meal == "BỮA PHỤ CHIỀU") {
+      _afternoonSnack = _afternoonSnack?.copyWith(status: _afternoonSnack?.status == null ? false : !_afternoonSnack!.status!);
+    } else if (meal == "BỮA PHỤ SÁNG") {
+      _morningSnack = _morningSnack?.copyWith(status: _morningSnack?.status == null ? false : !_morningSnack!.status!);
+    }
+    notifyListeners();
   }
 }

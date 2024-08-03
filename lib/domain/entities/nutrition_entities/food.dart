@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:equatable/equatable.dart';
 
 class Food extends Equatable {

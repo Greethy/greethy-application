@@ -7,6 +7,7 @@ import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_h
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/nutrition_specs_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/nutrition_home_screen/water_view.dart';
 import 'package:greethy_application/presentation/widgets/title_view.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MyNutritionDiaryScreen extends StatefulWidget {
@@ -337,7 +338,7 @@ class _MyNutritionDiaryScreenState extends State<MyNutritionDiaryScreen> with Ti
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    DateFormat('d MMM').format(DateTime.now()),
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontName,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food.dart';
-import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/food_screen/food_detail_screen.dart';
 
@@ -59,7 +58,7 @@ class FoodSearchView extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 2 / 5,
+                            width: MediaQuery.of(context).size.width * 2.5 / 5,
                             height: MediaQuery.of(context).size.width / 3,
                             child: Image.network(
                               food?.foodImageUrl?[0] ?? '',
@@ -86,10 +85,42 @@ class FoodSearchView extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                               ),
+
                             ),
                             SizedBox(
                               height: 10,
                             ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    children: [
+                                      InkWell(
+                                        highlightColor: Colors.transparent,
+                                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                        onTap: () {
+                                          // print("ra screen món ăn");
+                                          Navigator.push(context, FoodDetailScreen.getRoute(foodId: food!.id!));
+                                        },
+                                        child: Icon(
+                                          Icons.info_rounded,
+                                          size: 32.0,
+                                          color: GreethyColor.kawa_green,
+                                        ),
+                                      ),
+                                      Wrap(
+                                        children: [Text("Công thức")],
+                                      ),
+                                      Wrap(
+                                        children: [Text("món ăn")],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),

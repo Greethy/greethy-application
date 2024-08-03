@@ -9,6 +9,7 @@ class FoodScreenState extends AppState {
     required String foodId,
   }) : _foodId = foodId {
     // initDatabase();
+    print("FoodScreenState " + foodId);
   }
 
   // ---------------------------------------------------------------------------
@@ -66,6 +67,7 @@ class FoodScreenState extends AppState {
     }
 
     // get food detail
+    print ("initDatabase " + _foodId);
     _food = await _getFood.call(id: _foodId);
     _nutrients = _food!.nutrients!;
     _ingredients = _food!.ingredients!;

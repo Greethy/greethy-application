@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/nutrition/customize_menu_option_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
+import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/widget/card_pepple_in_plan_eating.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/customize_menu_options/widget/meal_rations_widget.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/quote_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/footnote_view.dart';
@@ -16,14 +17,15 @@ class CustomizeMenuOptionsScreen extends StatefulWidget {
 
   static MaterialPageRoute getRoute({required String eatingPlanId}) {
     return MaterialPageRoute(
-      builder: (_) =>
-          Provider(
-            create: (_) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
-            child: ChangeNotifierProvider(
-              create: (BuildContext context) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
-              builder: (_, child) => CustomizeMenuOptionsScreen(eatingPlanId: eatingPlanId,),
-            ),
+      builder: (_) => Provider(
+        create: (_) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
+        child: ChangeNotifierProvider(
+          create: (BuildContext context) => CustomizeMenuOptionScreenState(eatingPlanId: eatingPlanId),
+          builder: (_, child) => CustomizeMenuOptionsScreen(
+            eatingPlanId: eatingPlanId,
           ),
+        ),
+      ),
     );
   }
 
@@ -43,6 +45,20 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
 
   String selectedCourse = '';
   String selectedLocation = '';
+
+  final List<Map<String, String>> users = [
+    {
+      'name': 'Nguyền Thành Chung',
+      'imageUrl':
+          'https://media.licdn.com/dms/image/D5603AQE94bklZfqiEQ/profile-displayphoto-shrink_200_200/0/1692931978549?e=1726704000&v=beta&t=n7x5A8YIIp-CvgI9_VfawL4aJsMjyD2gTm_NTSsUBto',
+    },
+    {
+      'name': 'Nguyễn Thành Kiên',
+      'imageUrl':
+          'https://media.licdn.com/dms/image/D5603AQFpiVWEvQi1pw/profile-displayphoto-shrink_200_200/0/1713514548758?e=1726704000&v=beta&t=Pmred_DWzX9S8oAqSZJeIR-Xbd0zQspI0lWfUoAfmPg',
+    },
+    // Thêm nhiều người dùng hơn ở đây
+  ];
 
   @override
   void initState() {
@@ -96,10 +112,7 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
             getMainListViewUI(state),
             getAppBarUI(state),
             SizedBox(
-              height: MediaQuery
-                  .of(context)
-                  .padding
-                  .bottom,
+              height: MediaQuery.of(context).padding.bottom,
             )
           ],
         ),
@@ -120,14 +133,12 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
                 length: 2,
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: AppBar().preferredSize.height + MediaQuery
-                        .of(context)
-                        .padding
-                        .top + 30,
+                    top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 30,
                   ),
                   child: Scaffold(
                     appBar: const TabBar(
                       indicatorColor: GreethyColor.kawa_green,
+                      labelColor: GreethyColor.kawa_green,
                       tabs: <Widget>[
                         Tab(child: Text('Tùy Chỉnh')),
                         Tab(child: Text('Thành Viên')),
@@ -137,20 +148,29 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
                       children: [
                         ListView.builder(
                           controller: scrollController,
-                          itemCount: listViews.length,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (BuildContext context, int index) {
-                            animationController?.forward();
-                            return listViews[index];
-                          },
-                        ),
-                        ListView.builder(
-                          controller: scrollController,
                           itemCount: listViews2.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (BuildContext context, int index) {
                             animationController?.forward();
                             return listViews2[index];
+                          },
+                        ),
+                        ListView.builder(
+                          controller: scrollController,
+                          scrollDirection: Axis.vertical,
+
+                          // itemCount: listViews.length,
+                          // itemBuilder: (BuildContext context, int index) {
+                          //   animationController?.forward();
+                          //   return listViews[index];
+                          // },
+
+                          itemCount: users.length,
+                          itemBuilder: (context, index) {
+                            return UserCard(
+                              name: users[index]['name']!,
+                              imageUrl: users[index]['imageUrl']!,
+                            );
                           },
                         ),
                       ],
@@ -168,137 +188,136 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
   Future<void> addAllListData() async {
     var state = Provider.of<CustomizeMenuOptionScreenState>(context, listen: false);
     listViews = [];
-
-    listViews.add(
-      Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              '2 lựa chọn Tùy chỉnh',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            ListTile(
-              title: Text('Duyệt các kênh (44)'),
-              leading: Icon(Icons.tv),
-              onTap: () {
-                // Handle channel browsing logic here
-              },
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Câu hỏi Tùy chỉnh',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Hãy chọn khóa học mà bạn tham gia 2024:',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 10),
-            Wrap(
-              spacing: 10,
-              children: <Widget>[
-                ChoiceChip(
-                  label: Text('PM'),
-                  selected: selectedCourse == 'PM',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCourse = selected ? 'PM' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('DA'),
-                  selected: selectedCourse == 'DA',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCourse = selected ? 'DA' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('UX'),
-                  selected: selectedCourse == 'UX',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCourse = selected ? 'UX' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('DM'),
-                  selected: selectedCourse == 'DM',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCourse = selected ? 'DM' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('IT'),
-                  selected: selectedCourse == 'IT',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedCourse = selected ? 'IT' : '';
-                    });
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Bạn đang sinh sống và làm việc ở gần khu vực nào?',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 10),
-            Wrap(
-              spacing: 10,
-              children: <Widget>[
-                ChoiceChip(
-                  label: Text('Hà Nội'),
-                  selected: selectedLocation == 'Hà Nội',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedLocation = selected ? 'Hà Nội' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('Đà Nẵng'),
-                  selected: selectedLocation == 'Đà Nẵng',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedLocation = selected ? 'Đà Nẵng' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('Hồ Chí Minh'),
-                  selected: selectedLocation == 'Hồ Chí Minh',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedLocation = selected ? 'Hồ Chí Minh' : '';
-                    });
-                  },
-                ),
-                ChoiceChip(
-                  label: Text('Khác'),
-                  selected: selectedLocation == 'Khác',
-                  onSelected: (selected) {
-                    setState(() {
-                      selectedLocation = selected ? 'Khác' : '';
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+    // listViews.add(
+    //   Padding(
+    //     padding: const EdgeInsets.all(16.0),
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: <Widget>[
+    //         Text(
+    //           '2 lựa chọn Tùy chỉnh',
+    //           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    //         ),
+    //         SizedBox(height: 10),
+    //         ListTile(
+    //           title: Text('Duyệt các kênh (44)'),
+    //           leading: Icon(Icons.tv),
+    //           onTap: () {
+    //             // Handle channel browsing logic here
+    //           },
+    //         ),
+    //         SizedBox(height: 20),
+    //         Text(
+    //           'Câu hỏi Tùy chỉnh',
+    //           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    //         ),
+    //         SizedBox(height: 10),
+    //         Text(
+    //           'Hãy chọn khóa học mà bạn tham gia 2024:',
+    //           style: TextStyle(fontSize: 16),
+    //         ),
+    //         SizedBox(height: 10),
+    //         Wrap(
+    //           spacing: 10,
+    //           children: <Widget>[
+    //             ChoiceChip(
+    //               label: Text('PM'),
+    //               selected: selectedCourse == 'PM',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedCourse = selected ? 'PM' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('DA'),
+    //               selected: selectedCourse == 'DA',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedCourse = selected ? 'DA' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('UX'),
+    //               selected: selectedCourse == 'UX',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedCourse = selected ? 'UX' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('DM'),
+    //               selected: selectedCourse == 'DM',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedCourse = selected ? 'DM' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('IT'),
+    //               selected: selectedCourse == 'IT',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedCourse = selected ? 'IT' : '';
+    //                 });
+    //               },
+    //             ),
+    //           ],
+    //         ),
+    //         SizedBox(height: 20),
+    //         Text(
+    //           'Bạn đang sinh sống và làm việc ở gần khu vực nào?',
+    //           style: TextStyle(fontSize: 16),
+    //         ),
+    //         SizedBox(height: 10),
+    //         Wrap(
+    //           spacing: 10,
+    //           children: <Widget>[
+    //             ChoiceChip(
+    //               label: Text('Hà Nội'),
+    //               selected: selectedLocation == 'Hà Nội',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedLocation = selected ? 'Hà Nội' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('Đà Nẵng'),
+    //               selected: selectedLocation == 'Đà Nẵng',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedLocation = selected ? 'Đà Nẵng' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('Hồ Chí Minh'),
+    //               selected: selectedLocation == 'Hồ Chí Minh',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedLocation = selected ? 'Hồ Chí Minh' : '';
+    //                 });
+    //               },
+    //             ),
+    //             ChoiceChip(
+    //               label: Text('Khác'),
+    //               selected: selectedLocation == 'Khác',
+    //               onSelected: (selected) {
+    //                 setState(() {
+    //                   selectedLocation = selected ? 'Khác' : '';
+    //                 });
+    //               },
+    //             ),
+    //           ],
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
 
     listViews.add(
       QuoteScreen(),
@@ -321,18 +340,46 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _buildInfoRow('ID', state.nutritionManagement!.id.toString()),
-                _buildInfoRow('User ID', state.nutritionManagement!.ownId.toString()),
-                _buildInfoRow('Drink Plan ID', state.nutritionManagement!.drinkPlanId.toString()),
-                _buildInfoRow('Personal Eating Plan ID', state.nutritionManagement!.eatingPlanPersonalId.toString()),
-                MealRationsWidget(meal: 'Lunch Rations',initialRations: state.nutritionManagement!.lunchRations,),
-                MealRationsWidget(meal: 'Dinner Rations',initialRations: state.nutritionManagement!.dinnerRations),
-                _buildInfoRow('Breakfast Snack', state.nutritionManagement!.breakfastSnack! ? 'Yes' : 'No'),
-                _buildInfoRow('Afternoon Snack', state.nutritionManagement!.afternoonSnack! ? 'Yes' : 'No'),
-                _buildInfoRow('Collective Eating Plan Start Date', state.nutritionManagement!.eatingPlanCollective.toString()),
+                // _buildInfoRow('ID', state.nutritionManagement!.id.toString()),
+                // _buildInfoRow('User ID', state.nutritionManagement!.ownId.toString()),
+                // _buildInfoRow('Drink Plan ID', state.nutritionManagement!.drinkPlanId.toString()),
+                // _buildInfoRow('Personal Eating Plan ID', state.nutritionManagement!.eatingPlanPersonalId.toString()),
+                MealRationsWidget(meal: 'Số Món bữa Trưa', initialRations: state.nutritionManagement!.lunchRations),
+                MealRationsWidget(meal: 'Số Món bữa Tối', initialRations: state.nutritionManagement!.dinnerRations),
+                _buildInfoRow('Bữa phụ Sáng', state.nutritionManagement!.breakfastSnack! ? 'Yes' : 'No'),
+                _buildInfoRow('Bữa phụ Chiều', state.nutritionManagement!.afternoonSnack! ? 'Yes' : 'No'),
+                // _buildInfoRow('Collective Eating Plan Start Date', state.nutritionManagement!.eatingPlanCollective.toString()),
               ],
             ),
           ),
+        ),
+      ),
+    );
+
+    listViews2.add(
+      Padding(
+        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+        child: ElevatedButton(
+          onPressed: () {
+            // Hành động khi nhấn nút
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Đã Lưu!'),
+                backgroundColor: GreethyColor.kawa_green,
+              ),
+            );
+
+            Navigator.pop(context);
+          },
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: GreethyColor.kawa_green,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+          ),
+          child: Text('Lưu Cài Đặt'),
         ),
       ),
     );
@@ -464,7 +511,7 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
               Expanded(
                 flex: 2,
                 child: Text(
-                  '$label: ',
+                  '$label : ',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
@@ -490,5 +537,4 @@ class _CustomizeMenuOptionsScreenState extends State<CustomizeMenuOptionsScreen>
       ),
     );
   }
-
 }

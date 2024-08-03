@@ -7,7 +7,7 @@ import 'package:greethy_application/presentation/state/appState.dart';
 
 class FoodSearchScreenState extends AppState {
   FoodSearchScreenState() {
-    initDatabase();
+    // initDatabase();
   }
 
   // ---------------------------------------------------------------------------
@@ -44,6 +44,10 @@ class FoodSearchScreenState extends AppState {
 
   Food? get food => _food;
 
+  late List<Food> _foodList = [];
+
+  List<Food>? get foodList => _foodList;
+
   // }@
 
   // ---------------------------------------------------------------------------
@@ -56,9 +60,12 @@ class FoodSearchScreenState extends AppState {
       return true;
     }
 
-    // get food menu
-    _food = await _getFood.call(id: "1");
-
+    for (int i = 1; i <= 10; i++) {
+      _food = await _getFood.call(id: i.toString());
+      if (_food != null){
+        _foodList.add(_food!);
+      }
+    }
     initData = true;
     return true;
   }

@@ -10,7 +10,7 @@
     "https://cookbeo.com/media/2020/10/bap-cai-luoc/bap-cai-luoc-4x3.jpg"
   ],
   "food_video_cooking": "faSmzdVsgZQ",
-  "total_calories": 11.1,
+  "total_calories": 11,
   "recipe": "•  Luộc rau: Đun sôi nước, cho một ít LOGOSPAVN8 Ajinomoto vào, cho cải thảo vào luộc chín, vớt ra để ráo.\n•  Trình bày: Xếp cải thảo luộc ra dĩa, khi ăn chấm với Nước tương LOGOSPAVN5.",
   "tips": "• Để tăng hương vị và độ ngọt của rau, nên luộc rau vừa chín và thêm một ít LOGOSPAVN8 Ajinomoto vào nước luộc ngay từ đầu.\n• Để giữ độ giòn và màu sắc của rau, cho rau vào nước đá lạnh sạch ngay sau khi vớt ra.",
   "more_information": "Vui lòng vào trang Kho tàng ẩm thực của mẹ để khám phá bí quyết luộc các loại rau củ khác nhau ngon.",
@@ -26,7 +26,7 @@
     {
       "ingredient_id": "2",
       "ingredient_name": "Nước tương",
-      "value": "Một ít",
+      "value": 0.5,
       "unit": "g",
       "prepare": "Làm nước chấm",
       "kcal": 11.1
@@ -34,7 +34,7 @@
     {
       "ingredient_id": "3",
       "ingredient_name": "Bột canh",
-      "value": "Một ít",
+      "value": 0.5,
       "unit": "g",
       "prepare": "",
       "kcal": 11.1

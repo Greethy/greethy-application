@@ -175,7 +175,7 @@ class _MealRationsWidgetState extends State<MealRationsWidget> {
           child: Row(
             children: [
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Text(
                   '$label: ',
                   style: TextStyle(
@@ -186,7 +186,7 @@ class _MealRationsWidgetState extends State<MealRationsWidget> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 1,
                 child: Text(
                   value,
                   style: TextStyle(

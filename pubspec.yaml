@@ -101,6 +101,8 @@ flutter:
         - assets/database_sample/nutritional/
         - assets/database_sample/nutritional/eatting_schedule/
         - assets/database_sample/nutritional/data/
+        - assets/database_sample/nutritional/data/food_menu_sample/
+        - assets/database_sample/nutritional/data/food_sample/
         - assets/database_sample/nutritional/drink_shedule/
         - assets/database_sample/body/
         - ami/gif/

@@ -1,0 +1,103 @@
+{
+  "id": "2",
+  "eatingPlan_id": "2",
+  "created_date": "14/07/2024",
+  "menu_type": [
+    "Muscle Gain",
+    "High Protein"
+  ],
+  "related_group_id": "2",
+  "menu_calories": {
+    "protein": 250.0,
+    "lipid": 100.0,
+    "glucid": 450.0,
+    "calories": 8000.0
+  },
+  "meals": [
+    {
+      "meal": "breakfast",
+      "protein": 30.0,
+      "lipid": 10.0,
+      "glucid": 50.0,
+      "calories": 700.0,
+      "foods": [
+        {
+          "name": "HỦ TIẾU",
+          "foodId": "1",
+          "foodPic": "https://i.ytimg.com/vi/fOZXbbY9rfg/maxresdefault.jpg"
+        }
+      ],
+      "status": true
+    },
+    {
+      "meal": "lunch",
+      "protein": 50.0,
+      "lipid": 20.0,
+      "glucid": 80.0,
+      "calories": 1200.0,
+      "foods": [
+        {
+          "name": "CƠM",
+          "foodId": "2",
+          "foodPic": "https://media.cooky.vn/images/blog-2016/kinh-nghiem-rang-com-ngon%201.jpg"
+        },
+        {
+          "name": "THỊT KHO TRỨNG",
+          "foodId": "3",
+          "foodPic": "https://i-giadinh.vnecdn.net/2023/11/08/Thnhphm33-1699430193-1449-1699430197.jpg"
+        },
+        {
+          "name": "CANH KHOAI MỠ NẤU TÔM",
+          "foodId": "4",
+          "foodPic": "https://cdn.tgdd.vn/2020/12/CookProduct/Untitled-7-1200x676.jpg"
+        }
+      ],
+      "status": true
+    },
+    {
+      "meal": "afternoon snack",
+      "protein": 20.0,
+      "lipid": 5.0,
+      "glucid": 20.0,
+      "calories": 300.0,
+      "foods": [
+        {
+          "name": "XOÀI",
+          "foodId": "6",
+          "foodPic": "https://cdn.tgdd.vn/Files/2018/04/05/1079749/tac-dung-vang-cua-qua-xoai-chin-khong-phai-ai-cung-biet-202109161521021303.jpg"
+        }
+      ],
+      "status": true
+    },
+    {
+      "meal": "dinner",
+      "protein": 40.0,
+      "lipid": 15.0,
+      "glucid": 60.0,
+      "calories": 1000.0,
+      "foods": [
+        {
+          "name": "GÀ KHO SẢ",
+          "foodId": "7",
+          "foodPic": "https://i.ytimg.com/vi/hT1EgTIvZpI/maxresdefault.jpg"
+        },
+        {
+          "name": "CƠM",
+          "foodId": "2",
+          "foodPic": "https://media.cooky.vn/images/blog-2016/kinh-nghiem-rang-com-ngon%201.jpg"
+        },
+        {
+          "name": "CANH CẢI NGỌT NẤU THỊT BÒ",
+          "foodId": "8",
+          "foodPic": "https://cdn.tgdd.vn/2022/09/CookRecipe/GalleryStep/nau-canh-cai-ngot-ca-thac-lac-3.jpg"
+        },
+        {
+          "name": "ĐẬU RỒNG CÀ RỐT XÀO MỰC",
+          "foodId": "9",
+          "foodPic": "https://mava.media/media/2023/12/rau-muc-xao/nguyen-lieu.jpg"
+        }
+      ],
+      "status": true
+    }
+  ]
+}

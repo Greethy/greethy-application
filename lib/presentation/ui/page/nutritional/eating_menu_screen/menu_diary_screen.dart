@@ -11,8 +11,8 @@ import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu
 import 'package:greethy_application/presentation/ui/page/nutritional/eating_menu_screen/widget/total_nutrition_per_day_view.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/search_food_screen/search_food_all_menu.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/footnote_view.dart';
-import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/menu_screen.dart';
 import 'package:greethy_application/test_library/test%20restaurant%20ui/nutrition_home_detail/menu/offers/offer_banner_view.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MenuDiaryScreen extends StatefulWidget {
@@ -50,6 +50,8 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
   final int count = 9;
+
+  String time = DateFormat('d MMM').format(DateTime.now());
 
   @override
   void initState() {
@@ -101,7 +103,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
         body: Stack(
           children: <Widget>[
             getMainListViewUI(state),
-            getAppBarUI(),
+            getAppBarUI(state),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             )
@@ -280,6 +282,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
           dividerHeight: 40,
           text: "BỮA SÁNG",
           meal: state.breakfast,
+          state: state,
         ),
       );
 
@@ -305,6 +308,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
           dividerHeight: 40,
           text: "BỮA PHỤ SÁNG",
           meal: state.morningSnack,
+          state: state,
         ),
       );
 
@@ -330,6 +334,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
           dividerHeight: 40,
           text: "BỮA TRƯA",
           meal: state.lunch,
+          state: state,
         ),
       );
 
@@ -355,6 +360,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
           dividerHeight: 40,
           text: "BỮA PHỤ CHIỀU",
           meal: state.afternoonSnack,
+          state: state,
         ),
       );
 
@@ -380,6 +386,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
           dividerHeight: 40,
           text: "BỮA TỐI",
           meal: state.dinner,
+          state: state,
         ),
       );
 
@@ -444,7 +451,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
     );
   }
 
-  Widget getAppBarUI() {
+  Widget getAppBarUI(EatingMenuScreenState state) {
     return Column(
       children: <Widget>[
         AnimatedBuilder(
@@ -523,15 +530,29 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
                               child: InkWell(
                                 highlightColor: Colors.transparent,
                                 borderRadius: const BorderRadius.all(Radius.circular(32.0)),
-                                onTap: () {
+                                onTap: () async {
                                   print("mui ten ben trái");
-                                  // add to test
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const NutritionHomeManagementScreen(),
+
+                                  time = DateFormat('d MMM').format(DateTime.now().subtract(Duration(days: 1)));
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Xem thực đơn ngày: ' + time),
+                                      backgroundColor: GreethyColor.kawa_green,
                                     ),
                                   );
+                                  await state.initDatabase2();
+                                  setState(() {
+                                    getData(state);
+                                  });
+
+                                  // add to test
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => const NutritionHomeManagementScreen(),
+                                  //   ),
+                                  // );
                                 },
                                 child: Center(
                                   child: Icon(
@@ -557,7 +578,7 @@ class _MenuDiaryScreenState extends State<MenuDiaryScreen> with TickerProviderSt
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    time,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontName,

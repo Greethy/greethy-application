@@ -74,6 +74,26 @@ class Meal extends Equatable {
     this.status,
   });
 
+  Meal copyWith({
+    String? meal,
+    double? protein,
+    double? lipid,
+    double? glucid,
+    double? calories,
+    List<FoodIndex>? foods,
+    bool? status,
+  }) {
+    return Meal(
+      meal: meal ?? this.meal,
+      protein: protein ?? this.protein,
+      lipid: lipid ?? this.lipid,
+      glucid: glucid ?? this.glucid,
+      calories: calories ?? this.calories,
+      foods: foods ?? this.foods,
+      status: status ?? this.status,
+    );
+  }
+
   @override
   List<Object?> get props => [
         meal,

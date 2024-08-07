@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/domain/entities/nutrition_entities/food_menu.dart';
+import 'package:greethy_application/presentation/state/nutrition/eating_menu_screen_state.dart';
 import 'package:greethy_application/presentation/theme/theme.dart';
 import 'package:greethy_application/presentation/ui/page/nutritional/widget/dyamic_table.dart';
 
@@ -8,6 +9,7 @@ class CustomDividerMealView extends StatefulWidget {
   final Color? color;
   final String text;
   final Meal? meal;
+  final EatingMenuScreenState? state;
 
   const CustomDividerMealView({
     super.key,
@@ -15,6 +17,7 @@ class CustomDividerMealView extends StatefulWidget {
     this.color,
     required this.text,
     this.meal,
+    this.state,
   }) : assert(dividerHeight != 0.0);
 
   @override
@@ -26,7 +29,7 @@ class _CustomDividerMealViewState extends State<CustomDividerMealView> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDone = !(widget.meal?.status == null || !widget.meal!.status!);
+    bool isDone = !(widget.meal?.status == null || !widget.meal!.status!);
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -136,26 +139,41 @@ class _CustomDividerMealViewState extends State<CustomDividerMealView> {
         Positioned(
           top: 5,
           left: 10,
-          child: Container(
-            height: 25,
-            width: 80,
-            decoration: BoxDecoration(
-              color: isDone ?  GreethyColor.kawa_green : Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-              border: Border.all(
-                color: isDone ? Colors.white : GreethyColor.kawa_green,
-                width: 1.0,
+          child: GestureDetector(
+            onTap: () {
+              isDone = !isDone;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(isDone ? 'Rất tốt, tiếp tục cố gắng nhé!' : "Xem rằng bạn đã không tuân thủ menu ăn uống :( !!" ),
+                  backgroundColor: GreethyColor.kawa_green,
+                ),
+              );
+              setState(() {
+                print(widget.text);
+                 widget.state?.updateStatus(widget.text);
+              });
+            },
+            child: Container(
+              height: 25,
+              width: 80,
+              decoration: BoxDecoration(
+                color: isDone ? GreethyColor.kawa_green : Colors.white,
+                borderRadius: BorderRadius.circular(20.0),
+                border: Border.all(
+                  color: isDone ? Colors.white : GreethyColor.kawa_green,
+                  width: 1.0,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(15, 1, 15, 1),
-              child: Center(
-                child: Text(
-                  isDone ? "Done" : "Eat",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: isDone? GreethyColor.white : GreethyColor.kawa_green,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 1, 15, 1),
+                child: Center(
+                  child: Text(
+                    isDone ? "Done" : "Eat",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: isDone ? GreethyColor.white : GreethyColor.kawa_green,
+                    ),
                   ),
                 ),
               ),

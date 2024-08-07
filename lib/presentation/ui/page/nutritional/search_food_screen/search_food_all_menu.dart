@@ -27,7 +27,7 @@ class SearchListScreen extends StatefulWidget {
 }
 
 class _SearchListScreenState extends State<SearchListScreen> with TickerProviderStateMixin {
-  List<String> items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grapes', 'Honeydew'];
+  List<String> items = ['Hủ TIẾU', 'CƠM', 'THỊT KHO TRỨNG', 'CANH KHOAI MỠ NẤU TÔM', 'CẢI THẢO LUỘC', 'XOÀI', 'GÀ KHO XẢ', 'CANH CẢI NGỌT NẤU THỊT BÒ'];
   List<String> filteredItems = [];
   TextEditingController searchController = TextEditingController();
 
@@ -119,15 +119,15 @@ class _SearchListScreenState extends State<SearchListScreen> with TickerProvider
               return ListView.builder(
                 controller: scrollController,
                 padding: EdgeInsets.only(
-                  top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 130,
-                  bottom: 62 + MediaQuery.of(context).padding.bottom,
+                  top: AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 100,
+                  bottom: 15,
                 ),
                 itemCount: filteredItems.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) {
                   animationController?.forward();
                   return FoodSearchView(
-                    food: state.food,
+                    food: state.foodList?[index],
                     animationController: animationController,
                     animation: Tween<double>(begin: 0.0, end: 1.0).animate(
                       CurvedAnimation(
@@ -234,11 +234,35 @@ class _SearchListScreenState extends State<SearchListScreen> with TickerProvider
                       controller: searchController,
                       decoration: InputDecoration(
                         labelText: 'Search',
+                        labelStyle: TextStyle(
+                          color: GreethyColor.kawa_green, // Thiết lập màu cho labelText
+                        ),
                         hintText: 'Search',
+                        hintStyle: TextStyle(
+                          color: GreethyColor.kawa_green, // Thiết lập màu cho hintText
+                        ),
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          borderSide: BorderSide(
+                            color: GreethyColor.kawa_green, // Màu viền cho trạng thái mặc định
+                          ),
                         ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          borderSide: BorderSide(
+                            color: GreethyColor.kawa_green, // Màu viền khi không focus
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          borderSide: BorderSide(
+                            color: GreethyColor.kawa_green, // Màu viền khi focus
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: GreethyColor.kawa_green, // Thiết lập màu văn bản
                       ),
                     ),
                   ),

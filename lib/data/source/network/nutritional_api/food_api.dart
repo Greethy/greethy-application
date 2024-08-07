@@ -24,14 +24,13 @@ class FoodApiImpl implements FoodApi {
   @override
   Future<FoodDto?> get(String id) async {
     try {
-      id = "1";
       Response response;
-      response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');
+      // response = await dio.get('https://rickandmortyapi.com/api/character/?id=$id');
 
-      final l = response.data['results'].map((e) => FoodDto.fromMap(e));
-      print(response.data);
-      print("food out 1");
-      FoodDto food = await FoodDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_final.json'));
+      // final l = response.data['results'].map((e) => FoodDto.fromMap(e));
+      // print(response.data);
+      print("food out 1 " + id);
+      FoodDto food = await FoodDto.fromRawJson(await rootBundle.loadString('assets/database_sample/nutritional/data/food_sample/$id.json'));
       print("food out");
       print(food.toString());
 

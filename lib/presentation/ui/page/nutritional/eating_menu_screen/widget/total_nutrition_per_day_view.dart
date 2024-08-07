@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greethy_application/presentation/state/nutrition/eating_menu_screen_state.dart';
-import 'package:greethy_application/presentation/theme/theme.dart';
 
 class TotalNutritionPerDay extends StatelessWidget {
   final String titleTxt;

@@ -53,7 +53,7 @@ class FoodView extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         onTap: () {
                           // print("ra screen món ăn");
-                          Navigator.push(context, FoodDetailScreen.getRoute(foodId: foodInfo.foodId ?? "1"));
+                          Navigator.push(context, FoodDetailScreen.getRoute(foodId: foodInfo.foodId!));
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
